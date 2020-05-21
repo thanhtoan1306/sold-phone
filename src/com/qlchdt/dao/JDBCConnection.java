@@ -23,4 +23,12 @@ public class JDBCConnection {
     return null;    
      
 }  
+    public static void main(String[] args) {
+        Connection connection = getJDBCConnection();
+        if(connection != null) {
+            System.out.println("Thnahcong");
+        }else {
+                System.out.println("That bai");
+        }
+    }
 }

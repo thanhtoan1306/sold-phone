@@ -18,9 +18,7 @@ public class ListTaiKhoanFrame extends javax.swing.JFrame {
     TaiKhoanService taiKhoanService;
     DefaultTableModel defaultTableModel;
 
-    /**
-     * Creates new form ListTaiKhoanFrame
-     */
+
     public ListTaiKhoanFrame() {
         initComponents();
         taiKhoanService = new TaiKhoanService();
