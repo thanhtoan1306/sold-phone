@@ -26,7 +26,7 @@ public class JDBCConnection {
     public static void main(String[] args) {
         Connection connection = getJDBCConnection();
         if(connection != null) {
-            System.out.println("Thnahcong");
+            System.out.println("Thanh cong");
         }else {
                 System.out.println("That bai");
         }
