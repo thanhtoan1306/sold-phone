@@ -6,7 +6,6 @@
 package com.qlchdt.dao;
 
 import com.qlchdt.model.NhaCungCap;
-import com.qlchdt.model.TaiKhoan;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.PreferenceChangeEvent;
 
 /**
  *
@@ -22,17 +20,17 @@ import java.util.prefs.PreferenceChangeEvent;
  */
 public class NhaCungCapDao {
 
-    public List<NhaCungCap> getAllNhaCungCap() {
+    JDBCConnection connection;
 
-        List<NhaCungCap> nhacungcap = new ArrayList<NhaCungCap>();
+    public ArrayList<NhaCungCap> getAllNhaCungCap() {
+
+        ArrayList<NhaCungCap> dsncc = new ArrayList<>();
+        connection = new JDBCConnection();
 
         try {
-            Connection connection = JDBCConnection.getJDBCConnection();
-
-            Statement preparedStatement = connection.createStatement();
 
             String sql = "SELECT * FROM NHACUNGCAP";
-            ResultSet rs = preparedStatement.executeQuery(sql);
+            ResultSet rs = connection.sqlQuery(sql);
 
             while (rs.next()) {
 
@@ -42,32 +40,24 @@ public class NhaCungCapDao {
                 ncc.setDiaChi(rs.getString("DiaChi"));
                 ncc.setSDT(rs.getString("SDT"));
 
-                nhacungcap.add(ncc);
+                dsncc.add(ncc);
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return nhacungcap;
+        return dsncc;
     }
 
-    public void addNcc(NhaCungCap ncc) {
-        Connection connection = JDBCConnection.getJDBCConnection();
-        String sql = "INSERT INTO NHACUNGCAP(MaNCC, TenNCC, DiaChi, SDT) VALUE(?,?,?,?)";
-        try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, ncc.getMaNCC());
-            preparedStatement.setString(2, ncc.getTenNCC());
-            preparedStatement.setString(3, ncc.getDiaChi());
-            preparedStatement.setString(4, ncc.getSDT());
-            
-            int rs = preparedStatement.executeUpdate();
-            System.out.println(rs);
-            
-            
-        } catch (SQLException e)  {
-            
-            e.printStackTrace();
-        }
-        }
-
+    public Boolean add(NhaCungCap ncc) {
+        connection = new JDBCConnection();
+        Boolean ok = connection.sqlUpdate("INSERT INTO `NHACUNGCAP` (`MaNCC`, `TenNCC`, `SDT`, `DiaChi`) VALUES ('"
+                + ncc.getMaNCC() + "', '"
+                + ncc.getTenNCC() + "', '"
+                + ncc.getSDT() + "', '"
+                + ncc.getDiaChi() + "', '"
+                + "');");
+        //connection.closeConnect();
+        return ok;
     }
+
+}

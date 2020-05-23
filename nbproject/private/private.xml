@@ -3,14 +3,9 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/phanquyen.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/themnguoidung.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/thongtinnguoidung.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/banhang.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/themnhanvien.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/nhaphang.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/qlncc.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/chqldt/view/themnhacungcap.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/BanHangForm.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/SanPhamService.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/qlncc.java</file>
         </group>
     </open-files>
 </project-private>
