@@ -119,7 +119,7 @@ public class JDBCConnection {
 
         JDBCConnection connection = new JDBCConnection();
         if (connection != null) {
-            System.out.println("Thnahcong");
+            System.out.println("Thành công");
         } else {
             System.out.println("That bai");
 
