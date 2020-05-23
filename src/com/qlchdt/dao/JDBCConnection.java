@@ -91,6 +91,7 @@ public class JDBCConnection {
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "-- ERROR! Không thể ghi dữ liệu xuống " + DB_Name + "\n" + ex.getLocalizedMessage());
+              //  System.err.println(ex.getLocalizedMessage());
                 return false;
             }
         }

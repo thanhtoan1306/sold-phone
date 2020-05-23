@@ -9,37 +9,31 @@ package com.qlchdt.model;
  *
  * @author User
  */
-public class NhaCungCap {
-    private String MaNCC;
-    private String TenNCC;
-    private String DiaChi;
-    private String SDT;
+public class KhachHang {
+    
+    String MaKH, TenKH, DiaChi,SDT;
 
-    public NhaCungCap() {
-    }
-
-    public NhaCungCap(String MaNCC, String TenNCC, String DiaChi, String SDT) {
-        this.MaNCC = MaNCC;
-        this.TenNCC = TenNCC;
+    public KhachHang(String MaKH, String TenKH, String DiaChi, String SDT) {
+        this.MaKH = MaKH;
+        this.TenKH = TenKH;
         this.DiaChi = DiaChi;
         this.SDT = SDT;
     }
 
-
-    public String getMaNCC() {
-        return MaNCC;
+    public String getMaKH() {
+        return MaKH;
     }
 
-    public void setMaNCC(String MaNCC) {
-        this.MaNCC = MaNCC;
+    public void setMaKH(String MaKH) {
+        this.MaKH = MaKH;
     }
 
-    public String getTenNCC() {
-        return TenNCC;
+    public String getTenKH() {
+        return TenKH;
     }
 
-    public void setTenNCC(String TenNCC) {
-        this.TenNCC = TenNCC;
+    public void setTenKH(String TenKH) {
+        this.TenKH = TenKH;
     }
 
     public String getDiaChi() {

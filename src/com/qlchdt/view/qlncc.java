@@ -42,7 +42,7 @@ public class qlncc extends javax.swing.JFrame {
         defaultTableModel.addColumn("SDT");
         defaultTableModel.addColumn("Địa chỉ");
         
-        setData(nhacungcapService.getAllNhaCungCap());
+        //setData(nhacungcapService.getAllNhaCungCap());
         
         //chọn item trong table
         ListSelectionModel listSelectionModel = ncc_table.getSelectionModel();

@@ -7,6 +7,7 @@ package com.qlchdt.view;
 
 import com.qlchdt.service.NhaCungCapService;
 import com.qlchdt.model.NhaCungCap;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,13 +18,13 @@ public class themnhacungcap extends javax.swing.JFrame {
     /**
      * Creates new form themnhacungcap
      */
-    NhaCungCapService nhaCungCapService;
+    NhaCungCapService nhaCungCapService  = new NhaCungCapService();
     NhaCungCap nhacungcap;
     
     public themnhacungcap() {
         initComponents();
-        nhaCungCapService = new NhaCungCapService();
-        nhacungcap = new NhaCungCap();
+        
+        
     }
 
     /**
@@ -205,13 +206,15 @@ public class themnhacungcap extends javax.swing.JFrame {
 
     private void agreeAddNCC1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agreeAddNCC1ActionPerformed
         
-        nhacungcap.setMaNCC(idNccTextField.getText());
-        nhacungcap.setTenNCC(nameNccTextField.getText());
-        nhacungcap.setSDT(phoneNccTextField.getText());
-        nhacungcap.setDiaChi(addressNccTextField.getText());
-      //  nhaCungCapService.addNcc(nhacungcap);
-        new qlncc().setVisible(true);
-            this.dispose();
+            String mancc = idNccTextField.getText();
+            String tenncc = nameNccTextField.getText();
+            String diachi = addressNccTextField.getText();
+            String sdt = phoneNccTextField.getText();
+            
+                if (nhaCungCapService.add("CS07", "Cơ sở 7", "HCM", "1234567890")) {
+                JOptionPane.showMessageDialog(this, "Thêm "  + " thành công!");
+                this.dispose();
+            }
     }//GEN-LAST:event_agreeAddNCC1ActionPerformed
 
     /**

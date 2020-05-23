@@ -5,10 +5,9 @@
  */
 package com.qlchdt.service;
 
-
-
 import com.qlchdt.dao.NhaCungCapDao;
 import com.qlchdt.model.NhaCungCap;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -16,17 +15,34 @@ import java.util.List;
  * @author User
  */
 public class NhaCungCapService {
-    
-      private NhaCungCapDao nhacungcapDao;
+
+    private ArrayList<NhaCungCap> dsncc = new ArrayList<>();
+    private NhaCungCapDao nhacungcapDao;
 
     public NhaCungCapService() {
-        nhacungcapDao = new NhaCungCapDao();
+        dsncc = nhacungcapDao.readDB();
     }
 
-    public List<NhaCungCap> getAllNhaCungCap() {
-        return nhacungcapDao.getAllNhaCungCap();
+    public ArrayList<NhaCungCap> getDsNcc() {
+        return dsncc;
     }
 
-    
-    
+    public void readDB() {
+        dsncc = nhacungcapDao.readDB();
+    }
+
+    public Boolean add(NhaCungCap ncc) {
+        Boolean ok = nhacungcapDao.add(ncc);
+
+        if (ok) {
+            dsncc.add(ncc);
+        }
+        return ok;
+    }
+
+    public Boolean add(String mancc, String tenncc, String diachi, String sdt) {
+        NhaCungCap ncc = new NhaCungCap(mancc, tenncc, diachi, sdt);
+        return add(ncc);
+    }
+
 }
