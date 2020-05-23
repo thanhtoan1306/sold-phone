@@ -15,13 +15,13 @@ import java.util.List;
  */
 public class TaiKhoanService {
 
-    private TaiKhoanDao taiKhoanDao;
-
-    public TaiKhoanService() {
-        taiKhoanDao = new TaiKhoanDao();
-    }
-
-    public List<TaiKhoan> getAllTaiKhoan() {
-        return taiKhoanDao.getAllTaiKhoan();
-    };
+//    private TaiKhoanDao taiKhoanDao;
+//
+//    public TaiKhoanService() {
+//        taiKhoanDao = new TaiKhoanDao();
+//    }
+//
+//    public List<TaiKhoan> getAllTaiKhoan() {
+//        return taiKhoanDao.getAllTaiKhoan();
+//    };
 }

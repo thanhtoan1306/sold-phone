@@ -20,31 +20,31 @@ import java.util.List;
  */
 public class TaiKhoanDao {
 
-    public  List<TaiKhoan> getAllTaiKhoan() {
-
-       List<TaiKhoan> taikhoan = new ArrayList<TaiKhoan>();
-
-        try {
-            Connection connection = JDBCConnection.getJDBCConnection();
-
-            Statement preparedStatement = connection.createStatement();
-
-            String sql = "SELECT * FROM TAIKHOAN";
-            ResultSet rs = preparedStatement.executeQuery(sql);
-
-            while (rs.next()) {
-
-                TaiKhoan tk = new TaiKhoan();
-                tk.setTentk(rs.getString("TenTK"));
-                tk.setMk(rs.getString("MK"));
-                tk.setLoaitk(rs.getString("LoaiTK"));
-                tk.setTrangthai(rs.getInt("TrangThai"));
-
-                taikhoan.add(tk);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } 
-        return taikhoan;
-    }
+//    public  List<TaiKhoan> getAllTaiKhoan() {
+//
+//       List<TaiKhoan> taikhoan = new ArrayList<TaiKhoan>();
+//
+//        try {
+//            Connection connection = JDBCConnection.getJDBCConnection();
+//
+//            Statement preparedStatement = connection.createStatement();
+//
+//            String sql = "SELECT * FROM TAIKHOAN";
+//            ResultSet rs = preparedStatement.executeQuery(sql);
+//
+//            while (rs.next()) {
+//
+//                TaiKhoan tk = new TaiKhoan();
+//                tk.setTentk(rs.getString("TenTK"));
+//                tk.setMk(rs.getString("MK"));
+//                tk.setLoaitk(rs.getString("LoaiTK"));
+//                tk.setTrangthai(rs.getInt("TrangThai"));
+//
+//                taikhoan.add(tk);
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        } 
+//        return taikhoan;
+//    }
 }

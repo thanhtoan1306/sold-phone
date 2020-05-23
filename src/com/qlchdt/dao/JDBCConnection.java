@@ -116,11 +116,13 @@ public class JDBCConnection {
 //    }
 
     public static void main(String[] args) {
+
         JDBCConnection connection = new JDBCConnection();
         if (connection != null) {
             System.out.println("Thnahcong");
         } else {
             System.out.println("That bai");
+
         }
     }
 }
