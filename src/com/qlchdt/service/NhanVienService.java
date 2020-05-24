@@ -90,7 +90,7 @@ public class NhanVienService {
         return result;
     }
 
-    public Boolean add(NhanVien nv) {
+    public Boolean saveToDatabase(NhanVien nv) {
         Boolean ok = nhanVienDao.add(nv);
 
         if (ok) {
@@ -99,9 +99,10 @@ public class NhanVienService {
         return ok;
     }
 
-    public Boolean add(String manv, String tennv, LocalDate ngaysinh,String gioitinh, String diachi, String sdt) {
-        NhanVien nv = new NhanVien(manv, tennv, ngaysinh,gioitinh, diachi, sdt);
-        return add(nv);
+    public Boolean add(String manv, String tennv, LocalDate ngaysinh,String gioitinh, String sdt, String diachi) {
+        NhanVien nv = new NhanVien(manv, tennv, ngaysinh,gioitinh, sdt, diachi);
+        dsnv.add(nv);
+        return saveToDatabase(nv);
     }
 
     public Boolean delete(String manv) {

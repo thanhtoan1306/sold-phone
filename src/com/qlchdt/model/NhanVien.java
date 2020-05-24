@@ -21,13 +21,13 @@ public class NhanVien {
     public NhanVien() {
     }
 
-    public NhanVien(String MaNV, String TenNV, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT) {
+    public NhanVien(String MaNV, String TenNV, LocalDate NgaySinh, String GioiTinh, String SDT, String DiaChi) {
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.NgaySinh = NgaySinh;
         this.GioiTinh = GioiTinh;
-        this.DiaChi = DiaChi;
         this.SDT = SDT;
+        this.DiaChi = DiaChi;
     }
 
     public NhanVien(String MaNV, String TenNV, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, String HinhAnh) {

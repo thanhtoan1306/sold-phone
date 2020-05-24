@@ -6,10 +6,12 @@
             <file>file:/D:/Demo_github_java/src/com/chqldt/view/DanhMuc.java</file>
         </group>
         <group>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/DangNhap.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/dao/NhanVienDao.java</file>
             <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/QuanLiNhanVien.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/model/NhanVien.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/BanHangForm.java</file>
+            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/service/NhanVienService.java</file>
             <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/dao/JDBCConnection.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/themnhanvien.java</file>
         </group>
     </open-files>
 </project-private>

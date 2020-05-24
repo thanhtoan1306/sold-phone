@@ -57,7 +57,7 @@ public class JDBCConnection {
     // check driver
     private void checkDriver() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
         } catch (ClassNotFoundException e) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Không tìm thấy Driver mySql");
         }
@@ -91,7 +91,7 @@ public class JDBCConnection {
 
             } catch (SQLException ex) {
                 JOptionPane.showMessageDialog(null, "-- ERROR! Không thể ghi dữ liệu xuống " + DB_Name + "\n" + ex.getLocalizedMessage());
-              //  System.err.println(ex.getLocalizedMessage());
+                //System.err.println(ex.getLocalizedMessage());
                 return false;
             }
         }

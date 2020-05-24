@@ -6,6 +6,7 @@
 package com.qlchdt.dao;
 
 import com.qlchdt.model.NhanVien;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -26,6 +27,7 @@ public class NhanVienDao {
     public ArrayList<NhanVien> readDB() {
         ArrayList<NhanVien> dsnv = new ArrayList<>();
         connection = new JDBCConnection();
+        //System.out.println(connection.checkConnect());
         try {
             String sql = "SELECT * FROM NHANVIEN";
             ResultSet rs = connection.sqlQuery(sql);
@@ -35,11 +37,9 @@ public class NhanVienDao {
                     String tennv = rs.getString("TenNV");
                     LocalDate ngaysinh = rs.getDate("NgaySinh").toLocalDate();
                     String gioitinh = rs.getString("GioiTinh");
-                    String diachi = rs.getString("DiaChi");
                     String sdt = rs.getString("SDT");
-                    String hinhanh = rs.getString("Hinh");
-
-                    dsnv.add(new NhanVien(manv, tennv, ngaysinh, gioitinh, diachi, sdt, hinhanh));
+                    String diachi = rs.getString("DiaChi");
+                    dsnv.add(new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi));
                 }
             }
 
@@ -62,9 +62,9 @@ public class NhanVienDao {
                     String tennv = rs.getString("TenNV");
                     LocalDate ngaysinh = rs.getDate("NgaySinh").toLocalDate();
                     String gioitinh = rs.getString("GioiTinh");
+                    String sdt = rs.getString("SDT");
                     String diachi = rs.getString("DiaChi");
-                    String sdt = rs.getString("SDT");                    
-                    dsnv.add(new NhanVien(manv, tennv, ngaysinh,gioitinh, diachi, sdt));
+                    dsnv.add(new NhanVien(manv, tennv, ngaysinh,gioitinh, sdt, diachi));
                 }
             }
 
@@ -77,13 +77,13 @@ public class NhanVienDao {
 
     public Boolean add(NhanVien nv) {
         connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("INSERT INTO `NHANVIEN` (`MaNV`, `TenNV`, `NgaySinh`,`GioiTinh`, `DiaChi`, `SDT`, `HinhAnh`) VALUES ('"
+        Boolean ok = connection.sqlUpdate("INSERT INTO `NHANVIEN` (`MaNV`, `TenNV`, `NgaySinh`, `GioiTinh`, `SDT`, `DiaChi`) VALUES ('"
                 + nv.getMaNV() + "', '"
                 + nv.getTenNV() + "', '"
-                + nv.getNgaySinh() + "', '"
-                + nv.getDiaChi() + "', '"
+                + Date.valueOf(nv.getNgaySinh()) + "', '"
+                + nv.getGioiTinh()+ "', '"
                 + nv.getSDT() + "', '"
-                + nv.getHinhAnh()+ "');");
+                + nv.getDiaChi() + "');");
         //connection.closeConnect();
         return ok;
     }
@@ -95,17 +95,17 @@ public class NhanVienDao {
         return ok;
     }
 
-    public Boolean update(String MaNV, String TenNV, LocalDate NgaySinh,String GioiTinh, String DiaChi, String SDT) {
+    public Boolean update(String MaNV, String TenNV, LocalDate NgaySinh,String GioiTinh, String SDT, String DiaChi) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("Update NHANVIEN Set "
                 + "TenNV='" + TenNV
                 + "',NgaySinh='" + NgaySinh
                 + "',GioiTinh='" + GioiTinh
+                + "',SDT='" + SDT
                 + "',DiaChi='" + DiaChi
-                + "',SDT='" + SDT               
                 + "' where MaNV='" + MaNV + "'");
         //connection.closeConnect();
         return ok;
     }
-
+    
 }
