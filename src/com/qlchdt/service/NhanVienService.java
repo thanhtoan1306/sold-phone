@@ -101,7 +101,6 @@ public class NhanVienService {
 
     public Boolean add(String manv, String tennv, LocalDate ngaysinh,String gioitinh, String sdt, String diachi) {
         NhanVien nv = new NhanVien(manv, tennv, ngaysinh,gioitinh, sdt, diachi);
-        dsnv.add(nv);
         return saveToDatabase(nv);
     }
 
