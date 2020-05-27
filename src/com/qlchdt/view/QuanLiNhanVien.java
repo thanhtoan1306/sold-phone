@@ -23,6 +23,7 @@ import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -38,6 +39,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
     DefaultTableModel defaultTableModel;
     NhanVienService nhanVienService;
     MyTable tbNhanVien;
+    NhanVien NV_them;
     
     private void setDataToTable(ArrayList<NhanVien> data, MyTable table) {
         table.clear();
@@ -75,6 +77,12 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                     // show info
                     txtMa.setText(nv.getMaNV());
                     txtTen.setText(nv.getTenNV());
+                    if (nv.getGioiTinh().equalsIgnoreCase("nam")) {
+                        genderGroup.setSelected(radioNam.getModel(), true);
+                    }
+                    else if (nv.getGioiTinh().equalsIgnoreCase("nữ")) {
+                        genderGroup.setSelected(radioNu.getModel(), true);
+                    }
                     txtNgaySinh.setText(nv.getNgaySinh().toString());
                     txtSDT.setText(nv.getSDT());
                     txtDiaChi.setText(nv.getDiaChi());
@@ -121,7 +129,6 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
      */
     public QuanLiNhanVien() {
         super("Quản Lí Nhân Viên");
-        
         initComponents();
         nhanVienService = new NhanVienService();
         defaultTableModel = new DefaultTableModel() {
@@ -345,6 +352,11 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         btnSua.setColorText(new java.awt.Color(0, 0, 0));
         btnSua.setColorTextHover(new java.awt.Color(0, 102, 255));
         btnSua.setOpaque(true);
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
 
         btnXoa.setBackground(new java.awt.Color(204, 204, 204));
         btnXoa.setForeground(new java.awt.Color(0, 0, 0));
@@ -533,14 +545,40 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         // TODO add your handling code here:
+        int row = -1;
+        row = tbNhanVien.getTable().getSelectedRow();
+        if (row==-1) {
+            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
+        }
+        else {
+            nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
+            tbNhanVien.getModel().removeRow(row);
+            JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
+        }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
+        if (NV_them==null) {
+            JOptionPane.showMessageDialog(null, "Chưa có Nhân Viên mới thêm vào bảng. Lưu vào database thất bại.");
+            return;
+        }
+        if (!nhanVienService.saveToDatabase(NV_them)) {
+            JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
+            return;
+        }
+        JOptionPane.showMessageDialog(null, "Lưu vào Database thành công!");
+        NV_them = null;
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
+        this.txtMa.setText("");
+        this.txtTen.setText("");
+        this.txtNgaySinh.setText("");
+        this.genderGroup.clearSelection();
+        this.txtSDT.setText("");
+        this.txtDiaChi.setText("");
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -564,6 +602,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         
         Object os[] = {maNV, name, ngaySinh, gioiTinh, soDienThoai, diaChi};
         model.addRow(os);
+        NV_them = new NhanVien(maNV, name, date, gioiTinh, soDienThoai, diaChi);
         nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi);
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -574,6 +613,31 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         refreshTable();
     }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
+        String maNV = txtMa.getText().trim();
+        String name = txtTen.getText().trim();
+        String gioiTinh = "";
+        for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                gioiTinh = button.getText();
+                break;
+            }
+        }
+        String ngaySinh = txtNgaySinh.getText().trim();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.parse(ngaySinh, formatter);
+        String soDienThoai = txtSDT.getText().trim();
+        String diaChi = txtDiaChi.getText().trim();
+        Object os[] = {maNV, name, ngaySinh, gioiTinh, soDienThoai, diaChi};
+        if (nhanVienService.update(maNV, name, date, gioiTinh, soDienThoai, diaChi)) {
+            JOptionPane.showMessageDialog(null, "Sửa thành công !");
+            refreshTable();
+        }
+    }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
      * @param args the command line arguments
