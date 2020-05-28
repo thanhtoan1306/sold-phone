@@ -36,7 +36,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
         plBanHang = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1330, 900));
@@ -51,7 +50,6 @@ public class NewJFrame extends javax.swing.JFrame {
         jPanel1.setMinimumSize(new java.awt.Dimension(652, 777));
         jPanel1.setPreferredSize(new java.awt.Dimension(1330, 777));
         jPanel1.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
         javax.swing.GroupLayout plBanHangLayout = new javax.swing.GroupLayout(plBanHang);
         plBanHang.setLayout(plBanHangLayout);
@@ -110,7 +108,6 @@ public class NewJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel plBanHang;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,6 +50,7 @@ public class HoaDonBanHangForm extends FormHang {
     SanPham sp;
     NhanVien nhanVien;
     KhachHang khachHang;
+    
     MyTable tbChiTietHoaDon;
 
     ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
@@ -123,6 +124,10 @@ public class HoaDonBanHangForm extends FormHang {
 //        clear();
 //        this.target.refreshAll();
 //    }
+        public void refreshTable() {
+        qlcthd.readDB();
+       setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
+    }
     private void btnXoaOnClick() {
         int i = tbChiTietHoaDon.getTable().getSelectedRow();
         if (i >= 0 && i < dscthd.size()) {
@@ -177,26 +182,71 @@ public class HoaDonBanHangForm extends FormHang {
                 JOptionPane.showMessageDialog(this, "Số lượng sản phẩm trong kho không đủ (" + sp.getSoLuong() + ")");
                 return;
             }
-            ChiTietHoaDon cthd = new ChiTietHoaDon(qlhd.getNextID(), masp, soluong, sp.getDonGia());
-            dscthd.add(cthd);
+            dscthd.add( new ChiTietHoaDon(qlhd.getNextID(), masp, soluong, sp.getDonGia()));
+            
+            // cập nhật lại table
+              setDataToTable(dscthd, tbChiTietHoaDon);            
+        
         }
 
-        // cập nhật lại table
-        setDataToTable(dscthd, tbChiTietHoaDon);
+        for(ChiTietHoaDon cthd: dscthd) {
+            System.out.println("List danh sách hóa đơn " + cthd.getMaHoaDon());
+        }
     }
 
-    public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
+//    public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
+//       // t.clear();
+//        float tongtien = 0;
+//        int stt = 1;
+//        for (ChiTietHoaDon cthd : arr) {
+//            String masp = cthd.getMaSanPham();
+//            sp = qlsp.getSanPham(masp);
+//            String tensp = sp.getTenSP();
+//            int soluong = cthd.getSoLuong();
+//            float dongia = sp.getDonGia();
+//            float thanhtien = soluong * dongia;
+//            
+//            t.addRow(new String[]{
+//                String.valueOf(stt),
+//                masp,
+//                tensp,
+//                String.valueOf(soluong),
+//                PriceFormatter.format(dongia),
+//                PriceFormatter.format(thanhtien)
+//            });
+//            stt++;
+//            tongtien += thanhtien;
+//            
+//        }
+//
+//         //check khuyến mãi
+//        t.addRow(new String[]{"", "", "", "", "", ""});
+//        t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
+//        txTongTien.setText(String.valueOf(tongtien));
+////        if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongtien) {
+////            float giaTriKhuyenMai = tongtien * khuyenMai.getPhanTramKM() / 100;
+////            float tongTienSauKhuyenMai = tongtien - giaTriKhuyenMai;
+////            t.addRow(new String[]{"", "", "", "", "Khuyến mãi", PriceFormatter.format(-giaTriKhuyenMai)});
+////            t.addRow(new String[]{"", "", "", "", "Còn lại", PriceFormatter.format(tongTienSauKhuyenMai)});
+////            txTongTien.setText(String.valueOf(tongTienSauKhuyenMai));
+////        } else {
+////            txTongTien.setText(String.valueOf(tongtien));
+////        }
+//    }
+    
+    
+        public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
         t.clear();
         float tongtien = 0;
         int stt = 1;
         for (ChiTietHoaDon cthd : arr) {
             String masp = cthd.getMaSanPham();
-            sp = qlsp.getSanPham(masp);
+            SanPham sp = qlsp.getSanPham(masp);
             String tensp = sp.getTenSP();
             int soluong = cthd.getSoLuong();
-            float dongia = sp.getDonGia();
+            float dongia = cthd.getDonGia();
             float thanhtien = soluong * dongia;
-            
+
             t.addRow(new String[]{
                 String.valueOf(stt),
                 masp,
@@ -207,22 +257,12 @@ public class HoaDonBanHangForm extends FormHang {
             });
             stt++;
             tongtien += thanhtien;
-            
         }
 
         // check khuyến mãi
-//        t.addRow(new String[]{"", "", "", "", "", ""});
-//        t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
+        t.addRow(new String[]{"", "", "", "", "", ""});
+        t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
         txTongTien.setText(String.valueOf(tongtien));
-//        if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongtien) {
-//            float giaTriKhuyenMai = tongtien * khuyenMai.getPhanTramKM() / 100;
-//            float tongTienSauKhuyenMai = tongtien - giaTriKhuyenMai;
-//            t.addRow(new String[]{"", "", "", "", "Khuyến mãi", PriceFormatter.format(-giaTriKhuyenMai)});
-//            t.addRow(new String[]{"", "", "", "", "Còn lại", PriceFormatter.format(tongTienSauKhuyenMai)});
-//            txTongTien.setText(String.valueOf(tongTienSauKhuyenMai));
-//        } else {
-//            txTongTien.setText(String.valueOf(tongtien));
-//        }
     }
 
     /**
@@ -242,7 +282,7 @@ public class HoaDonBanHangForm extends FormHang {
         txNgayLap = new javax.swing.JTextField();
         txGioLap = new javax.swing.JTextField();
         btnChonKH = new javax.swing.JButton();
-        jPanel5 = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnXoa = new rojerusan.RSMaterialButtonRectangle();
         btnSua = new rojerusan.RSMaterialButtonRectangle();
@@ -329,8 +369,7 @@ public class HoaDonBanHangForm extends FormHang {
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
-        jPanel5.setLayout(new java.awt.CardLayout());
+        jPanel1.setLayout(new java.awt.CardLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -402,7 +441,10 @@ public class HoaDonBanHangForm extends FormHang {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 652, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addGap(22, 22, 22)
@@ -410,8 +452,7 @@ public class HoaDonBanHangForm extends FormHang {
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                             .addGap(1, 1, 1))
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                             .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -421,14 +462,15 @@ public class HoaDonBanHangForm extends FormHang {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 777, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(273, 273, 273)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(163, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
                     .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                    .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addGap(407, 407, 407)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -447,7 +489,7 @@ public class HoaDonBanHangForm extends FormHang {
         tbChiTietHoaDon.setAlignment(4, JLabel.RIGHT);
         tbChiTietHoaDon.setAlignment(5, JLabel.RIGHT);
 
-        jPanel5.add(new JScrollPane(tbChiTietHoaDon));
+        jPanel1.add(new JScrollPane(tbChiTietHoaDon));
     }// </editor-fold>//GEN-END:initComponents
 
     private void txMaHDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txMaHDActionPerformed
@@ -497,8 +539,8 @@ public class HoaDonBanHangForm extends FormHang {
     private rojerusan.RSMaterialButtonRectangle btnSua;
     private rojerusan.RSMaterialButtonRectangle btnThanhToan;
     private rojerusan.RSMaterialButtonRectangle btnXoa;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField txGioLap;
     private javax.swing.JTextField txKH;

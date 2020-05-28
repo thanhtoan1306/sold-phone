@@ -51,6 +51,7 @@ public class HoaDonService {
 
     public Boolean add(HoaDon hd) {
         Boolean success = hoaDonDao.add(hd);
+        System.out.print(success);
         if (success) {
             dshd.add(hd);
             return true;
@@ -60,7 +61,7 @@ public class HoaDonService {
 
     public Boolean add(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {
         HoaDon hd = new HoaDon(maHoaDon, maNhanVien, maKhachHang, ngayNhap, gioNhap, tongTien);
-        return add(hd);
+        return dshd.add(hd);
     }
 
     public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {

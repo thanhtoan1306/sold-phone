@@ -333,7 +333,9 @@ public class ChonSanPhamForm extends javax.swing.JPanel {
                 String masp = txMaSP.getText();
                 int soluong = Integer.parseInt(txSoLuong.getText());
                 if (soluong > 0) {
-                    hdbh.addChiTiet(masp, soluong);
+                    this._target.addChiTiet(masp, soluong);
+                   // hdbh.refreshTable();
+                    
                 } else {
                     JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số dương!");
                     txSoLuong.requestFocus();
