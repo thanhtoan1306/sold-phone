@@ -22,6 +22,10 @@ public class HangSanPhamService {
         dshsp = hangSanPhamDao.readDB();
     }
 
+    public void readDB() {
+        dshsp = hangSanPhamDao.readDB();
+    }
+
     public HangSanPham getHangSanPham(String mahang) {
         for (HangSanPham hsp : dshsp) {
             if (hsp.getMaHang().equals(mahang)) {

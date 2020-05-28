@@ -41,7 +41,10 @@ public class NhaCungCapDao {
             }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Không thấy data cần tìm trong ResultSet");
-        }
+        }finally{
+        
+        connection.closeConnect();
+                }
         return dsncc;
     }
 
@@ -74,7 +77,7 @@ public class NhaCungCapDao {
     public Boolean delete(String mancc) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("DELETE FROM `NHACUNGCAP` WHERE `NHACUNGCAP`.`MaNCC` = '" + mancc + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
@@ -86,7 +89,7 @@ public class NhaCungCapDao {
                 + "',DonGia='" + DiaChi
                 + "',SL='" + SDT
                 + "'");
-//        connection.closeConnect();
+      connection.closeConnect();
         return ok;
     }
 
@@ -98,7 +101,7 @@ public class NhaCungCapDao {
                 + ncc.getSDT()
                 + "');");
 
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 

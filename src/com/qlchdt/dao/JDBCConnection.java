@@ -98,23 +98,20 @@ public class JDBCConnection {
         return false;
     }
 
-//    public static Connection getJDBCConnection() {
-//        final String url = "jdbc:mysql://localhost:3306/qlchdt";
-//        final String user = "root";
-//        final String password = "admin1234";
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            return DriverManager.getConnection(url, user, password);
-//        } catch (ClassNotFoundException ex) {
-//            ex.printStackTrace();
-//
-//        } catch (SQLException ex) {
-//            ex.printStackTrace();
-//
-//        }
-//        return null;
-//
-//    }
+    // đóng connection
+    public void closeConnect() {
+        try {
+            if (conn != null) {
+                conn.close();
+            }
+            if (stmt != null) {
+                stmt.close();
+            }
+            System.out.println("Success! Đóng kết nối tới '" + DB_Name + "' thành công.\n**");
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "-- ERROR! Không thể đóng kết nối tới " + DB_Name + "\n" + ex.getLocalizedMessage());
+        }
+    }
 
     public static void main(String[] args) {
 

@@ -45,7 +45,10 @@ public class NhanVienDao {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng nhân viên");
-        } 
+        } finally{
+        
+        connection.closeConnect();
+                }
         return dsnv;
     }
 
@@ -84,14 +87,14 @@ public class NhanVienDao {
                 + nv.getGioiTinh()+ "', '"
                 + nv.getSDT() + "', '"
                 + nv.getDiaChi() + "');");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
     public Boolean delete(String manv) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("DELETE FROM `NHANVIEN` WHERE `NHANVIEN`.`MaNV` = '" + manv + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
@@ -104,7 +107,7 @@ public class NhanVienDao {
                 + "',SDT='" + SDT
                 + "',DiaChi='" + DiaChi
                 + "' where MaNV='" + MaNV + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
     

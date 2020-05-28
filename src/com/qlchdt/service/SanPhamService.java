@@ -5,7 +5,7 @@
  */
 package com.qlchdt.service;
 
-import com.qlchdt.dao.HangSanPhamDao;
+
 import com.qlchdt.dao.SanPhamDao;
 import com.qlchdt.model.HangSanPham;
 import com.qlchdt.model.SanPham;
@@ -34,6 +34,9 @@ public class SanPhamService {
 
         });
     }
+    public String[] getHeaders() {
+        return new String[]{"Mã sản phẩm", "Mã hãng", "Tên", "Đơn giá", "Số lượng"};
+    }
 
     public void readDB() {
         dssp = sanPhamDao.readDB();
@@ -47,8 +50,12 @@ public class SanPhamService {
         }
         return null;
     }
+    
+        public String getNextID() {
+        return "SP" + String.valueOf(this.dssp.size() + 1);
+    }
 
-    public ArrayList<SanPham> search(String value, String type, int soluong1, int soluong2, float gia1, float gia2, int trangthai) {
+    public ArrayList<SanPham> search(String value, String type, int soluong1, int soluong2, float gia1, float gia2) {
         ArrayList<SanPham> result = new ArrayList<>();
 
         dssp.forEach((sp) -> {
@@ -105,8 +112,69 @@ public class SanPhamService {
 
         return result;
     }
+       public Boolean add(SanPham sp) {
+        Boolean ok = sanPhamDao.add(sp);
 
-    public ArrayList<SanPham> getDssp() {
+        if (ok) {
+            dssp.add(sp);
+        }
+        return ok;
+    }
+
+    public Boolean add(String masp, String malsp, String tensp, float dongia, int soluong, String filename) {
+        SanPham sp = new SanPham(masp, malsp, tensp, dongia, soluong, filename);
+        return add(sp);
+    }
+
+    public Boolean delete(String masp) {
+        Boolean ok = sanPhamDao.delete(masp);
+
+        if (ok) {
+            for (int i = (dssp.size() - 1); i >= 0; i--) {
+                if (dssp.get(i).getMaSP().equals(masp)) {
+                    dssp.remove(i);
+                }
+            }
+        }
+        return ok;
+    }
+    
+   public Boolean update(String masp, String mahsp, String tensp, float dongia, int soluong, String filename) {
+        Boolean ok = sanPhamDao.update(masp, mahsp, tensp, dongia, soluong, filename);
+
+        if (ok) {
+            dssp.forEach((sp) -> {
+                if (sp.getMaSP().equals(masp)) {
+                    sp.setMaHSP(mahsp);
+                    sp.setTenSP(tensp);
+                    sp.setDonGia(dongia);
+                    sp.setSoLuong(soluong);
+                    sp.setFileNameHinhAnh(filename);
+                   
+                }
+            });
+        }
+
+        return ok;
+    }
+
+    public Boolean updateSoLuong(String masp, int soluong) {
+        Boolean ok = sanPhamDao.updateSoLuong(masp, soluong);
+
+        if (ok) {
+            dssp.forEach((sp) -> {
+                if (sp.getMaSP().equals(masp)) {
+                    sp.setSoLuong(soluong);
+                }
+            });
+        }
+
+        return ok;
+    }
+
+
+     public ArrayList<SanPham> getDssp() {
         return dssp;
     }
+          
 }

@@ -41,7 +41,10 @@ public class KhanhHangDao {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng khách hàng");
-        }
+        }finally{
+        
+        connection.closeConnect();
+                }
         return dskh;
     }
 
@@ -64,6 +67,9 @@ public class KhanhHangDao {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi tìm dữ liệu " + columnName + " = " + value + " bảng khách hàng");
+        }finally{
+        
+        connection.closeConnect();
         }
 
         return dskh;
@@ -88,14 +94,14 @@ public class KhanhHangDao {
         
         
         );
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
     public Boolean delete(String makh) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("DELETE FROM `khachhang` WHERE `khachhang`.`MaKH` = '" + makh + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
@@ -106,8 +112,15 @@ public class KhanhHangDao {
                 + "', DiaChi='" + DiaChi
                 + "', SDT='" + SDT
                 + "' where MaKH='" + MaKH + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
+    
+    
+    
+       public void close() {
+        connection.closeConnect();
+    }
+    
 
 }

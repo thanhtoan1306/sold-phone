@@ -22,34 +22,32 @@ public class SanPhamDao {
     JDBCConnection connection;
 
     public SanPhamDao() {
-        
+
     }
 
     public ArrayList<SanPham> readDB() {
         connection = new JDBCConnection();
-
         ArrayList<SanPham> dssp = new ArrayList<>();
-
         try {
-
-            String sql = "SELECT * FROM SANPHAM";
-          
-            ResultSet rs = connection.sqlQuery(sql);
-
-            while (rs.next()) {
-
-                SanPham sp = new SanPham();
-                sp.setMaSP(rs.getString("MaSP"));
-                sp.setMaHSP(rs.getString("MaHSP"));
-                sp.setTenSP(rs.getString("TenSP"));
-                sp.setDonGia(rs.getFloat("DonGia"));
-                sp.setSoLuong(rs.getInt("SL"));
-                sp.setFileNameHinhAnh(rs.getString("HinhAnh"));
-
-                dssp.add(sp);
+            String qry = "SELECT * FROM SANPHAM";
+            ResultSet r = connection.sqlQuery(qry);
+            if (r != null) {
+                while (r.next()) {
+                    String masp = r.getString("MaSP");
+                    String loaisp = r.getString("MaHSP");
+                    String tensp = r.getString("TenSP");
+                    float dongia = r.getFloat("DonGia");
+                    int soluong = r.getInt("SL");
+                    String url = r.getString("HinhAnh");
+                    
+                    dssp.add(new SanPham(masp, loaisp, tensp, dongia, soluong, url));
+                }
             }
-        } catch (SQLException e) {
-            JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng sản phẩm");
+
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng sản phẩm"); 
+        } finally {
+            connection.closeConnect();
         }
         return dssp;
     }
@@ -58,10 +56,10 @@ public class SanPhamDao {
 
         connection = new JDBCConnection();
         ArrayList<SanPham> dssp = new ArrayList<>();
-        
+
         try {
-             String sql = "SELECT * FROM SANPHAM WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet rs = connection.sqlQuery(sql);                       
+            String sql = "SELECT * FROM SANPHAM WHERE " + columnName + " LIKE '%" + value + "%'";
+            ResultSet rs = connection.sqlQuery(sql);
             if (rs != null) {
                 while (rs.next()) {
                     String masp = rs.getString("MaSP");
@@ -76,12 +74,15 @@ public class SanPhamDao {
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi tìm dữ liệu " + columnName + " = " + value + " bảng sản phẩm");
+        } finally {
+
+            connection.closeConnect();
         }
 
         return dssp;
     }
-    
-        public Boolean add(SanPham sp) {
+
+    public Boolean add(SanPham sp) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("INSERT INTO `SANPHAM` (`MaSP`, `MaHSP`, `TenSP`, `DonGia`, `SL`, `HinhAnh`) VALUES ('"
                 + sp.getMaSP() + "', '"
@@ -89,28 +90,28 @@ public class SanPhamDao {
                 + sp.getTenSP() + "', '"
                 + sp.getDonGia() + "', '"
                 + sp.getSoLuong() + "', '"
-                + sp.getFileNameHinhAnh() +"');");
-        //connection.closeConnect();
+                + sp.getFileNameHinhAnh() + "');");
+        connection.closeConnect();
         return ok;
     }
 
     public Boolean delete(String masp) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("DELETE FROM `SANPHAM` WHERE `SANPHAM`.`MaSP` = '" + masp + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
-    public Boolean update(String MaSP, String MaLSP, String TenSP, float DonGia, int SoLuong, String filename) {
+    public Boolean update(String MaSP, String MaHSP, String TenSP, float DonGia, int SoLuong, String filename) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("Update SANPHAM Set "
-                + "MaLSP='" + MaLSP
+                + "MaHSP='" + MaHSP
                 + "',TenSP='" + TenSP
                 + "',DonGia='" + DonGia
                 + "',SL='" + SoLuong
-                + "',HinhAnh='" + filename                
+                + "',HinhAnh='" + filename
                 + "' where MaSP='" + MaSP + "'");
-//        connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
@@ -119,11 +120,8 @@ public class SanPhamDao {
         Boolean ok = connection.sqlUpdate("Update SANPHAM Set "
                 + "SL='" + SoLuong
                 + "' where MaSP='" + MaSP + "'");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
-    
-
-
 
 }

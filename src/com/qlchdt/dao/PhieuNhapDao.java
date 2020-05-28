@@ -42,7 +42,10 @@ public class PhieuNhapDao {
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Không tìm thấy dữ liệu phiếu nhập");
-        }
+        }finally{
+        
+        connection.closeConnect();
+                }
         return dspn;
     }
 
@@ -54,7 +57,7 @@ public class PhieuNhapDao {
                 + pn.getMaNV() + "','"
                 + pn.getNgayNhap() + "','"
                 + pn.getTongTien() + "');");
-        //connection.closeConnect();
+        connection.closeConnect();
         return ok;
     }
 
