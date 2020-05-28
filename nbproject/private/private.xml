@@ -5,6 +5,11 @@
         <group name="Group 20200504-03:30:13">
             <file>file:/D:/Demo_github_java/src/com/chqldt/view/DanhMuc.java</file>
         </group>
-        <group/>
+        <group>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/HienThiKhuyenMai.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/FormHienThi.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/formquanly/HoaDonBanHangForm.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/ChonKhuyenMaiForm.java</file>
+        </group>
     </open-files>
 </project-private>

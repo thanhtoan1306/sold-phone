@@ -160,7 +160,6 @@
         <Component class="javax.swing.JTextField" name="txTenSP">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
-            <Property name="text" type="java.lang.String" value="dasdsad"/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                 <TitledBorder title="T&#xea;n s&#x1ea3;n ph&#x1ea9;m">

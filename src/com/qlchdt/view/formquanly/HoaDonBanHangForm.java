@@ -8,15 +8,19 @@ package com.qlchdt.view.formquanly;
 import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.model.HoaDon;
 import com.qlchdt.model.KhachHang;
+import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.model.NhanVien;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.ChiTietHoaDonService;
+import com.qlchdt.service.HangSanPhamService;
 import com.qlchdt.service.HoaDonService;
 import com.qlchdt.service.KhachHangService;
+import com.qlchdt.service.KhuyenMaiService;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.SanPhamService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
+import com.qlchdt.view.ChonKhuyenMaiForm;
 import com.qlchdt.view.hienthi.HienThiKhachHang;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -40,17 +44,17 @@ import javax.swing.JScrollPane;
 public class HoaDonBanHangForm extends FormHang {
 
     SanPhamService qlsp = new SanPhamService();
-    //HangSanPhamService qlhsp = new HangSanPhamService();
-    
     KhachHangService qlkh = new KhachHangService();
     NhanVienService qlnv = new NhanVienService();
     HoaDonService qlhd = new HoaDonService();
     ChiTietHoaDonService qlcthd = new ChiTietHoaDonService();
+    KhuyenMaiService qlkm = new KhuyenMaiService();
 
     SanPham sp;
     NhanVien nhanVien;
     KhachHang khachHang;
-    
+    KhuyenMai khuyenMai;
+
     MyTable tbChiTietHoaDon;
 
     ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
@@ -70,20 +74,20 @@ public class HoaDonBanHangForm extends FormHang {
         txTongTien.setFont(f);
 
         txMaHD.setText(qlhd.getNextID());
-//        new Timer().scheduleAtFixedRate(new TimerTask() {
-//            @Override
-//            public void run() {
-//                txNgayLap.setText(LocalDate.now().toString());
-//                txGioLap.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-//                if (txNV.getText().equals("")
-//                        || txKH.getText().equals("")
-//                        || dscthd.isEmpty()) {
-//                    btnThanhToan.setEnabled(false);
-//                } else {
-//                    btnThanhToan.setEnabled(true);
-//                }
-//            }
-//        }, 0, 1000);
+        new Timer().scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                txNgayLap.setText(LocalDate.now().toString());
+                txGioLap.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+                if (txNV.getText().equals("")
+                        || txKH.getText().equals("")
+                        || dscthd.isEmpty()) {
+                    btnThanhToan.setEnabled(false);
+                } else {
+                    btnThanhToan.setEnabled(true);
+                }
+            }
+        }, 0, 1000);
 
         // set editable
         txMaHD.setEditable(false);
@@ -92,6 +96,7 @@ public class HoaDonBanHangForm extends FormHang {
         txNgayLap.setEditable(false);
         txGioLap.setEditable(false);
         txTongTien.setEditable(false);
+        txKhuyenMai.setEditable(false);
 
         setDataToTable(dscthd, tbChiTietHoaDon);
     }
@@ -124,10 +129,11 @@ public class HoaDonBanHangForm extends FormHang {
 //        clear();
 //        this.target.refreshAll();
 //    }
-        public void refreshTable() {
+    public void refreshTable() {
         qlcthd.readDB();
-       setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
+        setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
     }
+
     private void btnXoaOnClick() {
         int i = tbChiTietHoaDon.getTable().getSelectedRow();
         if (i >= 0 && i < dscthd.size()) {
@@ -155,14 +161,16 @@ public class HoaDonBanHangForm extends FormHang {
     }
 
     @Override
-    public void addChiTiet(String masp, int soluong) {   
-        sp = new SanPham();
-        if ((sp = qlsp.getSanPham(masp)) == null) {
-            JOptionPane.showMessageDialog(this, "Không tìm được sp");
-        } else {
-            String testmasp = sp.getMaSP();
-            String testtensp = sp.getTenSP();
-        }
+    public void addChiTiet(String masp, int soluong) {
+//        sp = new SanPham();
+
+     SanPham sp = qlsp.getSanPham(masp);
+//        if ((sp = qlsp.getSanPham(masp)) == null) {
+//            JOptionPane.showMessageDialog(this, "Không tìm được sp");
+//        } else {
+//            String testmasp = sp.getMaSP();
+//            String testtensp = sp.getTenSP();
+//        }
 
         Boolean daCo = false; // check xem trong danh sách chi tiết hóa đơn đã có sản phẩm này chưa
         for (ChiTietHoaDon cthd : dscthd) {
@@ -182,60 +190,15 @@ public class HoaDonBanHangForm extends FormHang {
                 JOptionPane.showMessageDialog(this, "Số lượng sản phẩm trong kho không đủ (" + sp.getSoLuong() + ")");
                 return;
             }
-            dscthd.add( new ChiTietHoaDon(qlhd.getNextID(), masp, soluong, sp.getDonGia()));
-            
-            // cập nhật lại table
-              setDataToTable(dscthd, tbChiTietHoaDon);            
-        
-        }
+            dscthd.add(new ChiTietHoaDon(qlhd.getNextID(), masp, soluong, sp.getDonGia()));
 
-        for(ChiTietHoaDon cthd: dscthd) {
-            System.out.println("List danh sách hóa đơn " + cthd.getMaHoaDon());
+            // cập nhật lại table
+            setDataToTable(dscthd, tbChiTietHoaDon);
+
         }
     }
 
-//    public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
-//       // t.clear();
-//        float tongtien = 0;
-//        int stt = 1;
-//        for (ChiTietHoaDon cthd : arr) {
-//            String masp = cthd.getMaSanPham();
-//            sp = qlsp.getSanPham(masp);
-//            String tensp = sp.getTenSP();
-//            int soluong = cthd.getSoLuong();
-//            float dongia = sp.getDonGia();
-//            float thanhtien = soluong * dongia;
-//            
-//            t.addRow(new String[]{
-//                String.valueOf(stt),
-//                masp,
-//                tensp,
-//                String.valueOf(soluong),
-//                PriceFormatter.format(dongia),
-//                PriceFormatter.format(thanhtien)
-//            });
-//            stt++;
-//            tongtien += thanhtien;
-//            
-//        }
-//
-//         //check khuyến mãi
-//        t.addRow(new String[]{"", "", "", "", "", ""});
-//        t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
-//        txTongTien.setText(String.valueOf(tongtien));
-////        if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongtien) {
-////            float giaTriKhuyenMai = tongtien * khuyenMai.getPhanTramKM() / 100;
-////            float tongTienSauKhuyenMai = tongtien - giaTriKhuyenMai;
-////            t.addRow(new String[]{"", "", "", "", "Khuyến mãi", PriceFormatter.format(-giaTriKhuyenMai)});
-////            t.addRow(new String[]{"", "", "", "", "Còn lại", PriceFormatter.format(tongTienSauKhuyenMai)});
-////            txTongTien.setText(String.valueOf(tongTienSauKhuyenMai));
-////        } else {
-////            txTongTien.setText(String.valueOf(tongtien));
-////        }
-//    }
-    
-    
-        public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
+    public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
         t.clear();
         float tongtien = 0;
         int stt = 1;
@@ -262,14 +225,18 @@ public class HoaDonBanHangForm extends FormHang {
         // check khuyến mãi
         t.addRow(new String[]{"", "", "", "", "", ""});
         t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
-        txTongTien.setText(String.valueOf(tongtien));
+        if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongtien) {
+            float giaTriKhuyenMai = tongtien * khuyenMai.getPhanTramKM() / 100;
+            float tongTienSauKhuyenMai = tongtien - giaTriKhuyenMai;
+            t.addRow(new String[]{"", "", "", "", "Khuyến mãi", PriceFormatter.format(-giaTriKhuyenMai)});
+            t.addRow(new String[]{"", "", "", "", "Còn lại", PriceFormatter.format(tongTienSauKhuyenMai)});
+            txTongTien.setText(String.valueOf(tongTienSauKhuyenMai));
+        } else {
+            txTongTien.setText(String.valueOf(tongtien));
+        }
     }
 
-    /**
-     * This method is called from within the constructor to initialize the form.
-     * WARNING: Do NOT modify this code. The content of this method is always
-     * regenerated by the Form Editor.
-     */
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -282,6 +249,8 @@ public class HoaDonBanHangForm extends FormHang {
         txNgayLap = new javax.swing.JTextField();
         txGioLap = new javax.swing.JTextField();
         btnChonKH = new javax.swing.JButton();
+        txKhuyenMai = new javax.swing.JTextField();
+        btnChonKM = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnXoa = new rojerusan.RSMaterialButtonRectangle();
@@ -292,9 +261,10 @@ public class HoaDonBanHangForm extends FormHang {
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(652, 777));
-        setPreferredSize(new java.awt.Dimension(652, 777));
+        setPreferredSize(new java.awt.Dimension(652, 800));
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setPreferredSize(new java.awt.Dimension(640, 200));
 
         txMaHD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txMaHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
@@ -327,6 +297,22 @@ public class HoaDonBanHangForm extends FormHang {
             }
         });
 
+        txKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txKhuyenMai.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khuyến mãi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txKhuyenMaiActionPerformed(evt);
+            }
+        });
+
+        btnChonKM.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnChonKM.setText("...");
+        btnChonKM.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonKMActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -335,8 +321,7 @@ public class HoaDonBanHangForm extends FormHang {
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(5, 5, 5)
-                        .addComponent(txNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txNgayLap, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txGioLap))
                     .addGroup(jPanel4Layout.createSequentialGroup()
@@ -344,11 +329,16 @@ public class HoaDonBanHangForm extends FormHang {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnChonKH))
                     .addComponent(txMaHD))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addGap(50, 50, 50)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txTongTien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addComponent(txKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btnChonKM))
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(txNV, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txTongTien, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -363,10 +353,17 @@ public class HoaDonBanHangForm extends FormHang {
                     .addComponent(txNV)
                     .addComponent(btnChonKH, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txGioLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txNgayLap))
-                .addContainerGap(26, Short.MAX_VALUE))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txGioLap, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txNgayLap))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnChonKM, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap(25, Short.MAX_VALUE))))
         );
 
         jPanel1.setLayout(new java.awt.CardLayout());
@@ -443,7 +440,7 @@ public class HoaDonBanHangForm extends FormHang {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 628, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 661, Short.MAX_VALUE)
                 .addContainerGap())
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -465,14 +462,14 @@ public class HoaDonBanHangForm extends FormHang {
             .addGroup(layout.createSequentialGroup()
                 .addGap(273, 273, 273)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(163, Short.MAX_VALUE))
+                .addContainerGap(186, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(407, 407, 407)
+                    .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(388, 388, 388)
                     .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btnHuy, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(btnThanhToan, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -520,7 +517,7 @@ public class HoaDonBanHangForm extends FormHang {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        setDataToTable(dscthd, tbChiTietHoaDon);
+         setDataToTable(dscthd, tbChiTietHoaDon);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
@@ -531,9 +528,37 @@ public class HoaDonBanHangForm extends FormHang {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThanhToanActionPerformed
 
+    private void txKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txKhuyenMaiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txKhuyenMaiActionPerformed
+
+    private void btnChonKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKMActionPerformed
+        ChonKhuyenMaiForm ckm = new ChonKhuyenMaiForm(txKhuyenMai);
+
+        ckm.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosed(WindowEvent e) {
+                String makm = txKhuyenMai.getText();
+                khuyenMai = qlkm.getKhuyenMai(makm);
+                if (khuyenMai != null) {
+                    if (!khuyenMai.getTrangThai().equals("Đang diễn ra")) {
+                        JOptionPane.showMessageDialog(txKhuyenMai, "Khuyến mãi hiện " + khuyenMai.getTrangThai());
+                        txKhuyenMai.setText(""); // xóa mã trong textfield
+                        return;
+                    }
+                    txKhuyenMai.setText(khuyenMai.getTenKM() + " (" + khuyenMai.getMaKM() + ")");
+
+                    // cập nhật lại table
+                    setDataToTable(dscthd, tbChiTietHoaDon);
+                }
+            }
+        });
+    }//GEN-LAST:event_btnChonKMActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonKH;
+    private javax.swing.JButton btnChonKM;
     private rojerusan.RSMaterialButtonRectangle btnHuy;
     private rojerusan.RSMaterialButtonRectangle btnLamMoi;
     private rojerusan.RSMaterialButtonRectangle btnSua;
@@ -544,6 +569,7 @@ public class HoaDonBanHangForm extends FormHang {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField txGioLap;
     private javax.swing.JTextField txKH;
+    private javax.swing.JTextField txKhuyenMai;
     private javax.swing.JTextField txMaHD;
     private javax.swing.JTextField txNV;
     private javax.swing.JTextField txNgayLap;
