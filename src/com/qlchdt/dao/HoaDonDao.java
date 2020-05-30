@@ -34,9 +34,9 @@ public class HoaDonDao {
                     HoaDon hd = new HoaDon();
                     hd.setMaHoaDon(rs.getString("MaHD"));
                     hd.setMaNhanVien(rs.getString("MaNV"));
-                    //hd.setMaKhachHang(rs.getString("MaKH"));   // debug tới dòng này xuống exception báo ko đọc dc luôn
-                    hd.setNgayLap(rs.getDate("NgayLap").toLocalDate()); 
-                    //hd.setGioLap(rs.getTime("GioLap").toLocalTime());
+                    hd.setMaKhachHang(rs.getString("MaKH"));                
+                    hd.setNgayLap(rs.getDate("NgayLap").toLocalDate());
+                    hd.setGioLap(rs.getTime("GioLap").toLocalTime());
                     hd.setTongTien(rs.getFloat("TongTien"));
                     dshd.add(hd);
                 }
@@ -44,19 +44,20 @@ public class HoaDonDao {
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Không đọc được dữ liệu bảng hóa đơn !!");
         } finally{
-            connection.closeConnect();
-        }
+        
+        connection.closeConnect();
+                }
         return dshd;
     }
 
     public Boolean add(HoaDon hd) {
         connection = new JDBCConnection();
-        Boolean success = connection.sqlUpdate("INSERT INTO hoadon(`MaHD`,`MaNV`,`NgayLap`,`TongTien`) VALUES ('" 
+        Boolean success = connection.sqlUpdate("INSERT INTO hoadon(`MaHD`,`MaNV`,`MaKH`,`NgayLap`,`GioLap`,`TongTien`) VALUES ('" 
                 + hd.getMaHoaDon() + "','" 
                 + hd.getMaNhanVien() + "','" 
-                //+ hd.getMaKhachHang() + "','"                 
+                + hd.getMaKhachHang() + "','"                 
                 + hd.getNgayLap() + "','" 
-                //+ hd.getGioLap() + "','" 
+                + hd.getGioLap() + "','" 
                 + hd.getTongTien() + "');");
         connection.closeConnect();
         return success;
@@ -77,9 +78,9 @@ public class HoaDonDao {
         connection = new JDBCConnection();
         Boolean success = connection.sqlUpdate("UPDATE hoadon SET "
                 + "MaNV='" + hd.getMaNhanVien() 
-                //+ "', MaKH='" + hd.getMaKhachHang()                 
+                + "', MaKH='" + hd.getMaKhachHang()                 
                 + "', NgayLap='" + hd.getNgayLap() 
-                //+ "', GioLap='" + hd.getGioLap() 
+                + "', GioLap='" + hd.getGioLap() 
                 + "', TongTien='" + hd.getTongTien() 
                 + "' WHERE MaHD='" + hd.getMaHoaDon() + "';");
         connection.closeConnect();
@@ -93,13 +94,13 @@ public class HoaDonDao {
         return success;
     }
 
-    public Boolean update(String maHoaDon, String maNhanVien, LocalDate ngayLap, float tongTien) {
+    public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayLap, LocalTime gioLap, float tongTien) {
         HoaDon hd = new HoaDon();
         hd.setMaHoaDon(maHoaDon);
         hd.setMaNhanVien(maNhanVien);
-        //hd.setMaKhachHang(maKhachHang);        
+        hd.setMaKhachHang(maKhachHang);        
         hd.setNgayLap(ngayLap);
-        //hd.setGioLap(gioLap);
+        hd.setGioLap(gioLap);
         hd.setTongTien(tongTien);
         return update(hd);
     }

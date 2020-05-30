@@ -5,12 +5,6 @@
  */
 package com.chqldt.view;
 
-import com.qlchdt.view.ThongKeDoanhThu;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Component;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author Administrator
@@ -33,19 +27,18 @@ public class ThongKe extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnGroupThongKe = new javax.swing.ButtonGroup();
         HeThong = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
-        btnTonKho = new javax.swing.JButton();
+        jButton12 = new javax.swing.JButton();
         jLabel20 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jButton5 = new javax.swing.JButton();
         jLabel11 = new javax.swing.JLabel();
-        btnDoanhThu = new javax.swing.JButton();
-        btnLoiNhuan = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jLabel18 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
@@ -56,61 +49,64 @@ public class ThongKe extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jButton11 = new javax.swing.JButton();
         jLabel12 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         jLabel24 = new javax.swing.JLabel();
-        panelThongKe = new javax.swing.JPanel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         HeThong.setBackground(new java.awt.Color(255, 255, 255));
         HeThong.setLayout(null);
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Doanh thu");
         HeThong.add(jLabel3);
-        jLabel3.setBounds(170, 60, 70, 16);
+        jLabel3.setBounds(170, 60, 70, 15);
 
+        jLabel25.setForeground(new java.awt.Color(0, 0, 0));
         jLabel25.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel25.setText("Tồn kho");
         HeThong.add(jLabel25);
-        jLabel25.setBounds(370, 60, 80, 16);
+        jLabel25.setBounds(370, 60, 80, 15);
 
-        btnTonKho.setBackground(new java.awt.Color(189, 214, 218));
-        btnTonKho.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/tồn kho.jpg"))); // NOI18N
-        btnTonKho.setText("jButton12");
-        btnTonKho.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 0, true));
-        btnGroupThongKe.add(btnTonKho);
-        btnTonKho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnTonKho.setOpaque(true);
-        HeThong.add(btnTonKho);
-        btnTonKho.setBounds(390, 10, 50, 50);
+        jButton12.setBackground(new java.awt.Color(189, 214, 218));
+        jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/tồn kho.jpg"))); // NOI18N
+        jButton12.setText("jButton12");
+        jButton12.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 0, true));
+        HeThong.add(jButton12);
+        jButton12.setBounds(390, 10, 50, 50);
 
         jLabel20.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
         jLabel20.setText("                      Chức năng");
         HeThong.add(jLabel20);
         jLabel20.setBounds(0, 185, 150, 20);
 
         jLabel19.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
         jLabel19.setText("                      Danh mục");
         HeThong.add(jLabel19);
         jLabel19.setBounds(0, 145, 150, 20);
 
+        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Đăng xuất");
         HeThong.add(jLabel15);
-        jLabel15.setBounds(520, 60, 90, 16);
+        jLabel15.setBounds(520, 60, 90, 15);
 
+        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Thoát");
         HeThong.add(jLabel17);
-        jLabel17.setBounds(640, 60, 50, 16);
+        jLabel17.setBounds(640, 60, 50, 15);
 
         jButton5.setBackground(new java.awt.Color(189, 214, 218));
         jButton5.setForeground(new java.awt.Color(189, 214, 218));
@@ -129,38 +125,28 @@ public class ThongKe extends javax.swing.JFrame {
         HeThong.add(jLabel11);
         jLabel11.setBounds(0, 20, 150, 40);
 
-        btnDoanhThu.setBackground(new java.awt.Color(189, 214, 218));
-        btnDoanhThu.setForeground(new java.awt.Color(189, 214, 218));
-        btnDoanhThu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/doanhthu.jpg"))); // NOI18N
-        btnDoanhThu.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 1, true));
-        btnGroupThongKe.add(btnDoanhThu);
-        btnDoanhThu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnDoanhThu.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnDoanhThu.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnDoanhThu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoanhThuActionPerformed(evt);
-            }
-        });
-        HeThong.add(btnDoanhThu);
-        btnDoanhThu.setBounds(180, 0, 50, 60);
+        jButton1.setBackground(new java.awt.Color(189, 214, 218));
+        jButton1.setForeground(new java.awt.Color(189, 214, 218));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/doanhthu.jpg"))); // NOI18N
+        jButton1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 1, true));
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        HeThong.add(jButton1);
+        jButton1.setBounds(180, 0, 50, 60);
 
-        btnLoiNhuan.setBackground(new java.awt.Color(189, 214, 218));
-        btnLoiNhuan.setForeground(new java.awt.Color(189, 214, 218));
-        btnLoiNhuan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/loinhuan.jpg"))); // NOI18N
-        btnLoiNhuan.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 1, true));
-        btnGroupThongKe.add(btnLoiNhuan);
-        btnLoiNhuan.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLoiNhuan.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnLoiNhuan.setOpaque(true);
-        btnLoiNhuan.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnLoiNhuan.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setBackground(new java.awt.Color(189, 214, 218));
+        jButton2.setForeground(new java.awt.Color(189, 214, 218));
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/loinhuan.jpg"))); // NOI18N
+        jButton2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 1, true));
+        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoiNhuanActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
-        HeThong.add(btnLoiNhuan);
-        btnLoiNhuan.setBounds(300, 10, 30, 50);
+        HeThong.add(jButton2);
+        jButton2.setBounds(300, 10, 30, 50);
 
         jButton6.setBackground(new java.awt.Color(189, 214, 218));
         jButton6.setForeground(new java.awt.Color(189, 214, 218));
@@ -170,6 +156,7 @@ public class ThongKe extends javax.swing.JFrame {
         jButton6.setBounds(640, 0, 50, 70);
 
         jLabel18.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("                      Hệ thống");
         HeThong.add(jLabel18);
         jLabel18.setBounds(0, 100, 150, 20);
@@ -210,6 +197,7 @@ public class ThongKe extends javax.swing.JFrame {
         jButton10.setBounds(0, 210, 150, 40);
 
         jLabel22.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
+        jLabel22.setForeground(new java.awt.Color(0, 0, 0));
         jLabel22.setText("                      Trợ giúp");
         HeThong.add(jLabel22);
         jLabel22.setBounds(0, 255, 150, 20);
@@ -219,10 +207,19 @@ public class ThongKe extends javax.swing.JFrame {
         HeThong.add(jButton11);
         jButton11.setBounds(0, 250, 150, 30);
 
+        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Lợi nhuận");
         HeThong.add(jLabel12);
-        jLabel12.setBounds(270, 60, 80, 16);
+        jLabel12.setBounds(270, 60, 80, 15);
+
+        jLabel9.setBackground(new java.awt.Color(120, 161, 178));
+        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setText(" Giới Thiệu");
+        jLabel9.setOpaque(true);
+        HeThong.add(jLabel9);
+        jLabel9.setBounds(150, 90, 100, 40);
 
         jLabel2.setBackground(new java.awt.Color(189, 214, 218));
         jLabel2.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 191, 188), 1, true));
@@ -242,6 +239,24 @@ public class ThongKe extends javax.swing.JFrame {
         HeThong.add(jLabel5);
         jLabel5.setBounds(0, 90, 150, 600);
 
+        jLabel8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setText("PHẦN MỀM QUẢN LÝ CỬA HÀNG ĐIỆN THOẠI DI ĐỘNG");
+        HeThong.add(jLabel8);
+        jLabel8.setBounds(340, 550, 700, 90);
+
+        jLabel7.setBackground(new java.awt.Color(153, 255, 255));
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/background_giaodien.jpg"))); // NOI18N
+        HeThong.add(jLabel7);
+        jLabel7.setBounds(340, 90, 700, 600);
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 191, 188), 0, true));
+        jLabel6.setOpaque(true);
+        HeThong.add(jLabel6);
+        jLabel6.setBounds(320, 90, 1050, 600);
+
         jLabel1.setBackground(new java.awt.Color(189, 214, 218));
         jLabel1.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 191, 188), 1, true));
         jLabel1.setOpaque(true);
@@ -250,61 +265,11 @@ public class ThongKe extends javax.swing.JFrame {
 
         jLabel23.setText("jLabel23");
         HeThong.add(jLabel23);
-        jLabel23.setBounds(720, 60, 70, 16);
+        jLabel23.setBounds(720, 60, 70, 15);
 
         jLabel24.setText("jLabel24");
         HeThong.add(jLabel24);
-        jLabel24.setBounds(380, 60, 60, 16);
-
-        panelThongKe.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel9.setBackground(new java.awt.Color(120, 161, 178));
-        jLabel9.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
-        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel9.setText(" Giới Thiệu");
-        jLabel9.setOpaque(true);
-
-        jLabel7.setBackground(new java.awt.Color(153, 255, 255));
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/background_giaodien.jpg"))); // NOI18N
-
-        jLabel8.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel8.setText("PHẦN MỀM QUẢN LÝ CỬA HÀNG ĐIỆN THOẠI DI ĐỘNG");
-
-        javax.swing.GroupLayout panelThongKeLayout = new javax.swing.GroupLayout(panelThongKe);
-        panelThongKe.setLayout(panelThongKeLayout);
-        panelThongKeLayout.setHorizontalGroup(
-            panelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelThongKeLayout.createSequentialGroup()
-                .addGap(178, 178, 178)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 700, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(182, Short.MAX_VALUE))
-            .addGroup(panelThongKeLayout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(panelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelThongKeLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-        panelThongKeLayout.setVerticalGroup(
-            panelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(panelThongKeLayout.createSequentialGroup()
-                .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 381, Short.MAX_VALUE)
-                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(29, 29, 29))
-            .addGroup(panelThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(panelThongKeLayout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 480, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
-        );
-
-        HeThong.add(panelThongKe);
-        panelThongKe.setBounds(150, 90, 1060, 540);
+        jLabel24.setBounds(380, 60, 60, 15);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -327,25 +292,13 @@ public class ThongKe extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void btnLoiNhuanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoiNhuanActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnLoiNhuanActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void btnDoanhThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoanhThuActionPerformed
-        // TODO add your handling code here:
-        for (Component com : this.panelThongKe.getComponents()) {
-            com.setVisible(false);
-        }
-        btnDoanhThu.setContentAreaFilled(false);
-        ThongKeDoanhThu tkdt = new ThongKeDoanhThu();
-        this.panelThongKe.setLayout(new CardLayout());
-        this.panelThongKe.add(tkdt);
-        //JOptionPane.showMessageDialog(null, "Chạy dc tới đây");
-    }//GEN-LAST:event_btnDoanhThuActionPerformed
 
     /**
      * @param args the command line arguments
@@ -391,12 +344,11 @@ public class ThongKe extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel HeThong;
-    private javax.swing.JButton btnDoanhThu;
-    private javax.swing.ButtonGroup btnGroupThongKe;
-    private javax.swing.JButton btnLoiNhuan;
-    private javax.swing.JButton btnTonKho;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
+    private javax.swing.JButton jButton12;
+    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
@@ -419,9 +371,9 @@ public class ThongKe extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel panelThongKe;
     // End of variables declaration//GEN-END:variables
 }

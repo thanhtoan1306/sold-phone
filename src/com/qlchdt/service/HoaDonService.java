@@ -17,7 +17,7 @@ import java.util.ArrayList;
  */
 public class HoaDonService {
     
-    ArrayList<HoaDon> dshd = new ArrayList<>();
+   ArrayList<HoaDon> dshd = new ArrayList<>();
     private HoaDonDao hoaDonDao = new HoaDonDao();
 
     public HoaDonService() {

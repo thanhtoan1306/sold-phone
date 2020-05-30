@@ -5,13 +5,6 @@
         <group name="Group 20200504-03:30:13">
             <file>file:/D:/Demo_github_java/src/com/chqldt/view/DanhMuc.java</file>
         </group>
-        <group>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/ThongKeDoanhThu.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/dao/HoaDonDao.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/QuanLiNhanVien.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/view/ThongKe.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/model/HoaDon.java</file>
-            <file>file:/C:/Users/Administrator/Documents/GitHub/sold-phone/src/com/qlchdt/service/HoaDonService.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>
