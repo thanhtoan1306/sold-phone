@@ -3,9 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/format/WritePDF.java</file>
             <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/formquanly/HoaDonBanHangForm.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/model/HoaDon.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/formquanly/FormBanHang.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/HienThiKhachHang.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/formquanly/NewJFrame.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/hienthikhach.java</file>
         </group>
     </open-files>
 </project-private>
