@@ -207,7 +207,7 @@
                                   <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel11" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
                                       <Component id="radioNam" min="-2" max="-2" attributes="0"/>
@@ -215,10 +215,10 @@
                                       <Component id="radioNu" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="txtSDT" alignment="0" pref="394" max="32767" attributes="0"/>
-                                  <Component id="txtNgaySinh" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtTen" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtMa" alignment="0" max="32767" attributes="0"/>
                                   <Component id="txtDiaChi" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="calendar" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -241,10 +241,10 @@
                           <Component id="txtTen" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtNgaySinh" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="jLabel7" pref="25" max="32767" attributes="0"/>
+                          <Component id="calendar" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
@@ -323,13 +323,8 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="labelFor" type="java.awt.Component" editor="org.netbeans.modules.form.ComponentChooserEditor">
-                  <ComponentRef name="txtNgaySinh"/>
-                </Property>
                 <Property name="text" type="java.lang.String" value="Ng&#xe0;y Sinh"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtNgaySinh">
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
@@ -359,6 +354,13 @@
                 <Property name="text" type="java.lang.String" value="TH&#xd4;NG TIN NH&#xc2;N VI&#xca;N"/>
               </Properties>
             </Component>
+            <Container class="javax.swing.JPanel" name="calendar">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="UtilDateModel model = new UtilDateModel();&#xa;Properties p = new Properties();&#xa;p.put(&quot;text.today&quot;, &quot;Today&quot;);&#xa;p.put(&quot;text.month&quot;, &quot;Month&quot;);&#xa;p.put(&quot;text.year&quot;, &quot;Year&quot;);&#xa;JDatePanelImpl datePanel1 = new JDatePanelImpl(model, p);&#xa;datePicker = new JDatePickerImpl(datePanel1, new DateLabelFormatter());&#xa;//datePicker.setBounds(220,350,120,30);&#xa;calendar.add(datePicker);"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>
+            </Container>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="ThaoTac">
