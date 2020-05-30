@@ -10,26 +10,30 @@ import com.qlchdt.model.NhanVien;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.format.MyTable;
 import java.awt.Dimension;
-import java.awt.Image;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
+
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+
 import java.util.ArrayList;
+
 import java.util.Enumeration;
-import java.util.Locale;
+
+import java.util.Properties;
 import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
+
 import javax.swing.table.DefaultTableModel;
+import org.jdatepicker.impl.JDatePanelImpl;
+import org.jdatepicker.impl.JDatePickerImpl;
+import org.jdatepicker.impl.UtilDateModel;
 
 /**
  *
@@ -40,7 +44,8 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
     NhanVienService nhanVienService;
     MyTable tbNhanVien;
     NhanVien NV_them;
-    
+    JDatePickerImpl datePicker;
+            
     private void setDataToTable(ArrayList<NhanVien> data, MyTable table) {
         table.clear();
         for (NhanVien nv : data) {
@@ -63,7 +68,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         txtMa.setText("");
         txtTen.setText("");
         genderGroup.clearSelection();
-        txtNgaySinh.setText("");
+        //txtNgaySinh.setText("");
         txtSDT.setText("");
         txtDiaChi.setText("");
     }
@@ -83,7 +88,8 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                     else if (nv.getGioiTinh().equalsIgnoreCase("nữ")) {
                         genderGroup.setSelected(radioNu.getModel(), true);
                     }
-                    txtNgaySinh.setText(nv.getNgaySinh().toString());
+                    datePicker.getModel().setDate(nv.getNgaySinh().getYear(), nv.getNgaySinh().getMonthValue()-1, nv.getNgaySinh().getDayOfMonth());
+                    datePicker.getModel().setSelected(true);
                     txtSDT.setText(nv.getSDT());
                     txtDiaChi.setText(nv.getDiaChi());
                     return;
@@ -176,12 +182,12 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtNgaySinh = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         txtSDT = new javax.swing.JTextField();
         txtDiaChi = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
+        calendar = new javax.swing.JPanel();
         ThaoTac = new javax.swing.JPanel();
         jLabel21 = new javax.swing.JLabel();
         btnThem = new rojerusan.RSButtonIconI();
@@ -244,7 +250,6 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
 
         jLabel6.setText("Giới tính");
 
-        jLabel7.setLabelFor(txtNgaySinh);
         jLabel7.setText("Ngày Sinh");
 
         jLabel8.setLabelFor(txtSDT);
@@ -255,6 +260,8 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
 
         jLabel12.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         jLabel12.setText("THÔNG TIN NHÂN VIÊN");
+
+        calendar.setLayout(new java.awt.CardLayout());
 
         javax.swing.GroupLayout NhanVienInfoLayout = new javax.swing.GroupLayout(NhanVienInfo);
         NhanVienInfo.setLayout(NhanVienInfoLayout);
@@ -273,17 +280,17 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                             .addComponent(jLabel8)
                             .addComponent(jLabel7)
                             .addComponent(jLabel11))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGap(12, 12, 12)
                         .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(NhanVienInfoLayout.createSequentialGroup()
                                 .addComponent(radioNam)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(radioNu))
                             .addComponent(txtSDT, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
-                            .addComponent(txtNgaySinh)
                             .addComponent(txtTen)
                             .addComponent(txtMa)
-                            .addComponent(txtDiaChi))))
+                            .addComponent(txtDiaChi)
+                            .addComponent(calendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(37, Short.MAX_VALUE))
         );
         NhanVienInfoLayout.setVerticalGroup(
@@ -299,10 +306,10 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                 .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
-                .addGap(9, 9, 9)
-                .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(txtNgaySinh, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 25, Short.MAX_VALUE)
+                    .addComponent(calendar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(NhanVienInfoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,6 +331,16 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                     .addComponent(txtDiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(30, 30, 30))
         );
+
+        UtilDateModel model = new UtilDateModel();
+        Properties p = new Properties();
+        p.put("text.today", "Today");
+        p.put("text.month", "Month");
+        p.put("text.year", "Year");
+        JDatePanelImpl datePanel1 = new JDatePanelImpl(model, p);
+        datePicker = new JDatePickerImpl(datePanel1, new DateLabelFormatter());
+        //datePicker.setBounds(220,350,120,30);
+        calendar.add(datePicker);
 
         ThaoTac.setBorder(javax.swing.BorderFactory.createEtchedBorder(new java.awt.Color(204, 204, 204), new java.awt.Color(153, 153, 153)));
         ThaoTac.setToolTipText("Thông Tin Nhân Viên");
@@ -553,14 +570,14 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         else {
             nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
             tbNhanVien.getModel().removeRow(row);
-            JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
+            JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
         // TODO add your handling code here:
         if (NV_them==null) {
-            JOptionPane.showMessageDialog(null, "Chưa có Nhân Viên mới thêm vào bảng. Lưu vào database thất bại.");
+            JOptionPane.showMessageDialog(null, "Chưa có nhân viên nào mới thêm vào bảng. Lưu vào database thất bại.");
             return;
         }
         if (!nhanVienService.saveToDatabase(NV_them)) {
@@ -575,7 +592,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         // TODO add your handling code here:
         this.txtMa.setText("");
         this.txtTen.setText("");
-        this.txtNgaySinh.setText("");
+        this.datePicker.getModel().setValue(null);
         this.genderGroup.clearSelection();
         this.txtSDT.setText("");
         this.txtDiaChi.setText("");
@@ -585,6 +602,13 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
         String maNV = txtMa.getText().trim();
+        for (int i=0; i<model.getRowCount(); i++) {
+            if (model.getValueAt(i, 0).equals(maNV)) {
+                JOptionPane.showMessageDialog(null, "Không thể thêm vào bảng, trùng Mã Nhân viên dã có sẵn!");
+                return;
+            }
+        }
+
         String name = txtTen.getText().trim();
         String gioiTinh = "";
         for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
@@ -594,13 +618,12 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                 break;
             }
         }
-        String ngaySinh = txtNgaySinh.getText().trim();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(ngaySinh, formatter);
+        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth()+1, this.datePicker.getModel().getDay());
         String soDienThoai = txtSDT.getText().trim();
         String diaChi = txtDiaChi.getText().trim();
         
-        Object os[] = {maNV, name, ngaySinh, gioiTinh, soDienThoai, diaChi};
+        Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi};
         model.addRow(os);
         NV_them = new NhanVien(maNV, name, date, gioiTinh, soDienThoai, diaChi);
         nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi);
@@ -627,12 +650,11 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
                 break;
             }
         }
-        String ngaySinh = txtNgaySinh.getText().trim();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.parse(ngaySinh, formatter);
+        LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth()+1, this.datePicker.getModel().getDay());
         String soDienThoai = txtSDT.getText().trim();
         String diaChi = txtDiaChi.getText().trim();
-        Object os[] = {maNV, name, ngaySinh, gioiTinh, soDienThoai, diaChi};
+        
+        Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi};
         if (nhanVienService.update(maNV, name, date, gioiTinh, soDienThoai, diaChi)) {
             JOptionPane.showMessageDialog(null, "Sửa thành công !");
             refreshTable();
@@ -684,6 +706,7 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
     private rojerusan.RSButtonIconI btnSua;
     private rojerusan.RSButtonIconI btnThem;
     private rojerusan.RSButtonIconI btnXoa;
+    private javax.swing.JPanel calendar;
     private javax.swing.ButtonGroup genderGroup;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
@@ -704,7 +727,6 @@ public class QuanLiNhanVien extends javax.swing.JFrame{
     private javax.swing.JRadioButton radioNu;
     private javax.swing.JTextField txtDiaChi;
     private javax.swing.JTextField txtMa;
-    private javax.swing.JTextField txtNgaySinh;
     private javax.swing.JTextField txtSDT;
     private javax.swing.JTextField txtTen;
     private javax.swing.JTextField txtTimKiem;
