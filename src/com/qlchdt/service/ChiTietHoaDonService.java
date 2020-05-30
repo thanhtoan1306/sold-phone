@@ -17,9 +17,9 @@ import java.util.ArrayList;
 public class ChiTietHoaDonService {
 
     ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
-    private ChiTietHoaDonDao chiTietHoaDonDao = new ChiTietHoaDonDao();
-    private HoaDonService hoaDonService = new HoaDonService();
-    private SanPhamService sanPhamService = new SanPhamService();
+    private final ChiTietHoaDonDao chiTietHoaDonDao = new ChiTietHoaDonDao();
+    private final HoaDonService hoaDonService = new HoaDonService();
+    private final SanPhamService sanPhamService = new SanPhamService();
 
     public ChiTietHoaDonService() {
         dscthd = chiTietHoaDonDao.readDB();
@@ -44,11 +44,9 @@ public class ChiTietHoaDonService {
 
     public ArrayList<ChiTietHoaDon> getAllChiTiet(String mahd) {
         ArrayList<ChiTietHoaDon> result = new ArrayList<>();
-        for (ChiTietHoaDon ct : dscthd) {
-            if (ct.getMaHoaDon().equals(mahd)) {
-                result.add(ct);
-            }
-        }
+        dscthd.stream().filter((ct) -> (ct.getMaHoaDon().equals(mahd))).forEachOrdered((ct) -> {
+            result.add(ct);
+        });
         return result;
     }
 

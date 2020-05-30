@@ -34,7 +34,8 @@ public class HoaDonDao {
                     HoaDon hd = new HoaDon();
                     hd.setMaHoaDon(rs.getString("MaHD"));
                     hd.setMaNhanVien(rs.getString("MaNV"));
-                    hd.setMaKhachHang(rs.getString("MaKH"));                
+                    hd.setMaKhachHang(rs.getString("MaKH"));           
+                    hd.setMaKhuyenMai(rs.getString("MaKM"));
                     hd.setNgayLap(rs.getDate("NgayLap").toLocalDate());
                     hd.setGioLap(rs.getTime("GioLap").toLocalTime());
                     hd.setTongTien(rs.getFloat("TongTien"));
@@ -52,10 +53,11 @@ public class HoaDonDao {
 
     public Boolean add(HoaDon hd) {
         connection = new JDBCConnection();
-        Boolean success = connection.sqlUpdate("INSERT INTO hoadon(`MaHD`,`MaNV`,`MaKH`,`NgayLap`,`GioLap`,`TongTien`) VALUES ('" 
+        Boolean success = connection.sqlUpdate("INSERT INTO hoadon(`MaHD`,`MaNV`,`MaKH`,`MaKM`,`NgayLap`,`GioLap`,`TongTien`) VALUES ('" 
                 + hd.getMaHoaDon() + "','" 
                 + hd.getMaNhanVien() + "','" 
                 + hd.getMaKhachHang() + "','"                 
+                + hd.getMaKhuyenMai() + "','"
                 + hd.getNgayLap() + "','" 
                 + hd.getGioLap() + "','" 
                 + hd.getTongTien() + "');");
@@ -78,7 +80,8 @@ public class HoaDonDao {
         connection = new JDBCConnection();
         Boolean success = connection.sqlUpdate("UPDATE hoadon SET "
                 + "MaNV='" + hd.getMaNhanVien() 
-                + "', MaKH='" + hd.getMaKhachHang()                 
+                + "', MaKH='" + hd.getMaKhachHang()      
+                + "', MaKM='" + hd.getMaKhuyenMai()
                 + "', NgayLap='" + hd.getNgayLap() 
                 + "', GioLap='" + hd.getGioLap() 
                 + "', TongTien='" + hd.getTongTien() 
@@ -94,11 +97,12 @@ public class HoaDonDao {
         return success;
     }
 
-    public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayLap, LocalTime gioLap, float tongTien) {
+    public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang,String maKhuyenMai, LocalDate ngayLap, LocalTime gioLap, float tongTien) {
         HoaDon hd = new HoaDon();
         hd.setMaHoaDon(maHoaDon);
         hd.setMaNhanVien(maNhanVien);
         hd.setMaKhachHang(maKhachHang);        
+        hd.setMaKhachHang(maKhuyenMai);
         hd.setNgayLap(ngayLap);
         hd.setGioLap(gioLap);
         hd.setTongTien(tongTien);

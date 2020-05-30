@@ -135,6 +135,7 @@ public class KhuyenMaiService {
         }
         return ok;
     }
+    
 
     public Boolean update(String makm, String tenkm, float dkkm, float phantramkm, LocalDate ngaybd, LocalDate ngaykt) {
         Boolean ok = khuyenMaiDao.update(makm, tenkm, dkkm, phantramkm, ngaybd, ngaykt);

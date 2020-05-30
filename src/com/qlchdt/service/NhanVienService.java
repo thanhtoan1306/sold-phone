@@ -27,6 +27,15 @@ public class NhanVienService {
         dsnv = nhanVienDao.readDB();
     }
 
+    public NhanVien getNhanVien(String manv) {
+        for (NhanVien nv : dsnv) {
+            if (nv.getMaNV().equals(manv)) {
+                return nv;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<NhanVien> search(String value, String type, LocalDate _ngay1, LocalDate _ngay2) {
         ArrayList<NhanVien> result = new ArrayList<>();
 
@@ -95,8 +104,8 @@ public class NhanVienService {
         return ok;
     }
 
-    public Boolean add(String manv, String tennv, LocalDate ngaysinh,String gioitinh, String sdt, String diachi) {
-        NhanVien nv = new NhanVien(manv, tennv, ngaysinh,gioitinh, sdt, diachi);
+    public Boolean add(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String sdt, String diachi) {
+        NhanVien nv = new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi);
         return dsnv.add(nv);
     }
 
@@ -113,8 +122,8 @@ public class NhanVienService {
         return ok;
     }
 
-    public Boolean update(String manv, String tennv, LocalDate ngaysinh,String gioitinh, String diachi, String sdt) {
-        Boolean ok = nhanVienDao.update(manv, tennv, ngaysinh,gioitinh, diachi, sdt);
+    public Boolean update(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String diachi, String sdt) {
+        Boolean ok = nhanVienDao.update(manv, tennv, ngaysinh, gioitinh, diachi, sdt);
 
         if (ok) {
             dsnv.forEach((nv) -> {
@@ -124,7 +133,7 @@ public class NhanVienService {
                     nv.setGioiTinh(gioitinh);
                     nv.setDiaChi(diachi);
                     nv.setSDT(sdt);
-                    
+
                 }
             });
         }

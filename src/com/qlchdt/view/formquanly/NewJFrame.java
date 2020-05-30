@@ -44,27 +44,14 @@ public class NewJFrame extends javax.swing.JFrame {
         plBanHang.setMaximumSize(new java.awt.Dimension(1330, 900));
         plBanHang.setMinimumSize(new java.awt.Dimension(1330, 900));
         plBanHang.setPreferredSize(new java.awt.Dimension(1330, 900));
+        plBanHang.setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(652, 777));
         jPanel1.setMinimumSize(new java.awt.Dimension(652, 777));
         jPanel1.setPreferredSize(new java.awt.Dimension(1330, 777));
         jPanel1.setLayout(new java.awt.BorderLayout());
-
-        javax.swing.GroupLayout plBanHangLayout = new javax.swing.GroupLayout(plBanHang);
-        plBanHang.setLayout(plBanHangLayout);
-        plBanHangLayout.setHorizontalGroup(
-            plBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(plBanHangLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        plBanHangLayout.setVerticalGroup(
-            plBanHangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(plBanHangLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 840, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 60, Short.MAX_VALUE))
-        );
+        plBanHang.add(jPanel1, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(plBanHang, java.awt.BorderLayout.CENTER);
 

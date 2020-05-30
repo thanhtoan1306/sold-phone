@@ -36,39 +36,25 @@ public class FormBanHang extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(1330, 900));
         setMinimumSize(new java.awt.Dimension(1330, 900));
         setPreferredSize(new java.awt.Dimension(1330, 900));
+        setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 255));
         jPanel1.setMaximumSize(new java.awt.Dimension(652, 777));
         jPanel1.setMinimumSize(new java.awt.Dimension(652, 777));
         jPanel1.setPreferredSize(new java.awt.Dimension(652, 777));
-        jPanel1.setLayout(new java.awt.CardLayout());
+        jPanel1.setLayout(new java.awt.BorderLayout());
+        add(jPanel1);
 
         jPanel2.setBackground(new java.awt.Color(0, 153, 153));
         jPanel2.setMaximumSize(new java.awt.Dimension(652, 777));
         jPanel2.setMinimumSize(new java.awt.Dimension(652, 777));
         jPanel2.setPreferredSize(new java.awt.Dimension(652, 777));
-        jPanel2.setLayout(new java.awt.CardLayout());
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(123, Short.MAX_VALUE))
-        );
+        jPanel2.setLayout(new java.awt.BorderLayout());
+        add(jPanel2);
     }// </editor-fold>//GEN-END:initComponents
 
 

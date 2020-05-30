@@ -16,8 +16,8 @@ import java.util.ArrayList;
  * @author User
  */
 public class HoaDonService {
-    
-   ArrayList<HoaDon> dshd = new ArrayList<>();
+
+    ArrayList<HoaDon> dshd = new ArrayList<>();
     private HoaDonDao hoaDonDao = new HoaDonDao();
 
     public HoaDonService() {
@@ -35,7 +35,7 @@ public class HoaDonService {
 //    public String[] getHeaders() {
 //        return new String[]{"Mã hóa đơn", "Mã nhân viên", "Mã khách hàng", "Ngày lập", "Giờ lập", "Tổng tiền"};
 //    }
-    
+
     public String getNextID() {
         return "HD" + String.valueOf(this.dshd.size() + 1);
     }
@@ -59,13 +59,13 @@ public class HoaDonService {
         return false;
     }
 
-    public Boolean add(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {
-        HoaDon hd = new HoaDon(maHoaDon, maNhanVien, maKhachHang, ngayNhap, gioNhap, tongTien);
+    public Boolean add(String maHoaDon, String maNhanVien, String maKhachHang, String maKhuyenMai, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {
+        HoaDon hd = new HoaDon(maHoaDon, maNhanVien, maKhachHang, maKhuyenMai, ngayNhap, gioNhap, tongTien);
         return dshd.add(hd);
     }
 
-    public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {
-        HoaDon hd = new HoaDon(maHoaDon, maNhanVien, maKhachHang, ngayNhap, gioNhap, tongTien);
+    public Boolean update(String maHoaDon, String maNhanVien, String maKhachHang, String maKhuyenMai, LocalDate ngayNhap, LocalTime gioNhap, float tongTien) {
+        HoaDon hd = new HoaDon(maHoaDon, maNhanVien, maKhachHang,maKhuyenMai, ngayNhap, gioNhap, tongTien);
         return update(hd);
     }
 

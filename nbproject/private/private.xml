@@ -2,14 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group name="Group 20200504-03:30:13">
-            <file>file:/D:/Demo_github_java/src/com/chqldt/view/DanhMuc.java</file>
-        </group>
         <group>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/HienThiKhuyenMai.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/hienthi/FormHienThi.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/format/WritePDF.java</file>
             <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/formquanly/HoaDonBanHangForm.java</file>
-            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/ChonKhuyenMaiForm.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/model/HoaDon.java</file>
         </group>
     </open-files>
 </project-private>
