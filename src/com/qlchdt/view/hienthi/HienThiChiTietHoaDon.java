@@ -12,6 +12,7 @@ import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -22,7 +23,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author User
  */
-public class HienThiChiTietHoaDon extends javax.swing.JPanel {
+public class HienThiChiTietHoaDon extends JFrame {
 
     ChiTietHoaDonService qlcthd = new ChiTietHoaDonService();
     SanPhamService qlspBUS = new SanPhamService();
@@ -34,6 +35,7 @@ public class HienThiChiTietHoaDon extends javax.swing.JPanel {
         this.mahd = _mahd;
         initComponents();
         setDataToTable(qlcthd.search("Mã hóa đơn", this.mahd, -1, -1, -1, -1), mtb);
+        this.setVisible(true);
     }
 
     public void refresh() {
@@ -143,6 +145,7 @@ public class HienThiChiTietHoaDon extends javax.swing.JPanel {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
+        setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
 

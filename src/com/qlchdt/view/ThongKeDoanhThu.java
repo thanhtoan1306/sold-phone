@@ -9,10 +9,19 @@ import com.qlchdt.model.HoaDon;
 import com.qlchdt.service.HoaDonService;
 import java.awt.CardLayout;
 import java.awt.Dimension;
+import java.time.LocalDate;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
+import org.jfree.chart.labels.ItemLabelAnchor;
+import org.jfree.chart.labels.ItemLabelPosition;
+import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
+import org.jfree.chart.plot.CategoryPlot;
+import org.jfree.chart.renderer.category.CategoryItemRenderer;
+import org.jfree.chart.ui.TextAnchor;
 import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
@@ -21,6 +30,17 @@ import org.jfree.data.category.DefaultCategoryDataset;
  */
 public class ThongKeDoanhThu extends javax.swing.JPanel {
     private HoaDonService hoaDonServ;
+    private float tongDoanhThu=0;
+    private int soLuongHoaDon=0;
+
+    public float getTongDoanhThu() {
+        return tongDoanhThu;
+    }
+
+    public int getSoLuongHoaDon() {
+        return soLuongHoaDon;
+    }
+    
     /**
      * Creates new form ThongKeDoanhThu
      */
@@ -29,17 +49,44 @@ public class ThongKeDoanhThu extends javax.swing.JPanel {
         initComponents();
         this.setDataToChart();
     }
-    public void setDataToChart() {
+    
+    DefaultCategoryDataset createDataset() {
         List<HoaDon> list_hd = this.hoaDonServ.getDshd();
         DefaultCategoryDataset dataset = new DefaultCategoryDataset();
-        if (list_hd != null) {
-            for (HoaDon hd : list_hd) {
-                dataset.addValue(hd.getTongTien(),"Hoá Đơn" , hd.getNgayLap());
+        
+        Map<LocalDate, List<HoaDon>> byMonth = list_hd.stream().collect(Collectors.groupingBy(hd
+                -> hd.getNgayLap().withDayOfMonth(1)));
+
+        for (Map.Entry<LocalDate, List<HoaDon>> entry : byMonth.entrySet()) {
+            LocalDate key = entry.getKey();
+            List<HoaDon> val = entry.getValue();
+            int soLuong = 0;
+            float doanhThuThang = 0;
+            for (HoaDon hd : val) {
+                doanhThuThang += hd.getTongTien();
+                soLuong++;
             }
+            this.soLuongHoaDon += soLuong;
+            this.tongDoanhThu += doanhThuThang;
+            dataset.addValue(doanhThuThang, "Tổng Tiền (triệu)", key.getMonth());
+            dataset.addValue(soLuong, "Số Lượng Hoá Đơn", key.getMonth());
         }
-        JFreeChart barChart = ChartFactory.createBarChart("Biểu đồ thống kê doanh thu".toUpperCase(), "Thời Gian", "Tổng Tiền", dataset);
+        return dataset;
+    }
+    
+    public void setDataToChart() {
+        DefaultCategoryDataset dataset = this.createDataset();
+        JFreeChart barChart = ChartFactory.createBarChart("Biểu đồ thống kê doanh thu năm 2020".toUpperCase(), "Thời Gian (tháng)", "Doanh Thu", dataset);
+        
+        CategoryItemRenderer renderer = ((CategoryPlot)barChart.getPlot()).getRenderer();
+        renderer.setDefaultItemLabelGenerator(new StandardCategoryItemLabelGenerator());
+        renderer.setDefaultItemLabelsVisible(true);
+        ItemLabelPosition position = new ItemLabelPosition(ItemLabelAnchor.OUTSIDE12, 
+                TextAnchor.BASELINE_CENTER);
+        renderer.setDefaultPositiveItemLabelPosition(position); 
         ChartPanel chartPanel = new ChartPanel(barChart);
-        chartPanel.setPreferredSize(new Dimension(800, 600));
+        
+        //chartPanel.setPreferredSize(new Dimension(800, 600));
         this.setLayout(new CardLayout());
         this.add(chartPanel);
         this.validate();

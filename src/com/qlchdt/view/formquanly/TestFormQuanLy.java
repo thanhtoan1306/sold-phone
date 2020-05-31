@@ -15,11 +15,11 @@ public class TestFormQuanLy extends javax.swing.JFrame {
 
     QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
     QuanLyKhachHang qlkh = new QuanLyKhachHang();
-    HienThiHoaDon formHienThi = new HienThiHoaDon();
+    QuanLyHoaDon qlhd = new QuanLyHoaDon();
     
     public TestFormQuanLy() {
         initComponents();
-        this.add(formHienThi);
+        this.add(qlhd);
         //this.add(qlkm);
         //this.add(qlkh);
     }

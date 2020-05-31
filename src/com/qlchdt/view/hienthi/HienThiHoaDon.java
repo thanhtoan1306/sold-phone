@@ -103,20 +103,20 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         addDocumentListener(txKhoangTien2);
     }
 
-//        private void btnDetailsMouseClicked() {
-//        String mahd = getSelectedRow(1);
-//        if (mahd != null) {
-//          //  QuanLyChiTietHoaDon htcthd = new QuanLyChiTietHoaDon();
-//            htcthd.addWindowListener(new WindowAdapter() {
-//                @Override
-//                public void windowClosed(WindowEvent e) {
-//                    refresh();
-//                }
-//            });
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Chưa chọn hóa đơn nào để xem!");
-//        }
-//    }
+        private void btnXemChiTiet() {
+        String mahd = getSelectedRow(1);
+        if (mahd != null) {
+           HienThiChiTietHoaDon htcthd = new HienThiChiTietHoaDon(mahd);
+            htcthd.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    refresh();
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Chưa chọn hóa đơn nào để xem!");
+        }
+    }
         
     public String getSelectedRow(int col) {
         int i = mtb.getTable().getSelectedRow();
@@ -291,7 +291,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         jPanel3.setPreferredSize(new java.awt.Dimension(260, 180));
         jPanel3.setLayout(new java.awt.GridLayout(2, 0, 10, 5));
 
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
         txKhoangNgay1.setBorder(javax.swing.BorderFactory.createTitledBorder("Từ"));
         txKhoangNgay1.setMinimumSize(new java.awt.Dimension(100, 43));
@@ -311,7 +311,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
         jPanel3.add(jPanel6);
 
-        jPanel7.setLayout(new java.awt.GridLayout());
+        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
         txKhoangNgay2.setBorder(javax.swing.BorderFactory.createTitledBorder("Đến"));
         txKhoangNgay2.setMinimumSize(new java.awt.Dimension(100, 43));
@@ -351,6 +351,11 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_show_property_30px.png"))); // NOI18N
         jButton1.setText("Xem chi tiết");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel1.add(jButton1);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
@@ -433,6 +438,10 @@ public class HienThiHoaDon extends javax.swing.JPanel {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        refresh();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+            btnXemChiTiet();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
