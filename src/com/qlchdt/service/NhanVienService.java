@@ -20,7 +20,7 @@ public class NhanVienService {
     private NhanVienDao nhanVienDao = new NhanVienDao();
 
     public NhanVienService() {
-        nhanVienDao.readDB();
+        dsnv = nhanVienDao.readDB();
     }
 
     public void readDB() {
@@ -66,7 +66,7 @@ public class NhanVienService {
                         }
                         break;
                     case "Giới tính":
-                        if (nv.getGioiTinh().toString().toLowerCase().contains(value.toLowerCase())) {
+                        if (nv.getGioiTinh().toLowerCase().contains(value.toLowerCase())) {
                             result.add(nv);
                         }
                         break;
