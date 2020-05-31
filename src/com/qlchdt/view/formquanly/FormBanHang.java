@@ -14,9 +14,10 @@ public class FormBanHang extends javax.swing.JPanel {
     public FormBanHang() {
         initComponents();
 
-        ChonSanPhamForm cspbh = new ChonSanPhamForm();
+        SanPhamForm cspbh = new SanPhamForm();
         jPanel1.add(cspbh);
-        HoaDonBanHangForm hdbh = new HoaDonBanHangForm();      
+       HoaDonBanHangForm hdbh = new HoaDonBanHangForm();      
+       
         jPanel2.add(hdbh);
 
         hdbh.setTarget(cspbh);

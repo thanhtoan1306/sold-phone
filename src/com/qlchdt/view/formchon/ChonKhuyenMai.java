@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view;
+package com.qlchdt.view.formchon;
 
 import com.qlchdt.view.hienthi.HienThiKhuyenMai;
 import java.awt.BorderLayout;
@@ -20,7 +20,7 @@ import rojerusan.RSMaterialButtonRectangle;
  *
  * @author User
  */
-public class ChonKhuyenMaiForm extends javax.swing.JFrame {
+public class ChonKhuyenMai extends javax.swing.JFrame {
 
    HienThiKhuyenMai formHienThiKM = new HienThiKhuyenMai();
 
@@ -29,7 +29,7 @@ public class ChonKhuyenMaiForm extends javax.swing.JFrame {
     
     JTextField txTarget;
 
-    public ChonKhuyenMaiForm(JTextField _txTarget) {
+    public ChonKhuyenMai(JTextField _txTarget) {
          
         initComponents();
         this.txTarget = _txTarget;
@@ -77,7 +77,8 @@ public class ChonKhuyenMaiForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chọn khuyến mãi");
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setMinimumSize(new java.awt.Dimension(1200, 600));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

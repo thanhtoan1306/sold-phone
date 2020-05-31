@@ -5,7 +5,11 @@
  */
 package com.qlchdt.view.formquanly;
 
-import java.awt.BorderLayout;
+import java.time.LocalDate;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -13,16 +17,20 @@ import java.awt.BorderLayout;
  */
 public class NewJFrame extends javax.swing.JFrame {
 
-    /**
-     * Creates new form NewJFrame
-     */
-     FormBanHang fbh = new FormBanHang();
-    // ChonSanPhamForm cspbh = new ChonSanPhamForm();
-     //HoaDonBanHangForm  hdbh = new HoaDonBanHangForm();
+    Timer t = new Timer();
+    TimerTask tt = new TimerTask() {
+        @Override
+        public void run() {
+            System.out.println("Ngày: " +LocalDate.now().toString());
+            txGio.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+            
+        }
+    ;
+
+    }; 
     public NewJFrame() {
         initComponents();
-         jPanel1.add(fbh, BorderLayout.CENTER);
-        //jPanel2.add(hdbh);
+        t.schedule(tt, 500, 1000);
     }
 
     /**
@@ -34,26 +42,26 @@ public class NewJFrame extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        plBanHang = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
+        txGio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1330, 900));
 
-        plBanHang.setBackground(new java.awt.Color(51, 51, 51));
-        plBanHang.setMaximumSize(new java.awt.Dimension(1330, 900));
-        plBanHang.setMinimumSize(new java.awt.Dimension(1330, 900));
-        plBanHang.setPreferredSize(new java.awt.Dimension(1330, 900));
-        plBanHang.setLayout(new java.awt.BorderLayout());
-
-        jPanel1.setBackground(new java.awt.Color(153, 153, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(652, 777));
-        jPanel1.setMinimumSize(new java.awt.Dimension(652, 777));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1330, 777));
-        jPanel1.setLayout(new java.awt.BorderLayout());
-        plBanHang.add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        getContentPane().add(plBanHang, java.awt.BorderLayout.CENTER);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(142, 142, 142)
+                .addComponent(txGio, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(76, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(100, 100, 100)
+                .addComponent(txGio, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(129, Short.MAX_VALUE))
+        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -94,7 +102,6 @@ public class NewJFrame extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel plBanHang;
+    private javax.swing.JTextField txGio;
     // End of variables declaration//GEN-END:variables
 }

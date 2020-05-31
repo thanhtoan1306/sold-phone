@@ -29,7 +29,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author User
  */
-public class ChonSanPhamForm extends javax.swing.JPanel {
+public class SanPhamForm extends javax.swing.JPanel {
 
     SanPhamService sanphamService;
     HangSanPhamService hangSanPhamService = new HangSanPhamService();
@@ -41,7 +41,7 @@ public class ChonSanPhamForm extends javax.swing.JPanel {
   
 
 
-    public ChonSanPhamForm() {
+    public SanPhamForm() {
 
         initComponents();
         sanphamService = new SanPhamService();

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view;
+package com.qlchdt.view.formchon;
 
-import com.qlchdt.view.hienthi.hienthikhach;
+import com.qlchdt.view.hienthi.HienThiKhachHang;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -20,7 +20,7 @@ import javax.swing.JTextField;
  */
 public class ChonKhachHang extends javax.swing.JFrame {
 
-    hienthikhach formHienThiKH = new hienthikhach();
+    HienThiKhachHang formHienThiKH = new HienThiKhachHang();
 
     JButton btnChon = new JButton("Chọn");
     JButton btnThoat = new JButton("Thoát");
@@ -67,7 +67,8 @@ public class ChonKhachHang extends javax.swing.JFrame {
     private void initComponents() {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1200, 700));
+        setMinimumSize(new java.awt.Dimension(1200, 600));
+        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

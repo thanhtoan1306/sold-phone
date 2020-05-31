@@ -21,23 +21,24 @@ import com.qlchdt.service.SanPhamService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import com.qlchdt.service.format.WritePDF;
-import com.qlchdt.view.ChonKhachHang;
-import com.qlchdt.view.ChonKhuyenMaiForm;
-import com.qlchdt.view.hienthi.HienThiKhachHang;
+import com.qlchdt.view.formchon.ChonKhachHang;
+import com.qlchdt.view.formchon.ChonKhuyenMai;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Timer;
-import java.util.TimerTask;
+
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.Timer;
 
 /**
  *
@@ -52,7 +53,6 @@ public class HoaDonBanHangForm extends FormHang {
     ChiTietHoaDonService qlcthd = new ChiTietHoaDonService();
     KhuyenMaiService qlkm = new KhuyenMaiService();
 
-    SanPham sp;
     NhanVien nhanVien;
     KhachHang khachHang;
     KhuyenMai khuyenMai;
@@ -60,6 +60,18 @@ public class HoaDonBanHangForm extends FormHang {
     MyTable tbChiTietHoaDon;
 
     ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
+//    Timer 
+//
+//    class UpdateTimeTask extends TimerTask {
+//
+//        public void run() {
+//            txNgayLap.setText(LocalDate.now().toString());
+//            txGioLap.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+////            contentPane.remove(txGioLap);
+////            contentPane.add(txGioLap);
+////            contentPane.revalidate();
+//        }
+//    }
 
     public HoaDonBanHangForm() {
 
@@ -76,12 +88,18 @@ public class HoaDonBanHangForm extends FormHang {
         txTongTien.setFont(f);
 
         txMaHD.setText(qlhd.getNextID());
-        new Timer().scheduleAtFixedRate(new TimerTask() {
+
+        //timer.scheduleAtFixedRate(new UpdateTimeTask(), 0, 1000);
+//        txNgayLap.setText(LocalDate.now().toString());
+//        txGioLap.setText(LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
+        int delay = 1000; //milliseconds
+        ActionListener taskPerformer = new ActionListener() {
             @Override
-            public void run() {
-                txNgayLap.setText(LocalDate.now().toString());
-                txGioLap.setText( LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss")));
-               
+            public void actionPerformed(ActionEvent e) {
+                String time = new java.text.SimpleDateFormat("HH:mm:ss").format(new java.util.Date(System.currentTimeMillis()));
+                String date = LocalDate.now().toString();
+                txGioLap.setText(time);
+                txNgayLap.setText(date);
                 if (txKH.getText().equals("")
                         || dscthd.isEmpty()) {
                     btnThanhToan.setEnabled(false);
@@ -89,7 +107,8 @@ public class HoaDonBanHangForm extends FormHang {
                     btnThanhToan.setEnabled(true);
                 }
             }
-        }, 0, 1000);
+        };
+        new Timer(delay, taskPerformer).start();
 
         txNV.setText("E02");
         // set editable
@@ -119,8 +138,6 @@ public class HoaDonBanHangForm extends FormHang {
                 LocalTime.parse(txGioLap.getText()),
                 Float.parseFloat(txTongTien.getText()));
         qlhd.add(hd);
-        
-
 
         dscthd.forEach((ct) -> {
             qlcthd.add(ct);
@@ -164,6 +181,7 @@ public class HoaDonBanHangForm extends FormHang {
 
     public void clear() {
         txKH.setText("");
+        txKhuyenMai.setText("");
         txTongTien.setText("");
         dscthd.clear();
         setDataToTable(dscthd, tbChiTietHoaDon);
@@ -474,7 +492,7 @@ public class HoaDonBanHangForm extends FormHang {
     }//GEN-LAST:event_txMaHDActionPerformed
 
     private void btnChonKMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonKMActionPerformed
-        ChonKhuyenMaiForm ckm = new ChonKhuyenMaiForm(txKhuyenMai);
+        ChonKhuyenMai ckm = new ChonKhuyenMai(txKhuyenMai);
 
         ckm.addWindowListener(new WindowAdapter() {
             @Override

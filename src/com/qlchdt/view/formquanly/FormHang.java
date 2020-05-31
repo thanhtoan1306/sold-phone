@@ -13,7 +13,7 @@ import javax.swing.JPanel;
  */
 public class FormHang extends JPanel {
 
-    ChonSanPhamForm target;
+    SanPhamForm target;
 
     public FormHang() {
 
@@ -23,7 +23,7 @@ public class FormHang extends JPanel {
 
     }
 
-    public void setTarget(ChonSanPhamForm target) {
+    public void setTarget(SanPhamForm target) {
         this.target = target;
     }
 
