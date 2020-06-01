@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
 import javax.swing.JPanel;
 

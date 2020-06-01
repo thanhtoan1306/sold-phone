@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.service.KhachHangService;
-import com.qlchdt.view.hienthi.HienThiKhachHang;
+import com.qlchdt.view.HienThiForm.HienThiKhachHang;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import javax.swing.JOptionPane;
 

@@ -3,9 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
-import com.qlchdt.view.hienthi.HienThiHoaDon;
+import com.qlchdt.view.HienThiForm.HienThiHoaDon;
+import com.qlchdt.view.HienThiForm.HienThiNhaCungCap;
 
 /**
  *
@@ -16,10 +17,11 @@ public class TestFormQuanLy extends javax.swing.JFrame {
     QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
     QuanLyKhachHang qlkh = new QuanLyKhachHang();
     QuanLyHoaDon qlhd = new QuanLyHoaDon();
+    QuanLyNhaCungCap qlncc = new QuanLyNhaCungCap();
     
     public TestFormQuanLy() {
         initComponents();
-        this.add(qlhd);
+        this.add(qlncc);
         //this.add(qlkm);
         //this.add(qlkh);
     }
@@ -31,7 +33,6 @@ public class TestFormQuanLy extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

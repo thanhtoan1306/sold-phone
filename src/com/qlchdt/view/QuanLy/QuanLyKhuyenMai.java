@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;
-import com.qlchdt.view.hienthi.HienThiKhuyenMai;
+import com.qlchdt.view.HienThiForm.HienThiKhuyenMai;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.view.ThemSua.ThemSuaKhuyenMai;
 import java.time.LocalDate;

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
 import java.awt.BorderLayout;
 
@@ -39,7 +39,6 @@ public class TestBanHang extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(1330, 900));
 
         plBanHang.setBackground(new java.awt.Color(51, 51, 51));
         plBanHang.setMaximumSize(new java.awt.Dimension(1330, 900));

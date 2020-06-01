@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.model.HoaDon;
@@ -21,8 +21,8 @@ import com.qlchdt.service.SanPhamService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import com.qlchdt.service.format.WritePDF;
-import com.qlchdt.view.formchon.ChonKhachHang;
-import com.qlchdt.view.formchon.ChonKhuyenMai;
+import com.qlchdt.view.Chon.ChonKhachHang;
+import com.qlchdt.view.Chon.ChonKhuyenMai;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -343,7 +343,7 @@ public class HoaDonBanHangForm extends FormHang {
 
         jPanel4.add(jPanel7);
 
-        jPanel9.setLayout(new java.awt.GridLayout());
+        jPanel9.setLayout(new java.awt.GridLayout(1, 0));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
@@ -396,7 +396,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel1.add(new JScrollPane(tbChiTietHoaDon));
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
         btnXoa.setBackground(new java.awt.Color(255, 0, 0));
         btnXoa.setText("XÓA");

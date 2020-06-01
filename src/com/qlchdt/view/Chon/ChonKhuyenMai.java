@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formchon;
+package com.qlchdt.view.Chon;
 
-import com.qlchdt.view.hienthi.HienThiKhuyenMai;
+import com.qlchdt.view.HienThiForm.HienThiKhuyenMai;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
@@ -78,7 +78,6 @@ public class ChonKhuyenMai extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Chọn khuyến mãi");
         setMinimumSize(new java.awt.Dimension(1200, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 600));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

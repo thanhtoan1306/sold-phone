@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
-import com.qlchdt.view.hienthi.HienThiHoaDon;
+import com.qlchdt.view.HienThiForm.HienThiHoaDon;
 import java.awt.BorderLayout;
 
 /**

@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.hienthi;
+package com.qlchdt.view.HienThiForm;
 
 import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.service.ChiTietHoaDonService;
@@ -146,8 +146,6 @@ public class HienThiChiTietHoaDon extends JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1200, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 600));
-        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -224,7 +222,7 @@ public class HienThiChiTietHoaDon extends JFrame {
         mtb.setupSort();
         jPanel3.add(new JScrollPane(mtb));
 
-        add(jPanel1, java.awt.BorderLayout.CENTER);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

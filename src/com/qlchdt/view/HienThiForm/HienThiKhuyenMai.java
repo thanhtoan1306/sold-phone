@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.hienthi;
+package com.qlchdt.view.HienThiForm;
 
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;

@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.formquanly;
+package com.qlchdt.view.QuanLy;
 
-import com.qlchdt.view.hienthi.HienThiChiTietHoaDon;
+import com.qlchdt.view.HienThiForm.HienThiChiTietHoaDon;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JButton;

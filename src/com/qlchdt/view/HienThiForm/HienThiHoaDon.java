@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.hienthi;
+package com.qlchdt.view.HienThiForm;
 
 import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
@@ -15,7 +15,7 @@ import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import com.qlchdt.view.custom.DateButton;
-import com.qlchdt.view.formquanly.QuanLyChiTietHoaDon;
+import com.qlchdt.view.QuanLy.QuanLyChiTietHoaDon;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
