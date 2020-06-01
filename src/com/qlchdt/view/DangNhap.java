@@ -3,9 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package View;
+package com.qlchdt.view;
 
-import com.chqldt.view.HeThong;
+import com.qlchdt.view.HeThong;
 import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.DocFile;
 import com.qlchdt.service.TaiKhoanService;

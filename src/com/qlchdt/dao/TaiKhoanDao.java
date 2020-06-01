@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Dao;
+package com.qlchdt.dao;
 
+import com.qlchdt.dao.JDBCConnection;
 import com.qlchdt.model.TaiKhoan;
 import java.sql.Connection;
 
