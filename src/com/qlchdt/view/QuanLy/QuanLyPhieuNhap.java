@@ -5,20 +5,20 @@
  */
 package com.qlchdt.view.QuanLy;
 
-import com.qlchdt.view.HienThiForm.HienThiHoaDon;
+import com.qlchdt.view.HienThiForm.HienThiPhieuNhap;
 import java.awt.BorderLayout;
 
 /**
  *
  * @author User
  */
-public class QuanLyHoaDon extends javax.swing.JPanel {
+public class QuanLyPhieuNhap extends javax.swing.JPanel {
 
-    HienThiHoaDon formHienThi = new HienThiHoaDon();
-
-    public QuanLyHoaDon() {
+    HienThiPhieuNhap hienThi = new HienThiPhieuNhap();
+    
+    public QuanLyPhieuNhap() {
         initComponents();
-        this.add(formHienThi, BorderLayout.CENTER);
+        this.add(hienThi, BorderLayout.CENTER);
     }
 
     /**
@@ -30,7 +30,6 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
     }// </editor-fold>//GEN-END:initComponents

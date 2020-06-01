@@ -164,7 +164,7 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txTimKiem = new javax.swing.JTextField();
-        btnLamMoi = new rojerusan.RSMaterialButtonRectangle();
+        jButton1 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -179,7 +179,7 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         txSoLuong = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
-        btnThem = new rojerusan.RSMaterialButtonRectangle();
+        btnChon = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(506, 719));
@@ -189,25 +189,22 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 102, 0))); // NOI18N
-        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 40));
+        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 50));
         txTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txTimKiemActionPerformed(evt);
             }
         });
-        jPanel3.add(txTimKiem, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 330, 51));
+        jPanel3.add(txTimKiem);
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 204, 204));
-        btnLamMoi.setText("Làm mới");
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnLamMoi, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 0, 120, 51));
+        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-find-and-replace-48.png"))); // NOI18N
+        jButton1.setText("Làm mới");
+        jPanel3.add(jButton1);
 
         jPanel9.add(jPanel3);
 
@@ -229,7 +226,7 @@ public class SanPhamForm extends javax.swing.JPanel {
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
 
-        lblImage.setPreferredSize(new java.awt.Dimension(200, 250));
+        lblImage.setPreferredSize(new java.awt.Dimension(200, 240));
         jPanel10.add(lblImage);
 
         jPanel1.add(jPanel10);
@@ -279,23 +276,22 @@ public class SanPhamForm extends javax.swing.JPanel {
         add(jPanel1);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 20));
 
-        btnThem.setBackground(new java.awt.Color(0, 153, 0));
-        btnThem.setText("Thêm");
-        btnThem.addActionListener(new java.awt.event.ActionListener() {
+        btnChon.setBackground(new java.awt.Color(0, 204, 102));
+        btnChon.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btnChon.setForeground(new java.awt.Color(255, 255, 255));
+        btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-buy-48.png"))); // NOI18N
+        btnChon.setText("CHỌN SẢN PHẨM");
+        btnChon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemActionPerformed(evt);
+                btnChonActionPerformed(evt);
             }
         });
-        jPanel4.add(btnThem);
+        jPanel4.add(btnChon);
 
         add(jPanel4);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        refreshTable();
-    }//GEN-LAST:event_btnLamMoiActionPerformed
 
     private void txTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txTimKiemActionPerformed
 
@@ -305,29 +301,29 @@ public class SanPhamForm extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txMaSPActionPerformed
 
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-               try {
-                String masp = txMaSP.getText();
-                int soluong = Integer.parseInt(txSoLuong.getText());
-                if (soluong > 0) {
-                    this._target.addChiTiet(masp, soluong);
-                   // hdbh.refreshTable();
-                    
-                } else {
-                    JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số dương!");
-                    txSoLuong.requestFocus();
-                }
+    private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
+        try {
+            String masp = txMaSP.getText();
+            int soluong = Integer.parseInt(txSoLuong.getText());
+            if (soluong > 0) {
+                this._target.addChiTiet(masp, soluong);
+                // hdbh.refreshTable();
 
-            } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số nguyên!");
+            } else {
+                JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số dương!");
                 txSoLuong.requestFocus();
             }
-    }//GEN-LAST:event_btnThemActionPerformed
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số nguyên!");
+            txSoLuong.requestFocus();
+        }
+    }//GEN-LAST:event_btnChonActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSMaterialButtonRectangle btnLamMoi;
-    private rojerusan.RSMaterialButtonRectangle btnThem;
+    private javax.swing.JButton btnChon;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;

@@ -2,6 +2,14 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/HoaDonBanHangForm.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/HoaDonService.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/format/WritePDF.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/FormHang.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/SanPhamForm.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/dao/ChiTietHoaDonDao.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/ChiTietHoaDonService.java</file>
+        </group>
     </open-files>
 </project-private>
