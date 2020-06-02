@@ -9,6 +9,8 @@ import com.qlchdt.view.ThongKeDoanhThu;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.io.File;
+import java.nio.file.Paths;
 import javax.swing.JOptionPane;
 
 /**
@@ -423,7 +425,6 @@ public class ThongKe extends javax.swing.JFrame {
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
-
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {

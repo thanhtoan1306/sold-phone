@@ -98,7 +98,7 @@ public class ChonSanPhamForm extends javax.swing.JPanel {
             // show hình
             for (SanPham sp : sanphamService.getDssp()) {
                 if (sp.getMaSP().equals(masp)) {
-                      int w = lblImage.getWidth();
+                    int w = lblImage.getWidth();
                     int h = lblImage.getHeight();
                     ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+sp.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);

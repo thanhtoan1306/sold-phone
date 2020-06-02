@@ -37,6 +37,7 @@ public class MyTable extends JPanel {
         tb.setFont(new Font("Segoe UI", 0, 16));
         tb.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 16));
         tb.setRowHeight(40);
+        tb.getTableHeader().setReorderingAllowed(false);
 
         // color
         int bgColor = 235;

@@ -30,7 +30,7 @@ public class NhanVien {
         this.DiaChi = DiaChi;
     }
 
-    public NhanVien(String MaNV, String TenNV, LocalDate NgaySinh, String GioiTinh, String DiaChi, String SDT, String HinhAnh) {
+    public NhanVien(String MaNV, String TenNV, LocalDate NgaySinh, String GioiTinh, String SDT, String DiaChi, String HinhAnh) {
         this.MaNV = MaNV;
         this.TenNV = TenNV;
         this.NgaySinh = NgaySinh;
