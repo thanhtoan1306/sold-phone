@@ -23,52 +23,80 @@ public class NhaCungCapDao {
 
     JDBCConnection connection;
 
+    public NhaCungCapDao() {
+    }
+
     public ArrayList<NhaCungCap> readDB() {
+
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
         connection = new JDBCConnection();
-        try {
-            String qry = "SELECT * FROM nhacungcap";
-            ResultSet r = connection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String ma = r.getString(1);
-                    String ten = r.getString(2);
-                    String diachi = r.getString(3);
-                    String sdt = r.getString(4);
 
-                    dsncc.add(new NhaCungCap(ma, ten, diachi, sdt));
-                }
+        try {
+
+            String sql = "SELECT * FROM NHACUNGCAP";
+            ResultSet rs = connection.sqlQuery(sql);
+
+            while (rs.next()) {
+
+                NhaCungCap ncc = new NhaCungCap();
+                ncc.setMaNCC(rs.getString("MaNCC"));
+                ncc.setTenNCC(rs.getString("TenNCC"));
+                ncc.setDiaChi(rs.getString("DiaChi"));
+                ncc.setSDT(rs.getString("SDT"));
+
+                dsncc.add(ncc);
             }
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Không thấy data cần tìm trong ResultSet");
-        }finally{
-        
-        connection.closeConnect();
-                }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } finally {
+            connection.closeConnect();
+        }
         return dsncc;
     }
 
-    public ArrayList<NhaCungCap> search(String columnName, String value) {
+    public Boolean add(NhaCungCap ncc) {
+        connection = new JDBCConnection();
+        Boolean ok = connection.sqlUpdate(
+                
+                
+                                
+                "INSERT INTO `NHACUNGCAP`(`MaNCC`,`TenNCC`,`DiaChi`,`SDT`) VALUES ('"
+                + ncc.getMaNCC() + "', '"
+                + ncc.getTenNCC() + "', '"
+                + ncc.getDiaChi()+ "','"
+                + ncc.getSDT() + "');"
+                
+             
+        
+        
+        
+        
+        );
+        connection.closeConnect();
+        return ok;
+    }
 
+    public ArrayList<NhaCungCap> search(String columnName, String value) {
         connection = new JDBCConnection();
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
 
         try {
-            String sql = "SELECT * FROM NHACUNGCAP WHERE " + columnName + " LIKE '%" + value + "%'";
-            ResultSet rs = connection.sqlQuery(sql);
-            if (rs != null) {
-                while (rs.next()) {
-                    String mancc = rs.getString("MaSP");
-                    String tenncc = rs.getString("MaHSP");
-                    String diachi = rs.getString("TenSP");
-                    String sdt = rs.getString("DonGia");
-
+            String qry = "SELECT * FROM sanpham WHERE " + columnName + " LIKE '%" + value + "%'";
+            ResultSet r = connection.sqlQuery(qry);
+            if (r != null) {
+                while (r.next()) {
+                    String mancc = r.getString(1);
+                    String tenncc = r.getString(2);
+                    String diachi = r.getString(3);
+                    String sdt = r.getString(4);                    
                     dsncc.add(new NhaCungCap(mancc, tenncc, diachi, sdt));
                 }
             }
 
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi tìm dữ liệu " + columnName + " = " + value + " bảng sản phẩm");
+        } finally {
+            connection.closeConnect();
         }
 
         return dsncc;
@@ -76,33 +104,20 @@ public class NhaCungCapDao {
 
     public Boolean delete(String mancc) {
         connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("DELETE FROM `NHACUNGCAP` WHERE `NHACUNGCAP`.`MaNCC` = '" + mancc + "'");
+        Boolean ok = connection.sqlUpdate("DELETE FROM `nhacungcap` WHERE `nhacungcap`.`MaNCC` = '" + mancc + "'");
         connection.closeConnect();
         return ok;
     }
 
-    public Boolean update(String MaNCC, String TenNCC, String DiaChi, String SDT) {
+    public Boolean update(String ma, String ten, String diachi, String sdt) {
         connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("Update NHACUNGCAP Set "
-                + "MaLSP='" + MaNCC
-                + "',TenSP='" + TenNCC
-                + "',DonGia='" + DiaChi
-                + "',SL='" + SDT
-                + "'");
-      connection.closeConnect();
+        Boolean ok = connection.sqlUpdate("Update NhaCungCap Set MaNCC='" + ma + "',TenNCC='" + ten + "',DiaChi='" + diachi + "',SDT='" + sdt + "' where MaNCC='" + ma + "'");
+        connection.closeConnect();
         return ok;
     }
 
-    public Boolean add(NhaCungCap ncc) {
-        connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("INSERT INTO `nhacungcap` (`MaNCC`, `TenNCC`, `DiaChi`,`SDT`) VALUES ('" + ncc.getMaNCC() + "', '"
-                + ncc.getTenNCC() + "', '"
-                + ncc.getDiaChi() + "','"
-                + ncc.getSDT()
-                + "');");
-
+    public void close() {
         connection.closeConnect();
-        return ok;
     }
 
 }

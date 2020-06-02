@@ -5,6 +5,7 @@
  */
 package com.qlchdt.dao;
 
+import com.qlchdt.dao.JDBCConnection;
 import com.qlchdt.model.TaiKhoan;
 import java.sql.Connection;
 
@@ -20,31 +21,27 @@ import java.util.List;
  */
 public class TaiKhoanDao {
 
-//    public  List<TaiKhoan> getAllTaiKhoan() {
-//
-//       List<TaiKhoan> taikhoan = new ArrayList<TaiKhoan>();
-//
-//        try {
-//            Connection connection = JDBCConnection.getJDBCConnection();
-//
-//            Statement preparedStatement = connection.createStatement();
-//
-//            String sql = "SELECT * FROM TAIKHOAN";
-//            ResultSet rs = preparedStatement.executeQuery(sql);
-//
-//            while (rs.next()) {
-//
-//                TaiKhoan tk = new TaiKhoan();
-//                tk.setTentk(rs.getString("TenTK"));
-//                tk.setMk(rs.getString("MK"));
-//                tk.setLoaitk(rs.getString("LoaiTK"));
-//                tk.setTrangthai(rs.getInt("TrangThai"));
-//
-//                taikhoan.add(tk);
-//            }
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        } 
-//        return taikhoan;
-//    }
+JDBCConnection connection;
+    public  TaiKhoanDao()  
+    {        
+    }
+    public ArrayList<TaiKhoan> readDB()
+    {
+        connection = new JDBCConnection();
+        ArrayList<TaiKhoan> taikhoan = new ArrayList<TaiKhoan>();
+        try {
+            String sql = "SELECT * FROM taikhoan";
+            ResultSet rs = connection.sqlQuery(sql);
+            while (rs.next()) 
+            {
+                TaiKhoan tk = new TaiKhoan();
+                tk.setTentk(rs.getString("TenTK"));
+                tk.setMk(rs.getString("MK"));
+                taikhoan.add(tk);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return taikhoan;
+    }
 }
