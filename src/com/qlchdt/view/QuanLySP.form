@@ -372,12 +372,12 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="23" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="jLabel5" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" pref="121" max="32767" attributes="0"/>
+                          <Component id="jLabel3" alignment="0" min="-2" pref="121" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                          <Component id="jLabel6" alignment="0" min="-2" pref="73" max="-2" attributes="0"/>
                           <Component id="jLabel13" alignment="0" min="-2" pref="110" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -462,7 +462,7 @@
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="1"/>
                 </Property>
-                <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n Gi&#xe1; (tri&#x1ec7;u)"/>
+                <Property name="text" type="java.lang.String" value="&#x110;&#x1a1;n Gi&#xe1;"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtMaSP">
@@ -508,8 +508,9 @@
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <Component id="lblHinhAnh" min="-2" pref="171" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="60" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="lblHinhAnh" min="-2" pref="175" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Component id="txtTenSP1" pref="114" max="32767" attributes="0"/>
                           <Component id="txtMaSP1" max="32767" attributes="0"/>
@@ -526,9 +527,9 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="27" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtMaSP1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -544,10 +545,10 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="lblHinhAnh" min="-2" pref="234" max="-2" attributes="0"/>
+                              <Component id="lblHinhAnh" min="-2" pref="223" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="22" max="32767" attributes="0"/>
+                      <EmptySpace pref="33" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -559,6 +560,7 @@
                   <Font name="Dialog" size="18" style="1"/>
                 </Property>
                 <Property name="horizontalAlignment" type="int" value="0"/>
+                <Property name="text" type="java.lang.String" value="H&#xec;nh &#x1ea2;nh"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
                     <LineBorder roundedCorners="true"/>
@@ -684,7 +686,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="jPanel2">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tbSanPham = new MyTable();&#xa;        tbSanPham.setPreferredSize(new Dimension(1200 - 500, 600));&#xa;        tbSanPham.setHeaders(new String[]{&quot;M&#xe3; SP&quot;, &quot;H&#xe3;ng SP&quot;, &quot;T&#xea;n&quot;, &quot;&#x110;&#x1a1;n gi&#xe1;(tri&#x1ec7;u)&quot;, &quot;S&#x1ed1; l&#x1b0;&#x1ee3;ng&quot;});&#xa;        tbSanPham.setColumnsWidth(new double[]{.2, .1, .3, .2, .1,.2});&#xa;        tbSanPham.setAlignment(3, JLabel.RIGHT);&#xa;        tbSanPham.setAlignment(4, JLabel.RIGHT);&#xa;        &#xa;&#xa;jPanel2.add(new JScrollPane(tbSanPham));"/>
+                <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="tbSanPham = new MyTable();&#xa;        tbSanPham.setPreferredSize(new Dimension(1200 - 500, 600));&#xa;        tbSanPham.setHeaders(new String[]{&quot;M&#xe3; SP&quot;, &quot;H&#xe3;ng SP&quot;, &quot;T&#xea;n&quot;, &quot;&#x110;&#x1a1;n gi&#xe1;(tri&#x1ec7;u)&quot;, &quot;S&#x1ed1; l&#x1b0;&#x1ee3;ng&quot;});&#xa;        tbSanPham.setColumnsWidth(new double[]{.2, .1, .3, .2, .1});&#xa;        tbSanPham.setAlignment(3, JLabel.RIGHT);&#xa;        tbSanPham.setAlignment(4, JLabel.RIGHT);&#xa;        &#xa;&#xa;jPanel2.add(new JScrollPane(tbSanPham));"/>
               </AuxValues>
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.DesignCardLayout"/>

@@ -22,12 +22,6 @@ import java.io.File;
 import java.io.IOException;
 import static java.lang.Float.parseFloat;
 import static java.lang.Integer.parseInt;
-import java.net.URISyntaxException;
-import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.text.DecimalFormat;
 import java.text.Format;
 import java.text.NumberFormat;
@@ -36,8 +30,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Enumeration;
 import java.util.Locale;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
@@ -61,8 +53,6 @@ public class QuanLySP extends javax.swing.JFrame{
     HoaDonBanHangForm hdbh = new HoaDonBanHangForm();    
     MyTable tbSanPham;
     SanPham SP_them;
-    Path sanphamImagePath;
-    Path imageLocation;
     //FormHang _target = new FormHang();
    
 
@@ -98,7 +88,6 @@ public class QuanLySP extends javax.swing.JFrame{
                 sp.getTenSP(),
                 PriceFormatter.format(sp.getDonGia()),
                 String.valueOf(sp.getSoLuong()),});
-                //sp.getFileNameHinhAnh();
 
         }
     }
@@ -118,27 +107,20 @@ public class QuanLySP extends javax.swing.JFrame{
         lblHinhAnh.setIcon(null);
     }
     
-    public boolean validateForm(){
-        if (txtMaSP.getText().isEmpty()||txtMaHSP.getText().isEmpty()||txtTenSP.getText().isEmpty()||txtSoLuong.getText().isEmpty()||txtDonGia.getText().isEmpty()){
-            return false;
-        }
-        return true;
-    }
-    
     public void showInfo(String masp) {
         // https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
         if (masp != null) {
             // show hình
             for (SanPham sp : sanphamService.getDssp()) {
                 if (sp.getMaSP().equals(masp)) {
-                    // show info
-                    
-                      /*int w = lblHinhAnh.getWidth();
+                      int w = lblHinhAnh.getWidth();
                     int h = lblHinhAnh.getHeight();
                     ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+sp.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblHinhAnh.setIcon(img);
-                    lblHinhAnh.setIcon(new ImageIcon(imgScaled));*/
+                    lblHinhAnh.setIcon(new ImageIcon(imgScaled));
+
+                    // show info
                    String loai = hangSanPhamService.getHangSanPham(sp.getMaHSP()).getTenHang();
                     txtMaSP.setText(sp.getMaSP());
                     txtTenSP.setText(sp.getTenSP());
@@ -150,14 +132,6 @@ public class QuanLySP extends javax.swing.JFrame{
                     txtMaHSP1.setText(sp.getMaHSP());
                     txtDonGia1.setText(PriceFormatter.format(sp.getDonGia()));
                     txtSoLuong1.setText(Integer.toString(sp.getSoLuong()));
-                    int w = lblHinhAnh.getWidth();
-                    int h = lblHinhAnh.getHeight();
-                    // nhớ sửa đường dẫn employees thành phones
-                    ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+sp.getFileNameHinhAnh()));
-                    Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                    lblHinhAnh.setIcon(img);
-                    lblHinhAnh.setIcon(new ImageIcon(imgScaled));
-                    imageLocation = new File(sanphamImagePath + System.getProperty("file.separator") + masp +".png").toPath();
                     return;
                 }
             }
@@ -219,14 +193,6 @@ public class QuanLySP extends javax.swing.JFrame{
     public QuanLySP() {
         super("Quản Lí Sản Phẩm");
         initComponents();
-        
-        URL url = this.getClass().getResource("/com/qlchdt/assets/phones");
-        try {
-            sanphamImagePath = Paths.get(url.toURI()).toFile().toPath();
-            //System.out.println(nhanVienImagePath);
-        } catch (URISyntaxException ex) {
-            Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
-        }
         sanphamService = new SanPhamService();
        DefaultTableModel defaultTableModel = new DefaultTableModel() {
            @Override
@@ -442,7 +408,7 @@ public class QuanLySP extends javax.swing.JFrame{
         jLabel5.setText("Số Lượng");
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel6.setText("Đơn Giá (triệu)");
+        jLabel6.setText("Đơn Giá");
 
         txtMaSP.setBackground(new java.awt.Color(204, 204, 204));
 
@@ -460,12 +426,12 @@ public class QuanLySP extends javax.swing.JFrame{
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap(23, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 121, Short.MAX_VALUE)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 351, Short.MAX_VALUE)
@@ -503,6 +469,7 @@ public class QuanLySP extends javax.swing.JFrame{
 
         lblHinhAnh.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinhAnh.setText("Hình Ảnh");
         lblHinhAnh.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
         lblHinhAnh.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -549,8 +516,9 @@ public class QuanLySP extends javax.swing.JFrame{
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(60, 60, 60)
+                .addGap(30, 30, 30)
+                .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(txtTenSP1, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                     .addComponent(txtMaSP1)
@@ -578,8 +546,8 @@ public class QuanLySP extends javax.swing.JFrame{
                         .addComponent(txtDonGia1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 234, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(22, Short.MAX_VALUE))
+                        .addComponent(lblHinhAnh, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(33, Short.MAX_VALUE))
         );
 
         jPanel2.setLayout(new java.awt.CardLayout());
@@ -607,7 +575,7 @@ public class QuanLySP extends javax.swing.JFrame{
         tbSanPham = new MyTable();
         tbSanPham.setPreferredSize(new Dimension(1200 - 500, 600));
         tbSanPham.setHeaders(new String[]{"Mã SP", "Hãng SP", "Tên", "Đơn giá(triệu)", "Số lượng"});
-        tbSanPham.setColumnsWidth(new double[]{.2, .1, .3, .2, .1,.2});
+        tbSanPham.setColumnsWidth(new double[]{.2, .1, .3, .2, .1});
         tbSanPham.setAlignment(3, JLabel.RIGHT);
         tbSanPham.setAlignment(4, JLabel.RIGHT);
 
@@ -700,18 +668,6 @@ public class QuanLySP extends javax.swing.JFrame{
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
         }
         else {
-             /*String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 5).toString().trim();
-            
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(sanphamImagePath + separate + tenHinhSPCanXoa); // xóa dc
-            File srcPath = new File(System.getProperty("user.dir")
-                    +separate+"src"+separate+"com"+separate+"qlchdt"+separate+"assets"+separate+"phones"+separate+tenHinhSPCanXoa); // xóa ko dc
-            try {
-                Files.deleteIfExists(targetPath.toPath());
-                Files.deleteIfExists(srcPath.toPath());
-            } catch (IOException ex) {
-                Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
             sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
             tbSanPham.getModel().removeRow(row);
             JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
@@ -724,63 +680,35 @@ public class QuanLySP extends javax.swing.JFrame{
         this.txtTenSP.setText("");
         this.txtSoLuong.setText("");
         this.txtDonGia.setText("");
-      
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if(validateForm()){
-            DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-            String masp = txtMaSP.getText().trim();
-            String mahsp = txtMaHSP.getText().trim();
-            String gioiTinh = "";
-            for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
-                AbstractButton button = buttons.nextElement();
-                if (button.isSelected()) {
-                    gioiTinh = button.getText();
-                    break;
-                }
+        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
+        String masp = txtMaSP.getText().trim();
+        String mahsp = txtMaHSP.getText().trim();
+        String gioiTinh = "";
+        for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
+            AbstractButton button = buttons.nextElement();
+            if (button.isSelected()) {
+                gioiTinh = button.getText();
+                break;
             }
-            String tensp = txtTenSP.getText().trim();
-            String sluong= txtSoLuong.getText().toString();
-            int soluong = Integer.parseInt(sluong);
-            String soluong0 = String.valueOf(soluong);
-            String dgia = txtDonGia.getText().toString();
-            float dongia = Float.parseFloat(dgia);
-            //NumberFormat df = new DecimalFormat("#,###"+"000 đ");
-            //String dogia = df.format(dongia);
-            String dogia = dongia+"00.000";
-            String hinhanh = masp+".png";
-            try {
-                // copy anh vao assets/employees sau khi chon anh
-                String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-                File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
-
-                Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-                Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-                /*
-                InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-                OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-                byte[] buffer = new byte[1024];
-                int length;
-                // copy the file content in bytes
-                while ((length = is.read(buffer)) > 0) {
-                    outStream.write(buffer, 0, length);
-                }
-                */
-            } catch (IOException ex) {
-                Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-
-            Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
-            model.addRow(os);
-            SP_them = new SanPham(masp, mahsp, tensp, dongia, soluong, hinhanh);
-            sanphamService.add(masp, mahsp, tensp, dongia, soluong, hinhanh);
-            JOptionPane.showMessageDialog(this, "Thêm thành công ");
-            }
-        else{
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
         }
+        String tensp = txtTenSP.getText().trim();
+        String sluong= txtSoLuong.getText().toString();
+        int soluong = Integer.parseInt(sluong);
+        String soluong0 = String.valueOf(soluong);
+        String dgia = txtDonGia.getText().toString();
+        float dongia = Float.parseFloat(dgia);
+        //NumberFormat df = new DecimalFormat("#,###"+"000 đ");
+        //String dogia = df.format(dongia);
+        String dogia = dongia+"00.000";
+        String hinhanh = lblHinhAnh.getText().trim();
+        
+        Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
+        model.addRow(os);
+        SP_them = new SanPham(masp, mahsp, tensp, dongia, soluong, hinhanh);
+        sanphamService.add(masp, mahsp, tensp, dongia, soluong, hinhanh);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed
@@ -796,33 +724,13 @@ public class QuanLySP extends javax.swing.JFrame{
         String masp = txtMaSP.getText().trim();
         String mahsp = txtMaHSP.getText().trim();
         String tensp = txtTenSP.getText().trim();
-        String sluong= txtSoLuong.getText();
+        String sluong= txtSoLuong.getText().toString();
         int soluong = Integer.parseInt(sluong);
         String soluong0 = String.valueOf(soluong);
-        String dgia = txtDonGia.getText();
+        String dgia = txtDonGia.getText().toString();
         float dongia = Float.parseFloat(dgia);
         String dogia = dongia+"00.000";
-        String hinhanh = this.imageLocation.getFileName().toString();
-        try {
-            // copy anh vao assets/employees sau khi chon anh
-            String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-            File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
-            
-            Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-            Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-            /*
-            InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-            OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-            byte[] buffer = new byte[1024];
-            int length;
-            // copy the file content in bytes
-            while ((length = is.read(buffer)) > 0) {
-                outStream.write(buffer, 0, length);
-            }
-            */
-        } catch (IOException ex) {
-            Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        String hinhanh = lblHinhAnh.getText().trim();
        
         
         Object os[] = {masp, mahsp, tensp, dogia, soluong0,hinhanh};
@@ -845,27 +753,23 @@ public class QuanLySP extends javax.swing.JFrame{
     }//GEN-LAST:event_txtTenSP1ActionPerformed
 
     private void lblHinhAnhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lblHinhAnhMouseClicked
-        JFileChooser chooser = new JFileChooser();
-        FileNameExtensionFilter filter = new FileNameExtensionFilter(
-                "JPG, PNG Images", "jpg", "png");
-        chooser.setFileFilter(filter);
-        if (lblHinhAnh.getIcon()!=null) {
-            //
-        }
-        int returnVal = chooser.showOpenDialog(null);
-        if(returnVal == JFileChooser.APPROVE_OPTION) {
-            //System.out.println("You chose to open this file: " +
-            //        chooser.getSelectedFile().getName());
+        try {
+            // TODO add your handling code here:
+            JFileChooser jfc = new JFileChooser("D:\\Demo_github_java\\com\\qlchdt\\assets\\products");
+            jfc.setCurrentDirectory(new File  
+                (System.getProperty("user.home") + System.getProperty("file.separator")+ "Music"));
+            jfc.showOpenDialog(null);
+            File file = jfc.getSelectedFile();
+            Image img = ImageIO.read(file);
+            //strHinhAnh = file.getName();
+            lblHinhAnh.setText("");
+            int width = lblHinhAnh.getWidth();
+            int height = lblHinhAnh.getHeight();
+            lblHinhAnh.setIcon(new ImageIcon(img.getScaledInstance(width, height, 0)));
             
-            imageLocation = chooser.getSelectedFile().toPath();
-            
-            int w = lblHinhAnh.getWidth();
-            int h = lblHinhAnh.getHeight();
-            ImageIcon img = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());
-            Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-            lblHinhAnh.setIcon(img);
-            lblHinhAnh.setIcon(new ImageIcon(imgScaled));
-        }
+        } catch (IOException ex) {
+            System.out.println("Error"+ex.toString());
+        }        // TODO add your handling code here:
     }//GEN-LAST:event_lblHinhAnhMouseClicked
 
     /**
