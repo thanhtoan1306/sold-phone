@@ -7,13 +7,7 @@
   </NonVisualComponents>
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="3"/>
-    <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1200, 900]"/>
-    </Property>
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-      <Dimension value="[1200, 900]"/>
-    </Property>
-    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1200, 900]"/>
     </Property>
   </Properties>
@@ -101,17 +95,8 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
                           <Component id="NhanVienInfo" min="-2" max="-2" attributes="0"/>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                          <EmptySpace max="-2" attributes="0"/>
-=======
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
->>>>>>> parent of 4602e48... no message
-                          <Component id="ThaoTac" pref="105" max="32767" attributes="0"/>
-=======
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="ThaoTac" pref="131" max="32767" attributes="0"/>
->>>>>>> b2c1e565a071de9a519c80eb7260afe96467828c
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -458,15 +443,7 @@
                           <Component id="btnLuu" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="btnHuy" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-<<<<<<< HEAD
-<<<<<<< HEAD
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
-=======
                       <EmptySpace pref="57" max="32767" attributes="0"/>
->>>>>>> b2c1e565a071de9a519c80eb7260afe96467828c
-=======
-                      <EmptySpace pref="31" max="32767" attributes="0"/>
->>>>>>> parent of 4602e48... no message
                   </Group>
               </Group>
             </DimensionLayout>
