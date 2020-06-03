@@ -6,7 +6,9 @@
 package com.qlchdt.service.format;
 
 import com.qlchdt.model.KhachHang;
+import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhachHangService;
+import com.qlchdt.service.KhuyenMaiService;
 import java.awt.FileDialog;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -89,6 +91,71 @@ public class XuatExcel {
             workbook.write(outFile);
 
             JOptionPane.showMessageDialog(null, "Ghi excel thành công: " + file.getAbsolutePath());
+
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(XuatExcel.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(XuatExcel.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (outFile != null) {
+                    outFile.close();
+                }
+            } catch (IOException ex) {
+                Logger.getLogger(XuatExcel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+    
+     // Xuất file Excel Khuyến mãi
+    public void xuatFileExcelKhuyenMai() {
+        fd.setTitle("Xuất dữ liệu khuyến mãi ra excel");
+        String url = getFile();
+        if (url == null) {
+            return;
+        }
+
+        FileOutputStream outFile = null;
+        try {
+            HSSFWorkbook workbook = new HSSFWorkbook();
+            HSSFSheet sheet = workbook.createSheet("Khuyến mãi");
+
+            KhuyenMaiService qlkmBUS = new KhuyenMaiService();
+            ArrayList<KhuyenMai> list = qlkmBUS.getDskm();
+
+            int rownum = 0;
+            Row row = sheet.createRow(rownum);
+
+            row.createCell(0, CellType.NUMERIC).setCellValue("STT");
+            row.createCell(1, CellType.STRING).setCellValue("Mã khuyến mãi");
+            row.createCell(2, CellType.STRING).setCellValue("Tên khuyến mãi");
+            row.createCell(3, CellType.NUMERIC).setCellValue("Điều kiện");
+            row.createCell(4, CellType.NUMERIC).setCellValue("Phần trăm");
+            row.createCell(5, CellType.STRING).setCellValue("Ngày bắt đầu");
+            row.createCell(6, CellType.STRING).setCellValue("Ngày kết thúc");
+
+            for (KhuyenMai km : list) {
+                rownum++;
+                row = sheet.createRow(rownum);
+
+                row.createCell(0, CellType.NUMERIC).setCellValue(rownum);
+                row.createCell(1, CellType.STRING).setCellValue(km.getMaKM());
+                row.createCell(2, CellType.STRING).setCellValue(km.getTenKM());
+                row.createCell(3, CellType.NUMERIC).setCellValue(km.getDieuKienKM());
+                row.createCell(4, CellType.NUMERIC).setCellValue(km.getPhanTramKM());
+                row.createCell(5, CellType.STRING).setCellValue(String.valueOf(km.getNgayBD()));
+                row.createCell(6, CellType.STRING).setCellValue(String.valueOf(km.getNgayKT()));
+            }
+            for (int i = 0; i < rownum; i++) {
+                sheet.autoSizeColumn(i);
+            }
+
+            File file = new File(url);
+            file.getParentFile().mkdirs();
+            outFile = new FileOutputStream(file);
+            workbook.write(outFile);
+
+            JOptionPane.showMessageDialog(null, "Ghi file thành công: " + file.getAbsolutePath());
 
         } catch (FileNotFoundException ex) {
             Logger.getLogger(XuatExcel.class.getName()).log(Level.SEVERE, null, ex);
