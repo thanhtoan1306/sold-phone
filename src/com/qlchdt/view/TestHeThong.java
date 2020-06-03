@@ -275,7 +275,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton9.setBackground(new java.awt.Color(255, 212, 100));
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_multiple_smartphones_30px.png"))); // NOI18N
-        jButton9.setText("HÃNG SẢN PHẨM");
+        jButton9.setText("HÃNG SP");
         jButton9.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton9.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton9.setIconTextGap(20);
