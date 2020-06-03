@@ -163,6 +163,7 @@ public class NhapExcel {
                     String ten = cellIterator.next().getStringCellValue();
                     float dieukien = (float) cellIterator.next().getNumericCellValue();
                     float phantram = (float) cellIterator.next().getNumericCellValue();
+                    
                     LocalDate ngaybatdau = LocalDate.parse(cellIterator.next().getStringCellValue());
                     LocalDate ngayketthuc = LocalDate.parse(cellIterator.next().getStringCellValue());
 
