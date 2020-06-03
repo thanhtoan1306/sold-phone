@@ -7,6 +7,8 @@ package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;
+import com.qlchdt.service.format.NhapExcel;
+import com.qlchdt.service.format.XuatExcel;
 import com.qlchdt.view.HienThiForm.HienThiKhuyenMai;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.view.ThemSua.ThemSuaKhuyenMai;
@@ -111,6 +113,8 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         btnKetThuc = new javax.swing.JButton();
+        btnNhapExcel = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         plKhuyenMai = new javax.swing.JPanel();
 
         setPreferredSize(new java.awt.Dimension(1200, 900));
@@ -160,6 +164,26 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
         });
         jPanel1.add(btnKetThuc);
 
+        btnNhapExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        btnNhapExcel.setText("Nhập Excel");
+        btnNhapExcel.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnNhapExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapExcelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNhapExcel);
+
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất Excel");
+        btnXuatExcel.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXuatExcel);
+
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         plKhuyenMai.setLayout(new java.awt.BorderLayout());
@@ -182,12 +206,22 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
        btnKetThucMouseClicked();
     }//GEN-LAST:event_btnKetThucActionPerformed
 
+    private void btnNhapExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapExcelActionPerformed
+        new NhapExcel().docFileExcelKhuyenMai();
+    }//GEN-LAST:event_btnNhapExcelActionPerformed
+
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        new XuatExcel().xuatFileExcelKhuyenMai();
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnKetThuc;
+    private javax.swing.JButton btnNhapExcel;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatExcel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel plKhuyenMai;
     // End of variables declaration//GEN-END:variables
