@@ -104,8 +104,8 @@ public class NhanVienService {
         return ok;
     }
 
-    public Boolean add(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String sdt, String diachi) {
-        NhanVien nv = new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi);
+    public Boolean add(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String sdt, String diachi, String hinh) {
+        NhanVien nv = new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi, hinh);
         return dsnv.add(nv);
     }
 
@@ -122,7 +122,7 @@ public class NhanVienService {
         return ok;
     }
 
-    public Boolean update(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String diachi, String sdt) {
+    public Boolean update(String manv, String tennv, LocalDate ngaysinh, String gioitinh, String diachi, String sdt, String hinh) {
         Boolean ok = nhanVienDao.update(manv, tennv, ngaysinh, gioitinh, diachi, sdt);
 
         if (ok) {
@@ -133,7 +133,7 @@ public class NhanVienService {
                     nv.setGioiTinh(gioitinh);
                     nv.setDiaChi(diachi);
                     nv.setSDT(sdt);
-
+                    nv.setHinhAnh(hinh);
                 }
             });
         }

@@ -39,7 +39,8 @@ public class NhanVienDao {
                     String gioitinh = rs.getString("GioiTinh");
                     String sdt = rs.getString("SDT");
                     String diachi = rs.getString("DiaChi");
-                    dsnv.add(new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi));
+                    String hinh = rs.getString("Hinh");
+                    dsnv.add(new NhanVien(manv, tennv, ngaysinh, gioitinh, sdt, diachi, hinh));
                 }
             }
 
@@ -80,13 +81,14 @@ public class NhanVienDao {
 
     public Boolean add(NhanVien nv) {
         connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("INSERT INTO `NHANVIEN` (`MaNV`, `TenNV`, `NgaySinh`, `GioiTinh`, `SDT`, `DiaChi`) VALUES ('"
+        Boolean ok = connection.sqlUpdate("INSERT INTO `NHANVIEN` (`MaNV`, `TenNV`, `NgaySinh`, `GioiTinh`, `SDT`, `DiaChi`, `Hinh`) VALUES ('"
                 + nv.getMaNV() + "', '"
                 + nv.getTenNV() + "', '"
                 + Date.valueOf(nv.getNgaySinh()) + "', '"
                 + nv.getGioiTinh()+ "', '"
                 + nv.getSDT() + "', '"
-                + nv.getDiaChi() + "');");
+                + nv.getDiaChi() + "', '"
+                + nv.getHinhAnh()+ "');");
         connection.closeConnect();
         return ok;
     }

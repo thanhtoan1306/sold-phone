@@ -18,6 +18,7 @@ public class PhieuNhap {
     String maNCC;
     String maNV;
     LocalDate ngayNhap;
+    LocalTime gioNhap;
     float tongTien = 0;
 
     public PhieuNhap() {
@@ -25,12 +26,25 @@ public class PhieuNhap {
 
     }
 
-    public PhieuNhap(String maPN, String maNCC, String maNV, LocalDate ngayNhap) {
+    public PhieuNhap(String maPN, String maNCC, String maNV, LocalDate ngayNhap, LocalTime gioNhap,float tongTien) {
         this.maPN = maPN;
         this.maNCC = maNCC;
         this.maNV = maNV;
         this.ngayNhap = ngayNhap;
+        this.gioNhap = gioNhap;
+        this.tongTien = tongTien;
     }
+
+ 
+
+    public LocalTime getGioNhap() {
+        return gioNhap;
+    }
+
+    public void setGioNhap(LocalTime gioNhap) {
+        this.gioNhap = gioNhap;
+    }
+
 
     public String getMaPN() {
         return maPN;

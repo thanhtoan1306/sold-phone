@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class ChiTietHoaDonDao {
-  JDBCConnection connection;
+
+    JDBCConnection connection;
 
     public ChiTietHoaDonDao() {
     }
@@ -29,25 +30,28 @@ public class ChiTietHoaDonDao {
             ResultSet rs = connection.sqlQuery(qry);
             if (rs != null) {
                 while (rs.next()) {
-                    ChiTietHoaDon hd = new ChiTietHoaDon(rs.getString("MaHD"), rs.getString("MaSP"), rs.getInt("SoLuong"), rs.getFloat("DonGia"));
+                    ChiTietHoaDon hd = new ChiTietHoaDon(rs.getString("MaHD"),
+                            rs.getString("MaSP"), 
+                            rs.getInt("SoLuong"),
+                            rs.getFloat("DonGia"));
                     dshd.add(hd);
                 }
             }
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, "Không tìm thấy dữ liệu !!");
-        } finally{
-        
-        connection.closeConnect();
-                }
+        } finally {
+
+            connection.closeConnect();
+        }
         return dshd;
     }
 
     public Boolean add(ChiTietHoaDon hd) {
         connection = new JDBCConnection();
-        Boolean success = connection.sqlUpdate("INSERT INTO cthd(`MaHD`,`MaSP`,`SoLuong`,`DonGia`) VALUES ('" 
-                + hd.getMaHoaDon() + "','" 
-                + hd.getMaSanPham() + "','" 
-                + hd.getSoLuong() + "','" 
+        Boolean success = connection.sqlUpdate("INSERT INTO cthd(`MaHD`,`MaSP`,`SoLuong`,`DonGia`) VALUES ('"
+                + hd.getMaHoaDon() + "','"
+                + hd.getMaSanPham() + "','"
+                + hd.getSoLuong() + "','"
                 + hd.getDonGia() + "');");
         connection.closeConnect();
         return success;
@@ -88,4 +92,3 @@ public class ChiTietHoaDonDao {
         connection.closeConnect();
     }
 }
-

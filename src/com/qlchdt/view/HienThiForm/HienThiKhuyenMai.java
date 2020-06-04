@@ -11,6 +11,7 @@ import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -175,6 +176,8 @@ public class HienThiKhuyenMai extends JPanel {
         mtb.setAlignment(0, JLabel.CENTER);
         mtb.setAlignment(3, JLabel.RIGHT);
         mtb.setAlignment(4, JLabel.CENTER);
+        mtb.setAlignment(5, JLabel.RIGHT);
+        mtb.setAlignment(6, JLabel.RIGHT);
         mtb.setupSort();
         plKhuyenMai.add(new JScrollPane(mtb));
     }// </editor-fold>//GEN-END:initComponents

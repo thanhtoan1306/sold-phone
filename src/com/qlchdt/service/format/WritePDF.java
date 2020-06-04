@@ -214,6 +214,7 @@ public class WritePDF {
             document.add(Chunk.NEWLINE);
 
             tongKhuyenMai = hd.getTongTien() - tongThanhTien;
+            
             Paragraph paraTongThanhTien = new Paragraph(new Phrase("Tổng thành tiền: " + PriceFormatter.format(tongThanhTien), fontData));
             paraTongThanhTien.setIndentationLeft(300);
             document.add(paraTongThanhTien);

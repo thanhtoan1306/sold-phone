@@ -12,6 +12,7 @@ import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 import java.awt.Color;
 import java.util.ArrayList;
+import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JScrollPane;
@@ -35,6 +36,22 @@ public class HienThiChiTietHoaDon extends JFrame {
         this.mahd = _mahd;
         initComponents();
         setDataToTable(qlcthd.search("Mã hóa đơn", this.mahd, -1, -1, -1, -1), mtb);
+        
+          cbTypeSearch.addActionListener((ae) -> {
+            txTim.setBorder(BorderFactory.createTitledBorder(String.valueOf(cbTypeSearch.getSelectedItem())));
+            txTim.requestFocus();
+            if (!txTim.getText().equals("")) {
+                txSearchOnChange();
+            }
+        });
+
+        addDocumentListener(txTim);
+        addDocumentListener(txKhoangSoLuong1);
+        addDocumentListener(txKhoangSoLuong2);
+        addDocumentListener(txKhoangTien1);
+        addDocumentListener(txKhoangTien2);
+        
+        
         this.setVisible(true);
     }
 

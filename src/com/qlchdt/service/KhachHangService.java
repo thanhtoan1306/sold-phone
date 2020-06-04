@@ -108,7 +108,7 @@ public class KhachHangService {
     
     
     public String getNextID() {
-        return "C0" + String.valueOf(this.dskh.size() + 1);
+        return "KH" + String.valueOf(this.dskh.size() + 1);
     }
     public Boolean delete(String makh) {
         Boolean ok = khachHangDao.delete(makh);
