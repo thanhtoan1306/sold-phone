@@ -6,6 +6,8 @@
 package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.service.NhaCungCapService;
+import com.qlchdt.service.format.NhapExcel;
+import com.qlchdt.service.format.XuatExcel;
 import com.qlchdt.view.ThemSua.ThemSuaNhaCungCap;
 import com.qlchdt.view.HienThiForm.HienThiNhaCungCap;
 import java.awt.BorderLayout;
@@ -71,6 +73,8 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        btnNhapExcel = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
         plHienThi = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1200, 600));
@@ -111,6 +115,26 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
         });
         jPanel1.add(jButton3);
 
+        btnNhapExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        btnNhapExcel.setText("Nhập Excel");
+        btnNhapExcel.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnNhapExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNhapExcelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnNhapExcel);
+
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất Excel");
+        btnXuatExcel.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXuatExcel);
+
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         plHienThi.setLayout(new java.awt.BorderLayout());
@@ -130,8 +154,18 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
          formHienThi.refresh();
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+        new XuatExcel().xuatFileExcelNhaCungCap();
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
+    private void btnNhapExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapExcelActionPerformed
+        new NhapExcel().docFileExcelNhaCungCap();
+    }//GEN-LAST:event_btnNhapExcelActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNhapExcel;
+    private javax.swing.JButton btnXuatExcel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
