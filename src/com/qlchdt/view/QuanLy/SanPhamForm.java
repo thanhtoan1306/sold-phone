@@ -187,11 +187,16 @@ public class SanPhamForm extends javax.swing.JPanel {
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel9.setMaximumSize(new java.awt.Dimension(450, 100));
+        jPanel9.setMinimumSize(new java.awt.Dimension(450, 100));
+        jPanel9.setPreferredSize(new java.awt.Dimension(450, 100));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         txTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 102, 0))); // NOI18N
-        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 50));
+        txTimKiem.setMaximumSize(new java.awt.Dimension(300, 80));
+        txTimKiem.setMinimumSize(new java.awt.Dimension(300, 80));
+        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 80));
         txTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txTimKiemActionPerformed(evt);
@@ -202,7 +207,7 @@ public class SanPhamForm extends javax.swing.JPanel {
         jButton1.setBackground(new java.awt.Color(153, 204, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-find-and-replace-48.png"))); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
         jButton1.setText("Làm mới");
         jPanel3.add(jButton1);
 

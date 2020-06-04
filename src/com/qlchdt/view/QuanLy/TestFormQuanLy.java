@@ -15,15 +15,15 @@ import com.qlchdt.view.HienThiForm.HienThiPhieuNhap;
  */
 public class TestFormQuanLy extends javax.swing.JFrame {
 
-    QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
+   // QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
    // QuanLyKhachHang qlkh = new QuanLyKhachHang();
-   // QuanLyHoaDon qlhd = new QuanLyHoaDon();
-   // QuanLyNhaCungCap qlncc = new QuanLyNhaCungCap();
+    QuanLyHoaDon qlhd = new QuanLyHoaDon();
+    //QuanLyNhaCungCap qlncc = new QuanLyNhaCungCap();
    // QuanLyPhieuNhap qlpn = new QuanLyPhieuNhap();
     
     public TestFormQuanLy() {
         initComponents();
-        this.add(qlkm);
+        this.add(qlhd);
         //this.add(qlkm);
         //this.add(qlkh);
     }

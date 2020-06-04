@@ -5,15 +5,18 @@
  */
 package com.qlchdt.view;
 
+import com.qlchdt.service.ChuyenPanel;
+import com.qlchdt.view.QuanLy.FormBanHang;
+import java.awt.BorderLayout;
+
 /**
  *
  * @author User
  */
 public class TestHeThong extends javax.swing.JFrame {
 
-    /**
-     * Creates new form TestHeThong
-     */
+     FormBanHang fbh = new FormBanHang();
+     
     public TestHeThong() {
         initComponents();
     }
@@ -47,7 +50,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
-        jButton6 = new javax.swing.JButton();
+        btnBanHang = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
@@ -62,8 +65,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton18 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
-        jPanel11 = new javax.swing.JPanel();
-        rSPanelImage2 = new rojerusan.RSPanelImage();
+        plHienthi = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống");
@@ -215,24 +217,24 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.setOpaque(false);
         jPanel10.setPreferredSize(new java.awt.Dimension(250, 900));
 
-        jButton6.setBackground(new java.awt.Color(255, 212, 100));
-        jButton6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/ecommerce.png"))); // NOI18N
-        jButton6.setText("BÁN HÀNG");
-        jButton6.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton6.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton6.setIconTextGap(20);
-        jButton6.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        jButton6.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton6.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton6.setOpaque(false);
-        jButton6.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        btnBanHang.setBackground(new java.awt.Color(255, 212, 100));
+        btnBanHang.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/ecommerce.png"))); // NOI18N
+        btnBanHang.setText("BÁN HÀNG");
+        btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnBanHang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnBanHang.setIconTextGap(20);
+        btnBanHang.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnBanHang.setMaximumSize(new java.awt.Dimension(250, 50));
+        btnBanHang.setMinimumSize(new java.awt.Dimension(250, 50));
+        btnBanHang.setOpaque(false);
+        btnBanHang.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnBanHang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btnBanHangActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton6);
+        jPanel10.add(btnBanHang);
 
         jButton7.setBackground(new java.awt.Color(255, 212, 100));
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -475,27 +477,22 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel4.setMinimumSize(new java.awt.Dimension(1200, 900));
         jPanel4.setLayout(new java.awt.BorderLayout());
 
-        jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setMaximumSize(new java.awt.Dimension(1200, 900));
-        jPanel11.setMinimumSize(new java.awt.Dimension(1200, 900));
-        jPanel11.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 20));
-
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/background_giaodien.jpg"))); // NOI18N
-        rSPanelImage2.setMaximumSize(new java.awt.Dimension(1200, 900));
-        rSPanelImage2.setMinimumSize(new java.awt.Dimension(1200, 900));
-        rSPanelImage2.setPreferredSize(new java.awt.Dimension(1200, 900));
-        jPanel11.add(rSPanelImage2);
-
-        jPanel4.add(jPanel11, java.awt.BorderLayout.CENTER);
+        plHienthi.setBackground(new java.awt.Color(255, 255, 255));
+        plHienthi.setMaximumSize(new java.awt.Dimension(1200, 900));
+        plHienthi.setMinimumSize(new java.awt.Dimension(1200, 900));
+        plHienthi.setLayout(new java.awt.BorderLayout());
+        jPanel4.add(plHienthi, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(jPanel4, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
+       new ChuyenPanel(plHienthi, new FormBanHang());
+        
+        
+    }//GEN-LAST:event_btnBanHangActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
@@ -581,6 +578,7 @@ public class TestHeThong extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBanHang;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton11;
@@ -595,7 +593,6 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
@@ -606,7 +603,6 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
@@ -616,7 +612,7 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel plHienthi;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage2;
     // End of variables declaration//GEN-END:variables
 }

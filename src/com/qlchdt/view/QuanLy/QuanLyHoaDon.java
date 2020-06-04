@@ -5,6 +5,7 @@
  */
 package com.qlchdt.view.QuanLy;
 
+import com.qlchdt.service.format.XuatExcel;
 import com.qlchdt.view.HienThiForm.HienThiHoaDon;
 import java.awt.BorderLayout;
 
@@ -18,7 +19,7 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
 
     public QuanLyHoaDon() {
         initComponents();
-        this.add(formHienThi, BorderLayout.CENTER);
+        plHienThi.add(formHienThi,BorderLayout.CENTER);
     }
 
     /**
@@ -30,12 +31,78 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        plHienThi = new javax.swing.JPanel();
+
         setBackground(new java.awt.Color(204, 204, 204));
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
+
+        jPanel1.setMaximumSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 30));
+
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
+        jButton1.setText("Thêm");
+        jButton1.setMaximumSize(new java.awt.Dimension(140, 40));
+        jButton1.setMinimumSize(new java.awt.Dimension(140, 40));
+        jButton1.setPreferredSize(new java.awt.Dimension(140, 40));
+        jPanel1.add(jButton1);
+
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_delete_forever_30px_1.png"))); // NOI18N
+        jButton2.setText("Xóa");
+        jButton2.setMaximumSize(new java.awt.Dimension(140, 40));
+        jButton2.setMinimumSize(new java.awt.Dimension(140, 40));
+        jButton2.setPreferredSize(new java.awt.Dimension(140, 40));
+        jPanel1.add(jButton2);
+
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png"))); // NOI18N
+        jButton3.setText("Sửa");
+        jButton3.setMaximumSize(new java.awt.Dimension(140, 40));
+        jButton3.setMinimumSize(new java.awt.Dimension(140, 40));
+        jButton3.setPreferredSize(new java.awt.Dimension(140, 40));
+        jPanel1.add(jButton3);
+
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        jButton4.setText("Xuất Excel");
+        jButton4.setMaximumSize(new java.awt.Dimension(140, 40));
+        jButton4.setMinimumSize(new java.awt.Dimension(140, 40));
+        jButton4.setPreferredSize(new java.awt.Dimension(140, 40));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton4);
+
+        jButton5.setText("In PDF");
+        jButton5.setMaximumSize(new java.awt.Dimension(140, 40));
+        jButton5.setMinimumSize(new java.awt.Dimension(140, 40));
+        jButton5.setPreferredSize(new java.awt.Dimension(140, 40));
+        jPanel1.add(jButton5);
+
+        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        add(plHienThi, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        new XuatExcel().xuatFileExcelHoaDon();
+    }//GEN-LAST:event_jButton4ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel plHienThi;
     // End of variables declaration//GEN-END:variables
 }

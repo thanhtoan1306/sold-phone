@@ -4,7 +4,13 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/TestFormQuanLy.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/format/WritePDF.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/QuanLyHoaDon.java</file>
             <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/format/XuatExcel.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/service/ChuyenPanel.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/QuanLy/QuanLyNhaCungCap.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/HienThiForm/HienThiHoaDon.java</file>
+            <file>file:/C:/Users/User/Desktop/java_project/sold-phone/src/com/qlchdt/view/TestHeThong.java</file>
         </group>
     </open-files>
 </project-private>

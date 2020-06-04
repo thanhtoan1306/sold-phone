@@ -7,8 +7,10 @@ package com.qlchdt.service.format;
 
 import com.qlchdt.model.KhachHang;
 import com.qlchdt.model.KhuyenMai;
+import com.qlchdt.model.NhaCungCap;
 import com.qlchdt.service.KhachHangService;
 import com.qlchdt.service.KhuyenMaiService;
+import com.qlchdt.service.NhaCungCapService;
 import com.qlchdt.view.custom.LuaChonGhiExcel;
 import java.awt.FileDialog;
 import java.io.File;
@@ -201,6 +203,91 @@ public class NhapExcel {
                     } else {
                         KhuyenMai km = new KhuyenMai(ma, ten, dieukien, phantram, ngaybatdau, ngayketthuc);
                         qlkmBUS.add(km);
+                        countThem++;
+                    }
+                }
+            }
+            JOptionPane.showMessageDialog(null, "Đọc thành công, "
+                    + "Thêm " + countThem
+                    + "; Ghi đè " + countGhiDe
+                    + "; Bỏ qua " + countBoQua
+                    + ". Vui lòng làm mới để thấy kết quả");
+
+        } catch (Exception ex) {
+            JOptionPane.showMessageDialog(null, "Lỗi khi nhập dữ liệu từ file: " + ex.getMessage());
+        } finally {
+            try {
+                if (inputStream != null) {
+                    inputStream.close();
+                }
+            } catch (IOException ex) {
+                JOptionPane.showMessageDialog(null, "Lỗi khi đóng inputstream: " + ex.getMessage());
+            }
+        }
+    }
+    
+    
+        //Đọc file excel Nhà cung cấp
+    public void docFileExcelNhaCungCap() {
+        fd.setTitle("Nhập dữ liệu nhà cung cấp từ excel");
+        String url = getFile();
+        if (url == null) {
+            return;
+        }
+
+        FileInputStream inputStream = null;
+        try {
+            inputStream = new FileInputStream(new File(url));
+
+            HSSFWorkbook workbook = new HSSFWorkbook(inputStream);
+            HSSFSheet sheet = workbook.getSheetAt(0);
+            Iterator<Row> rowIterator = sheet.iterator();
+            Row row1 = rowIterator.next();
+
+            String hanhDongKhiTrung = "";
+            int countThem = 0;
+            int countGhiDe = 0;
+            int countBoQua = 0;
+
+            while (rowIterator.hasNext()) {
+                Row row = rowIterator.next();
+                Iterator<Cell> cellIterator = row.cellIterator();
+
+                while (cellIterator.hasNext()) {
+
+                    int stt = (int) cellIterator.next().getNumericCellValue();
+                    String ma = cellIterator.next().getStringCellValue();
+                    String ten = cellIterator.next().getStringCellValue();
+                    String diachi = cellIterator.next().getStringCellValue();
+                    String sdt = cellIterator.next().getStringCellValue();
+
+                    NhaCungCapService qlncc = new NhaCungCapService();
+                    NhaCungCap nccOLD = qlncc.getNhaCungCap(ma);
+
+                    if (nccOLD != null) {
+                        if (!hanhDongKhiTrung.contains("tất cả")) {
+                            MyTable mtb = new MyTable();
+                            mtb.setHeaders(new String[]{"", "Mã", "Tên", "Địa chỉ", "SDT"});
+                            mtb.addRow(new String[]{
+                                "Cũ:", nccOLD.getMaNCC(),
+                                nccOLD.getTenNCC(),
+                                nccOLD.getDiaChi(),
+                                nccOLD.getSDT(),});
+                            mtb.addRow(new String[]{
+                                "Mới:", ma, ten, diachi, sdt});
+
+                            LuaChonGhiExcel mop = new LuaChonGhiExcel(mtb, hanhDongKhiTrung);
+                            hanhDongKhiTrung = mop.getAnswer();
+                        }
+                        if (hanhDongKhiTrung.contains("Ghi đè")) {
+                            qlncc.update(ma, ten, diachi, sdt);
+                            countGhiDe++;
+                        } else {
+                            countBoQua++;
+                        }
+                    } else {
+                        NhaCungCap kh = new NhaCungCap(ma, ten, diachi, sdt);
+                        qlncc.add(kh);
                         countThem++;
                     }
                 }
