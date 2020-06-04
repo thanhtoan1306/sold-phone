@@ -11,51 +11,42 @@ package com.qlchdt.model;
  */
 public class TaiKhoan {
     
-    private String userName;
-    private String passWord;
-    private String maNV;
-    private String maQuyen;
+    private String tentk;
+    private String mk;
+    private String loaitk;
+    private int trangthai;
 
-    public TaiKhoan(String userName, String passWord, String maNV, String maQuyen) {
-        this.userName = userName;
-        this.passWord = passWord;
-        this.maNV = maNV;
-        this.maQuyen = maQuyen;
+    public String getTentk() {
+        return tentk;
     }
 
-    public String getUserName() {
-        return userName;
+    public void setTentk(String tentk) {
+        this.tentk = tentk;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public String getMk() {
+        return mk;
     }
 
-    public String getPassWord() {
-        return passWord;
+    public void setMk(String mk) {
+        this.mk = mk;
     }
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
+    public String getLoaitk() {
+        return loaitk;
     }
 
-    public String getMaNV() {
-        return maNV;
+    public void setLoaitk(String loaitk) {
+        this.loaitk = loaitk;
     }
 
-    public void setMaNV(String maNV) {
-        this.maNV = maNV;
+    public int getTrangthai() {
+        return trangthai;
     }
 
-    public String getMaQuyen() {
-        return maQuyen;
+    public void setTrangthai(int trangthai) {
+        this.trangthai = trangthai;
     }
-
-    public void setMaQuyen(String maQuyen) {
-        this.maQuyen = maQuyen;
-    }
-
-
     
     
 }

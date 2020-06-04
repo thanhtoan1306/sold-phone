@@ -166,7 +166,7 @@ class ZebraJTable extends javax.swing.JTable {
 
     public ZebraJTable(java.util.Vector<?> rowData,
             java.util.Vector<?> columnNames) {
-        super(rowData, columnNames);
+            //super(rowData, columnNames);
     }
 
     /**

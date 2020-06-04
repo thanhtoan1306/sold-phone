@@ -5,20 +5,11 @@
  */
 package com.qlchdt.view;
 
-import com.qlchdt.model.Quyen;
-import com.qlchdt.model.NhanVien;
+import com.chqldt.view.HeThong;
 import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.DocFile;
-import com.qlchdt.service.NhanVienService;
-import com.qlchdt.service.QuyenService;
 import com.qlchdt.service.TaiKhoanService;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -26,115 +17,25 @@ import javax.swing.JTextField;
  */
 public class DangNhap extends javax.swing.JFrame {
 
-    public static String saveFileName = "temp";
-    public static Quyen quyenLogin;
-    public static NhanVien nhanVienLogin;
-    public static TaiKhoan taiKhoanLogin;
-
+    /**
+     * Creates new form DangNhap1
+     */
     TaiKhoanService tks = new TaiKhoanService();
-
-    //HeThong ht= new HeThong();
+    HeThong ht= new HeThong();
     public DangNhap() {
         super("Đăng nhập hệ thống");
         this.setLocationRelativeTo(null);
         initComponents();
-
-        // add event Enter
-        KeyAdapter ka = new KeyAdapter() {
-            @Override
-            public void keyPressed(KeyEvent ke) {
-                if (ke.getKeyCode() == KeyEvent.VK_ENTER) {
-                    btnDangNhap.doClick();
-                }
-            }
-        };
-        txUserName.addKeyListener(ka);
-        txPassWord.addKeyListener(ka);
-
-        //focus
-        FocusListener fl = new FocusListener() {
-            @Override
-            public void focusGained(FocusEvent fe) {
-                if (fe.getSource() instanceof JTextField) {
-                    JTextField tx = (JTextField) fe.getSource();
-                    tx.select(0, tx.getText().length());
-
-                } else if (fe.getSource() instanceof JPasswordField) {
-                    JPasswordField tx = (JPasswordField) fe.getSource();
-                    tx.select(0, tx.getText().length());
-                }
-
-            }
-
-            @Override
-            public void focusLost(FocusEvent fe) {
-                if (fe.getSource() instanceof JTextField) {
-                    JTextField tx = (JTextField) fe.getSource();
-                    tx.select(0, 0);
-
-                } else if (fe.getSource() instanceof JPasswordField) {
-                    JPasswordField tx = (JPasswordField) fe.getSource();
-                    tx.select(0, 0);
-                }
-            }
-        };
-
-        txUserName.addFocusListener(fl);
-        txPassWord.addFocusListener(fl);
-
-        // auto focus to tenDangNhap
-        txUserName.requestFocus();
-
         String text = new DocFile(saveFileName).read();
         if (!text.equals("")) {
             try {
-                txUserName.setText(text.split(" ")[0]);
-                txPassWord.setText(text.split(" ")[1]);
-                checkRe.setSelected(true);
+                txtuser.setText(text.split(" ")[0]);
+                txtpass.setText(text.split(" ")[1]);
+                checkrem.setSelected(true);
 
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Lỗi Giữ đăng nhập");
             }
-        }
-    }
-
-    public void Login() {
-
-        String tentk = txUserName.getText();
-        String mk = txPassWord.getText();
-
-        TaiKhoanService qltk = new TaiKhoanService();
-        TaiKhoan tk = qltk.getTaiKhoan(tentk);
-
-        if (tk != null) {
-            // check xem nhân viên của tài khoản này có bị khóa (Ẩn) hay không
-            NhanVien nv = new NhanVienService().getNhanVien(tk.getMaNV());
-            // check password
-            if (tk.getPassWord().equals(mk)) {
-                taiKhoanLogin = tk;
-                nhanVienLogin = nv;
-                quyenLogin = new QuyenService().getQuyen(taiKhoanLogin.getMaQuyen());
-
-                // Đăng nhập thành công
-                if (checkRe.isSelected()) {
-                    // nếu giữ đăng nhập thì lưu tài khoản đăng nhập vào file
-                    new DocFile(saveFileName).write(taiKhoanLogin.getUserName() + " " + taiKhoanLogin.getPassWord());
-                } else {
-                    // nếu không thì xóa mọi dữ liệu trong file
-                    new DocFile(saveFileName).write("");
-                }
-
-                new HeThong().setVisible(true);
-                this.dispose();
-
-            } else {
-                JOptionPane.showMessageDialog(this, "Sai mật khẩu!");
-                txPassWord.requestFocus();
-            }
-
-        } else {
-            JOptionPane.showMessageDialog(this, "Sai tên đăng nhập!");
-            txUserName.requestFocus();
         }
     }
 
@@ -143,8 +44,155 @@ public class DangNhap extends javax.swing.JFrame {
      * WARNING: Do NOT modify this code. The content of this method is always
      * regenerated by the Form Editor.
      */
-    /*
-     String user=txtuser.getText();
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        rSButtonMetro1 = new rojerusan.RSButtonMetro();
+        rSButtonMetro2 = new rojerusan.RSButtonMetro();
+        checkrem = new javax.swing.JCheckBox();
+        txtuser = new rojeru_san.RSMTextFull();
+        txtpass = new rojeru_san.RSMPassView();
+        rSPanelImage1 = new rojerusan.RSPanelImage();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(153, 255, 255));
+
+        jPanel1.setBackground(new java.awt.Color(204, 255, 255));
+
+        jLabel1.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel1.setText("Mật khẩu");
+
+        jLabel2.setFont(new java.awt.Font("sansserif", 0, 14)); // NOI18N
+        jLabel2.setText("Tài khoản");
+
+        rSButtonMetro1.setText("Đăng nhập");
+        rSButtonMetro1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro1ActionPerformed(evt);
+            }
+        });
+
+        rSButtonMetro2.setText("Đóng");
+        rSButtonMetro2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rSButtonMetro2ActionPerformed(evt);
+            }
+        });
+
+        checkrem.setText("Ghi nhớ tài khoản và mật khẩu");
+        checkrem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkremActionPerformed(evt);
+            }
+        });
+
+        txtuser.setPlaceholder("Nhập tài khoản");
+
+        txtpass.setPlaceholder("Nhập mật khẩu");
+        txtpass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtpassActionPerformed(evt);
+            }
+        });
+
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/lock_login.png"))); // NOI18N
+
+        javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
+        rSPanelImage1.setLayout(rSPanelImage1Layout);
+        rSPanelImage1Layout.setHorizontalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 196, Short.MAX_VALUE)
+        );
+        rSPanelImage1Layout.setVerticalGroup(
+            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 197, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(21, Short.MAX_VALUE)
+                .addComponent(rSPanelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(checkrem)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addGap(25, 25, 25))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(40, 40, 40)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(rSPanelImage1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(9, 9, 9)
+                                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txtuser, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtpass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(checkrem)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rSButtonMetro1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(rSButtonMetro2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(23, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 591, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 260, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        getAccessibleContext().setAccessibleDescription("");
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void rSButtonMetro2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro2ActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_rSButtonMetro2ActionPerformed
+
+    private void txtpassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtpassActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtpassActionPerformed
+
+    private void rSButtonMetro1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rSButtonMetro1ActionPerformed
+       String user=txtuser.getText();
        String pass=txtpass.getText();
 //       if(user.length()==0 || pass.length()==0)
 //       {
@@ -170,212 +218,11 @@ public class DangNhap extends javax.swing.JFrame {
           txtuser.setText("");
           txtpass.setText("");
        }
-     */
-    @SuppressWarnings("unchecked")
-    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    }//GEN-LAST:event_rSButtonMetro1ActionPerformed
 
-        rSPanelImage2 = new rojerusan.RSPanelImage();
-        jPanel7 = new javax.swing.JPanel();
-        rSPanelImage1 = new rojerusan.RSPanelImage();
-        jPanel5 = new javax.swing.JPanel();
-        jPanel2 = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        txUserName = new rojeru_san.RSMTextFull();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        txPassWord = new rojeru_san.RSMPassView();
-        jPanel6 = new javax.swing.JPanel();
-        checkRe = new javax.swing.JCheckBox();
-        jPanel4 = new javax.swing.JPanel();
-        btnDangNhap = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jPanel8 = new javax.swing.JPanel();
-        jPanel9 = new javax.swing.JPanel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Đăng nhập");
-        setBackground(new java.awt.Color(153, 255, 255));
-        setMaximumSize(new java.awt.Dimension(770, 400));
-        setMinimumSize(new java.awt.Dimension(770, 400));
-        setPreferredSize(new java.awt.Dimension(770, 400));
-
-        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/background_login.jpg"))); // NOI18N
-        rSPanelImage2.setMaximumSize(new java.awt.Dimension(770, 400));
-        rSPanelImage2.setMinimumSize(new java.awt.Dimension(770, 400));
-        rSPanelImage2.setPreferredSize(new java.awt.Dimension(770, 400));
-        rSPanelImage2.setLayout(new java.awt.BorderLayout());
-
-        jPanel7.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel7.setMaximumSize(new java.awt.Dimension(660, 260));
-        jPanel7.setMinimumSize(new java.awt.Dimension(660, 260));
-        jPanel7.setOpaque(false);
-        jPanel7.setPreferredSize(new java.awt.Dimension(660, 260));
-
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/lock.png"))); // NOI18N
-        rSPanelImage1.setMaximumSize(new java.awt.Dimension(240, 240));
-        rSPanelImage1.setMinimumSize(new java.awt.Dimension(240, 240));
-        rSPanelImage1.setPreferredSize(new java.awt.Dimension(240, 240));
-
-        javax.swing.GroupLayout rSPanelImage1Layout = new javax.swing.GroupLayout(rSPanelImage1);
-        rSPanelImage1.setLayout(rSPanelImage1Layout);
-        rSPanelImage1Layout.setHorizontalGroup(
-            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
-        rSPanelImage1Layout.setVerticalGroup(
-            rSPanelImage1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 240, Short.MAX_VALUE)
-        );
-
-        jPanel7.add(rSPanelImage1);
-
-        jPanel5.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel5.setOpaque(false);
-        jPanel5.setLayout(new javax.swing.BoxLayout(jPanel5, javax.swing.BoxLayout.PAGE_AXIS));
-
-        jPanel2.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel2.setMaximumSize(new java.awt.Dimension(400, 60));
-        jPanel2.setMinimumSize(new java.awt.Dimension(400, 60));
-        jPanel2.setOpaque(false);
-        jPanel2.setPreferredSize(new java.awt.Dimension(400, 60));
-
-        jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Tài khoản");
-        jLabel2.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel2.add(jLabel2);
-
-        txUserName.setForeground(new java.awt.Color(153, 153, 153));
-        txUserName.setBordeColorFocus(new java.awt.Color(153, 153, 153));
-        txUserName.setBotonColor(new java.awt.Color(153, 153, 153));
-        txUserName.setPlaceholder("Nhập tài khoản");
-        jPanel2.add(txUserName);
-
-        jPanel5.add(jPanel2);
-
-        jPanel3.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel3.setMaximumSize(new java.awt.Dimension(400, 60));
-        jPanel3.setMinimumSize(new java.awt.Dimension(400, 60));
-        jPanel3.setOpaque(false);
-        jPanel3.setPreferredSize(new java.awt.Dimension(400, 60));
-
-        jLabel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Mật khẩu");
-        jLabel1.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel3.add(jLabel1);
-
-        txPassWord.setForeground(new java.awt.Color(153, 153, 153));
-        txPassWord.setBordeColorFocus(new java.awt.Color(153, 153, 153));
-        txPassWord.setBotonColor(new java.awt.Color(153, 153, 153));
-        txPassWord.setPlaceholder("Nhập mật khẩu");
-        txPassWord.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txPassWordActionPerformed(evt);
-            }
-        });
-        jPanel3.add(txPassWord);
-
-        jPanel5.add(jPanel3);
-
-        jPanel6.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel6.setMaximumSize(new java.awt.Dimension(400, 60));
-        jPanel6.setMinimumSize(new java.awt.Dimension(400, 60));
-        jPanel6.setOpaque(false);
-        java.awt.FlowLayout flowLayout1 = new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 10, 20);
-        flowLayout1.setAlignOnBaseline(true);
-        jPanel6.setLayout(flowLayout1);
-
-        checkRe.setBackground(new java.awt.Color(0, 153, 255));
-        checkRe.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        checkRe.setForeground(new java.awt.Color(255, 255, 255));
-        checkRe.setText("Ghi nhớ tài khoản và mật khẩu");
-        checkRe.setOpaque(false);
-        checkRe.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                checkReActionPerformed(evt);
-            }
-        });
-        jPanel6.add(checkRe);
-
-        jPanel5.add(jPanel6);
-
-        jPanel4.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel4.setMaximumSize(new java.awt.Dimension(400, 60));
-        jPanel4.setMinimumSize(new java.awt.Dimension(400, 60));
-        jPanel4.setOpaque(false);
-        jPanel4.setPreferredSize(new java.awt.Dimension(400, 60));
-
-        btnDangNhap.setBackground(new java.awt.Color(204, 204, 204));
-        btnDangNhap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnDangNhap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-login-50.png"))); // NOI18N
-        btnDangNhap.setText("Đăng nhập");
-        btnDangNhap.setPreferredSize(new java.awt.Dimension(170, 50));
-        btnDangNhap.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangNhapActionPerformed(evt);
-            }
-        });
-        jPanel4.add(btnDangNhap);
-
-        jButton3.setBackground(new java.awt.Color(204, 204, 204));
-        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-forgot-password-50.png"))); // NOI18N
-        jButton3.setText("Quên mật khẩu");
-        jButton3.setPreferredSize(new java.awt.Dimension(193, 50));
-        jPanel4.add(jButton3);
-
-        jPanel5.add(jPanel4);
-
-        jPanel7.add(jPanel5);
-
-        rSPanelImage2.add(jPanel7, java.awt.BorderLayout.CENTER);
-
-        jPanel8.setMaximumSize(new java.awt.Dimension(770, 100));
-        jPanel8.setMinimumSize(new java.awt.Dimension(770, 100));
-        jPanel8.setOpaque(false);
-
-        jPanel9.setBackground(new java.awt.Color(0, 153, 255));
-        jPanel9.setMaximumSize(new java.awt.Dimension(770, 80));
-        jPanel9.setMinimumSize(new java.awt.Dimension(770, 80));
-        jPanel9.setOpaque(false);
-        jPanel9.setPreferredSize(new java.awt.Dimension(770, 80));
-        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 20, 0));
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-management-96.png"))); // NOI18N
-        jPanel9.add(jLabel3);
-
-        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel4.setFont(new java.awt.Font("Times New Roman", 1, 36)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Quản lý cửa hàng điện thoại di động");
-        jPanel9.add(jLabel4);
-
-        jPanel8.add(jPanel9);
-
-        rSPanelImage2.add(jPanel8, java.awt.BorderLayout.PAGE_START);
-
-        getContentPane().add(rSPanelImage2, java.awt.BorderLayout.PAGE_START);
-
-        getAccessibleContext().setAccessibleDescription("");
-
-        pack();
-    }// </editor-fold>//GEN-END:initComponents
-
-    private void txPassWordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txPassWordActionPerformed
+    private void checkremActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkremActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txPassWordActionPerformed
-
-    private void checkReActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkReActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_checkReActionPerformed
-
-    private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-        Login();
-    }//GEN-LAST:event_btnDangNhapActionPerformed
+    }//GEN-LAST:event_checkremActionPerformed
 
     /**
      * @param args the command line arguments
@@ -404,12 +251,6 @@ public class DangNhap extends javax.swing.JFrame {
         }
         //</editor-fold>
         //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -421,26 +262,17 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
     }
-
+ public static String saveFileName = "temps";
+ public static TaiKhoan taiKhoanLogin;
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangNhap;
-    private javax.swing.JCheckBox checkRe;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JCheckBox checkrem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
-    private javax.swing.JPanel jPanel8;
-    private javax.swing.JPanel jPanel9;
+    private javax.swing.JPanel jPanel1;
+    private rojerusan.RSButtonMetro rSButtonMetro1;
+    private rojerusan.RSButtonMetro rSButtonMetro2;
     private rojerusan.RSPanelImage rSPanelImage1;
-    private rojerusan.RSPanelImage rSPanelImage2;
-    private rojeru_san.RSMPassView txPassWord;
-    private rojeru_san.RSMTextFull txUserName;
+    private rojeru_san.RSMPassView txtpass;
+    private rojeru_san.RSMTextFull txtuser;
     // End of variables declaration//GEN-END:variables
 }
