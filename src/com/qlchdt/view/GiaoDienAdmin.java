@@ -54,12 +54,11 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         HeThong.setBackground(new java.awt.Color(255, 255, 255));
-        HeThong.setForeground(new java.awt.Color(0, 0, 0));
         HeThong.setLayout(null);
 
         jButton5.setBackground(new java.awt.Color(189, 214, 218));
         jButton5.setForeground(new java.awt.Color(189, 214, 218));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/login_icon.jpg"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/login_icon.png"))); // NOI18N
         jButton5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(189, 214, 218), 0, true));
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -96,7 +95,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton6.setBounds(420, 10, 50, 50);
 
         jButton1.setBackground(new java.awt.Color(166, 243, 243));
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_nhanvien.png"))); // NOI18N
         jButton1.setText("    Nhân viên");
         jButton1.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -105,7 +103,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton1.setBounds(0, 330, 160, 45);
 
         jButton3.setBackground(new java.awt.Color(166, 243, 243));
-        jButton3.setForeground(new java.awt.Color(0, 0, 0));
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_user.png"))); // NOI18N
         jButton3.setText("    Khách hàng");
         jButton3.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -114,7 +111,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton3.setBounds(0, 390, 160, 45);
 
         jButton4.setBackground(new java.awt.Color(166, 243, 243));
-        jButton4.setForeground(new java.awt.Color(0, 0, 0));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_cungcap.png"))); // NOI18N
         jButton4.setText("    Nhà cung cấp");
         jButton4.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -123,7 +119,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton4.setBounds(0, 450, 160, 45);
 
         jButton12.setBackground(new java.awt.Color(166, 243, 243));
-        jButton12.setForeground(new java.awt.Color(0, 0, 0));
         jButton12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_key.png"))); // NOI18N
         jButton12.setText("    Tài khoản");
         jButton12.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -132,7 +127,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton12.setBounds(0, 510, 160, 45);
 
         jButton13.setBackground(new java.awt.Color(166, 243, 243));
-        jButton13.setForeground(new java.awt.Color(0, 0, 0));
         jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_quyen.png"))); // NOI18N
         jButton13.setText("    Quyền");
         jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -141,7 +135,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton13.setBounds(0, 570, 160, 45);
 
         jButton14.setBackground(new java.awt.Color(166, 243, 243));
-        jButton14.setForeground(new java.awt.Color(0, 0, 0));
         jButton14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_thongke.png"))); // NOI18N
         jButton14.setText("    Thống kê");
         jButton14.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -150,7 +143,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton14.setBounds(0, 630, 160, 45);
 
         jButton16.setBackground(new java.awt.Color(166, 243, 243));
-        jButton16.setForeground(new java.awt.Color(0, 0, 0));
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_dienthoai.png"))); // NOI18N
         jButton16.setText("    Sản phẩm");
         jButton16.setFocusTraversalPolicyProvider(true);
@@ -165,7 +157,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton16.setBounds(0, 90, 160, 45);
 
         jButton18.setBackground(new java.awt.Color(166, 243, 243));
-        jButton18.setForeground(new java.awt.Color(0, 0, 0));
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_hoadon.png"))); // NOI18N
         jButton18.setText("     Hóa đơn ");
         jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -174,7 +165,6 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton18.setBounds(0, 150, 160, 45);
 
         jButton19.setBackground(new java.awt.Color(166, 243, 243));
-        jButton19.setForeground(new java.awt.Color(0, 0, 0));
         jButton19.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_khmai.png"))); // NOI18N
         jButton19.setText("    Khuyến mãi");
         jButton19.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
@@ -183,28 +173,24 @@ public class GiaoDienAdmin extends javax.swing.JFrame {
         jButton19.setBounds(0, 270, 160, 45);
 
         jButton20.setBackground(new java.awt.Color(166, 243, 243));
-        jButton20.setForeground(new java.awt.Color(0, 0, 0));
         jButton20.setText("          Phiếu nhập");
         HeThong.add(jButton20);
         jButton20.setBounds(0, 210, 160, 45);
 
-        jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel15.setText("Đăng xuất");
         HeThong.add(jLabel15);
-        jLabel15.setBounds(290, 60, 90, 15);
+        jLabel15.setBounds(290, 60, 90, 14);
 
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
         jLabel17.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel17.setText("Thoát");
         HeThong.add(jLabel17);
-        jLabel17.setBounds(420, 60, 50, 15);
+        jLabel17.setBounds(420, 60, 50, 14);
 
-        jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel12.setText("Đổi mật khẩu");
         HeThong.add(jLabel12);
-        jLabel12.setBounds(190, 60, 90, 15);
+        jLabel12.setBounds(190, 60, 90, 14);
 
         jLabel5.setBackground(new java.awt.Color(166, 243, 243));
         jLabel5.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(177, 191, 188), 1, true));

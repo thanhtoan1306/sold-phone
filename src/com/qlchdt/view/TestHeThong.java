@@ -5,6 +5,8 @@
  */
 package com.qlchdt.view;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author User
@@ -138,6 +140,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton2.setOpaque(false);
         jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -175,6 +182,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton4.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton4.setOpaque(false);
         jButton4.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jButton4);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -544,6 +556,36 @@ public class TestHeThong extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int input =JOptionPane.showConfirmDialog(null,"Bạn có chắc không");
+        if(input==JOptionPane.YES_OPTION)
+        {
+        System.exit(0);
+        }
+        else
+        {
+            dispose();
+            TestHeThong t =new TestHeThong();
+            t.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int input =JOptionPane.showConfirmDialog(null,"Bạn có chắc không");
+        if(input==JOptionPane.YES_OPTION)
+        {
+            dispose();
+            DangNhap dn = new DangNhap();
+            dn.setVisible(true);
+        }
+        else
+        {
+            dispose();
+            TestHeThong t =new TestHeThong();
+            t.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
