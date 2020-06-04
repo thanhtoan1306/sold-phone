@@ -5,7 +5,6 @@
  */
 package com.qlchdt.dao;
 
-import com.qlchdt.dao.JDBCConnection;
 import com.qlchdt.model.TaiKhoan;
 import java.sql.Connection;
 
@@ -14,7 +13,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -22,63 +20,27 @@ import javax.swing.JOptionPane;
  */
 public class TaiKhoanDao {
 
-    JDBCConnection connection;
-
-      
-
-    public TaiKhoanDao() {
-
+JDBCConnection connection;
+    public  TaiKhoanDao()  
+    {        
     }
-
-    public ArrayList<TaiKhoan> readDB() {
+    public ArrayList<TaiKhoan> readDB()
+    {
         connection = new JDBCConnection();
-        ArrayList<TaiKhoan> dstk = new ArrayList<>();
+        ArrayList<TaiKhoan> taikhoan = new ArrayList<TaiKhoan>();
         try {
-            String qry = "SELECT * FROM taikhoan";
-            ResultSet r = connection.sqlQuery(qry);
-            if (r != null) {
-                while (r.next()) {
-                    String ten = r.getString("TenTK");
-                    String pass = r.getString("MK");
-                    String manv = r.getString("MaNV");
-                    String maquyen = r.getString("MaQuyen");
-                    
-                    dstk.add(new TaiKhoan(ten, pass, manv, maquyen));
-                }
+            String sql = "SELECT * FROM taikhoan";
+            ResultSet rs = connection.sqlQuery(sql);
+            while (rs.next()) 
+            {
+                TaiKhoan tk = new TaiKhoan();
+                tk.setTentk(rs.getString("TenTK"));
+                tk.setMk(rs.getString("MK"));
+                taikhoan.add(tk);
             }
-
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "-- ERROR! Lỗi đọc dữ liệu bảng tài khoản");
-        } finally {
-            connection.closeConnect();
-        }
-        return dstk;
-    }
-
-    public Boolean add(TaiKhoan tk) {
-        connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("INSERT INTO `taikhoan` (`TenTK`, `MK`, `MaNV`, `MAQuyen`) VALUES ('"
-                + tk.getUserName()+ "', '" + tk.getPassWord()+ "', '" + tk.getMaNV() + "', '" + tk.getMaQuyen() + "');");
-        connection.closeConnect();
-        return ok;
-    }
-
-    public Boolean delete(String username) {
-        connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("DELETE FROM `taikhoan` WHERE `taikhoan`.`TenTK` = '" + username + "'");
-        connection.closeConnect();
-        return ok;
-    }
-
-    public Boolean update(String username, String pass, String maNV, String maQuyen) {
-        connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("Update taikhoan Set MK='" + pass + "',MaNV='" + maNV
-                + "',MaQuyen='" + maQuyen + "' where TenTK='" + username + "'");
-        connection.closeConnect();
-        return ok;
-    }
-
-    public void close() {
-        connection.closeConnect();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } 
+        return taikhoan;
     }
 }
