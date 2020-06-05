@@ -5,7 +5,6 @@
  */
 package com.qlchdt.view;
 
-import com.chqldt.view.HeThong;
 import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.DocFile;
 import com.qlchdt.service.TaiKhoanService;
@@ -21,7 +20,7 @@ public class DangNhap extends javax.swing.JFrame {
      * Creates new form DangNhap1
      */
     TaiKhoanService tks = new TaiKhoanService();
-    HeThong ht= new HeThong();
+   // HeThong ht= new HeThong();
     public DangNhap() {
         super("Đăng nhập hệ thống");
         this.setLocationRelativeTo(null);
@@ -202,7 +201,7 @@ public class DangNhap extends javax.swing.JFrame {
        {   
            JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
            this.setVisible(false);
-           ht.setVisible(true);
+         //  ht.setVisible(true);
            if(checkrem.isSelected())
            {
                // mã hóa ra tiếng trung

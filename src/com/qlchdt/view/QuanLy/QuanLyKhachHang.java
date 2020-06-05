@@ -23,7 +23,7 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
 
     public QuanLyKhachHang() {
         initComponents();
-        plKhachHang.add(formHienThi);
+        plHienThi.add(formHienThi);
     }
     //xóa
     private void btnXoaMouseClicked() {
@@ -75,19 +75,45 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        plHienThi = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
-        plKhachHang = new javax.swing.JPanel();
 
         setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setPreferredSize(new java.awt.Dimension(1115, 80));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+        jPanel4.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel4.setMaximumSize(new java.awt.Dimension(1200, 50));
+        jPanel4.setMinimumSize(new java.awt.Dimension(1200, 50));
+        jPanel4.setPreferredSize(new java.awt.Dimension(1200, 50));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("KHÁCH HÀNG");
+        jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setMinimumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setPreferredSize(new java.awt.Dimension(300, 58));
+        jPanel4.add(jLabel1);
+
+        add(jPanel4, java.awt.BorderLayout.PAGE_START);
+
+        plHienThi.setBackground(new java.awt.Color(0, 102, 102));
+        plHienThi.setLayout(new java.awt.BorderLayout());
+        add(plHienThi, java.awt.BorderLayout.CENTER);
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
+        jPanel1.setMaximumSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -139,35 +165,28 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
         });
         jPanel1.add(jButton2);
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
-        jPanel2.setLayout(new java.awt.BorderLayout());
-
-        plKhachHang.setLayout(new java.awt.CardLayout());
-        jPanel2.add(plKhachHang, java.awt.BorderLayout.CENTER);
-
-        add(jPanel2, java.awt.BorderLayout.CENTER);
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       btnSuaMouseClicked();
-    }//GEN-LAST:event_btnSuaActionPerformed
-
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        btnThemMouseClicked();
-    }//GEN-LAST:event_btnThemActionPerformed
-
-    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        btnXoaMouseClicked();
-    }//GEN-LAST:event_btnXoaActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-            new XuatExcel().xuatFileExcelKhachHang();
+        new XuatExcel().xuatFileExcelKhachHang();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new NhapExcel().docFileExcelKhachhang();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+        btnSuaMouseClicked();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+        btnXoaMouseClicked();
+    }//GEN-LAST:event_btnXoaActionPerformed
+
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
+        btnThemMouseClicked();
+    }//GEN-LAST:event_btnThemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -176,8 +195,9 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel plKhachHang;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel plHienThi;
     // End of variables declaration//GEN-END:variables
 }

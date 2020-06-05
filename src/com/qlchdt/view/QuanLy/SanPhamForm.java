@@ -208,7 +208,7 @@ public class SanPhamForm extends javax.swing.JPanel {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
-        jButton1.setText("Làm mới");
+        jButton1.setText("LÀM MỚI");
         jPanel3.add(jButton1);
 
         jPanel9.add(jPanel3);
@@ -242,7 +242,8 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel5.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         txMaSP.setEditable(false);
-        txMaSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txMaSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txMaSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txMaSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txMaSPActionPerformed(evt);
@@ -251,7 +252,8 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel5.add(txMaSP);
 
         txHSP.setEditable(false);
-        txHSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hãng sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txHSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txHSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hãng sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel5.add(txHSP);
 
         jPanel8.add(jPanel5);
@@ -260,18 +262,21 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 40));
 
         txDonGia.setEditable(false);
-        txDonGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txDonGia.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txDonGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giá sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel6.add(txDonGia);
 
         txTenSP.setEditable(false);
-        txTenSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txTenSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txTenSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tên sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel6.add(txTenSP);
 
         jPanel8.add(jPanel6);
 
         jPanel7.setLayout(new java.awt.GridLayout(1, 0));
 
-        txSoLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txSoLuong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        txSoLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel7.add(txSoLuong);
 
         jPanel8.add(jPanel7);
@@ -307,22 +312,21 @@ public class SanPhamForm extends javax.swing.JPanel {
     }//GEN-LAST:event_txMaSPActionPerformed
 
     private void btnChonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonActionPerformed
-        try {
-            String masp = txMaSP.getText();
-            int soluong = Integer.parseInt(txSoLuong.getText());
-            if (soluong > 0) {
-                this._target.addChiTiet(masp, soluong);
-                // hdbh.refreshTable();
+ try {
+                String masp = txMaSP.getText();
+                int soluong = Integer.parseInt(txSoLuong.getText());
+                if (soluong > 0) {
+                    this._target.addChiTiet(masp, soluong);
+                    
+                } else {
+                    JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số dương!");
+                    txSoLuong.requestFocus();
+                }
 
-            } else {
-                JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số dương!");
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số nguyên!");
                 txSoLuong.requestFocus();
             }
-
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(txSoLuong, "Số lượng phải là số nguyên!");
-            txSoLuong.requestFocus();
-        }
     }//GEN-LAST:event_btnChonActionPerformed
 
 

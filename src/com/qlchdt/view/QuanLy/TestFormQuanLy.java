@@ -15,7 +15,7 @@ import com.qlchdt.view.HienThiForm.HienThiPhieuNhap;
  */
 public class TestFormQuanLy extends javax.swing.JFrame {
 
-   // QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
+    QuanLyKhuyenMai qlkm = new QuanLyKhuyenMai();
    // QuanLyKhachHang qlkh = new QuanLyKhachHang();
     QuanLyHoaDon qlhd = new QuanLyHoaDon();
     //QuanLyNhaCungCap qlncc = new QuanLyNhaCungCap();

@@ -61,7 +61,6 @@ public class HoaDonBanHangForm extends FormHang {
 
     ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
 
-
     public HoaDonBanHangForm() {
 
         initComponents();
@@ -90,6 +89,7 @@ public class HoaDonBanHangForm extends FormHang {
                 txGioLap.setText(time);
                 txNgayLap.setText(date);
                 if (txKH.getText().equals("")
+                        || txKhuyenMai.getText().equals("")
                         || dscthd.isEmpty()) {
                     btnThanhToan.setEnabled(false);
                 } else {
@@ -118,7 +118,7 @@ public class HoaDonBanHangForm extends FormHang {
 
     private void btnThanhToanOnClick() {
 
-   HoaDon hd = new HoaDon(
+        HoaDon hd = new HoaDon(
                 txMaHD.getText(),
                 "E02",
                 khachHang.getMaKH(),
@@ -131,11 +131,11 @@ public class HoaDonBanHangForm extends FormHang {
         for (ChiTietHoaDon ct : dscthd) {
             qlcthd.add(ct);
         }
-        
+
         int reply = JOptionPane.showConfirmDialog(getRootPane(),
-                        "Thanh toán thành công, bạn có muốn IN HÓA ĐƠN?", "Thành công",
-                        JOptionPane.YES_NO_OPTION);
-        if(reply == JOptionPane.OK_OPTION) {
+                "Thanh toán thành công, bạn có muốn IN HÓA ĐƠN?", "Thành công",
+                JOptionPane.YES_NO_OPTION);
+        if (reply == JOptionPane.OK_OPTION) {
             new WritePDF().writeHoaDon(txMaHD.getText());
         }
         txMaHD.setText(qlhd.getNextID());
@@ -190,6 +190,7 @@ public class HoaDonBanHangForm extends FormHang {
                 }
                 cthd.setSoLuong(tongSoLuong); // có rồi thì thay đổi số lượng
                 daCo = true;
+                 
             }
         }
 
@@ -199,11 +200,12 @@ public class HoaDonBanHangForm extends FormHang {
                 return;
             }
             dscthd.add(new ChiTietHoaDon(qlhd.getNextID(), masp, soluong, sp.getDonGia()));
-
-            // cập nhật lại table
-            setDataToTable(dscthd, tbChiTietHoaDon);
+           
 
         }
+        
+         // cập nhật lại table
+            setDataToTable(dscthd, tbChiTietHoaDon);
     }
 
     public void setDataToTable(ArrayList<ChiTietHoaDon> arr, MyTable t) {
@@ -233,8 +235,6 @@ public class HoaDonBanHangForm extends FormHang {
         // check khuyến mãi
         t.addRow(new String[]{"", "", "", "", "", ""});
         t.addRow(new String[]{"", "", "", "", "Tổng tiền", PriceFormatter.format(tongtien)});
-        
-        
         if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongtien) {
             float giaTriKhuyenMai = tongtien * khuyenMai.getPhanTramKM() / 100;
             float tongTienSauKhuyenMai = tongtien - giaTriKhuyenMai;
@@ -284,11 +284,14 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel3.setPreferredSize(new java.awt.Dimension(546, 45));
+        jPanel3.setMinimumSize(new java.awt.Dimension(52, 50));
+        jPanel3.setPreferredSize(new java.awt.Dimension(546, 50));
         jPanel3.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         txMaHD.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txMaHD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txMaHD.setMinimumSize(new java.awt.Dimension(16, 45));
+        txMaHD.setPreferredSize(new java.awt.Dimension(16, 45));
         txMaHD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txMaHDActionPerformed(evt);
@@ -297,7 +300,9 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel3.add(txMaHD);
 
         txTongTien.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txTongTien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txTongTien.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tiên thanh toán(triệu)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txTongTien.setMinimumSize(new java.awt.Dimension(16, 45));
+        txTongTien.setPreferredSize(new java.awt.Dimension(16, 45));
         jPanel3.add(txTongTien);
 
         jPanel4.add(jPanel3);
@@ -310,7 +315,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel5.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         txKH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txKH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txKH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txKH.setMinimumSize(new java.awt.Dimension(200, 45));
         txKH.setPreferredSize(new java.awt.Dimension(200, 45));
         jPanel5.add(txKH);
@@ -329,7 +334,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel7.add(jPanel5);
 
         txNV.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txNV.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel7.add(txNV);
 
         jPanel4.add(jPanel7);
@@ -340,7 +345,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel10.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         txGioLap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txGioLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txGioLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giờ Lập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel10.add(txGioLap);
 
         txNgayLap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -348,7 +353,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel10.add(txNgayLap);
 
         txKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txKhuyenMai.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txKhuyenMai.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khuyến mãi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txKhuyenMai.setPreferredSize(new java.awt.Dimension(200, 45));
         txKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -398,6 +403,11 @@ public class HoaDonBanHangForm extends FormHang {
         btnXoa.setText("Xóa");
         btnXoa.setBorder(null);
         btnXoa.setPreferredSize(new java.awt.Dimension(120, 40));
+        btnXoa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXoaActionPerformed(evt);
+            }
+        });
         jPanel6.add(btnXoa);
 
         btnSua.setBackground(new java.awt.Color(153, 153, 153));
@@ -406,14 +416,24 @@ public class HoaDonBanHangForm extends FormHang {
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.setPreferredSize(new java.awt.Dimension(120, 40));
+        btnSua.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSuaActionPerformed(evt);
+            }
+        });
         jPanel6.add(btnSua);
 
         btnLamMoi.setBackground(new java.awt.Color(0, 204, 255));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
-        btnLamMoi.setText("Thêm");
-        btnLamMoi.setPreferredSize(new java.awt.Dimension(120, 40));
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.setPreferredSize(new java.awt.Dimension(150, 40));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
+            }
+        });
         jPanel6.add(btnLamMoi);
 
         add(jPanel6);
@@ -492,6 +512,18 @@ public class HoaDonBanHangForm extends FormHang {
     private void btnThanhToanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThanhToanActionPerformed
         btnThanhToanOnClick();
     }//GEN-LAST:event_btnThanhToanActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+         setDataToTable(dscthd, tbChiTietHoaDon);
+    }//GEN-LAST:event_btnLamMoiActionPerformed
+
+    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
+          btnSuaOnClick();
+    }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
+         btnXoaOnClick();
+    }//GEN-LAST:event_btnXoaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -16,7 +16,7 @@ public class TestBanHang extends javax.swing.JFrame {
     /**
      * Creates new form TestBanHang
      */
-    FormBanHang fbh = new FormBanHang();
+    QuanLyBanHang fbh = new QuanLyBanHang();
 
     // ChonSanPhamForm cspbh = new ChonSanPhamForm();
     //HoaDonBanHangForm  hdbh = new HoaDonBanHangForm();

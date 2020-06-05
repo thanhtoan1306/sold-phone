@@ -108,6 +108,8 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel2 = new javax.swing.JPanel();
+        plKhuyenMai = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
@@ -115,14 +117,22 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
         btnKetThuc = new javax.swing.JButton();
         btnNhapExcel = new javax.swing.JButton();
         btnXuatExcel = new javax.swing.JButton();
-        plKhuyenMai = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1200, 900));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        plKhuyenMai.setLayout(new java.awt.BorderLayout());
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1108, 80));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
+        jPanel1.setMinimumSize(new java.awt.Dimension(695, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1108, 100));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
         btnThem.setText("Thêm");
@@ -184,10 +194,28 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
         });
         jPanel1.add(btnXuatExcel);
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
+        plKhuyenMai.add(jPanel1, java.awt.BorderLayout.PAGE_END);
 
-        plKhuyenMai.setLayout(new java.awt.BorderLayout());
-        add(plKhuyenMai, java.awt.BorderLayout.CENTER);
+        jPanel2.add(plKhuyenMai, java.awt.BorderLayout.CENTER);
+
+        add(jPanel2, java.awt.BorderLayout.CENTER);
+
+        jPanel3.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel3.setMaximumSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("KHUYẾN MÃI");
+        jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setMinimumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setPreferredSize(new java.awt.Dimension(300, 58));
+        jPanel3.add(jLabel1);
+
+        add(jPanel3, java.awt.BorderLayout.PAGE_START);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -222,7 +250,10 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton btnXuatExcel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel plKhuyenMai;
     // End of variables declaration//GEN-END:variables
 }
