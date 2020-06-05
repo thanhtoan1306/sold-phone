@@ -99,6 +99,8 @@ public class HienThiNhaCungCap extends javax.swing.JPanel {
         jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
 
+        setBackground(new java.awt.Color(255, 255, 255));
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setPreferredSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
@@ -121,6 +123,7 @@ public class HienThiNhaCungCap extends javax.swing.JPanel {
         cbTypeSearch.setPreferredSize(new java.awt.Dimension(100, 40));
         jPanel4.add(cbTypeSearch);
 
+        txTim.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txTim.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel4.add(txTim);
 

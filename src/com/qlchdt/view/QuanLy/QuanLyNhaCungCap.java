@@ -69,25 +69,48 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel3 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        plHienThi = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         btnNhapExcel = new javax.swing.JButton();
         btnXuatExcel = new javax.swing.JButton();
-        plHienThi = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
 
+        jPanel3.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel3.setMaximumSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setMinimumSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setPreferredSize(new java.awt.Dimension(1200, 50));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("NHÀ CUNG CẤP");
+        jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setMinimumSize(new java.awt.Dimension(300, 58));
+        jLabel1.setPreferredSize(new java.awt.Dimension(300, 58));
+        jPanel3.add(jLabel1);
+
+        add(jPanel3, java.awt.BorderLayout.PAGE_START);
+
+        plHienThi.setLayout(new java.awt.BorderLayout());
+        add(plHienThi, java.awt.BorderLayout.CENTER);
+
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 80));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 80));
-        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 15));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thao tác", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
+        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 100));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 5));
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
         jButton1.setText("Thêm");
-        jButton1.setPreferredSize(new java.awt.Dimension(130, 50));
+        jButton1.setPreferredSize(new java.awt.Dimension(130, 40));
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -97,7 +120,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png"))); // NOI18N
         jButton2.setText("Xóa");
-        jButton2.setPreferredSize(new java.awt.Dimension(130, 50));
+        jButton2.setPreferredSize(new java.awt.Dimension(130, 40));
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
@@ -107,7 +130,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png"))); // NOI18N
         jButton3.setText("Sửa");
-        jButton3.setPreferredSize(new java.awt.Dimension(130, 50));
+        jButton3.setPreferredSize(new java.awt.Dimension(130, 40));
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -135,10 +158,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
         });
         jPanel1.add(btnXuatExcel);
 
-        add(jPanel1, java.awt.BorderLayout.PAGE_START);
-
-        plHienThi.setLayout(new java.awt.BorderLayout());
-        add(plHienThi, java.awt.BorderLayout.CENTER);
+        add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -169,7 +189,9 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel plHienThi;
     // End of variables declaration//GEN-END:variables
 }
