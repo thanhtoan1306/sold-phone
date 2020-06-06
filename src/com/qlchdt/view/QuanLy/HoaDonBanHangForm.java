@@ -127,6 +127,7 @@ public class HoaDonBanHangForm extends FormHang {
                 LocalTime.parse(txGioLap.getText()),
                 Float.parseFloat(txTongTien.getText()));
         qlhd.add(hd);
+    //qlhd.update(hd);
 
         for (ChiTietHoaDon ct : dscthd) {
             qlcthd.add(ct);

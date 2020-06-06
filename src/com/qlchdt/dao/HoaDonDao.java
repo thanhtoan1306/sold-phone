@@ -60,7 +60,7 @@ public class HoaDonDao {
                 + hd.getMaKhuyenMai() + "','"
                 + hd.getNgayLap() + "','" 
                 + hd.getGioLap() + "','" 
-                + hd.getTongTien() + "');");
+                + hd.getTongTien() + "');") ;
         connection.closeConnect();
         return success;
     }

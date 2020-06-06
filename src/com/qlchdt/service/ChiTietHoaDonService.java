@@ -65,7 +65,7 @@ public class ChiTietHoaDonService {
         }
         // xóa chi tiết cũ cùng mã
         dscthd.removeAll(toRemove);
-        chiTietHoaDonDao.delete(ct.getMaHoaDon(), ct.getMaSanPham());
+       chiTietHoaDonDao.delete(ct.getMaHoaDon(), ct.getMaSanPham());
 
         // thêm chi tiết mới có số lượng = tổng số lượng tìm ở trên
         ct.setSoLuong(tongSoLuong);
@@ -86,6 +86,8 @@ public class ChiTietHoaDonService {
         return add(hd);
     }
 
+    
+    
     public Boolean update(String maHoaDon, String maSanPham, int soLuong, float donGia) {
         ChiTietHoaDon hd = new ChiTietHoaDon(maHoaDon, maSanPham, soLuong, donGia);
         return update(hd);
@@ -109,7 +111,7 @@ public class ChiTietHoaDonService {
         float tong = 0;
         for (ChiTietHoaDon ct : dscthd) {
             if (ct.getMaHoaDon().equals(_mahd)) {
-                tong += ct.getSoLuong() * ct.getDonGia();
+                tong += ct.getSoLuong() * ct.getDonGia(); // đang fix
             }
         }
         Boolean success = hoaDonService.updateTongTien(_mahd, tong);

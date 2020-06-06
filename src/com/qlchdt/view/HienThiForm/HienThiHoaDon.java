@@ -394,7 +394,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
         txMaHoaDon.setEditable(false);
         txMaHoaDon.setBorder(javax.swing.BorderFactory.createTitledBorder("Mã hóa đơn"));
-        txMaHoaDon.setPreferredSize(new java.awt.Dimension(160, 65));
+        txMaHoaDon.setPreferredSize(new java.awt.Dimension(100, 65));
         jPanel8.add(txMaHoaDon);
 
         txMaNhanVien.setEditable(false);

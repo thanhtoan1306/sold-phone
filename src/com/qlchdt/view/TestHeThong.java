@@ -11,6 +11,7 @@ import com.qlchdt.view.QuanLy.QuanLyHoaDon;
 import com.qlchdt.view.QuanLy.QuanLyKhachHang;
 import com.qlchdt.view.QuanLy.QuanLyKhuyenMai;
 import com.qlchdt.view.QuanLy.QuanLyNhaCungCap;
+import com.qlchdt.view.QuanLy.QuanLyQuyen;
 import java.awt.BorderLayout;
 
 /**
@@ -61,11 +62,11 @@ public class TestHeThong extends javax.swing.JFrame {
         btnHoaDon = new javax.swing.JButton();
         jButton11 = new javax.swing.JButton();
         btnKhuyenMai = new javax.swing.JButton();
-        jButton13 = new javax.swing.JButton();
+        btnNhanVien = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
         btnNhaCungCap = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
-        jButton17 = new javax.swing.JButton();
+        btnQuyen = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
@@ -73,7 +74,8 @@ public class TestHeThong extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống");
-        setMinimumSize(new java.awt.Dimension(1600, 1100));
+        setMinimumSize(new java.awt.Dimension(1400, 900));
+        setPreferredSize(new java.awt.Dimension(1400, 900));
 
         jPanel1.setBackground(new java.awt.Color(3, 81, 145));
         jPanel1.setMaximumSize(new java.awt.Dimension(1400, 130));
@@ -119,6 +121,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel3.setOpaque(false);
         jPanel3.setPreferredSize(new java.awt.Dimension(100, 80));
 
+        jButton1.setBackground(new java.awt.Color(255, 102, 102));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password.png"))); // NOI18N
         jButton1.setToolTipText("");
         jButton1.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -140,6 +143,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel5.setOpaque(false);
         jPanel5.setPreferredSize(new java.awt.Dimension(100, 80));
 
+        jButton2.setBackground(new java.awt.Color(255, 102, 102));
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/logout.png"))); // NOI18N
         jButton2.setToolTipText("");
         jButton2.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -178,6 +182,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel7.setOpaque(false);
         jPanel7.setPreferredSize(new java.awt.Dimension(100, 80));
 
+        jButton4.setBackground(new java.awt.Color(255, 102, 102));
         jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/shutdown.png"))); // NOI18N
         jButton4.setToolTipText("");
         jButton4.setMaximumSize(new java.awt.Dimension(50, 50));
@@ -358,24 +363,24 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(btnKhuyenMai);
 
-        jButton13.setBackground(new java.awt.Color(247, 167, 26));
-        jButton13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employee.png"))); // NOI18N
-        jButton13.setText("NHÂN VIÊN");
-        jButton13.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton13.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton13.setIconTextGap(20);
-        jButton13.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        jButton13.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton13.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton13.setOpaque(false);
-        jButton13.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton13.addActionListener(new java.awt.event.ActionListener() {
+        btnNhanVien.setBackground(new java.awt.Color(247, 167, 26));
+        btnNhanVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employee.png"))); // NOI18N
+        btnNhanVien.setText("NHÂN VIÊN");
+        btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnNhanVien.setIconTextGap(20);
+        btnNhanVien.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnNhanVien.setMaximumSize(new java.awt.Dimension(250, 50));
+        btnNhanVien.setMinimumSize(new java.awt.Dimension(250, 50));
+        btnNhanVien.setOpaque(false);
+        btnNhanVien.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton13ActionPerformed(evt);
+                btnNhanVienActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton13);
+        jPanel10.add(btnNhanVien);
 
         btnKhachHang.setBackground(new java.awt.Color(247, 167, 26));
         btnKhachHang.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -434,24 +439,24 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(jButton16);
 
-        jButton17.setBackground(new java.awt.Color(247, 167, 26));
-        jButton17.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton17.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/permission.png"))); // NOI18N
-        jButton17.setText("QUYỀN");
-        jButton17.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton17.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton17.setIconTextGap(20);
-        jButton17.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        jButton17.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton17.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton17.setOpaque(false);
-        jButton17.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton17.addActionListener(new java.awt.event.ActionListener() {
+        btnQuyen.setBackground(new java.awt.Color(247, 167, 26));
+        btnQuyen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnQuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/permission.png"))); // NOI18N
+        btnQuyen.setText("QUYỀN");
+        btnQuyen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnQuyen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnQuyen.setIconTextGap(20);
+        btnQuyen.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnQuyen.setMaximumSize(new java.awt.Dimension(250, 50));
+        btnQuyen.setMinimumSize(new java.awt.Dimension(250, 50));
+        btnQuyen.setOpaque(false);
+        btnQuyen.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnQuyen.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton17ActionPerformed(evt);
+                btnQuyenActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton17);
+        jPanel10.add(btnQuyen);
 
         jButton18.setBackground(new java.awt.Color(247, 167, 26));
         jButton18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -527,9 +532,9 @@ public class TestHeThong extends javax.swing.JFrame {
          new ChuyenPanel(plHienthi, new QuanLyKhuyenMai());
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
 
-    private void jButton13ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton13ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton13ActionPerformed
+    private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
+        new ChuyenPanel(plHienthi, new qlnv());
+    }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
           new ChuyenPanel(plHienthi, new QuanLyKhachHang());
@@ -543,9 +548,9 @@ public class TestHeThong extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton16ActionPerformed
 
-    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton17ActionPerformed
+    private void btnQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuyenActionPerformed
+        new ChuyenPanel(plHienthi, new QuanLyQuyen());
+    }//GEN-LAST:event_btnQuyenActionPerformed
 
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
@@ -593,11 +598,11 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnKhuyenMai;
     private javax.swing.JButton btnNhaCungCap;
+    private javax.swing.JButton btnNhanVien;
+    private javax.swing.JButton btnQuyen;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton13;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
