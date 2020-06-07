@@ -3,11 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view;
+package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.NhanVien;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.format.MyTable;
+import com.qlchdt.view.DateLabelFormatter;
 import java.awt.Dimension;
 import java.awt.Image;
 
@@ -51,7 +52,7 @@ import org.jdatepicker.impl.UtilDateModel;
  *
  * @author User
  */
-public class qlnv extends javax.swing.JPanel {
+public class QuanLyNhanVien extends javax.swing.JPanel {
 
     DefaultTableModel defaultTableModel;
     NhanVienService nhanVienService;
@@ -61,7 +62,7 @@ public class qlnv extends javax.swing.JPanel {
     Path nhanVienImagePath;
     Path imageLocation;
 
-    public qlnv() {
+    public QuanLyNhanVien() {
         //super("Quản Lí Nhân Viên");
         initComponents();
 
@@ -70,7 +71,7 @@ public class qlnv extends javax.swing.JPanel {
             nhanVienImagePath = Paths.get(url.toURI()).toFile().toPath();
             //System.out.println(nhanVienImagePath);
         } catch (URISyntaxException ex) {
-            Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         nhanVienService = new NhanVienService();
@@ -238,15 +239,15 @@ public class qlnv extends javax.swing.JPanel {
         btnLamMoi = new rojerusan.RSMaterialButtonRectangle();
         jPanel2 = new javax.swing.JPanel();
 
-        setMaximumSize(new java.awt.Dimension(1200, 600));
-        setMinimumSize(new java.awt.Dimension(1200, 600));
-        setPreferredSize(new java.awt.Dimension(1200, 600));
+        setMaximumSize(new java.awt.Dimension(1200, 770));
+        setMinimumSize(new java.awt.Dimension(1200, 770));
+        setPreferredSize(new java.awt.Dimension(1200, 770));
         setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setMaximumSize(new java.awt.Dimension(1200, 600));
-        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 600));
-        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 600));
+        jPanel1.setMaximumSize(new java.awt.Dimension(1200, 770));
+        jPanel1.setMinimumSize(new java.awt.Dimension(1200, 770));
+        jPanel1.setPreferredSize(new java.awt.Dimension(1200, 770));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(176, 196, 229));
@@ -293,8 +294,8 @@ public class qlnv extends javax.swing.JPanel {
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"))); // NOI18N
         lblImage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblImage.setMaximumSize(new java.awt.Dimension(240, 250));
-        lblImage.setMinimumSize(new java.awt.Dimension(240, 250));
-        lblImage.setPreferredSize(new java.awt.Dimension(240, 250));
+        lblImage.setMinimumSize(new java.awt.Dimension(240, 350));
+        lblImage.setPreferredSize(new java.awt.Dimension(240, 350));
         lblImage.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 lblImageMousePressed(evt);
@@ -673,7 +674,7 @@ public class qlnv extends javax.swing.JPanel {
             }
             */
         } catch (IOException ex) {
-            Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
@@ -699,7 +700,7 @@ public class qlnv extends javax.swing.JPanel {
                 Files.deleteIfExists(targetPath.toPath());
                 Files.deleteIfExists(srcPath.toPath());
             } catch (IOException ex) {
-                Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
             }
 
             nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
@@ -744,7 +745,7 @@ public class qlnv extends javax.swing.JPanel {
             }
              */
         } catch (IOException ex) {
-            Logger.getLogger(QuanLiNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
