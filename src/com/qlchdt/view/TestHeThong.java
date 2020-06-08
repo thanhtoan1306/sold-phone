@@ -78,7 +78,7 @@ public class TestHeThong extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống");
         setMinimumSize(new java.awt.Dimension(1400, 900));
-        setPreferredSize(new java.awt.Dimension(1400, 900));
+        setPreferredSize(new java.awt.Dimension(1600, 900));
 
         jPanel1.setBackground(new java.awt.Color(3, 81, 145));
         jPanel1.setMaximumSize(new java.awt.Dimension(1400, 130));
@@ -224,7 +224,7 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(3, 81, 145));
         jPanel2.setMaximumSize(new java.awt.Dimension(250, 900));
         jPanel2.setMinimumSize(new java.awt.Dimension(250, 900));
-        jPanel2.setPreferredSize(new java.awt.Dimension(250, 900));
+        jPanel2.setPreferredSize(new java.awt.Dimension(260, 900));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, -6));
 
         jPanel10.setBackground(new java.awt.Color(255, 102, 102));
@@ -234,13 +234,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.setPreferredSize(new java.awt.Dimension(250, 900));
 
         btnBanHang.setBackground(new java.awt.Color(247, 167, 26));
-        btnBanHang.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnBanHang.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/ecommerce.png"))); // NOI18N
         btnBanHang.setText("BÁN HÀNG");
         btnBanHang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnBanHang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnBanHang.setIconTextGap(20);
-        btnBanHang.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnBanHang.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnBanHang.setMaximumSize(new java.awt.Dimension(250, 50));
         btnBanHang.setMinimumSize(new java.awt.Dimension(250, 50));
         btnBanHang.setOpaque(false);
@@ -253,13 +253,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnBanHang);
 
         jButton7.setBackground(new java.awt.Color(247, 167, 26));
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/logistics.png"))); // NOI18N
         jButton7.setText("NHẬP HÀNG");
         jButton7.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton7.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton7.setIconTextGap(20);
-        jButton7.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        jButton7.setMargin(new java.awt.Insets(10, 10, 10, 10));
         jButton7.setMaximumSize(new java.awt.Dimension(250, 50));
         jButton7.setMinimumSize(new java.awt.Dimension(250, 50));
         jButton7.setOpaque(false);
@@ -272,13 +272,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(jButton7);
 
         btnSanPham.setBackground(new java.awt.Color(247, 167, 26));
-        btnSanPham.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnSanPham.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/smartphone.png"))); // NOI18N
         btnSanPham.setText("SẢN PHẨM");
         btnSanPham.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnSanPham.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnSanPham.setIconTextGap(20);
-        btnSanPham.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnSanPham.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnSanPham.setMaximumSize(new java.awt.Dimension(250, 50));
         btnSanPham.setMinimumSize(new java.awt.Dimension(250, 50));
         btnSanPham.setOpaque(false);
@@ -291,13 +291,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnSanPham);
 
         btnHSP.setBackground(new java.awt.Color(247, 167, 26));
-        btnHSP.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnHSP.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_multiple_smartphones_30px.png"))); // NOI18N
         btnHSP.setText("HÃNG SẢN PHẨM");
         btnHSP.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnHSP.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnHSP.setIconTextGap(20);
-        btnHSP.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnHSP.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnHSP.setMaximumSize(new java.awt.Dimension(250, 50));
         btnHSP.setMinimumSize(new java.awt.Dimension(250, 50));
         btnHSP.setOpaque(false);
@@ -310,13 +310,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnHSP);
 
         btnHoaDon.setBackground(new java.awt.Color(247, 167, 26));
-        btnHoaDon.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnHoaDon.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/bill.png"))); // NOI18N
         btnHoaDon.setText("HÓA ĐƠN");
         btnHoaDon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnHoaDon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnHoaDon.setIconTextGap(20);
-        btnHoaDon.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnHoaDon.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnHoaDon.setMaximumSize(new java.awt.Dimension(250, 50));
         btnHoaDon.setMinimumSize(new java.awt.Dimension(250, 50));
         btnHoaDon.setOpaque(false);
@@ -329,13 +329,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnHoaDon);
 
         jButton11.setBackground(new java.awt.Color(247, 167, 26));
-        jButton11.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton11.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/invoice.png"))); // NOI18N
         jButton11.setText("PHIẾU NHẬP");
         jButton11.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton11.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton11.setIconTextGap(20);
-        jButton11.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        jButton11.setMargin(new java.awt.Insets(10, 10, 10, 10));
         jButton11.setMaximumSize(new java.awt.Dimension(250, 50));
         jButton11.setMinimumSize(new java.awt.Dimension(250, 50));
         jButton11.setOpaque(false);
@@ -348,13 +348,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(jButton11);
 
         btnKhuyenMai.setBackground(new java.awt.Color(247, 167, 26));
-        btnKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/sale.png"))); // NOI18N
         btnKhuyenMai.setText("KHUYẾN MÃI");
         btnKhuyenMai.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnKhuyenMai.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKhuyenMai.setIconTextGap(20);
-        btnKhuyenMai.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnKhuyenMai.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnKhuyenMai.setMaximumSize(new java.awt.Dimension(250, 50));
         btnKhuyenMai.setMinimumSize(new java.awt.Dimension(250, 50));
         btnKhuyenMai.setOpaque(false);
@@ -367,13 +367,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnKhuyenMai);
 
         btnNhanVien.setBackground(new java.awt.Color(247, 167, 26));
-        btnNhanVien.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnNhanVien.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employee.png"))); // NOI18N
         btnNhanVien.setText("NHÂN VIÊN");
         btnNhanVien.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNhanVien.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnNhanVien.setIconTextGap(20);
-        btnNhanVien.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnNhanVien.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnNhanVien.setMaximumSize(new java.awt.Dimension(250, 50));
         btnNhanVien.setMinimumSize(new java.awt.Dimension(250, 50));
         btnNhanVien.setOpaque(false);
@@ -386,13 +386,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnNhanVien);
 
         btnKhachHang.setBackground(new java.awt.Color(247, 167, 26));
-        btnKhachHang.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnKhachHang.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/people.png"))); // NOI18N
         btnKhachHang.setText("KHÁCH HÀNG");
         btnKhachHang.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnKhachHang.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnKhachHang.setIconTextGap(20);
-        btnKhachHang.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnKhachHang.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnKhachHang.setMaximumSize(new java.awt.Dimension(250, 50));
         btnKhachHang.setMinimumSize(new java.awt.Dimension(250, 50));
         btnKhachHang.setOpaque(false);
@@ -405,13 +405,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnKhachHang);
 
         btnNhaCungCap.setBackground(new java.awt.Color(247, 167, 26));
-        btnNhaCungCap.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnNhaCungCap.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnNhaCungCap.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/supplier.png"))); // NOI18N
         btnNhaCungCap.setText("NHÀ CUNG CẤP");
         btnNhaCungCap.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnNhaCungCap.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnNhaCungCap.setIconTextGap(20);
-        btnNhaCungCap.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnNhaCungCap.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnNhaCungCap.setMaximumSize(new java.awt.Dimension(250, 50));
         btnNhaCungCap.setMinimumSize(new java.awt.Dimension(250, 50));
         btnNhaCungCap.setOpaque(false);
@@ -424,13 +424,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnNhaCungCap);
 
         jButton16.setBackground(new java.awt.Color(247, 167, 26));
-        jButton16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
         jButton16.setText("TÀI KHOẢN");
         jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton16.setIconTextGap(20);
-        jButton16.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        jButton16.setMargin(new java.awt.Insets(10, 10, 10, 10));
         jButton16.setMaximumSize(new java.awt.Dimension(250, 50));
         jButton16.setMinimumSize(new java.awt.Dimension(250, 50));
         jButton16.setOpaque(false);
@@ -443,13 +443,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(jButton16);
 
         btnQuyen.setBackground(new java.awt.Color(247, 167, 26));
-        btnQuyen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnQuyen.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnQuyen.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/permission.png"))); // NOI18N
         btnQuyen.setText("QUYỀN");
         btnQuyen.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnQuyen.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnQuyen.setIconTextGap(20);
-        btnQuyen.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnQuyen.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnQuyen.setMaximumSize(new java.awt.Dimension(250, 50));
         btnQuyen.setMinimumSize(new java.awt.Dimension(250, 50));
         btnQuyen.setOpaque(false);
@@ -462,13 +462,13 @@ public class TestHeThong extends javax.swing.JFrame {
         jPanel10.add(btnQuyen);
 
         jButton18.setBackground(new java.awt.Color(247, 167, 26));
-        jButton18.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/graphic.png"))); // NOI18N
         jButton18.setText("THỐNG KÊ");
         jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         jButton18.setIconTextGap(20);
-        jButton18.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        jButton18.setMargin(new java.awt.Insets(10, 10, 10, 10));
         jButton18.setMaximumSize(new java.awt.Dimension(250, 50));
         jButton18.setMinimumSize(new java.awt.Dimension(250, 50));
         jButton18.setOpaque(false);
@@ -495,7 +495,7 @@ public class TestHeThong extends javax.swing.JFrame {
 
         plHienthi.setBackground(new java.awt.Color(255, 255, 255));
         plHienthi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(176, 196, 229), 2, true));
-        plHienthi.setMaximumSize(new java.awt.Dimension(1200, 900));
+        plHienthi.setMaximumSize(new java.awt.Dimension(1600, 900));
         plHienthi.setMinimumSize(new java.awt.Dimension(1200, 900));
         plHienthi.setLayout(new java.awt.BorderLayout());
         jPanel4.add(plHienthi, java.awt.BorderLayout.CENTER);

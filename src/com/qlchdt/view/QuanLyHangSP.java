@@ -532,22 +532,13 @@ public class QuanLyHangSP extends javax.swing.JFrame{
         }
         else {
             String maHangChonDeXoa = tbHSP.getTable().getValueAt(row, 0).toString();
-            hangSanPhamService.delete(maHangChonDeXoa);
-            
-            List<SanPham> listSP = sanphamService.getDssp();
-            List<String> listSPCanXoa = new ArrayList<String>();
-            // xoa xong duyet bi loi
-            for (SanPham sanPham : listSP) {
-                if (sanPham.getMaHSP().equalsIgnoreCase(maHangChonDeXoa)) {
-                    listSPCanXoa.add(sanPham.getMaSP());
-                }
-            }
-            for (String string : listSPCanXoa) {
-                sanphamService.delete(string);
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Mọi sản phẩm, hóa đơn liên quan tới " + maHangChonDeXoa + " sẽ biến mất. Bạn có chắc muốn xóa?");
+            if (confirmDelete == JOptionPane.YES_OPTION) {
+                hangSanPhamService.delete(maHangChonDeXoa);
+                tbHSP.getModel().removeRow(row);
+                JOptionPane.showMessageDialog(null, "Xoá hãng đã chọn thành công!");
             }
             
-            tbHSP.getModel().removeRow(row);
-            JOptionPane.showMessageDialog(null, "Xoá hãng đã chọn thành công!");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
