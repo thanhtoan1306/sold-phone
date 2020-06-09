@@ -424,35 +424,22 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(btnNhaCungCap);
 
-<<<<<<< HEAD
+
+
         btnTaiKhoan.setBackground(new java.awt.Color(247, 167, 26));
-        btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
         btnTaiKhoan.setText("TÀI KHOẢN");
         btnTaiKhoan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnTaiKhoan.setIconTextGap(20);
-        btnTaiKhoan.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnTaiKhoan.setMargin(new java.awt.Insets(10, 10, 10, 10));
         btnTaiKhoan.setMaximumSize(new java.awt.Dimension(250, 50));
         btnTaiKhoan.setMinimumSize(new java.awt.Dimension(250, 50));
         btnTaiKhoan.setOpaque(false);
         btnTaiKhoan.setPreferredSize(new java.awt.Dimension(250, 50));
         btnTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
-=======
-        jButton16.setBackground(new java.awt.Color(247, 167, 26));
-        jButton16.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
-        jButton16.setText("TÀI KHOẢN");
-        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton16.setIconTextGap(20);
-        jButton16.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jButton16.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton16.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton16.setOpaque(false);
-        jButton16.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
->>>>>>> 7eb571136d6aeed706a691dc36a3ae1a9155d764
+
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaiKhoanActionPerformed(evt);
             }
