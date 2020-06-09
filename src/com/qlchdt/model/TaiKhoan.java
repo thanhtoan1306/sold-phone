@@ -13,8 +13,34 @@ public class TaiKhoan {
     
     private String tentk;
     private String mk;
-    private String loaitk;
-    private int trangthai;
+    private String manv;
+    private String maquyen;
+
+    public TaiKhoan() {
+    }
+
+    public TaiKhoan(String tentk, String mk, String manv, String maquyen) {
+        this.tentk = tentk;
+        this.mk = mk;
+        this.manv = manv;
+        this.maquyen = maquyen;
+    }
+
+    public String getManv() {
+        return manv;
+    }
+
+    public void setManv(String manv) {
+        this.manv = manv;
+    }
+
+    public String getMaquyen() {
+        return maquyen;
+    }
+
+    public void setMaquyen(String maquyen) {
+        this.maquyen = maquyen;
+    }
 
     public String getTentk() {
         return tentk;
@@ -31,22 +57,4 @@ public class TaiKhoan {
     public void setMk(String mk) {
         this.mk = mk;
     }
-
-    public String getLoaitk() {
-        return loaitk;
-    }
-
-    public void setLoaitk(String loaitk) {
-        this.loaitk = loaitk;
-    }
-
-    public int getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
-    }
-    
-    
 }

@@ -5,11 +5,12 @@
  */
 package com.qlchdt.service;
 
+import com.qlchdt.dao.NhanVienDao;
 import com.qlchdt.dao.TaiKhoanDao;
+import com.qlchdt.model.NhanVien;
 import com.qlchdt.model.TaiKhoan;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.List;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,59 +18,121 @@ import javax.swing.JOptionPane;
  */
 public class TaiKhoanService {
 
-    private ArrayList<TaiKhoan> taikhoan = new ArrayList<>();
-
-    TaiKhoanDao TaiKhoanDao = new TaiKhoanDao();
+    private ArrayList<TaiKhoan> dstk = new ArrayList<>();
+    private TaiKhoanDao taikhoanDao = new TaiKhoanDao();
 
     public TaiKhoanService() {
-        taikhoan = TaiKhoanDao.readDB();
-
-    }
-
-    public void showlistTK() {
-        taikhoan.forEach((tk)
-                -> {
-            System.out.print(tk.getTentk() + " ");
-            System.out.print(tk.getMk() + " ");
-        });
+        dstk = taikhoanDao.readDB();
     }
 
     public void readDB() {
-        taikhoan = TaiKhoanDao.readDB();
+        dstk = taikhoanDao.readDB();
     }
 
-//    public static void main(String arg[]) {
-//        TaiKhoanService test = new TaiKhoanService();
-//        test.showlistTK();
-//    }
+    public TaiKhoan getTaiKhoan(String manv) {
+        for (TaiKhoan tk : dstk) {
+            if (tk.getManv().equals(manv)) {
+                return tk;
+            }
+        }
+        return null;
+    }
 
-//    public TaiKhoan getTaiKhoan(String user, String pass) {
-//        for (TaiKhoan tk : taikhoan) {
-//            if (tk.getTentk().equals(user) && tk.getMk().equals(pass)) {
-//                JOptionPane.showMessageDialog(null, "Đăng nhập đúng!!!");
-//                return tk;
-//            }
-//            else{
-//                 JOptionPane.showMessageDialog(null, "Đăng nhập sai!!!");
-////                 return null;
-//                    continue;
-//            }
-//        }
-//        return null;
-//    }
-//        for (int i = 0; i < taikhoan.size(); ++i) {
-//            if (taikhoan.get(i).getTentk().equals(user) && taikhoan.get(i).getMk().equals(pass)) {
-//                JOptionPane.showMessageDialog(null, "Đăng nhập đúng!!!");
-//            }
-//        }
-//        return getTaiKhoan(user, pass);
-//    }
-    public int kiemtraLogin(String user, String pass) {
-        for (int i = 0; i < taikhoan.size(); ++i) {
-            if (taikhoan.get(i).getTentk().equals(user) && taikhoan.get(i).getMk().equals(pass)) {
+    public ArrayList<TaiKhoan> search(String value, String type, LocalDate _ngay1, LocalDate _ngay2) {
+        ArrayList<TaiKhoan> result = new ArrayList<>();
+
+        dstk.forEach((tk) -> {
+            if (type.equals("Tất cả")) {
+                if (tk.getManv().toLowerCase().contains(value.toLowerCase())
+                        || tk.getTentk().toLowerCase().contains(value.toLowerCase())
+                        || tk.getMk().toString().toLowerCase().contains(value.toLowerCase())
+                        || tk.getManv().toLowerCase().contains(value.toLowerCase())
+                        || tk.getMaquyen().toLowerCase().contains(value.toLowerCase())) {
+                    result.add(tk);
+                }
+            } else {
+                switch (type) {
+                    case "Tên tài khoản":
+                        if (tk.getTentk().toLowerCase().contains(value.toLowerCase())) {
+                            result.add(tk);
+                        }
+                        break;
+                    case "Mật khẩu":
+                        if (tk.getMk().toLowerCase().contains(value.toLowerCase())) {
+                            result.add(tk);
+                        }
+                        break;
+                    case "Mã nhân viên":
+                        if (tk.getManv().toString().toLowerCase().contains(value.toLowerCase())) {
+                            result.add(tk);
+                        }
+                        break;
+                    case "Mã quyền":
+                        if (tk.getMaquyen().toLowerCase().contains(value.toLowerCase())) {
+                            result.add(tk);
+                        }
+                        break;
+            
+                }
+            }
+        });
+        return result;
+        //Ngay sinh
+    }
+
+
+    public Boolean saveToDatabase(TaiKhoan tk) {
+        Boolean ok = taikhoanDao.add(tk);
+        return ok;
+    }
+
+    public Boolean add(String tentk, String mk, String manv, String maquyen) {
+        TaiKhoan tk = new TaiKhoan(tentk, mk, manv, maquyen);
+        return dstk.add(tk);
+    }
+
+    public Boolean delete(String manv) {
+        Boolean ok = taikhoanDao.delete(manv);
+
+        if (ok) {
+            for (int i = (dstk.size() - 1); i >= 0; i--) {
+                if (dstk.get(i).getManv().equals(manv)) {
+                    dstk.remove(i);
+                }
+            }
+        }
+        return ok;
+    }
+
+    public Boolean update(String tentk, String mk, String manv, String maquyen) {
+        Boolean ok = taikhoanDao.update(tentk, mk, manv, maquyen);
+
+        if (ok) {
+            dstk.forEach((tk) -> {
+                if (tk.getManv().equals(manv)) {
+                    tk.setTentk(tentk);
+                    tk.setMk(mk);
+                    tk.setManv(manv);
+                    tk.setMaquyen(maquyen);
+                    
+                }
+            });
+        }
+
+        return ok;
+    }
+
+    public int kiemtraLogin(String user, String pass){
+        for (int i=0; i<dstk.size(); ++i){
+            if(dstk.get(i).getTentk().equals(user) && dstk.get(i).getMk().equals(pass)){
                 return i;
             }
         }
         return -1;
+        
+    }
+    
+    public ArrayList<TaiKhoan> getDstk() {
+        return dstk;
     }
 }

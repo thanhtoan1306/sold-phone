@@ -20,9 +20,7 @@ public class ChuyenPanel {
         this.content = content;
         this.container.removeAll();
         this.container.revalidate();
-        this.container.repaint();
-        
-        
+        this.container.repaint();    
         this.container.add(this.content);
         this.container.revalidate();
         this.container.repaint();

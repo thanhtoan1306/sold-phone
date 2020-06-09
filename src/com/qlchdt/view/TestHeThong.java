@@ -13,6 +13,7 @@ import com.qlchdt.view.QuanLy.QuanLyKhuyenMai;
 import com.qlchdt.view.QuanLy.QuanLyNhaCungCap;
 import com.qlchdt.view.QuanLy.QuanLyNhanVien;
 import com.qlchdt.view.QuanLy.QuanLyQuyen;
+import com.qlchdt.view.QuanLy.QuanLyTaiKhoan;
 import com.qlchdt.view.QuanLy.qlhsp;
 import com.qlchdt.view.QuanLy.qlsp;
 import java.awt.BorderLayout;
@@ -68,7 +69,7 @@ public class TestHeThong extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         btnKhachHang = new javax.swing.JButton();
         btnNhaCungCap = new javax.swing.JButton();
-        jButton16 = new javax.swing.JButton();
+        btnTaiKhoan = new javax.swing.JButton();
         btnQuyen = new javax.swing.JButton();
         jButton18 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -423,24 +424,24 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(btnNhaCungCap);
 
-        jButton16.setBackground(new java.awt.Color(247, 167, 26));
-        jButton16.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jButton16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
-        jButton16.setText("TÀI KHOẢN");
-        jButton16.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton16.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton16.setIconTextGap(20);
-        jButton16.setMargin(new java.awt.Insets(10, 20, 10, 20));
-        jButton16.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton16.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton16.setOpaque(false);
-        jButton16.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton16.addActionListener(new java.awt.event.ActionListener() {
+        btnTaiKhoan.setBackground(new java.awt.Color(247, 167, 26));
+        btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
+        btnTaiKhoan.setText("TÀI KHOẢN");
+        btnTaiKhoan.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnTaiKhoan.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnTaiKhoan.setIconTextGap(20);
+        btnTaiKhoan.setMargin(new java.awt.Insets(10, 20, 10, 20));
+        btnTaiKhoan.setMaximumSize(new java.awt.Dimension(250, 50));
+        btnTaiKhoan.setMinimumSize(new java.awt.Dimension(250, 50));
+        btnTaiKhoan.setOpaque(false);
+        btnTaiKhoan.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton16ActionPerformed(evt);
+                btnTaiKhoanActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton16);
+        jPanel10.add(btnTaiKhoan);
 
         btnQuyen.setBackground(new java.awt.Color(247, 167, 26));
         btnQuyen.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -547,9 +548,9 @@ public class TestHeThong extends javax.swing.JFrame {
          new ChuyenPanel(plHienthi, new QuanLyNhaCungCap());
     }//GEN-LAST:event_btnNhaCungCapActionPerformed
 
-    private void jButton16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton16ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton16ActionPerformed
+    private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
+         new ChuyenPanel(plHienthi, new QuanLyTaiKhoan());        // TODO add your handling code here:
+    }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     private void btnQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuyenActionPerformed
         new ChuyenPanel(plHienthi, new QuanLyQuyen());
@@ -605,9 +606,9 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnQuyen;
     private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnTaiKhoan;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
-    private javax.swing.JButton jButton16;
     private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
