@@ -70,7 +70,7 @@ public class TestHeThong extends javax.swing.JFrame {
         btnNhaCungCap = new javax.swing.JButton();
         jButton16 = new javax.swing.JButton();
         btnQuyen = new javax.swing.JButton();
-        jButton18 = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jPanel4 = new javax.swing.JPanel();
         plHienthi = new javax.swing.JPanel();
@@ -461,24 +461,24 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(btnQuyen);
 
-        jButton18.setBackground(new java.awt.Color(247, 167, 26));
-        jButton18.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        jButton18.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/graphic.png"))); // NOI18N
-        jButton18.setText("THỐNG KÊ");
-        jButton18.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
-        jButton18.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
-        jButton18.setIconTextGap(20);
-        jButton18.setMargin(new java.awt.Insets(10, 10, 10, 10));
-        jButton18.setMaximumSize(new java.awt.Dimension(250, 50));
-        jButton18.setMinimumSize(new java.awt.Dimension(250, 50));
-        jButton18.setOpaque(false);
-        jButton18.setPreferredSize(new java.awt.Dimension(250, 50));
-        jButton18.addActionListener(new java.awt.event.ActionListener() {
+        btnThongKe.setBackground(new java.awt.Color(247, 167, 26));
+        btnThongKe.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+        btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/graphic.png"))); // NOI18N
+        btnThongKe.setText("THỐNG KÊ");
+        btnThongKe.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnThongKe.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        btnThongKe.setIconTextGap(20);
+        btnThongKe.setMargin(new java.awt.Insets(10, 10, 10, 10));
+        btnThongKe.setMaximumSize(new java.awt.Dimension(250, 50));
+        btnThongKe.setMinimumSize(new java.awt.Dimension(250, 50));
+        btnThongKe.setOpaque(false);
+        btnThongKe.setPreferredSize(new java.awt.Dimension(250, 50));
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton18ActionPerformed(evt);
+                btnThongKeActionPerformed(evt);
             }
         });
-        jPanel10.add(jButton18);
+        jPanel10.add(btnThongKe);
 
         jPanel2.add(jPanel10);
 
@@ -555,9 +555,10 @@ public class TestHeThong extends javax.swing.JFrame {
         new ChuyenPanel(plHienthi, new QuanLyQuyen());
     }//GEN-LAST:event_btnQuyenActionPerformed
 
-    private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton18ActionPerformed
+        new ChuyenPanel(plHienthi, new ThongKe());
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -605,10 +606,10 @@ public class TestHeThong extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnQuyen;
     private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton11;
     private javax.swing.JButton jButton16;
-    private javax.swing.JButton jButton18;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

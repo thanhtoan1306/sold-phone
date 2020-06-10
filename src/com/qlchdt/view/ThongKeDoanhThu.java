@@ -8,7 +8,8 @@ package com.qlchdt.view;
 import com.qlchdt.model.HoaDon;
 import com.qlchdt.service.HoaDonService;
 import java.awt.CardLayout;
-import java.awt.Dimension;
+import java.awt.Color;
+import java.awt.Font;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +87,7 @@ public class ThongKeDoanhThu extends javax.swing.JPanel {
         renderer.setDefaultPositiveItemLabelPosition(position); 
         ChartPanel chartPanel = new ChartPanel(barChart);
         
-        //chartPanel.setPreferredSize(new Dimension(800, 600));
+        //chartPanel.setPreferredSize(new Dimension(800, 600));      
         this.setLayout(new CardLayout());
         this.add(chartPanel);
         this.validate();
