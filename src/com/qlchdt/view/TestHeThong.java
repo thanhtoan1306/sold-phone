@@ -17,6 +17,7 @@ import com.qlchdt.view.QuanLy.QuanLyTaiKhoan;
 import com.qlchdt.view.QuanLy.qlhsp;
 import com.qlchdt.view.QuanLy.qlsp;
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -79,7 +80,6 @@ public class TestHeThong extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Hệ thống");
         setMinimumSize(new java.awt.Dimension(1400, 900));
-        setPreferredSize(new java.awt.Dimension(1600, 900));
 
         jPanel1.setBackground(new java.awt.Color(3, 81, 145));
         jPanel1.setMaximumSize(new java.awt.Dimension(1400, 130));
@@ -132,6 +132,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton1.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton1.setOpaque(false);
         jButton1.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         jPanel3.add(jButton1);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -154,6 +159,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton2.setOpaque(false);
         jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -193,6 +203,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton4.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton4.setOpaque(false);
         jButton4.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jButton4);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -424,8 +439,6 @@ public class TestHeThong extends javax.swing.JFrame {
         });
         jPanel10.add(btnNhaCungCap);
 
-
-
         btnTaiKhoan.setBackground(new java.awt.Color(247, 167, 26));
         btnTaiKhoan.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         btnTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/password (1).png"))); // NOI18N
@@ -439,7 +452,6 @@ public class TestHeThong extends javax.swing.JFrame {
         btnTaiKhoan.setOpaque(false);
         btnTaiKhoan.setPreferredSize(new java.awt.Dimension(250, 50));
         btnTaiKhoan.addActionListener(new java.awt.event.ActionListener() {
-
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnTaiKhoanActionPerformed(evt);
             }
@@ -562,6 +574,36 @@ public class TestHeThong extends javax.swing.JFrame {
     private void jButton18ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton18ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton18ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        if (input == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        } else {
+            TestHeThong t = new TestHeThong();
+            t.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        if (input == JOptionPane.YES_OPTION) {
+            this.dispose();
+            DangNhap dn = new DangNhap();
+            dn.setVisible(true);
+        } else {
+            this.dispose();
+            TestHeThong t = new TestHeThong();
+            t.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        DangNhap dn = new DangNhap();
+        System.out.println(dn.txtuser.getText());
+        new DoiMatKhauForm(dn.txtuser.getText()).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

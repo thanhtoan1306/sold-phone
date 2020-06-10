@@ -297,8 +297,6 @@ public class DangNhap extends javax.swing.JFrame {
            {
                new DocFile(saveFileName).write(" ");
            }
-           JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
-           this.setVisible(false);
            if(quyen.equals(user))
            {
                ht.setVisible(true);
@@ -388,6 +386,6 @@ public class DangNhap extends javax.swing.JFrame {
     private rojerusan.RSPanelImage rSPanelImage1;
     private rojerusan.RSPanelImage rSPanelImage2;
     private rojeru_san.RSMPassView txtpass;
-    private rojeru_san.RSMTextFull txtuser;
+    public rojeru_san.RSMTextFull txtuser;
     // End of variables declaration//GEN-END:variables
 }

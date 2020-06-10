@@ -121,7 +121,29 @@ public class TaiKhoanService {
 
         return ok;
     }
-
+    public Boolean updatemk(String tentk,String mk)
+    {
+        Boolean ok=taikhoanDao.updatemk(tentk,mk);
+        if(ok)
+        {
+            dstk.forEach((tk)->{
+            if(tk.getTentk().equals(tentk))   
+            {
+                tk.setMk(mk);
+              //  tk.setManv(manv);
+            }    
+            });
+        }
+        return ok;
+    }
+    public TaiKhoan getTaiKhoanmk(String tentk) {
+        for (TaiKhoan tk : dstk) {
+            if (tk.getTentk().equals(tentk)) {
+                return tk;
+            }
+        }
+        return null;
+    }
     public int kiemtraLogin(String user, String pass){
         for (int i=0; i<dstk.size(); ++i){
             if(dstk.get(i).getTentk().equals(user) && dstk.get(i).getMk().equals(pass)){

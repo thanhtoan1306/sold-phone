@@ -105,5 +105,11 @@ public class TaiKhoanDao {
         connection.closeConnect();
         return ok;
     }
-    
+    public Boolean updatemk(String tentk,String matkhau)
+    {
+        connection = new JDBCConnection();
+        Boolean ok =connection.sqlUpdate("Update TAIKHOAN set MK='"+matkhau+"' where TenTK='"+tentk+"'");
+        connection.closeConnect();
+        return ok;
+    }
 }
