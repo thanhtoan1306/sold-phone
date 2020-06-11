@@ -17,6 +17,7 @@ import com.qlchdt.view.QuanLy.QuanLyTaiKhoan;
 import com.qlchdt.view.QuanLy.qlhsp;
 import com.qlchdt.view.QuanLy.qlsp;
 import java.awt.BorderLayout;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -163,6 +164,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton2.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton2.setOpaque(false);
         jButton2.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         jPanel5.add(jButton2);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -202,6 +208,11 @@ public class TestHeThong extends javax.swing.JFrame {
         jButton4.setMinimumSize(new java.awt.Dimension(50, 50));
         jButton4.setOpaque(false);
         jButton4.setPreferredSize(new java.awt.Dimension(50, 50));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
         jPanel7.add(jButton4);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -583,8 +594,35 @@ public class TestHeThong extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton18ActionPerformed
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
-         new DoiMatKhauForm(DangNhap.taiKhoanLogin.getTentk()).setVisible(true);
+        DangNhap dn = new DangNhap();
+        new DoiMatKhauForm(dn.txtuser.getText()).setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        if (input == JOptionPane.YES_OPTION) {
+            System.exit(0);
+        } else {
+            TestHeThong t = new TestHeThong();
+            t.setVisible(true);
+            this.dispose();
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        if (input == JOptionPane.YES_OPTION) {
+            this.dispose();
+            DangNhap dn = new DangNhap();
+            dn.setVisible(true);
+        } else {
+            this.dispose();
+            TestHeThong t = new TestHeThong();
+            t.setVisible(true);
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments

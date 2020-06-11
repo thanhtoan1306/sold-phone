@@ -6,44 +6,20 @@
 package com.qlchdt.view;
 
 
-import com.qlchdt.dao.QuanLySanPhamDao;
 import com.qlchdt.model.HangSanPham;
-import com.qlchdt.model.NhanVien;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.HangSanPhamService;
-import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.SanPhamService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
 //import com.qlchdt.view.formquanly.HoaDonBanHangForm;
 import java.awt.Dimension;
-import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.io.File;
-import java.io.IOException;
-import static java.lang.Float.parseFloat;
-import static java.lang.Integer.parseInt;
-import java.text.DecimalFormat;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.Locale;
-import javax.imageio.ImageIO;
-import javax.swing.AbstractButton;
-import javax.swing.ImageIcon;
-import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**

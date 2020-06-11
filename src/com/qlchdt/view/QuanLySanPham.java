@@ -5,40 +5,27 @@
  */
 package com.qlchdt.view;
 
-import com.qlchdt.dao.QuanLySanPhamDao;
-import com.qlchdt.model.NhanVien;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.HangSanPhamService;
-import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.SanPhamService;
 import com.qlchdt.service.format.MyTable;
 import com.qlchdt.service.format.PriceFormatter;
-import com.qlchdt.view.QuanLy.HoaDonBanHangForm;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
-import static java.lang.Float.parseFloat;
-import static java.lang.Integer.parseInt;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
-import java.text.DecimalFormat;
-import java.text.Format;
-import java.text.NumberFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Enumeration;
-import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
 import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
@@ -712,9 +699,12 @@ public class QuanLySanPham extends javax.swing.JFrame{
             } catch (IOException ex) {
                 Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
             }*/
-            sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
-            tbSanPham.getModel().removeRow(row);
-            JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm này?");
+            if (confirmDelete == JOptionPane.YES_OPTION) {
+                sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
+                tbSanPham.getModel().removeRow(row);
+                JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
+            }
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 

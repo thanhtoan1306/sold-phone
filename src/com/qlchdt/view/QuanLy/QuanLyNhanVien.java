@@ -691,21 +691,25 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
         } else {
             String tenHinhNVCanXoa = tbNhanVien.getTable().getValueAt(row, 6).toString().trim();
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa nhân viên này?");
+            if (confirmDelete == JOptionPane.YES_OPTION) {
+                String separate = System.getProperty("file.separator");
+                File targetPath = new File(nhanVienImagePath + separate + tenHinhNVCanXoa); // xóa dc
+                File srcPath = new File(System.getProperty("user.dir")
+                        + separate + "src" + separate + "com" + separate + "qlchdt" + separate + "assets" + separate + "employees" + separate + tenHinhNVCanXoa); // xóa ko dc
+                try {
+                    Files.deleteIfExists(targetPath.toPath());
+                    Files.deleteIfExists(srcPath.toPath());
+                } catch (IOException ex) {
+                    Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(nhanVienImagePath + separate + tenHinhNVCanXoa); // xóa dc
-            File srcPath = new File(System.getProperty("user.dir")
-                    + separate + "src" + separate + "com" + separate + "qlchdt" + separate + "assets" + separate + "employees" + separate + tenHinhNVCanXoa); // xóa ko dc
-            try {
-                Files.deleteIfExists(targetPath.toPath());
-                Files.deleteIfExists(srcPath.toPath());
-            } catch (IOException ex) {
-                Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
+                tbNhanVien.getModel().removeRow(row);
+                JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
             }
 
-            nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
-            tbNhanVien.getModel().removeRow(row);
-            JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
+            
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
