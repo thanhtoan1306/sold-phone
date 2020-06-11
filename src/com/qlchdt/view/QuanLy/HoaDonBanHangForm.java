@@ -367,7 +367,7 @@ public class HoaDonBanHangForm extends FormHang {
         btnChonKM.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChonKM.setForeground(new java.awt.Color(255, 255, 255));
-        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_gift_30px.png"))); // NOI18N
+        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-gift-48.png"))); // NOI18N
         btnChonKM.setText("Thêm khuyến mãi");
         btnChonKM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

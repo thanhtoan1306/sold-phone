@@ -281,7 +281,7 @@
                       <Color blue="ff" green="ff" red="ff" type="rgb"/>
                     </Property>
                     <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/com/qlchdt/assets/icons8_gift_30px.png"/>
+                      <Image iconType="3" name="/com/qlchdt/assets/icons8-gift-48.png"/>
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m khuy&#x1ebf;n m&#xe3;i"/>
                   </Properties>
