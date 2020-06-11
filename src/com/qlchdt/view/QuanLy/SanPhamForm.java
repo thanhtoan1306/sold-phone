@@ -204,11 +204,11 @@ public class SanPhamForm extends javax.swing.JPanel {
         });
         jPanel3.add(txTimKiem);
 
-        jButton1.setBackground(new java.awt.Color(153, 204, 255));
+        jButton1.setBackground(new java.awt.Color(3, 81, 145));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
-        jButton1.setText("LÀM MỚI");
+        jButton1.setText("Làm mới");
         jPanel3.add(jButton1);
 
         jPanel9.add(jPanel3);
@@ -239,11 +239,15 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel8.setLayout(new javax.swing.BoxLayout(jPanel8, javax.swing.BoxLayout.Y_AXIS));
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setMinimumSize(new java.awt.Dimension(52, 60));
+        jPanel5.setPreferredSize(new java.awt.Dimension(52, 60));
         jPanel5.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         txMaSP.setEditable(false);
         txMaSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txMaSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txMaSP.setMinimumSize(new java.awt.Dimension(16, 50));
+        txMaSP.setPreferredSize(new java.awt.Dimension(16, 50));
         txMaSP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txMaSPActionPerformed(evt);
@@ -254,11 +258,15 @@ public class SanPhamForm extends javax.swing.JPanel {
         txHSP.setEditable(false);
         txHSP.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txHSP.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Hãng sản phẩm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txHSP.setMinimumSize(new java.awt.Dimension(16, 50));
+        txHSP.setPreferredSize(new java.awt.Dimension(16, 50));
         jPanel5.add(txHSP);
 
         jPanel8.add(jPanel5);
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setMinimumSize(new java.awt.Dimension(52, 60));
+        jPanel6.setPreferredSize(new java.awt.Dimension(52, 60));
         jPanel6.setLayout(new java.awt.GridLayout(1, 0, 20, 40));
 
         txDonGia.setEditable(false);
@@ -288,7 +296,7 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.RIGHT, 20, 20));
 
-        btnChon.setBackground(new java.awt.Color(0, 204, 102));
+        btnChon.setBackground(new java.awt.Color(3, 81, 145));
         btnChon.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         btnChon.setForeground(new java.awt.Color(255, 255, 255));
         btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-buy-48.png"))); // NOI18N

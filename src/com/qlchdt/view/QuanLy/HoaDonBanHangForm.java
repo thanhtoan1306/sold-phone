@@ -275,7 +275,7 @@ public class HoaDonBanHangForm extends FormHang {
         jButton1 = new javax.swing.JButton();
         btnThanhToan = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(255, 255, 255));
+        setBackground(new java.awt.Color(3, 81, 145));
         setMaximumSize(new java.awt.Dimension(652, 777));
         setPreferredSize(new java.awt.Dimension(652, 800));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
@@ -321,10 +321,11 @@ public class HoaDonBanHangForm extends FormHang {
         txKH.setPreferredSize(new java.awt.Dimension(200, 45));
         jPanel5.add(txKH);
 
-        btnChonKH.setBackground(new java.awt.Color(153, 153, 255));
+        btnChonKH.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnChonKH.setForeground(new java.awt.Color(255, 255, 255));
         btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_circled_user_male_30px.png"))); // NOI18N
-        btnChonKH.setText("Chọn khách hàng");
+        btnChonKH.setText("Thêm khách ");
         btnChonKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonKHActionPerformed(evt);
@@ -363,10 +364,11 @@ public class HoaDonBanHangForm extends FormHang {
         });
         jPanel10.add(txKhuyenMai);
 
-        btnChonKM.setBackground(new java.awt.Color(255, 102, 102));
+        btnChonKM.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnChonKM.setForeground(new java.awt.Color(255, 255, 255));
         btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_gift_30px.png"))); // NOI18N
-        btnChonKM.setText("Chọn khuyến mãi");
+        btnChonKM.setText("Thêm khuyến mãi");
         btnChonKM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonKMActionPerformed(evt);
@@ -411,7 +413,7 @@ public class HoaDonBanHangForm extends FormHang {
         });
         jPanel6.add(btnXoa);
 
-        btnSua.setBackground(new java.awt.Color(153, 153, 153));
+        btnSua.setBackground(new java.awt.Color(3, 81, 145));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png"))); // NOI18N
@@ -424,7 +426,7 @@ public class HoaDonBanHangForm extends FormHang {
         });
         jPanel6.add(btnSua);
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 204, 255));
+        btnLamMoi.setBackground(new java.awt.Color(3, 81, 145));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
@@ -446,14 +448,19 @@ public class HoaDonBanHangForm extends FormHang {
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png"))); // NOI18N
         jButton1.setText("HỦY");
-        jButton1.setPreferredSize(new java.awt.Dimension(100, 40));
+        jButton1.setMaximumSize(new java.awt.Dimension(191, 57));
+        jButton1.setMinimumSize(new java.awt.Dimension(191, 57));
+        jButton1.setPreferredSize(new java.awt.Dimension(191, 57));
         jPanel2.add(jButton1);
 
         btnThanhToan.setBackground(new java.awt.Color(255, 204, 0));
         btnThanhToan.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThanhToan.setForeground(new java.awt.Color(255, 255, 255));
         btnThanhToan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_us_dollar_30px.png"))); // NOI18N
         btnThanhToan.setText("THANH TOÁN");
-        btnThanhToan.setPreferredSize(new java.awt.Dimension(180, 40));
+        btnThanhToan.setMaximumSize(new java.awt.Dimension(191, 57));
+        btnThanhToan.setMinimumSize(new java.awt.Dimension(191, 57));
+        btnThanhToan.setPreferredSize(new java.awt.Dimension(191, 57));
         btnThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThanhToanActionPerformed(evt);

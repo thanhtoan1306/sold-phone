@@ -5,8 +5,10 @@
  */
 package com.qlchdt.view;
 
+import com.qlchdt.model.NhanVien;
 import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.DocFile;
+import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.TaiKhoanService;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -23,9 +25,10 @@ import javax.swing.JTextField;
 public class DangNhap extends javax.swing.JFrame {
 
     TaiKhoanService tks = new TaiKhoanService();
+    public static String saveFileName = "temp";
+    public static TaiKhoan taiKhoanLogin;
+    TestHeThong heThong = new TestHeThong();
 
-    GiaoDienAdmin ad=new GiaoDienAdmin();
-    TestHeThong ht = new TestHeThong();
     public DangNhap() {
         super("Đăng nhập hệ thống");
         this.setLocationRelativeTo(null);
@@ -231,6 +234,11 @@ public class DangNhap extends javax.swing.JFrame {
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-forgot-password-50.png"))); // NOI18N
         jButton3.setText("Quên mật khẩu");
         jButton3.setPreferredSize(new java.awt.Dimension(193, 50));
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
         jPanel4.add(jButton3);
 
         jPanel5.add(jPanel4);
@@ -279,39 +287,54 @@ public class DangNhap extends javax.swing.JFrame {
     }//GEN-LAST:event_checkremActionPerformed
 
     private void btnDangNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangNhapActionPerformed
-       String user=txtuser.getText();
-       String pass=txtpass.getText();
-       String quyen="admin" ;
-       if( tks.kiemtraLogin(user, pass)>=0)
-       {   
+        String user = txtuser.getText();
+        String pass = txtpass.getText();
+        
+        String quyen = "admin";
+//
+//        TaiKhoanService qltk = new TaiKhoanService();
+//        TaiKhoan tk = qltk.getTaiKhoan(user);
+//
+//        
+//        if(tk != null) {
+//            
+//            
+//             NhanVien nv = new NhanVienService().getNhanVien(tk.getManv());
+//             
+//             
+//            
+//        
+//        }else {
+//            JOptionPane.showMessageDialog(this, "Sai tên đăng nhập!");
+//            txtuser.requestFocus();
+//        }
+        if (tks.kiemtraLogin(user, pass) >= 0) {
 
-           JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
-           this.setVisible(false);
+            JOptionPane.showMessageDialog(null, "Đăng nhập thành công");
+            this.setVisible(false);
 
-           if(checkrem.isSelected())
-           {
-               // mã hóa ra tiếng trung
-               new DocFile(saveFileName).write(user+" "+pass);
-           }
-           else
-           {
-               new DocFile(saveFileName).write(" ");
-           }
-           if(quyen.equals(user))
-           {
-               ht.setVisible(true);
-           }
-           else
-           {
-              ad.setVisible(true);
-           }
-       }
-       else{
-          JOptionPane.showMessageDialog(null, "Đăng nhập thất bại");
-          txtuser.setText("");
-          txtpass.setText("");
-       }
+            if (checkrem.isSelected()) {
+                // mã hóa ra tiếng trung
+                new DocFile(saveFileName).write(user + " " + pass);
+            } else {
+                new DocFile(saveFileName).write(" ");
+            }
+
+            if (quyen.equals(user)) {
+                heThong.setVisible(true);
+            } else {
+                // ad.setVisible(true);
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Đăng nhập thất bại");
+            txtuser.setText("");
+            txtpass.setText("");
+        }
     }//GEN-LAST:event_btnDangNhapActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -365,8 +388,7 @@ public class DangNhap extends javax.swing.JFrame {
             }
         });
     }
-    public static String saveFileName = "temp";
-    public static TaiKhoan taiKhoanLogin;
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangNhap;
     private javax.swing.JCheckBox checkrem;
