@@ -148,6 +148,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                     int w = lblImage.getWidth();
                     int h = lblImage.getHeight();
                     ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/" + nv.getHinhAnh()));
+                    if (img==null) {
+                        img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"));
+                    }
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblImage.setIcon(img);
                     lblImage.setIcon(new ImageIcon(imgScaled));
