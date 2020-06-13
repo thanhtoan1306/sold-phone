@@ -9,8 +9,9 @@ import com.qlchdt.model.HangSanPham;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.HangSanPhamService;
 import com.qlchdt.service.SanPhamService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.PriceFormatter;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DinhDangCp.PriceFormatter;
+import com.qlchdt.view.DangNhap;
 import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -25,27 +26,33 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class qlhsp extends javax.swing.JPanel {
+public class QuanLyHangSanPham extends javax.swing.JPanel {
 
- 
-     DefaultTableModel defaultTableModel;
+    DefaultTableModel defaultTableModel;
     SanPhamService sanphamService;
-    HangSanPhamService hangSanPhamService ;
+    HangSanPhamService hangSanPhamService;
     //HoaDonBanHangForm hdbh = new HoaDonBanHangForm();    
     MyTable tbHSP;
     MyTable tbSanPham;
     HangSanPham HSP_them;
-    
-    public qlhsp() {
+
+    public QuanLyHangSanPham() {
         initComponents();
+        // buttons
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlHangSanPham")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnSua.setEnabled(false);
+
+        }
         hangSanPhamService = new HangSanPhamService();
         sanphamService = new SanPhamService();
         defaultTableModel = new DefaultTableModel() {
-           @Override
-           public boolean isCellEditable(int row, int column) {
-               return false;
-           }
-       };
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         setDataToTable1(this.hangSanPhamService.getDshsp(), tbHSP);
         setDataToTable(this.sanphamService.getDssp(), tbSanPham);
         tbHSP.getTable().addMouseListener(new MouseAdapter() { // copy từ HienThiSanPham
@@ -58,12 +65,11 @@ public class qlhsp extends javax.swing.JPanel {
             }
         });
         //addDocumentListener(txtTimKiem);
-        
+
         refreshTable();
     }
-    
-    
-       /* public QuanLySanPham() {
+
+    /* public QuanLySanPham() {
 
         initComponents();
         sanphamService = new SanPhamService();
@@ -84,7 +90,6 @@ public class qlhsp extends javax.swing.JPanel {
                  
 
     }*/
-
     private void setDataToTable(ArrayList<SanPham> data, MyTable table) {
         table.clear();
         for (SanPham sp : data) {
@@ -98,6 +103,7 @@ public class qlhsp extends javax.swing.JPanel {
 
         }
     }
+
     private void setDataToTable1(ArrayList<HangSanPham> data, MyTable table) {
         table.clear();
         for (HangSanPham hsp : data) {
@@ -111,7 +117,7 @@ public class qlhsp extends javax.swing.JPanel {
 
     public void refreshTable() {
         sanphamService.readDB();
-        setDataToTable(sanphamService.search("", "Tất cả", -1, -1, -1, -1), tbSanPham); 
+        setDataToTable(sanphamService.search("", "Tất cả", -1, -1, -1, -1), tbSanPham);
         hangSanPhamService.readDB();
         setDataToTable1(hangSanPhamService.getDshsp(), tbHSP);
     }
@@ -120,14 +126,14 @@ public class qlhsp extends javax.swing.JPanel {
         refreshTable();
         txtMaHSP.setText("");
         txtTenHSP.setText("");
-        
+
     }
-    
+
     public void showInfo(String mahsp) {
         // https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
         if (mahsp != null) {
             // show hình
-            for (HangSanPham hsp: hangSanPhamService.getDshsp()) {
+            for (HangSanPham hsp : hangSanPhamService.getDshsp()) {
                 if (hsp.getMaHang().equals(mahsp)) {
                     // show info
                     txtMaHSP.setText(hsp.getMaHang());
@@ -137,7 +143,7 @@ public class qlhsp extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public String getSelectedSanPham(int col) {
         int i = tbHSP.getTable().getSelectedRow();
         if (i >= 0) {
@@ -146,8 +152,8 @@ public class qlhsp extends javax.swing.JPanel {
         }
         return null;
     }
-    
-   /* public void txSearchOnChange() {
+
+    /* public void txSearchOnChange() {
         setDataToTable(sanphamService.search(txtTimKiem.getText(), "Tất cả",null,null), tbSanPham);
     }
 
@@ -170,8 +176,7 @@ public class qlhsp extends javax.swing.JPanel {
             }
         });
     }*/
-    
-   /* private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {                                        
+ /* private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {                                        
                try {
                 String masp = txtMaSP.getText();
                 int soluong = Integer.parseInt(txtSoLuong.getText());
@@ -189,8 +194,6 @@ public class qlhsp extends javax.swing.JPanel {
                 txtSoLuong.requestFocus();
             }
     }    */
-    
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -397,7 +400,7 @@ public class qlhsp extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-         DefaultTableModel model = (DefaultTableModel) tbHSP.getModel();
+        DefaultTableModel model = (DefaultTableModel) tbHSP.getModel();
         String mahsp = txtMaHSP.getText().trim();
         String tenhsp = txtTenHSP.getText().trim();
         /*String gioiTinh = "";
@@ -418,7 +421,7 @@ public class qlhsp extends javax.swing.JPanel {
         //String dogia = df.format(dongia);
         String dogia = dongia+"00.000";
         String hinhanh = lblHinhAnh.getText().trim();*/
-        
+
         Object os[] = {mahsp, tenhsp};
         model.addRow(os);
         HSP_them = new HangSanPham(mahsp, tenhsp);
@@ -426,15 +429,14 @@ public class qlhsp extends javax.swing.JPanel {
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-         int row = -1;
+        int row = -1;
         row = tbHSP.getTable().getSelectedRow();
-        if (row==-1) {
+        if (row == -1) {
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng trong bảng hãng sản phẩm!");
-        }
-        else {
+        } else {
             String maHangChonDeXoa = tbHSP.getTable().getValueAt(row, 0).toString();
             hangSanPhamService.delete(maHangChonDeXoa);
-            
+
             List<SanPham> listSP = sanphamService.getDssp();
             List<String> listSPCanXoa = new ArrayList<String>();
             // xoa xong duyet bi loi
@@ -446,18 +448,18 @@ public class qlhsp extends javax.swing.JPanel {
             for (String string : listSPCanXoa) {
                 sanphamService.delete(string);
             }
-            
+
             tbHSP.getModel().removeRow(row);
             JOptionPane.showMessageDialog(null, "Xoá hãng đã chọn thành công!");
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-       
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-         this.txtMaHSP.setText("");
+        this.txtMaHSP.setText("");
         this.txtTenHSP.setText("");
     }//GEN-LAST:event_btnHuyActionPerformed
 

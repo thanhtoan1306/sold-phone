@@ -7,7 +7,7 @@ package com.qlchdt.view.HienThiForm;
 
 import com.qlchdt.model.Quyen;
 import com.qlchdt.service.QuyenService;
-import com.qlchdt.service.format.MyTable;
+import com.qlchdt.view.DinhDangCp.MyTable;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;

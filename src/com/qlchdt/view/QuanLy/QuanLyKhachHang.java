@@ -6,8 +6,9 @@
 package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.service.KhachHangService;
-import com.qlchdt.service.format.NhapExcel;
-import com.qlchdt.service.format.XuatExcel;
+import com.qlchdt.service.qlnhapxuat.NhapExcel;
+import com.qlchdt.service.qlnhapxuat.XuatExcel;
+import com.qlchdt.view.DangNhap;
 import com.qlchdt.view.HienThiForm.HienThiKhachHang;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import javax.swing.JOptionPane;
@@ -17,14 +18,15 @@ import javax.swing.JOptionPane;
  * @author User
  */
 public class QuanLyKhachHang extends javax.swing.JPanel {
-    
+
     HienThiKhachHang formHienThi = new HienThiKhachHang();
-    
 
     public QuanLyKhachHang() {
         initComponents();
+       
         plHienThi.add(formHienThi);
     }
+
     //xóa
     private void btnXoaMouseClicked() {
         String makh = formHienThi.getSelectedRow(1);
@@ -50,7 +52,7 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
             suakh.addWindowListener(new java.awt.event.WindowAdapter() {
                 @Override
                 public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                   formHienThi.refresh();
+                    formHienThi.refresh();
                 }
             });
 
@@ -82,7 +84,7 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btnNhapExcel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setLayout(new java.awt.BorderLayout());
@@ -145,15 +147,15 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
         });
         jPanel1.add(btnSua);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
-        jButton1.setText("Nhập Excel");
-        jButton1.setPreferredSize(new java.awt.Dimension(140, 40));
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnNhapExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
+        btnNhapExcel.setText("Nhập Excel");
+        btnNhapExcel.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnNhapExcel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnNhapExcelActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnNhapExcel);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
         jButton2.setText("Xuất Excel");
@@ -172,9 +174,9 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
         new XuatExcel().xuatFileExcelKhachHang();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnNhapExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapExcelActionPerformed
         new NhapExcel().docFileExcelKhachhang();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnNhapExcelActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         btnSuaMouseClicked();
@@ -190,10 +192,10 @@ public class QuanLyKhachHang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnNhapExcel;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;

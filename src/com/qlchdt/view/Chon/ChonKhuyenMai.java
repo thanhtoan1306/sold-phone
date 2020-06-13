@@ -6,8 +6,8 @@
 package com.qlchdt.view.Chon;
 
 import com.qlchdt.view.HienThiForm.HienThiKhuyenMai;
-import com.qlchdt.view.custom.ChonButton;
-import com.qlchdt.view.custom.HuyButton;
+import com.qlchdt.view.DinhDangCp.ChonButton;
+import com.qlchdt.view.DinhDangCp.HuyButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.ActionEvent;

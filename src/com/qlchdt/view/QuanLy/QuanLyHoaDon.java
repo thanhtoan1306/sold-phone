@@ -7,9 +7,10 @@ package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.service.ChiTietHoaDonService;
 import com.qlchdt.service.HoaDonService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.WritePDF;
-import com.qlchdt.service.format.XuatExcel;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.service.qlnhapxuat.WritePDF;
+import com.qlchdt.service.qlnhapxuat.XuatExcel;
+import com.qlchdt.view.DangNhap;
 import com.qlchdt.view.HienThiForm.HienThiHoaDon;
 import com.qlchdt.view.ThemSua.ThemSuaHoaDon;
 import java.awt.BorderLayout;
@@ -27,11 +28,16 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
 
     public QuanLyHoaDon() {
         initComponents();
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlHoaDon")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnSua.setEnabled(false);
+
+        }
         plHienThi.add(formHienThi, BorderLayout.CENTER);
     }
 
-    
-       private void btnSuaMouseClicked() {
+    private void btnSuaMouseClicked() {
         String mahd = formHienThi.getSelectedRow(1);
         if (mahd != null) {
             ThemSuaHoaDon tshd = new ThemSuaHoaDon("Sửa", mahd);
@@ -73,8 +79,7 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
             }
         });
     }
-    
-    
+
     public void printPDF() {
 
         if (formHienThi.getSelectedRow(0) != null) {

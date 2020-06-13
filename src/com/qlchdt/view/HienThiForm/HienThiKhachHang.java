@@ -8,7 +8,7 @@ package com.qlchdt.view.HienThiForm;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.model.KhachHang;
 import com.qlchdt.service.KhachHangService;
-import com.qlchdt.service.format.MyTable;
+import com.qlchdt.view.DinhDangCp.MyTable;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;

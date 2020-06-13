@@ -7,8 +7,9 @@ package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.NhanVien;
 import com.qlchdt.service.NhanVienService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.view.custom.DateLabelFormatter;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DangNhap;
+import com.qlchdt.view.DinhDangCp.DateLabelFormatter;
 import java.awt.Dimension;
 import java.awt.Image;
 
@@ -66,6 +67,13 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         //super("Quản Lí Nhân Viên");
         initComponents();
 
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNhanVien")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnLuu.setEnabled(false);
+
+        }
         URL url = this.getClass().getResource("/com/qlchdt/assets/employees");
         try {
             nhanVienImagePath = Paths.get(url.toURI()).toFile().toPath();
@@ -672,7 +680,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             while ((length = is.read(buffer)) > 0) {
                 outStream.write(buffer, 0, length);
             }
-            */
+             */
         } catch (IOException ex) {
             Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -709,12 +717,11 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
             }
 
-            
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         //DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
         String maNV = txtMa.getText().trim();
         String name = txtTen.getText().trim();
@@ -760,7 +767,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         if (NV_them == null) {
             JOptionPane.showMessageDialog(null, "Chưa có nhân viên nào mới thêm vào bảng. Lưu vào database thất bại.");
             return;
@@ -783,7 +790,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_btnLuuActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-          // TODO add your handling code here:
+        // TODO add your handling code here:
         this.txtMa.setText("");
         this.txtTen.setText("");
         this.datePicker.getModel().setValue(null);

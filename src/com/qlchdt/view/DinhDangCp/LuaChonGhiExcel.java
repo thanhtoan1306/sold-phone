@@ -3,9 +3,8 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.view.custom;
+package com.qlchdt.view.DinhDangCp;
 
-import com.qlchdt.service.format.MyTable;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.QUESTION_MESSAGE;

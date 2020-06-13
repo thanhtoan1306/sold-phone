@@ -29,9 +29,9 @@ public class TaiKhoanService {
         dstk = taikhoanDao.readDB();
     }
 
-    public TaiKhoan getTaiKhoan(String manv) {
+    public TaiKhoan getTaiKhoan(String tentk) {
         for (TaiKhoan tk : dstk) {
-            if (tk.getManv().equals(manv)) {
+            if (tk.getTentk().equals(tentk)) {
                 return tk;
             }
         }

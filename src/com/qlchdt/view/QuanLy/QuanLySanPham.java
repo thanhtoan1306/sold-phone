@@ -8,9 +8,9 @@ package com.qlchdt.view.QuanLy;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.HangSanPhamService;
 import com.qlchdt.service.SanPhamService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.PriceFormatter;
-import com.qlchdt.view.QuanLySanPham;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DinhDangCp.PriceFormatter;
+import com.qlchdt.view.DangNhap;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
@@ -41,47 +41,27 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author User
  */
-public class qlsp extends javax.swing.JPanel {
+public class QuanLySanPham extends javax.swing.JPanel {
 
-    
-     SanPhamService sanphamService;
+    SanPhamService sanphamService;
     HangSanPhamService hangSanPhamService = new HangSanPhamService();
     //HoaDonBanHangForm hdbh = new HoaDonBanHangForm();    
     MyTable tbSanPham;
     SanPham SP_them;
     Path sanphamImagePath;
     Path imageLocation;
-    //FormHang _target = new FormHang();
-   
 
-   /*public QuanLySP() {
-
-        initComponents();
-        sanphamService = new SanPhamService();
-        
-        setDataToTable(sanphamService.getDssp(), tbSanPham);
-        
-        tbSanPham.getTable().addMouseListener(new MouseAdapter() { // copy từ HienThiSanPham
-            @Override
-            public void mouseReleased(MouseEvent me) {
-                String masp = getSelectedSanPham(0);
-                if (masp != null) {
-                    showInfo(masp, 1);
-                }
-            }
-        });
-        //addDocumentListener(txTimKiem);
-        refreshAll();
-                 
-
-    }*/
-    
-    
-    
-       public qlsp() {
+    public QuanLySanPham() {
         initComponents();
         
-           URL url = this.getClass().getResource("/com/qlchdt/assets/phones");
+        // buttons
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlSanPham")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+             btnSuaSP.setEnabled(false);
+        }
+
+        URL url = this.getClass().getResource("/com/qlchdt/assets/phones");
         try {
             sanphamImagePath = Paths.get(url.toURI()).toFile().toPath();
             //System.out.println(nhanVienImagePath);
@@ -89,12 +69,12 @@ public class qlsp extends javax.swing.JPanel {
             Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
         sanphamService = new SanPhamService();
-       DefaultTableModel defaultTableModel = new DefaultTableModel() {
-           @Override
-           public boolean isCellEditable(int row, int column) {
-               return false;
-           }
-       };
+        DefaultTableModel defaultTableModel = new DefaultTableModel() {
+            @Override
+            public boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         setDataToTable(sanphamService.getDssp(), tbSanPham);
         tbSanPham.getTable().addMouseListener(new MouseAdapter() { // copy từ HienThiSanPham
             @Override
@@ -106,13 +86,11 @@ public class qlsp extends javax.swing.JPanel {
             }
         });
         addDocumentListener(txtTimKiem);
-        
+
         refreshTable();
     }
 
-       
-       
-           private void setDataToTable(ArrayList<SanPham> data, MyTable table) {
+    private void setDataToTable(ArrayList<SanPham> data, MyTable table) {
         table.clear();
         for (SanPham sp : data) {
 
@@ -122,7 +100,7 @@ public class qlsp extends javax.swing.JPanel {
                 sp.getTenSP(),
                 PriceFormatter.format(sp.getDonGia()),
                 String.valueOf(sp.getSoLuong()),});
-                //sp.getFileNameHinhAnh();
+            //sp.getFileNameHinhAnh();
 
         }
     }
@@ -141,14 +119,14 @@ public class qlsp extends javax.swing.JPanel {
         txtSoLuong.setText("");
         lblHinhAnh.setIcon(null);
     }
-    
-    public boolean validateForm(){
-        if (txtMaSP.getText().isEmpty()||txtMaHSP.getText().isEmpty()||txtTenSP.getText().isEmpty()||txtSoLuong.getText().isEmpty()||txtDonGia.getText().isEmpty()){
+
+    public boolean validateForm() {
+        if (txtMaSP.getText().isEmpty() || txtMaHSP.getText().isEmpty() || txtTenSP.getText().isEmpty() || txtSoLuong.getText().isEmpty() || txtDonGia.getText().isEmpty()) {
             return false;
         }
         return true;
     }
-    
+
     public void showInfo(String masp) {
         // https://stackoverflow.com/questions/16343098/resize-a-picture-to-fit-a-jlabel
         if (masp != null) {
@@ -156,33 +134,33 @@ public class qlsp extends javax.swing.JPanel {
             for (SanPham sp : sanphamService.getDssp()) {
                 if (sp.getMaSP().equals(masp)) {
                     // show info
-                    
-                      /*int w = lblHinhAnh.getWidth();
+
+                    /*int w = lblHinhAnh.getWidth();
                     int h = lblHinhAnh.getHeight();
                     ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+sp.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblHinhAnh.setIcon(img);
                     lblHinhAnh.setIcon(new ImageIcon(imgScaled));*/
-                   String loai = hangSanPhamService.getHangSanPham(sp.getMaHSP()).getTenHang();
+                    String loai = hangSanPhamService.getHangSanPham(sp.getMaHSP()).getTenHang();
                     txtMaSP.setText(sp.getMaSP());
                     txtTenSP.setText(sp.getTenSP());
                     txtMaHSP.setText(loai + " - " + sp.getMaHSP());
                     txtDonGia.setText(PriceFormatter.format(sp.getDonGia()));
-                    txtSoLuong.setText(Integer.toString(sp.getSoLuong()));                  
+                    txtSoLuong.setText(Integer.toString(sp.getSoLuong()));
                     int w = lblHinhAnh.getWidth();
                     int h = lblHinhAnh.getHeight();
                     // nhớ sửa đường dẫn employees thành phones
-                    ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+sp.getFileNameHinhAnh()));
+                    ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/" + sp.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblHinhAnh.setIcon(img);
                     lblHinhAnh.setIcon(new ImageIcon(imgScaled));
-                    imageLocation = new File(sanphamImagePath + System.getProperty("file.separator") + masp +".png").toPath();
+                    imageLocation = new File(sanphamImagePath + System.getProperty("file.separator") + masp + ".png").toPath();
                     return;
                 }
             }
         }
     }
-    
+
     public String getSelectedSanPham(int col) {
         int i = tbSanPham.getTable().getSelectedRow();
         if (i >= 0) {
@@ -191,9 +169,9 @@ public class qlsp extends javax.swing.JPanel {
         }
         return null;
     }
-    
+
     public void txSearchOnChange() {
-        setDataToTable(sanphamService.search(txtTimKiem.getText(), "Tất cả",-1,-1,-1,-1), tbSanPham);
+        setDataToTable(sanphamService.search(txtTimKiem.getText(), "Tất cả", -1, -1, -1, -1), tbSanPham);
     }
 
     private void addDocumentListener(JTextField tx) {
@@ -215,8 +193,6 @@ public class qlsp extends javax.swing.JPanel {
             }
         });
     }
-    
-
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -491,24 +467,24 @@ public class qlsp extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
-            if(validateForm()){
+        if (validateForm()) {
             DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
             String masp = txtMaSP.getText().trim();
             String mahsp = txtMaHSP.getText().trim();
             String tensp = txtTenSP.getText().trim();
-            String sluong= txtSoLuong.getText().toString();
+            String sluong = txtSoLuong.getText().toString();
             int soluong = Integer.parseInt(sluong);
             String soluong0 = String.valueOf(soluong);
             String dgia = txtDonGia.getText().toString();
             float dongia = Float.parseFloat(dgia);
             //NumberFormat df = new DecimalFormat("#,###"+"000 đ");
             //String dogia = df.format(dongia);
-            String dogia = dongia+"00.000";
-            String hinhanh = masp+".png";
+            String dogia = dongia + "00.000";
+            String hinhanh = masp + ".png";
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-                File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
+                File srcPath = new File(System.getProperty("user.dir") + "/src/com/qlchdt/assets/phones/" + hinhanh);
 
                 Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
                 Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -521,31 +497,28 @@ public class qlsp extends javax.swing.JPanel {
                 while ((length = is.read(buffer)) > 0) {
                     outStream.write(buffer, 0, length);
                 }
-                */
+                 */
             } catch (IOException ex) {
                 Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
             }
-
 
             Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
             model.addRow(os);
             SP_them = new SanPham(masp, mahsp, tensp, dongia, soluong, hinhanh);
             sanphamService.add(masp, mahsp, tensp, dongia, soluong, hinhanh);
             JOptionPane.showMessageDialog(this, "Thêm thành công ");
-            }
-        else{
+        } else {
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
         }
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-       int row = -1;
+        int row = -1;
         row = tbSanPham.getTable().getSelectedRow();
-        if (row==-1) {
+        if (row == -1) {
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
-        }
-        else {
-             /*String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 5).toString().trim();
+        } else {
+            /*String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 5).toString().trim();
             
             String separate = System.getProperty("file.separator");
             File targetPath = new File(sanphamImagePath + separate + tenHinhSPCanXoa); // xóa dc
@@ -561,7 +534,7 @@ public class qlsp extends javax.swing.JPanel {
             tbSanPham.getModel().removeRow(row);
             JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
         }
-            
+
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPActionPerformed
@@ -569,18 +542,18 @@ public class qlsp extends javax.swing.JPanel {
         String masp = txtMaSP.getText().trim();
         String mahsp = txtMaHSP.getText().trim();
         String tensp = txtTenSP.getText().trim();
-        String sluong= txtSoLuong.getText();
+        String sluong = txtSoLuong.getText();
         int soluong = Integer.parseInt(sluong);
         String soluong0 = String.valueOf(soluong);
         String dgia = txtDonGia.getText();
         float dongia = Float.parseFloat(dgia);
-        String dogia = dongia+"00.000";
+        String dogia = dongia + "00.000";
         String hinhanh = this.imageLocation.getFileName().toString();
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-            File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
-            
+            File srcPath = new File(System.getProperty("user.dir") + "/src/com/qlchdt/assets/phones/" + hinhanh);
+
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
             /*
@@ -592,13 +565,12 @@ public class qlsp extends javax.swing.JPanel {
             while ((length = is.read(buffer)) > 0) {
                 outStream.write(buffer, 0, length);
             }
-            */
+             */
         } catch (IOException ex) {
             Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
-        
-        Object os[] = {masp, mahsp, tensp, dogia, soluong0,hinhanh};
+
+        Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
         if (sanphamService.update(masp, mahsp, tensp, dongia, soluong, hinhanh)) {
             JOptionPane.showMessageDialog(null, "Sửa thành công !");
             refreshTable();
@@ -606,7 +578,7 @@ public class qlsp extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSuaSPActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
-         this.txtMaSP.setText("");
+        this.txtMaSP.setText("");
         this.txtMaHSP.setText("");
         this.txtTenSP.setText("");
         this.txtSoLuong.setText("");

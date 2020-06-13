@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.qlchdt.service.format;
+package com.qlchdt.service.qlnhapxuat;
 
 import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.model.HoaDon;

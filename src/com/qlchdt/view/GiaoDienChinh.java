@@ -12,10 +12,11 @@ import com.qlchdt.view.QuanLy.QuanLyKhachHang;
 import com.qlchdt.view.QuanLy.QuanLyKhuyenMai;
 import com.qlchdt.view.QuanLy.QuanLyNhaCungCap;
 import com.qlchdt.view.QuanLy.QuanLyNhanVien;
+import com.qlchdt.view.QuanLy.QuanLyNhapHang;
 import com.qlchdt.view.QuanLy.QuanLyQuyen;
 import com.qlchdt.view.QuanLy.QuanLyTaiKhoan;
-import com.qlchdt.view.QuanLy.qlhsp;
-import com.qlchdt.view.QuanLy.qlsp;
+import com.qlchdt.view.QuanLy.QuanLyHangSanPham;
+import com.qlchdt.view.QuanLy.QuanLySanPham;
 import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
@@ -25,13 +26,40 @@ import javax.swing.JOptionPane;
  */
 public class GiaoDienChinh extends javax.swing.JFrame {
 
-     QuanLyBanHang fbh = new QuanLyBanHang();
-     
+    QuanLyBanHang fbh = new QuanLyBanHang();
+
     public GiaoDienChinh() {
         initComponents();
         this.setLocationRelativeTo(null);
-    }
 
+        String chitietquyen = DangNhap.quyenLogin.getChiTietQuyen();
+
+        if (chitietquyen.contains("qlBanHang xemSanPham xemLoaiSanPham xemHoaDon xemKhuyenMai xemKhachHang xemNCC")) { // Nhân viên bán hàng
+            btnNhapHang.setVisible(false);
+            btnNhanVien.setVisible(false);
+            btnPhieuNhap.setVisible(false);
+            btnTaiKhoan.setVisible(false);
+            btnQuyen.setVisible(false);
+            btnThongKe.setVisible(false);
+        } else if (chitietquyen.contains("qlNhapHang xemSanPham xemLoaiSanPham xemNhanVien qlPhieuNhap qlNCC")) {   //Nhân viên nhập hàng
+            btnBanHang.setVisible(false);
+            btnHoaDon.setVisible(false);
+            btnKhuyenMai.setVisible(false);
+            btnKhachHang.setVisible(false);
+            btnTaiKhoan.setVisible(false);
+            btnQuyen.setVisible(false);
+            btnThongKe.setVisible(false);
+
+        } else if (chitietquyen.contains("xemSanPham xemLoaiSanPham xemHoaDon qlNhanVien qlKhachHang xemPhieuNhap xemNCC qlTaiKhoan qlQuyen"))  { //Quản lý
+            btnBanHang.setVisible(false);
+            btnNhapHang.setVisible(false);
+            btnKhuyenMai.setVisible(false);
+            btnThongKe.setVisible(false);
+        } else {
+            //Admin
+        }
+
+    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -482,25 +510,23 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
-       new ChuyenPanel(plHienthi, new QuanLyBanHang());
-        
-        
+        new ChuyenPanel(plHienthi, new QuanLyBanHang());
     }//GEN-LAST:event_btnBanHangActionPerformed
 
     private void btnNhapHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhapHangActionPerformed
-        // TODO add your handling code here:
+        new ChuyenPanel(plHienthi, new QuanLyNhapHang());
     }//GEN-LAST:event_btnNhapHangActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-          new ChuyenPanel(plHienthi, new qlsp());
+        new ChuyenPanel(plHienthi, new QuanLySanPham());
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
     private void btnHSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHSPActionPerformed
-        new ChuyenPanel(plHienthi, new qlhsp());
+        new ChuyenPanel(plHienthi, new QuanLyHangSanPham());
     }//GEN-LAST:event_btnHSPActionPerformed
 
     private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
-         new ChuyenPanel(plHienthi, new QuanLyHoaDon());
+        new ChuyenPanel(plHienthi, new QuanLyHoaDon());
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapActionPerformed
@@ -508,7 +534,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnPhieuNhapActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
-         new ChuyenPanel(plHienthi, new QuanLyKhuyenMai());
+        new ChuyenPanel(plHienthi, new QuanLyKhuyenMai());
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
@@ -516,15 +542,15 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhanVienActionPerformed
 
     private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
-          new ChuyenPanel(plHienthi, new QuanLyKhachHang());
+        new ChuyenPanel(plHienthi, new QuanLyKhachHang());
     }//GEN-LAST:event_btnKhachHangActionPerformed
 
     private void btnNhaCungCapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhaCungCapActionPerformed
-         new ChuyenPanel(plHienthi, new QuanLyNhaCungCap());
+        new ChuyenPanel(plHienthi, new QuanLyNhaCungCap());
     }//GEN-LAST:event_btnNhaCungCapActionPerformed
 
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
-         new ChuyenPanel(plHienthi, new QuanLyTaiKhoan());        // TODO add your handling code here:
+        new ChuyenPanel(plHienthi, new QuanLyTaiKhoan());        // TODO add your handling code here:
     }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     private void btnQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuyenActionPerformed
@@ -537,7 +563,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void btnDoiMatKhauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMatKhauActionPerformed
         DangNhap dn = new DangNhap();
-        new DoiMatKhauForm(dn.txtuser.getText()).setVisible(true);
+        new DoiMatKhauForm(dn.txtUser.getText()).setVisible(true);
     }//GEN-LAST:event_btnDoiMatKhauActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
@@ -566,47 +592,6 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new GiaoDienChinh().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBanHang;

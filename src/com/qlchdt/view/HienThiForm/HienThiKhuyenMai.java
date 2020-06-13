@@ -7,8 +7,8 @@ package com.qlchdt.view.HienThiForm;
 
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.PriceFormatter;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DinhDangCp.PriceFormatter;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.time.format.DateTimeFormatter;

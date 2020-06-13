@@ -1,4 +1,4 @@
-package com.qlchdt.service.format;
+package com.qlchdt.view.DinhDangCp;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

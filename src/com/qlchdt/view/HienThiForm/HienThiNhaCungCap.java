@@ -8,7 +8,7 @@ package com.qlchdt.view.HienThiForm;
 import com.qlchdt.model.NhaCungCap;
 import com.qlchdt.service.ChiTietHoaDonService;
 import com.qlchdt.service.NhaCungCapService;
-import com.qlchdt.service.format.MyTable;
+import com.qlchdt.view.DinhDangCp.MyTable;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;

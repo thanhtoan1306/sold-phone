@@ -18,11 +18,12 @@ import com.qlchdt.service.KhachHangService;
 import com.qlchdt.service.KhuyenMaiService;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.SanPhamService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.PriceFormatter;
-import com.qlchdt.service.format.WritePDF;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DinhDangCp.PriceFormatter;
+import com.qlchdt.service.qlnhapxuat.WritePDF;
 import com.qlchdt.view.Chon.ChonKhachHang;
 import com.qlchdt.view.Chon.ChonKhuyenMai;
+import com.qlchdt.view.DangNhap;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -76,6 +77,12 @@ public class HoaDonBanHangForm extends FormHang {
         txTongTien.setFont(f);
 
         txMaHD.setText(qlhd.getNextID());
+             
+          // set Text
+        if (DangNhap.nhanVienLogin != null) {
+            nhanVien = DangNhap.nhanVienLogin;
+            txNV.setText(nhanVien.getTenNV() + " (" + nhanVien.getMaNV() + ")");
+        }
 
         //timer.scheduleAtFixedRate(new UpdateTimeTask(), 0, 1000);
 //        txNgayLap.setText(LocalDate.now().toString());
@@ -99,7 +106,7 @@ public class HoaDonBanHangForm extends FormHang {
         };
         new Timer(delay, taskPerformer).start();
 
-        txNV.setText("E02");
+        
         // set editable
         txMaHD.setEditable(false);
         txNV.setEditable(false);
@@ -108,6 +115,7 @@ public class HoaDonBanHangForm extends FormHang {
         txGioLap.setEditable(false);
         txTongTien.setEditable(false);
         txKhuyenMai.setEditable(false);
+   
 
         setDataToTable(dscthd, tbChiTietHoaDon);
     }
@@ -120,7 +128,7 @@ public class HoaDonBanHangForm extends FormHang {
 
         HoaDon hd = new HoaDon(
                 txMaHD.getText(),
-                "E02",
+                nhanVien.getMaNV(),
                 khachHang.getMaKH(),
                 khuyenMai.getMaKM(),
                 LocalDate.parse(txNgayLap.getText()),
@@ -144,10 +152,10 @@ public class HoaDonBanHangForm extends FormHang {
         this.target.refreshAll();
     }
 
-    public void refreshTable() {
-        qlcthd.readDB();
-        setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
-    }
+//    public void refreshTable() {
+//        qlcthd.readDB();
+//        setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
+//    }
 
     private void btnXoaOnClick() {
         int i = tbChiTietHoaDon.getTable().getSelectedRow();
@@ -351,7 +359,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel10.add(txGioLap);
 
         txNgayLap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txNgayLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txNgayLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày lập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel10.add(txNgayLap);
 
         txKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
