@@ -106,7 +106,7 @@ public class DangNhap extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Đăng nhập");
         setBackground(new java.awt.Color(153, 255, 255));
-        setMaximumSize(new java.awt.Dimension(770, 400));
+        setMaximumSize(new java.awt.Dimension(500, 300));
         setMinimumSize(new java.awt.Dimension(770, 400));
         setPreferredSize(new java.awt.Dimension(770, 400));
 

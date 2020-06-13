@@ -8,7 +8,7 @@ package com.qlchdt.view.QuanLy;
 import com.qlchdt.model.NhanVien;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.format.MyTable;
-import com.qlchdt.view.DateLabelFormatter;
+import com.qlchdt.view.custom.DateLabelFormatter;
 import java.awt.Dimension;
 import java.awt.Image;
 

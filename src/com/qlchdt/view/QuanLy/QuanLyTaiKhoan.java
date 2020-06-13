@@ -10,7 +10,7 @@ import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.TaiKhoanService;
 import com.qlchdt.service.format.MyTable;
-import com.qlchdt.view.DateLabelFormatter;
+import com.qlchdt.view.custom.DateLabelFormatter;
 import java.awt.Dimension;
 import java.awt.Image;
 

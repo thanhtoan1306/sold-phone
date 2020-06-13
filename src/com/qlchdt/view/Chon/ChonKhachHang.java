@@ -6,7 +6,10 @@
 package com.qlchdt.view.Chon;
 
 import com.qlchdt.view.HienThiForm.HienThiKhachHang;
+import com.qlchdt.view.custom.ChonButton;
+import com.qlchdt.view.custom.HuyButton;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -22,8 +25,8 @@ public class ChonKhachHang extends javax.swing.JFrame {
 
     HienThiKhachHang formHienThiKH = new HienThiKhachHang();
 
-    JButton btnChon = new JButton("Chọn");
-    JButton btnThoat = new JButton("Thoát");
+    ChonButton btnChon = new ChonButton();
+    HuyButton btnThoat = new HuyButton();
 
     JTextField txTarget;
 
@@ -33,6 +36,7 @@ public class ChonKhachHang extends javax.swing.JFrame {
         this.add(formHienThiKH);
 
         JPanel plBtns = new JPanel();
+        plBtns.setBackground(Color.white);
         plBtns.add(btnChon);
         plBtns.add(btnThoat);
 
@@ -41,8 +45,8 @@ public class ChonKhachHang extends javax.swing.JFrame {
         this.setVisible(true);
 
         //set icon cho button
-        btnThoat.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
-        btnChon.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_ok_30px.png")));
+      //  btnThoat.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+        //btnChon.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_ok_30px.png")));
 
         //set event cho button
         btnChon.addActionListener((ActionEvent ae) -> {
@@ -66,7 +70,7 @@ public class ChonKhachHang extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(1200, 600));
 
         pack();
