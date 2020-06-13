@@ -9,7 +9,7 @@ import com.github.lgooddatepicker.components.DatePicker;
 import com.github.lgooddatepicker.components.DatePickerSettings;
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;
-import com.qlchdt.view.custom.DateButton;
+import com.qlchdt.view.DinhDangCp.DateButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;

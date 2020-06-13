@@ -6,7 +6,7 @@
 package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.service.QuyenService;
-import com.qlchdt.service.format.XuatExcel;
+import com.qlchdt.service.qlnhapxuat.XuatExcel;
 import com.qlchdt.view.HienThiForm.HienThiQuyen;
 import com.qlchdt.view.ThemSua.ThemSuaQuyen;
 import javax.swing.JOptionPane;

@@ -7,8 +7,9 @@ package com.qlchdt.view.QuanLy;
 
 import com.qlchdt.model.KhuyenMai;
 import com.qlchdt.service.KhuyenMaiService;
-import com.qlchdt.service.format.NhapExcel;
-import com.qlchdt.service.format.XuatExcel;
+import com.qlchdt.service.qlnhapxuat.NhapExcel;
+import com.qlchdt.service.qlnhapxuat.XuatExcel;
+import com.qlchdt.view.DangNhap;
 import com.qlchdt.view.HienThiForm.HienThiKhuyenMai;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.view.ThemSua.ThemSuaKhuyenMai;
@@ -27,6 +28,14 @@ public class QuanLyKhuyenMai extends javax.swing.JPanel {
     
     public QuanLyKhuyenMai() {
         initComponents();
+             if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlKhuyenMai")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnSua.setEnabled(false);
+            btnKetThuc.setEnabled(false);
+            btnNhapExcel.setEnabled(false);
+
+        }
         plKhuyenMai.add(formHienThi);
         
     }

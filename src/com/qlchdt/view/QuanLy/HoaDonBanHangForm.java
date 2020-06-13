@@ -18,11 +18,12 @@ import com.qlchdt.service.KhachHangService;
 import com.qlchdt.service.KhuyenMaiService;
 import com.qlchdt.service.NhanVienService;
 import com.qlchdt.service.SanPhamService;
-import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.PriceFormatter;
-import com.qlchdt.service.format.WritePDF;
+import com.qlchdt.view.DinhDangCp.MyTable;
+import com.qlchdt.view.DinhDangCp.PriceFormatter;
+import com.qlchdt.service.qlnhapxuat.WritePDF;
 import com.qlchdt.view.Chon.ChonKhachHang;
 import com.qlchdt.view.Chon.ChonKhuyenMai;
+import com.qlchdt.view.DangNhap;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -76,6 +77,12 @@ public class HoaDonBanHangForm extends FormHang {
         txTongTien.setFont(f);
 
         txMaHD.setText(qlhd.getNextID());
+             
+          // set Text
+        if (DangNhap.nhanVienLogin != null) {
+            nhanVien = DangNhap.nhanVienLogin;
+            txNV.setText(nhanVien.getTenNV() + " (" + nhanVien.getMaNV() + ")");
+        }
 
         //timer.scheduleAtFixedRate(new UpdateTimeTask(), 0, 1000);
 //        txNgayLap.setText(LocalDate.now().toString());
@@ -99,7 +106,7 @@ public class HoaDonBanHangForm extends FormHang {
         };
         new Timer(delay, taskPerformer).start();
 
-        txNV.setText("E02");
+        
         // set editable
         txMaHD.setEditable(false);
         txNV.setEditable(false);
@@ -108,6 +115,7 @@ public class HoaDonBanHangForm extends FormHang {
         txGioLap.setEditable(false);
         txTongTien.setEditable(false);
         txKhuyenMai.setEditable(false);
+   
 
         setDataToTable(dscthd, tbChiTietHoaDon);
     }
@@ -120,7 +128,7 @@ public class HoaDonBanHangForm extends FormHang {
 
         HoaDon hd = new HoaDon(
                 txMaHD.getText(),
-                "E02",
+                nhanVien.getMaNV(),
                 khachHang.getMaKH(),
                 khuyenMai.getMaKM(),
                 LocalDate.parse(txNgayLap.getText()),
@@ -144,10 +152,10 @@ public class HoaDonBanHangForm extends FormHang {
         this.target.refreshAll();
     }
 
-    public void refreshTable() {
-        qlcthd.readDB();
-        setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
-    }
+//    public void refreshTable() {
+//        qlcthd.readDB();
+//        setDataToTable(qlcthd.search("", "Tất cả", -1, -1, -1, -1), tbChiTietHoaDon);
+//    }
 
     private void btnXoaOnClick() {
         int i = tbChiTietHoaDon.getTable().getSelectedRow();
@@ -282,7 +290,7 @@ public class HoaDonBanHangForm extends FormHang {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setPreferredSize(new java.awt.Dimension(640, 200));
-        jPanel4.setLayout(new javax.swing.BoxLayout(jPanel4, javax.swing.BoxLayout.Y_AXIS));
+        jPanel4.setLayout(new java.awt.GridLayout(3, 0, 0, 10));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
         jPanel3.setMinimumSize(new java.awt.Dimension(52, 50));
@@ -313,7 +321,7 @@ public class HoaDonBanHangForm extends FormHang {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setPreferredSize(new java.awt.Dimension(300, 44));
-        jPanel5.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
+        jPanel5.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
         txKH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txKH.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
@@ -324,8 +332,8 @@ public class HoaDonBanHangForm extends FormHang {
         btnChonKH.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChonKH.setForeground(new java.awt.Color(255, 255, 255));
-        btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_circled_user_male_30px.png"))); // NOI18N
-        btnChonKH.setText("Thêm khách ");
+        btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/customer.png"))); // NOI18N
+        btnChonKH.setText("Tìm khách hàng");
         btnChonKH.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnChonKHActionPerformed(evt);
@@ -351,7 +359,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel10.add(txGioLap);
 
         txNgayLap.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        txNgayLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Mã hóa đơn", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txNgayLap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày lập", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel10.add(txNgayLap);
 
         txKhuyenMai.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -367,7 +375,7 @@ public class HoaDonBanHangForm extends FormHang {
         btnChonKM.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKM.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChonKM.setForeground(new java.awt.Color(255, 255, 255));
-        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8-gift-48.png"))); // NOI18N
+        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/gift.png"))); // NOI18N
         btnChonKM.setText("Thêm khuyến mãi");
         btnChonKM.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

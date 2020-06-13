@@ -8,7 +8,7 @@ package com.qlchdt.view.HienThiForm;
 import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.model.KhachHang;
 import com.qlchdt.service.KhachHangService;
-import com.qlchdt.service.format.MyTable;
+import com.qlchdt.view.DinhDangCp.MyTable;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
@@ -32,6 +32,7 @@ public class HienThiKhachHang extends javax.swing.JPanel {
 
     public HienThiKhachHang() {
         initComponents();
+        
         khachHangService = new KhachHangService();
         setDataToTable(khachHangService.getDskh(), mtb);
 
@@ -154,9 +155,9 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         jPanel7 = new javax.swing.JPanel();
-        btnRefresh = new rojerusan.RSMaterialButtonRectangle();
         cbTypeSearch = new javax.swing.JComboBox<>();
         txTim = new javax.swing.JTextField();
+        btnRefresh = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -173,7 +174,7 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         );
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Thông tin khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 700));
         setLayout(new java.awt.BorderLayout());
 
@@ -192,14 +193,13 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        btnRefresh.setBackground(new java.awt.Color(0, 204, 255));
-        btnRefresh.setText("LÀM MỚI");
-        btnRefresh.setMinimumSize(new java.awt.Dimension(100, 30));
-        btnRefresh.setPreferredSize(new java.awt.Dimension(100, 30));
-        jPanel7.add(btnRefresh, java.awt.BorderLayout.LINE_END);
-
+        cbTypeSearch.setBackground(new java.awt.Color(3, 81, 145));
+        cbTypeSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbTypeSearch.setForeground(new java.awt.Color(255, 255, 255));
         cbTypeSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã KH", "Tên KH", "Địa chỉ", "Số điện thoại" }));
-        cbTypeSearch.setPreferredSize(new java.awt.Dimension(100, 25));
+        cbTypeSearch.setMaximumSize(new java.awt.Dimension(150, 50));
+        cbTypeSearch.setMinimumSize(new java.awt.Dimension(150, 50));
+        cbTypeSearch.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel7.add(cbTypeSearch, java.awt.BorderLayout.LINE_START);
 
         txTim.setBorder(javax.swing.BorderFactory.createTitledBorder("Tất cả"));
@@ -207,6 +207,16 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         jPanel7.add(txTim, java.awt.BorderLayout.CENTER);
 
         jPanel10.add(jPanel7);
+
+        btnRefresh.setBackground(new java.awt.Color(3, 81, 145));
+        btnRefresh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/refresh.png"))); // NOI18N
+        btnRefresh.setText("Làm mới");
+        btnRefresh.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnRefresh.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnRefresh.setPreferredSize(new java.awt.Dimension(150, 50));
+        jPanel10.add(btnRefresh);
 
         jPanel2.add(jPanel10, java.awt.BorderLayout.CENTER);
 
@@ -249,7 +259,7 @@ public class HienThiKhachHang extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSMaterialButtonRectangle btnRefresh;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JComboBox<String> cbTypeSearch;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;

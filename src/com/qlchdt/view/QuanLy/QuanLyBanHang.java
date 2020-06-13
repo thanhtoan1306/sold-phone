@@ -46,15 +46,14 @@ public class QuanLyBanHang extends javax.swing.JPanel {
         setPreferredSize(new java.awt.Dimension(1330, 900));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel4.setBackground(new java.awt.Color(176, 196, 229));
-        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(176, 196, 229), 3, true));
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(176, 196, 229), 1, true));
         jPanel4.setMaximumSize(new java.awt.Dimension(1200, 50));
         jPanel4.setMinimumSize(new java.awt.Dimension(1200, 50));
         jPanel4.setPreferredSize(new java.awt.Dimension(1200, 50));
-        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
+        jPanel4.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -4));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("BÁN HÀNG");
         jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
