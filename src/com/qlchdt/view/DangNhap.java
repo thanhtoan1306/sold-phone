@@ -27,7 +27,7 @@ public class DangNhap extends javax.swing.JFrame {
     TaiKhoanService tks = new TaiKhoanService();
     public static String saveFileName = "temp";
     public static TaiKhoan taiKhoanLogin;
-    TestHeThong heThong = new TestHeThong();
+    GiaoDienChinh heThong = new GiaoDienChinh();
 
     public DangNhap() {
         super("Đăng nhập hệ thống");

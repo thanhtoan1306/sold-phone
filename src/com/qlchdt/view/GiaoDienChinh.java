@@ -23,11 +23,11 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class TestHeThong extends javax.swing.JFrame {
+public class GiaoDienChinh extends javax.swing.JFrame {
 
      QuanLyBanHang fbh = new QuanLyBanHang();
      
-    public TestHeThong() {
+    public GiaoDienChinh() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -81,12 +81,12 @@ public class TestHeThong extends javax.swing.JFrame {
         plTitle.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(2, 155, 212));
-        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 15, 5));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 60, 2));
 
-        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/logo_team.png"))); // NOI18N
-        rSPanelImage1.setMaximumSize(new java.awt.Dimension(220, 120));
-        rSPanelImage1.setMinimumSize(new java.awt.Dimension(220, 100));
-        rSPanelImage1.setPreferredSize(new java.awt.Dimension(220, 120));
+        rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icon_app.png"))); // NOI18N
+        rSPanelImage1.setMaximumSize(new java.awt.Dimension(120, 120));
+        rSPanelImage1.setMinimumSize(new java.awt.Dimension(120, 120));
+        rSPanelImage1.setPreferredSize(new java.awt.Dimension(120, 120));
         rSPanelImage1.setLayout(new java.awt.BorderLayout());
         jPanel6.add(rSPanelImage1);
 
@@ -546,7 +546,7 @@ public class TestHeThong extends javax.swing.JFrame {
         if (input == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
-            TestHeThong t = new TestHeThong();
+            GiaoDienChinh t = new GiaoDienChinh();
             t.setVisible(true);
             this.dispose();
         }
@@ -561,7 +561,7 @@ public class TestHeThong extends javax.swing.JFrame {
             dn.setVisible(true);
         } else {
             this.dispose();
-            TestHeThong t = new TestHeThong();
+            GiaoDienChinh t = new GiaoDienChinh();
             t.setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
@@ -583,14 +583,18 @@ public class TestHeThong extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TestHeThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TestHeThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TestHeThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(TestHeThong.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(GiaoDienChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -599,7 +603,7 @@ public class TestHeThong extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new TestHeThong().setVisible(true);
+                new GiaoDienChinh().setVisible(true);
             }
         });
     }

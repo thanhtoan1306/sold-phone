@@ -117,7 +117,7 @@ public class HienThiKhuyenMai extends JPanel {
         plTim = new javax.swing.JPanel();
         cbSearch = new javax.swing.JComboBox<>();
         txTimKM = new javax.swing.JTextField();
-        btnLamMoi = new rojerusan.RSMaterialButtonRectangle();
+        btnRefresh = new javax.swing.JButton();
         plKhuyenMai = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
@@ -151,21 +151,26 @@ public class HienThiKhuyenMai extends JPanel {
             .addGroup(plTimLayout.createSequentialGroup()
                 .addGroup(plTimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txTimKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(0, 5, Short.MAX_VALUE))
         );
 
         jPanel1.add(plTim);
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 204, 204));
-        btnLamMoi.setText("LÀM MỚI");
-        btnLamMoi.setPreferredSize(new java.awt.Dimension(100, 50));
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+        btnRefresh.setBackground(new java.awt.Color(3, 81, 145));
+        btnRefresh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
+        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/refresh.png"))); // NOI18N
+        btnRefresh.setText("Làm mới");
+        btnRefresh.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnRefresh.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnRefresh.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
+                btnRefreshActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLamMoi);
+        jPanel1.add(btnRefresh);
 
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
@@ -184,13 +189,13 @@ public class HienThiKhuyenMai extends JPanel {
         plKhuyenMai.add(new JScrollPane(mtb));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        refresh();
-    }//GEN-LAST:event_btnLamMoiActionPerformed
+    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
+         refresh();
+    }//GEN-LAST:event_btnRefreshActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private rojerusan.RSMaterialButtonRectangle btnLamMoi;
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JComboBox<String> cbSearch;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel plKhuyenMai;

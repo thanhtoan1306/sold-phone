@@ -24,7 +24,7 @@
     </Property>
     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-        <TitledBorder title="Th&#xf4;ng tin kh&#xe1;ch h&#xe0;ng">
+        <TitledBorder title="Kh&#xe1;ch h&#xe0;ng">
           <Font PropertyName="font" name="Tahoma" size="14" style="1"/>
           <Color PropertyName="color" blue="e5" green="c4" red="b0" type="rgb"/>
         </TitledBorder>

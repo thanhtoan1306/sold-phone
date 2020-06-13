@@ -32,6 +32,7 @@ public class ChonKhachHang extends javax.swing.JFrame {
 
     public ChonKhachHang(JTextField _txTarget) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.txTarget = _txTarget;
         this.add(formHienThiKH);
 

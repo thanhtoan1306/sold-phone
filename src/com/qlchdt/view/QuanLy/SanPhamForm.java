@@ -189,16 +189,17 @@ public class SanPhamForm extends javax.swing.JPanel {
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel9.setMaximumSize(new java.awt.Dimension(600, 100));
-        jPanel9.setMinimumSize(new java.awt.Dimension(600, 100));
-        jPanel9.setPreferredSize(new java.awt.Dimension(600, 100));
+        jPanel9.setMaximumSize(new java.awt.Dimension(600, 80));
+        jPanel9.setMinimumSize(new java.awt.Dimension(600, 80));
+        jPanel9.setPreferredSize(new java.awt.Dimension(600, 80));
+        jPanel9.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
         txTimKiem.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18), new java.awt.Color(255, 102, 0))); // NOI18N
-        txTimKiem.setMaximumSize(new java.awt.Dimension(300, 80));
-        txTimKiem.setMinimumSize(new java.awt.Dimension(300, 80));
-        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 80));
+        txTimKiem.setMaximumSize(new java.awt.Dimension(300, 70));
+        txTimKiem.setMinimumSize(new java.awt.Dimension(300, 70));
+        txTimKiem.setPreferredSize(new java.awt.Dimension(300, 70));
         txTimKiem.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txTimKiemActionPerformed(evt);
@@ -232,8 +233,9 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel2.add(new JScrollPane(tbSanPham));
 
         jPanel11.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel11.setMinimumSize(new java.awt.Dimension(10, 40));
-        jPanel11.setPreferredSize(new java.awt.Dimension(100, 40));
+        jPanel11.setMaximumSize(new java.awt.Dimension(10, 20));
+        jPanel11.setMinimumSize(new java.awt.Dimension(10, 20));
+        jPanel11.setPreferredSize(new java.awt.Dimension(10, 20));
         add(jPanel11);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -303,14 +305,15 @@ public class SanPhamForm extends javax.swing.JPanel {
 
         jPanel8.add(jPanel6);
 
-        jPanel7.setLayout(new java.awt.GridLayout(1, 0));
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         txSoLuong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txSoLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txSoLuong.setMaximumSize(new java.awt.Dimension(250, 60));
         txSoLuong.setMinimumSize(new java.awt.Dimension(250, 60));
         txSoLuong.setPreferredSize(new java.awt.Dimension(250, 60));
-        jPanel7.add(txSoLuong);
+        jPanel7.add(txSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 83));
 
         jPanel8.add(jPanel7);
 
