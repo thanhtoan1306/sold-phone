@@ -306,14 +306,14 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel8.add(jPanel6);
 
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel7.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel7.setLayout(new java.awt.BorderLayout());
 
         txSoLuong.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         txSoLuong.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Số lượng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txSoLuong.setMaximumSize(new java.awt.Dimension(250, 60));
         txSoLuong.setMinimumSize(new java.awt.Dimension(250, 60));
         txSoLuong.setPreferredSize(new java.awt.Dimension(250, 60));
-        jPanel7.add(txSoLuong, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 160, 83));
+        jPanel7.add(txSoLuong, java.awt.BorderLayout.CENTER);
 
         jPanel8.add(jPanel7);
 

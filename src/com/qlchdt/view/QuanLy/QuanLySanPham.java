@@ -238,13 +238,13 @@ public class QuanLySanPham extends javax.swing.JPanel {
         jPanel1.setPreferredSize(new java.awt.Dimension(1200, 770));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jPanel6.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(176, 196, 229)));
         jPanel6.setMinimumSize(new java.awt.Dimension(1200, 50));
         jPanel6.setPreferredSize(new java.awt.Dimension(1200, 50));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("SẢN PHẨM");
         jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
