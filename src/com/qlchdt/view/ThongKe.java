@@ -5,6 +5,8 @@
  */
 package com.qlchdt.view;
 
+import java.awt.Component;
+
 /**
  *
  * @author W7x64Pro
@@ -15,8 +17,21 @@ public class ThongKe extends javax.swing.JPanel {
      * Creates new form NewJPanel
      */
     public ThongKe() {
-        initComponents();
+        initComponents();        
         this.jTabbedPane1.setTabLayoutPolicy(jTabbedPane1.SCROLL_TAB_LAYOUT);
+        Component selectedComponent = this.jTabbedPane1.getSelectedComponent();
+        if (selectedComponent instanceof ThongKeDoanhThu) {
+            this.summaryLabel.setText(((ThongKeDoanhThu) selectedComponent).summary());
+        }
+        if (selectedComponent instanceof ThongKeKho) {
+            this.summaryLabel.setText(((ThongKeKho) (selectedComponent)).summary());
+        }
+        if (selectedComponent instanceof ThongKeNhanVien) {
+            this.summaryLabel.setText(((ThongKeNhanVien) selectedComponent).summary());
+        }
+        if (selectedComponent instanceof ThongKeSanPham) {
+            this.summaryLabel.setText(((ThongKeSanPham) ( selectedComponent)).summary());
+        }
     }
 
     /**
@@ -30,12 +45,15 @@ public class ThongKe extends javax.swing.JPanel {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new ThongKeDoanhThu();
-        jPanel2 = new ThongKeKho();
+        jPanel2 = new ThongKeKho()
+        ;
         jPanel3 = new ThongKeSanPham()
         ;
         jPanel4 = new ThongKeNhanVien();
         jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        summaryLabel = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(1200, 900));
         setLayout(new java.awt.BorderLayout());
@@ -45,6 +63,11 @@ public class ThongKe extends javax.swing.JPanel {
         jTabbedPane1.setFont(new java.awt.Font("Times New Roman", 3, 18)); // NOI18N
         jTabbedPane1.setOpaque(true);
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(800, 600));
+        jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                jTabbedPane1StateChanged(evt);
+            }
+        });
 
         jPanel1.setInheritsPopupMenu(true);
         jPanel1.setLayout(new java.awt.CardLayout());
@@ -99,7 +122,34 @@ public class ThongKe extends javax.swing.JPanel {
         );
 
         add(jPanel5, java.awt.BorderLayout.PAGE_START);
+
+        jPanel6.setBackground(new java.awt.Color(204, 204, 204));
+
+        summaryLabel.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        summaryLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        summaryLabel.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        summaryLabel.setPreferredSize(new java.awt.Dimension(1200, 50));
+        jPanel6.add(summaryLabel);
+
+        add(jPanel6, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTabbedPane1StateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jTabbedPane1StateChanged
+        // TODO add your handling code here:
+        Component selectedComponent = this.jTabbedPane1.getSelectedComponent();
+        if (selectedComponent instanceof ThongKeDoanhThu) {
+            this.summaryLabel.setText(((ThongKeDoanhThu) selectedComponent).summary());
+        }
+        if (selectedComponent instanceof ThongKeKho) {
+            this.summaryLabel.setText(((ThongKeKho) (selectedComponent)).summary());
+        }
+        if (selectedComponent instanceof ThongKeNhanVien) {
+            this.summaryLabel.setText(((ThongKeNhanVien) selectedComponent).summary());
+        }
+        if (selectedComponent instanceof ThongKeSanPham) {
+            this.summaryLabel.setText(((ThongKeSanPham) ( selectedComponent)).summary());
+        }
+    }//GEN-LAST:event_jTabbedPane1StateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -109,6 +159,8 @@ public class ThongKe extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel summaryLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,7 +9,6 @@ import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.model.SanPham;
 import com.qlchdt.service.ChiTietHoaDonService;
 import com.qlchdt.service.SanPhamService;
-import java.awt.CardLayout;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -23,8 +22,6 @@ import org.jfree.chart.plot.CategoryPlot;
 import org.jfree.chart.renderer.category.CategoryItemRenderer;
 import org.jfree.chart.ui.TextAnchor;
 import org.jfree.data.category.DefaultCategoryDataset;
-import org.jfree.data.general.DefaultPieDataset;
-import org.jfree.data.general.PieDataset;
 
 /**
  *
@@ -43,6 +40,13 @@ public class ThongKeKho extends javax.swing.JPanel {
     public int getSoLuongSanPham() {
         return soLuongSanPham;
     }
+    
+    public String summary() {
+        String tongKet="";
+        tongKet = "Sản Phẩm Trong Kho: " + this.getSoLuongSanPham() + ".    Sản Phẩm Bán Được: " + this.getSoLuongSanPhamBan() + ".    Sản Phẩm Còn Lại: " + (this.soLuongSanPham-this.soLuongSanPhamBan);
+        return tongKet;
+    }
+    
     /**
      * Creates new form ThongKeSanPham
      */

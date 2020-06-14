@@ -5,19 +5,14 @@
  */
 package com.qlchdt.view;
 
-import com.qlchdt.model.ChiTietHoaDon;
 import com.qlchdt.model.HoaDon;
 import com.qlchdt.model.NhanVien;
-import com.qlchdt.model.SanPham;
-import com.qlchdt.service.ChiTietHoaDonService;
 import com.qlchdt.service.HoaDonService;
 import com.qlchdt.service.NhanVienService;
-import com.qlchdt.service.SanPhamService;
 import java.awt.CardLayout;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import javax.swing.JOptionPane;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -36,17 +31,23 @@ import org.jfree.data.category.DefaultCategoryDataset;
 public class ThongKeNhanVien extends javax.swing.JPanel {
     private NhanVienService nhanVienServ;
     private HoaDonService hoaDonServ;
-    private float tongDoanhThu=0;
-    private int soLuong=0;
-
-    public float getTongDoanhThu() {
-        return tongDoanhThu;
+    private float doanhThu;
+    private int soLuong;
+    private String bestCuli;
+    public float getDoanhThu() {
+        return doanhThu;
     }
 
     public int getSoLuong() {
         return soLuong;
     }
 
+    public String summary() {
+        String tongKet="";
+        tongKet = "Nhân Viên ưu tú nhất: "+this.bestCuli + " với doanh thu là " + this.getDoanhThu() + " (triệu) và số hóa đơn là " + this.soLuong;
+        return tongKet;
+    }
+    
     /**
      * Creates new form ThongKeNhanVien
      */
@@ -64,12 +65,13 @@ public class ThongKeNhanVien extends javax.swing.JPanel {
 
         Map<String, List<HoaDon>> byMaNVHoaDon = list_hd.stream().collect(Collectors.groupingBy(hd
                 -> hd.getMaNhanVien()));
+        float max=-1;
         
         for (NhanVien nv : list_nv) {
             String key = nv.getMaNV();
             List<HoaDon> hoaDonTheoNV = byMaNVHoaDon.get(key);  // Lay HoaDon theo MaNV
             int soLuongHoaDon = 0;
-            float doanhThuThang = 0;
+            float doanhThuThang = 0;    // của từng nhân viên
             
             //JOptionPane.showMessageDialog(null, "mã trong NV: " + key + ", mã trong HoaDon: " + byMaNVHoaDon.get(key));
             if (hoaDonTheoNV!=null) {
@@ -77,10 +79,13 @@ public class ThongKeNhanVien extends javax.swing.JPanel {
                     doanhThuThang += hd.getTongTien();
                     soLuongHoaDon++;
                 }
-                this.soLuong += soLuongHoaDon;
-                this.tongDoanhThu += doanhThuThang;
             }
-            
+            if (doanhThuThang>max) {
+                this.bestCuli = nv.getTenNV();
+                this.soLuong = soLuongHoaDon;
+                this.doanhThu = doanhThuThang;
+                max = doanhThuThang;
+            }
             dataset.addValue(doanhThuThang, "Tổng Tiền (triệu)", nv.getTenNV());
             dataset.addValue(soLuongHoaDon, "Số Hoá Đơn Thanh Toán", nv.getTenNV());
         }
