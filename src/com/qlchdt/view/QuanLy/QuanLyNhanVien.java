@@ -16,10 +16,7 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Files;
@@ -71,8 +68,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnSua.setEnabled(false);
-            btnLuu.setEnabled(false);
-
+            
         }
         URL url = this.getClass().getResource("/com/qlchdt/assets/employees");
         try {
@@ -160,7 +156,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                         img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"));
                     }
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                    lblImage.setIcon(img);
                     lblImage.setIcon(new ImageIcon(imgScaled));
                     imageLocation = new File(nhanVienImagePath + System.getProperty("file.separator") + maNV + ".png").toPath();
                     return;
@@ -241,7 +236,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnLuu = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
@@ -299,10 +293,10 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         jPanel15.setBackground(new java.awt.Color(255, 255, 255));
         jPanel15.setMaximumSize(new java.awt.Dimension(400, 300));
-        jPanel15.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 100));
 
         lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"))); // NOI18N
+        lblImage.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(102, 102, 102), 1, true));
         lblImage.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         lblImage.setMaximumSize(new java.awt.Dimension(240, 250));
         lblImage.setMinimumSize(new java.awt.Dimension(240, 350));
@@ -312,7 +306,23 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 lblImageMousePressed(evt);
             }
         });
-        jPanel15.add(lblImage);
+
+        javax.swing.GroupLayout jPanel15Layout = new javax.swing.GroupLayout(jPanel15);
+        jPanel15.setLayout(jPanel15Layout);
+        jPanel15Layout.setHorizontalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblImage, javax.swing.GroupLayout.DEFAULT_SIZE, 270, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel15Layout.setVerticalGroup(
+            jPanel15Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel15Layout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addComponent(lblImage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(171, Short.MAX_VALUE))
+        );
 
         jPanel8.add(jPanel15);
 
@@ -332,9 +342,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         txtMa.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txtMa.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtMa.setMaximumSize(new java.awt.Dimension(180, 50));
+        txtMa.setMaximumSize(new java.awt.Dimension(200, 50));
         txtMa.setMinimumSize(new java.awt.Dimension(180, 50));
-        txtMa.setPreferredSize(new java.awt.Dimension(180, 50));
+        txtMa.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel7.add(txtMa);
 
         jPanel9.add(jPanel7);
@@ -352,9 +362,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         txtTen.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txtTen.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtTen.setMaximumSize(new java.awt.Dimension(180, 50));
+        txtTen.setMaximumSize(new java.awt.Dimension(200, 50));
         txtTen.setMinimumSize(new java.awt.Dimension(180, 50));
-        txtTen.setPreferredSize(new java.awt.Dimension(180, 50));
+        txtTen.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel10.add(txtTen);
 
         jPanel9.add(jPanel10);
@@ -374,9 +384,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         calendar.setBackground(new java.awt.Color(255, 255, 255));
         calendar.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        calendar.setMaximumSize(new java.awt.Dimension(180, 50));
+        calendar.setMaximumSize(new java.awt.Dimension(200, 50));
         calendar.setMinimumSize(new java.awt.Dimension(180, 50));
-        calendar.setPreferredSize(new java.awt.Dimension(180, 50));
+        calendar.setPreferredSize(new java.awt.Dimension(200, 50));
         calendar.setLayout(new java.awt.CardLayout());
         jPanel11.add(calendar);
         UtilDateModel model = new UtilDateModel();
@@ -404,9 +414,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         txtSDT.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txtSDT.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtSDT.setMaximumSize(new java.awt.Dimension(180, 50));
+        txtSDT.setMaximumSize(new java.awt.Dimension(200, 50));
         txtSDT.setMinimumSize(new java.awt.Dimension(180, 50));
-        txtSDT.setPreferredSize(new java.awt.Dimension(180, 50));
+        txtSDT.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel13.add(txtSDT);
 
         jPanel9.add(jPanel13);
@@ -424,13 +434,14 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         jPanel14.setBackground(new java.awt.Color(255, 255, 255));
         jPanel14.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        jPanel14.setMaximumSize(new java.awt.Dimension(180, 50));
+        jPanel14.setMaximumSize(new java.awt.Dimension(200, 50));
         jPanel14.setMinimumSize(new java.awt.Dimension(180, 50));
-        jPanel14.setPreferredSize(new java.awt.Dimension(180, 50));
+        jPanel14.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel14.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         radioNam.setBackground(new java.awt.Color(255, 255, 255));
         genderGroup.add(radioNam);
+        radioNam.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioNam.setText("Nam");
         radioNam.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -441,6 +452,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         radioNu.setBackground(new java.awt.Color(255, 255, 255));
         genderGroup.add(radioNu);
+        radioNu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         radioNu.setText("Nữ");
         jPanel14.add(radioNu);
 
@@ -461,9 +473,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
         txtDiaChi.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         txtDiaChi.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
-        txtDiaChi.setMaximumSize(new java.awt.Dimension(180, 50));
+        txtDiaChi.setMaximumSize(new java.awt.Dimension(200, 50));
         txtDiaChi.setMinimumSize(new java.awt.Dimension(180, 50));
-        txtDiaChi.setPreferredSize(new java.awt.Dimension(180, 50));
+        txtDiaChi.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel16.add(txtDiaChi);
 
         jPanel9.add(jPanel16);
@@ -516,18 +528,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             }
         });
         ThaoTac.add(btnSua);
-
-        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/save.png"))); // NOI18N
-        btnLuu.setText("Lưu");
-        btnLuu.setMaximumSize(new java.awt.Dimension(140, 40));
-        btnLuu.setMinimumSize(new java.awt.Dimension(140, 40));
-        btnLuu.setPreferredSize(new java.awt.Dimension(140, 40));
-        btnLuu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuActionPerformed(evt);
-            }
-        });
-        ThaoTac.add(btnLuu);
 
         btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png"))); // NOI18N
         btnHuy.setText("Hủy");
@@ -639,6 +639,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
+        // Thêm vào bảng
         DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
         String maNV = txtMa.getText().trim();
         if (maNV.trim().equals("")) {
@@ -691,7 +692,26 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
         model.addRow(os);
         NV_them = new NhanVien(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
-        nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
+        
+        // Lưu vào database
+        if (!nhanVienService.saveToDatabase(NV_them)) {
+            JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
+
+            String separate = System.getProperty("file.separator");
+            File targetPath = new File(nhanVienImagePath + separate + NV_them.getMaNV() + ".png");
+            File srcPath = new File(System.getProperty("user.dir")
+                    + separate + "src" + separate + "com" + "qlchdt" + separate + "assets" + separate + "employees" + separate + NV_them.getMaNV() + ".png");
+            if (targetPath.delete() && srcPath.delete()) {
+                System.out.println("Hình thêm đã được xóa.");
+            }
+
+            return;
+        }
+        else {
+            nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
+            JOptionPane.showMessageDialog(null, "Lưu vào Database thành công!");
+        }
+        NV_them = null;
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -699,7 +719,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         int row = -1;
         row = tbNhanVien.getTable().getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
+            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn nhân viên!");
         } else {
             String tenHinhNVCanXoa = tbNhanVien.getTable().getValueAt(row, 6).toString().trim();
             int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa nhân viên này?");
@@ -717,7 +737,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
                 nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
                 tbNhanVien.getModel().removeRow(row);
-                JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
+                JOptionPane.showMessageDialog(null, "Xoá nhân viên thành công!");
             }
 
         }
@@ -769,29 +789,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
-        // TODO add your handling code here:
-        if (NV_them == null) {
-            JOptionPane.showMessageDialog(null, "Chưa có nhân viên nào mới thêm vào bảng. Lưu vào database thất bại.");
-            return;
-        }
-        if (!nhanVienService.saveToDatabase(NV_them)) {
-            JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
-
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(nhanVienImagePath + separate + NV_them.getMaNV() + ".png");
-            File srcPath = new File(System.getProperty("user.dir")
-                    + separate + "src" + separate + "com" + "qlchdt" + separate + "assets" + separate + "employees" + separate + NV_them.getMaNV() + ".png");
-            if (targetPath.delete() && srcPath.delete()) {
-                System.out.println("Hình thêm đã được xóa thành công.");
-            }
-
-            return;
-        }
-        JOptionPane.showMessageDialog(null, "Lưu vào Database thành công!");
-        NV_them = null;
-    }//GEN-LAST:event_btnLuuActionPerformed
-
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
         this.txtMa.setText("");
@@ -801,6 +798,8 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         this.txtSDT.setText("");
         this.txtDiaChi.setText("");
         ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"));
+        Image imgScaled = img.getImage().getScaledInstance(lblImage.getWidth(), lblImage.getHeight(), Image.SCALE_SMOOTH);
+        lblImage.setIcon(new ImageIcon(imgScaled));
         this.lblImage.setIcon(img);
     }//GEN-LAST:event_btnHuyActionPerformed
 
@@ -810,7 +809,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     private javax.swing.JPanel ThaoTac;
     private javax.swing.JButton btnHuy;
     private rojerusan.RSMaterialButtonRectangle btnLamMoi;
-    private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
