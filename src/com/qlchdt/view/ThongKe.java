@@ -64,13 +64,13 @@ public class ThongKe extends javax.swing.JPanel {
 
         add(jTabbedPane1, java.awt.BorderLayout.CENTER);
 
-        jPanel5.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(176, 196, 229)));
         jPanel5.setMaximumSize(new java.awt.Dimension(1200, 50));
         jPanel5.setMinimumSize(new java.awt.Dimension(1200, 50));
         jPanel5.setPreferredSize(new java.awt.Dimension(1200, 50));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("THỐNG KÊ");
         jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
@@ -81,7 +81,7 @@ public class ThongKe extends javax.swing.JPanel {
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1200, Short.MAX_VALUE)
+            .addGap(0, 1198, Short.MAX_VALUE)
             .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel5Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)
