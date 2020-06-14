@@ -103,6 +103,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         setTitle("Hệ thống");
         setLocation(new java.awt.Point(0, 0));
         setMinimumSize(new java.awt.Dimension(1400, 900));
+        setPreferredSize(new java.awt.Dimension(1600, 900));
 
         plTitle.setBackground(new java.awt.Color(2, 155, 212));
         plTitle.setMaximumSize(new java.awt.Dimension(1400, 125));
@@ -500,9 +501,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
         plHienthi.setBackground(new java.awt.Color(255, 255, 255));
         plHienthi.setBorder(new javax.swing.border.LineBorder(new java.awt.Color(176, 196, 229), 2, true));
-        plHienthi.setMaximumSize(new java.awt.Dimension(1150, 775));
-        plHienthi.setMinimumSize(new java.awt.Dimension(1150, 775));
-        plHienthi.setPreferredSize(new java.awt.Dimension(1150, 775));
+        plHienthi.setMaximumSize(new java.awt.Dimension(1200, 775));
+        plHienthi.setMinimumSize(new java.awt.Dimension(1200, 775));
+        plHienthi.setPreferredSize(new java.awt.Dimension(1200, 775));
         plHienthi.setLayout(new java.awt.BorderLayout());
         plMain.add(plHienthi, java.awt.BorderLayout.CENTER);
 

@@ -8,8 +8,6 @@ package com.qlchdt.view;
 import com.qlchdt.model.HoaDon;
 import com.qlchdt.service.HoaDonService;
 import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Font;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
@@ -40,6 +38,12 @@ public class ThongKeDoanhThu extends javax.swing.JPanel {
 
     public int getSoLuongHoaDon() {
         return soLuongHoaDon;
+    }
+    
+    public String summary() {
+        String tongKet="";
+        tongKet = "Tổng Doanh Thu: " + this.getTongDoanhThu() + " (triệu).  Số Lượng Hóa Đơn: " + this.soLuongHoaDon;
+        return tongKet;
     }
     
     /**

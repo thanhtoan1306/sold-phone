@@ -10,19 +10,16 @@ import com.qlchdt.model.SanPham;
 import com.qlchdt.service.ChiTietHoaDonService;
 import com.qlchdt.service.SanPhamService;
 import java.awt.CardLayout;
+import java.text.NumberFormat;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
-import org.jfree.chart.labels.ItemLabelAnchor;
-import org.jfree.chart.labels.ItemLabelPosition;
-import org.jfree.chart.labels.StandardCategoryItemLabelGenerator;
-import org.jfree.chart.plot.CategoryPlot;
-import org.jfree.chart.renderer.category.CategoryItemRenderer;
-import org.jfree.chart.ui.TextAnchor;
-import org.jfree.data.category.DefaultCategoryDataset;
+import org.jfree.chart.labels.PieSectionLabelGenerator;
+import org.jfree.chart.labels.StandardPieSectionLabelGenerator;
+import org.jfree.chart.plot.PiePlot;
 import org.jfree.data.general.DefaultPieDataset;
 
 /**
@@ -34,13 +31,20 @@ private ChiTietHoaDonService chiTietHoaDonServ;
     private SanPhamService sanPhamServ;
     private int soLuongSanPhamBan=0;
     private int soLuongSanPham=0;
-
+    private String hangBanChayNhat;
+    
     public int getSoLuongSanPhamBan() {
         return soLuongSanPhamBan;
     }
 
     public int getSoLuongSanPham() {
         return soLuongSanPham;
+    }
+    
+    public String summary() {
+        String tongKet="";
+        tongKet = "Số Lượng Sản Phẩm Bán: " + this.getSoLuongSanPhamBan()+"/"+this.getSoLuongSanPham()+".   Hãng bán chạy nhất: "+this.hangBanChayNhat;
+        return tongKet;
     }
     
     /**
@@ -67,6 +71,7 @@ private ChiTietHoaDonService chiTietHoaDonServ;
         List<ChiTietHoaDon> list_cthd = this.chiTietHoaDonServ.getDscthd();
         List<SanPham> list_sp = this.sanPhamServ.getDssp();
         DefaultPieDataset dataset = new DefaultPieDataset();
+        int max=-1;
         
         Map<String, List<ChiTietHoaDon>> byHangCTHD = list_cthd.stream().collect(Collectors.groupingBy(ct
                 -> ct.getMaSanPham().substring(0, 2)));
@@ -90,6 +95,11 @@ private ChiTietHoaDonService chiTietHoaDonServ;
             }
             this.soLuongSanPham += soLuong;
             this.soLuongSanPhamBan += soLuongBan;
+            // Tìm hãng bán chạy nhất
+            if (soLuongBan>max) {
+                this.hangBanChayNhat = convertToFullName(key);
+                max = soLuongBan;
+            }
             dataset.setValue(convertToFullName(key), soLuongBan);
         }
         return dataset;
@@ -98,6 +108,13 @@ private ChiTietHoaDonService chiTietHoaDonServ;
     public void setDataToChart() {
         DefaultPieDataset pieData = this.createPieDataset();
         JFreeChart pieChart = ChartFactory.createPieChart3D("Cơ cấu các hãng sản phẩm bán được ưa chuộng".toUpperCase(), pieData);
+        
+        PiePlot plot = (PiePlot) pieChart.getPlot();
+        plot.setSimpleLabels(true);
+        
+        PieSectionLabelGenerator gen = new StandardPieSectionLabelGenerator(
+            "{0}: {1} ({2})", NumberFormat.getInstance(), NumberFormat.getPercentInstance());
+        plot.setLabelGenerator(gen);
         
         ChartPanel piePanel = new ChartPanel(pieChart);
         //chartPanel.setPreferredSize(new Dimension(800, 600));
