@@ -104,6 +104,10 @@ public class HienThiPhieuNhap extends javax.swing.JPanel {
             }
         });
     }
+    
+       public MyTable getTable() {
+        return this.mtb;
+    }
 
     public String getSelectedRow(int col) {
         int i = mtb.getTable().getSelectedRow();

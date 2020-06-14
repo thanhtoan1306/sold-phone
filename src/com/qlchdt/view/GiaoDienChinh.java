@@ -6,6 +6,8 @@
 package com.qlchdt.view;
 
 import com.qlchdt.service.ChuyenPanel;
+import com.qlchdt.view.QuanLy.QLPhieuNhap;
+import com.qlchdt.view.QuanLy.QLTaiKhoan;
 import com.qlchdt.view.QuanLy.QuanLyBanHang;
 import com.qlchdt.view.QuanLy.QuanLyHoaDon;
 import com.qlchdt.view.QuanLy.QuanLyKhachHang;
@@ -530,7 +532,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapActionPerformed
-        // TODO add your handling code here:
+         new ChuyenPanel(plHienthi, new QLPhieuNhap());// TODO add your handling code here:
     }//GEN-LAST:event_btnPhieuNhapActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
@@ -550,7 +552,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhaCungCapActionPerformed
 
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
-        new ChuyenPanel(plHienthi, new QuanLyTaiKhoan());        // TODO add your handling code here:
+      //  new ChuyenPanel(plHienthi, new QuanLyTaiKhoan()); // code cũ
+        new ChuyenPanel(plHienthi, new QLTaiKhoan());// TODO add your handling code here:
     }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
     private void btnQuyenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnQuyenActionPerformed
