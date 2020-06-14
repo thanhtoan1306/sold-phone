@@ -11,23 +11,19 @@ import com.qlchdt.service.SanPhamService;
 import com.qlchdt.view.DinhDangCp.MyTable;
 import com.qlchdt.view.DinhDangCp.PriceFormatter;
 import com.qlchdt.view.DangNhap;
+import com.qlchdt.view.ThemSua.ThemSuaSanPham;
 import java.awt.Dimension;
 import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
-import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import static java.nio.file.StandardCopyOption.REPLACE_EXISTING;
 import java.util.ArrayList;
-import java.util.Enumeration;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractButton;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -170,6 +166,15 @@ public class QuanLySanPham extends javax.swing.JPanel {
         return null;
     }
 
+    public String getSelectedRow(int col) {
+        int i = tbSanPham.getTable().getSelectedRow();
+        if (i >= 0) {
+            int realI = tbSanPham.getTable().convertRowIndexToModel(i);
+            return tbSanPham.getModel().getValueAt(realI, col).toString();
+        }
+        return null;
+    }
+    
     public void txSearchOnChange() {
         setDataToTable(sanphamService.search(txtTimKiem.getText(), "Tất cả", -1, -1, -1, -1), tbSanPham);
     }
@@ -193,6 +198,74 @@ public class QuanLySanPham extends javax.swing.JPanel {
             }
         });
     }
+    
+    private void btnSuaMouseClicked() {
+        int row = -1;
+        String masp = null;
+        row = tbSanPham.getTable().getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Không thể sửa vì bạn chưa chọn sản phẩm!");
+        }
+        else {
+            masp = tbSanPham.getTable().getValueAt(row, 0).toString();  // lấy mã sp từ hàng dg chọn trong bảng
+        }
+        if (masp != null) {
+            //QuanLySanPham qlsp = new QuanLySanPham();
+            ThemSuaSanPham suasp = new ThemSuaSanPham("Sửa", masp);
+
+            // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event
+            suasp.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                    refreshAll();
+                    refreshTable();
+                }
+            });
+        }
+    }
+    
+    private void btnXoaMouseClicked() {
+        int row = -1;
+        row = tbSanPham.getTable().getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn sản phẩm!");
+        }
+        else {  // lũ chó Telex     
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm này?");
+            if (confirmDelete == JOptionPane.YES_OPTION) {
+                // ok ok không xóa hình, oops, chắc xóa dc
+                /*
+                String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 6).toString().trim();
+                String separate = System.getProperty("file.separator");
+                File targetPath = new File(sanphamImagePath + separate + tenHinhSPCanXoa); // xóa dc
+                File srcPath = new File(System.getProperty("user.dir")
+                        + separate + "src" + separate + "com" + separate + "qlchdt" + separate + "assets" + separate + "phones" + separate + tenHinhSPCanXoa); // xóa ko dc
+                try {
+                    Files.deleteIfExists(targetPath.toPath());
+                    Files.deleteIfExists(srcPath.toPath());
+                } catch (IOException ex) {
+                    Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                */
+                sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
+                tbSanPham.getModel().removeRow(row);
+                JOptionPane.showMessageDialog(null, "Xoá sản phẩm thành công!");
+            }
+        }
+    }
+    
+    private void btnThemMouseClicked() {
+        //QuanLySanPham qlsp = new QuanLySanPham();
+        ThemSuaSanPham themsp = new ThemSuaSanPham("Thêm", "");
+        themsp.addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
+            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                refreshAll();
+                refreshTable();
+            }
+        }); 
+    }
+    
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -466,115 +539,16 @@ public class QuanLySanPham extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
-        if (validateForm()) {
-            DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-            String masp = txtMaSP.getText().trim();
-            String mahsp = txtMaHSP.getText().trim();
-            String tensp = txtTenSP.getText().trim();
-            String sluong = txtSoLuong.getText().toString();
-            int soluong = Integer.parseInt(sluong);
-            String soluong0 = String.valueOf(soluong);
-            String dgia = txtDonGia.getText().toString();
-            float dongia = Float.parseFloat(dgia);
-            //NumberFormat df = new DecimalFormat("#,###"+"000 đ");
-            //String dogia = df.format(dongia);
-            String dogia = dongia + "00.000";
-            String hinhanh = masp + ".png";
-            try {
-                // copy anh vao assets/employees sau khi chon anh
-                String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-                File srcPath = new File(System.getProperty("user.dir") + "/src/com/qlchdt/assets/phones/" + hinhanh);
-
-                Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-                Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-                /*
-                InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-                OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-                byte[] buffer = new byte[1024];
-                int length;
-                // copy the file content in bytes
-                while ((length = is.read(buffer)) > 0) {
-                    outStream.write(buffer, 0, length);
-                }
-                 */
-            } catch (IOException ex) {
-                Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
-            }
-
-            Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
-            model.addRow(os);
-            SP_them = new SanPham(masp, mahsp, tensp, dongia, soluong, hinhanh);
-            sanphamService.add(masp, mahsp, tensp, dongia, soluong, hinhanh);
-            JOptionPane.showMessageDialog(this, "Thêm thành công ");
-        } else {
-            JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
-        }
+        btnThemMouseClicked();
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
-        int row = -1;
-        row = tbSanPham.getTable().getSelectedRow();
-        if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
-        } else {
-            /*String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 5).toString().trim();
-            
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(sanphamImagePath + separate + tenHinhSPCanXoa); // xóa dc
-            File srcPath = new File(System.getProperty("user.dir")
-                    +separate+"src"+separate+"com"+separate+"qlchdt"+separate+"assets"+separate+"phones"+separate+tenHinhSPCanXoa); // xóa ko dc
-            try {
-                Files.deleteIfExists(targetPath.toPath());
-                Files.deleteIfExists(srcPath.toPath());
-            } catch (IOException ex) {
-                Logger.getLogger(QuanLySP.class.getName()).log(Level.SEVERE, null, ex);
-            }*/
-            sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
-            tbSanPham.getModel().removeRow(row);
-            JOptionPane.showMessageDialog(null, "Xoá hàng hiện chọn thành công!");
-        }
+        btnXoaMouseClicked();
 
     }//GEN-LAST:event_btnXoaActionPerformed
 
     private void btnSuaSPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaSPActionPerformed
-        DefaultTableModel model = (DefaultTableModel) tbSanPham.getModel();
-        String masp = txtMaSP.getText().trim();
-        String mahsp = txtMaHSP.getText().trim();
-        String tensp = txtTenSP.getText().trim();
-        String sluong = txtSoLuong.getText();
-        int soluong = Integer.parseInt(sluong);
-        String soluong0 = String.valueOf(soluong);
-        String dgia = txtDonGia.getText();
-        float dongia = Float.parseFloat(dgia);
-        String dogia = dongia + "00.000";
-        String hinhanh = this.imageLocation.getFileName().toString();
-        try {
-            // copy anh vao assets/employees sau khi chon anh
-            String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-            File srcPath = new File(System.getProperty("user.dir") + "/src/com/qlchdt/assets/phones/" + hinhanh);
-
-            Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-            Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-            /*
-            InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-            OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-            byte[] buffer = new byte[1024];
-            int length;
-            // copy the file content in bytes
-            while ((length = is.read(buffer)) > 0) {
-                outStream.write(buffer, 0, length);
-            }
-             */
-        } catch (IOException ex) {
-            Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Object os[] = {masp, mahsp, tensp, dogia, soluong0, hinhanh};
-        if (sanphamService.update(masp, mahsp, tensp, dongia, soluong, hinhanh)) {
-            JOptionPane.showMessageDialog(null, "Sửa thành công !");
-            refreshTable();
-        }
+        btnSuaMouseClicked();
     }//GEN-LAST:event_btnSuaSPActionPerformed
 
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
