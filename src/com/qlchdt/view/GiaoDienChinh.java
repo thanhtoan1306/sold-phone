@@ -35,7 +35,70 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
 
         String chitietquyen = DangNhap.quyenLogin.getChiTietQuyen();
-
+        
+        btnBanHang.setVisible(false);
+        if (chitietquyen.contains("BanHang")) {
+            btnBanHang.setVisible(true);
+        }
+        
+        btnNhapHang.setVisible(false);
+        if (chitietquyen.contains("NhapHang")) {
+            btnNhapHang.setVisible(true);
+        }
+        
+        btnSanPham.setVisible(false);
+        if (chitietquyen.contains("SanPham")) {
+            btnSanPham.setVisible(true);
+        }
+        
+        btnHSP.setVisible(false);
+        if (chitietquyen.contains("HangSanPham")) {
+            btnHSP.setVisible(true);
+        }
+        
+        btnHoaDon.setVisible(false);
+        if (chitietquyen.contains("HoaDon")) {
+            btnHoaDon.setVisible(true);
+        }
+        
+        btnPhieuNhap.setVisible(false);
+        if (chitietquyen.contains("PhieuNhap")) {
+            btnPhieuNhap.setVisible(true);
+        }
+        
+        btnKhuyenMai.setVisible(false);
+        if (chitietquyen.contains("KhuyenMai")) {
+            btnKhuyenMai.setVisible(true);
+        }
+        
+        btnNhanVien.setVisible(false);
+        if (chitietquyen.contains("NhanVien")) {
+            btnNhanVien.setVisible(true);
+        }
+        
+        btnKhachHang.setVisible(false);
+        if (chitietquyen.contains("KhachHang")) {
+            btnKhachHang.setVisible(true);
+        }
+        
+        btnNhaCungCap.setVisible(false);
+        if (chitietquyen.contains("NCC")) {
+            btnNhaCungCap.setVisible(true);
+        }
+        
+        btnTaiKhoan.setVisible(false);
+        if (chitietquyen.contains("TaiKhoan")) {
+            btnTaiKhoan.setVisible(true);
+        }
+        
+        btnQuyen.setVisible(false);
+        if (chitietquyen.contains("Quyen")) {
+            btnQuyen.setVisible(true);
+        }
+        
+        btnThongKe.setVisible(true);    // 
+        
+        /*
         if (chitietquyen.contains("qlBanHang xemSanPham xemLoaiSanPham xemHoaDon xemKhuyenMai xemKhachHang xemNCC")) { // Nhân viên bán hàng
             btnNhapHang.setVisible(false);
             btnNhanVien.setVisible(false);
@@ -59,8 +122,21 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             btnThongKe.setVisible(false);
         } else {
             //Admin
+            btnBanHang.setVisible(true);
+            btnNhapHang.setVisible(true);
+            btnSanPham.setVisible(true);
+            btnHSP.setVisible(true);
+            btnHoaDon.setVisible(true);
+            btnPhieuNhap.setVisible(true);
+            btnKhuyenMai.setVisible(true);
+            btnNhanVien.setVisible(true);
+            btnKhachHang.setVisible(true);
+            btnNhaCungCap.setVisible(true);
+            btnTaiKhoan.setVisible(true);
+            btnQuyen.setVisible(true);
+            btnThongKe.setVisible(true);
         }
-
+        */
     }
 
     @SuppressWarnings("unchecked")
