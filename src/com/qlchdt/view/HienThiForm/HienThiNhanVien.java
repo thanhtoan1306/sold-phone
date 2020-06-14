@@ -5,18 +5,17 @@
  */
 package com.qlchdt.view.HienThiForm;
 
-import com.qlchdt.view.ThemSua.ThemSuaKhachHang;
 import com.qlchdt.model.KhachHang;
+import com.qlchdt.model.NhanVien;
 import com.qlchdt.service.KhachHangService;
+import com.qlchdt.service.NhanVienService;
 import com.qlchdt.view.DinhDangCp.MyTable;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
-import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -24,18 +23,14 @@ import javax.swing.event.DocumentListener;
  *
  * @author User
  */
-public class HienThiKhachHang extends javax.swing.JPanel {
+public class HienThiNhanVien extends javax.swing.JPanel {
 
-    KhachHangService khachHangService;
-    MyTable mtb;
-    
+    NhanVienService nhanVienService = new NhanVienService();
+    MyTable tbNhanVien;
 
-    public HienThiKhachHang() {
+    public HienThiNhanVien() {
         initComponents();
-        
-        khachHangService = new KhachHangService();
-        setDataToTable(khachHangService.getDskh(), mtb);
-
+        setDataToTable(nhanVienService.getDsnv(), tbNhanVien);
         cbTypeSearch.addActionListener((ActionEvent e) -> {
             txTim.setBorder(BorderFactory.createTitledBorder(cbTypeSearch.getSelectedItem().toString()));
             txTim.requestFocus();
@@ -63,94 +58,44 @@ public class HienThiKhachHang extends javax.swing.JPanel {
                 txSearchOnChange();
             }
         });
-
     }
 
     public String getSelectedRow(int col) {
-        int i = mtb.getTable().getSelectedRow();
+        int i = tbNhanVien.getTable().getSelectedRow();
         if (i >= 0) {
-            int realI = mtb.getTable().convertRowIndexToModel(i);
-            return mtb.getModel().getValueAt(realI, col).toString();
+            int realI = tbNhanVien.getTable().convertRowIndexToModel(i);
+            return tbNhanVien.getModel().getValueAt(realI, col).toString();
         }
         return null;
     }
 
     public void refresh() {
-        khachHangService.readDB();
-        setDataToTable(khachHangService.getDskh(), mtb);
+        nhanVienService.readDB();
+        setDataToTable(nhanVienService.getDsnv(), tbNhanVien);
     }
 
     private void txSearchOnChange() {
-        setDataToTable(khachHangService.search(txTim.getText(), cbTypeSearch.getSelectedItem().toString()), mtb);
+        setDataToTable(nhanVienService.search(txTim.getText(), cbTypeSearch.getSelectedItem().toString()), tbNhanVien);
     }
 
-    private void setDataToTable(ArrayList<KhachHang> data, MyTable table) {
+    private void setDataToTable(ArrayList<NhanVien> data, MyTable table) {
         table.clear();
-        int stt = 1; // lưu số thứ tự dòng hiện tại
-        //Boolean hienKhachHangAn = LoginForm.quyenLogin.getChiTietQuyen().contains("qlKhachHang");
-
-        for (KhachHang kh : data) {
+        for (NhanVien nv : data) {
             table.addRow(new String[]{
-                String.valueOf(stt),
-                kh.getMaKH(),
-                kh.getTenKH(),
-                kh.getDiaChi(),
-                kh.getSDT(),});
-            stt++;
+                nv.getMaNV(),
+                nv.getTenNV(),
+                nv.getNgaySinh().toString(),
+                nv.getGioiTinh(),
+                nv.getSDT(),
+                nv.getDiaChi(),
+                nv.getHinhAnh(),});
         }
     }
-
-//    //xóa
-//    private void btnXoaMouseClicked() {
-//        String makh = getSelectedRow(1);
-//        if (makh != null) {
-//            KhachHangService khachHangService = new KhachHangService();
-//            if (JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn khách hàng " + makh + " ?",
-//                    "Chú ý", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-//                khachHangService.delete(makh);
-//                refresh();
-//            }
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Chưa chọn khách hàng nào để xóa");
-//        }
-//    }
-//    //sửa
-//
-//    private void btnSuaMouseClicked() {
-//        String makh = getSelectedRow(1);
-//        if (makh != null) {
-//            ThemSuaKhachHang suakh = new ThemSuaKhachHang("Sửa", makh);
-//
-//            // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event
-//            suakh.addWindowListener(new java.awt.event.WindowAdapter() {
-//                @Override
-//                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-//                    refresh();
-//                }
-//            });
-//
-//        } else {
-//            JOptionPane.showMessageDialog(null, "Chưa chọn khách hàng nào để sửa");
-//        }
-//    }
-//
-//    //thêm
-//    private void btnThemMouseClicked() {
-//        ThemSuaKhachHang themkh = new ThemSuaKhachHang("Thêm", "");
-//        themkh.addWindowListener(new java.awt.event.WindowAdapter() {
-//            @Override
-//            public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-//                refresh();
-//            }
-//        });
-//        System.out.println("Đã nhấn nút thêm ");
-//    }
 
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel11 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
@@ -160,21 +105,10 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         btnRefresh = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
-        jPanel6 = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jPanel11Layout = new javax.swing.GroupLayout(jPanel11);
-        jPanel11.setLayout(jPanel11Layout);
-        jPanel11Layout.setHorizontalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
-        jPanel11Layout.setVerticalGroup(
-            jPanel11Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
-        );
+        jPanel5 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
-        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Khách hàng", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(176, 196, 229))); // NOI18N
+        setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         setPreferredSize(new java.awt.Dimension(1200, 700));
         setLayout(new java.awt.BorderLayout());
 
@@ -229,30 +163,23 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         add(jPanel1, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setLayout(new java.awt.BorderLayout());
 
-        jPanel6.setLayout(new javax.swing.BoxLayout(jPanel6, javax.swing.BoxLayout.LINE_AXIS));
+        jPanel5.setMaximumSize(new java.awt.Dimension(1200, 600));
+        jPanel5.setMinimumSize(new java.awt.Dimension(1200, 600));
+        jPanel5.setPreferredSize(new java.awt.Dimension(1200, 600));
+        jPanel5.setLayout(new java.awt.BorderLayout());
+        jPanel3.add(jPanel5, java.awt.BorderLayout.CENTER);
+        tbNhanVien = new MyTable();
+        tbNhanVien.setPreferredSize(new Dimension(900-250, 345));
+        tbNhanVien.setHeaders(new String[]{"Mã NV", "Họ Tên", "Ngày Sinh", "Giới Tính", "Số Điện Thoại", "Địa Chỉ", "Hình Ảnh"});
+        tbNhanVien.setColumnsWidth(new double[]{.4, 1, .75, .4, .8, .7, 0.7});
+        tbNhanVien.setAlignment(3, JLabel.RIGHT);
+        tbNhanVien.setAlignment(4, JLabel.RIGHT);
+        tbNhanVien.setAlignment(5, JLabel.RIGHT);
+        tbNhanVien.setAlignment(6, JLabel.RIGHT);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, 604, Short.MAX_VALUE))
-        );
-
-        mtb = new MyTable();
-        mtb.setPreferredSize(new Dimension(1200 - 250, 600));
-        mtb.setHeaders(new String[]{"STT","Mã Kh", "Tên KH","Địa chỉ", "Số điện thoại"});
-        mtb.setColumnsWidth(new double[]{.5,.5, 1.5, 1.5, 2});
-        mtb.setAlignment(2, JLabel.LEFT);
-        mtb.setAlignment(3, JLabel.LEFT);
-        mtb.setupSort();
-        jPanel6.add(new JScrollPane(mtb));
+        jPanel5.add(new JScrollPane(tbNhanVien));
 
         add(jPanel3, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
@@ -263,11 +190,10 @@ public class HienThiKhachHang extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbTypeSearch;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
-    private javax.swing.JPanel jPanel11;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JTextField txTim;
     // End of variables declaration//GEN-END:variables

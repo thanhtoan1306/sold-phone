@@ -36,7 +36,7 @@ public class NhanVienService {
         return null;
     }
 
-    public ArrayList<NhanVien> search(String value, String type, LocalDate _ngay1, LocalDate _ngay2) {
+    public ArrayList<NhanVien> search(String value, String type) {
         ArrayList<NhanVien> result = new ArrayList<>();
 
         dsnv.forEach((nv) -> {
@@ -84,17 +84,17 @@ public class NhanVienService {
             }
         });
 
-        //Ngay sinh
-        for (int i = result.size() - 1; i >= 0; i--) {
-            NhanVien nv = result.get(i);
-            LocalDate ngaysinh = nv.getNgaySinh();
-
-            Boolean ngayKhongThoa = (_ngay1 != null && ngaysinh.isBefore(_ngay1)) || (_ngay2 != null && ngaysinh.isAfter(_ngay2));
-
-            if (ngayKhongThoa) {
-                result.remove(nv);
-            }
-        }
+//        //Ngay sinh
+//        for (int i = result.size() - 1; i >= 0; i--) {
+//            NhanVien nv = result.get(i);
+//            LocalDate ngaysinh = nv.getNgaySinh();
+//
+//            Boolean ngayKhongThoa = (_ngay1 != null && ngaysinh.isBefore(_ngay1)) || (_ngay2 != null && ngaysinh.isAfter(_ngay2));
+//
+//            if (ngayKhongThoa) {
+//                result.remove(nv);
+//            }
+//        }
 
         return result;
     }

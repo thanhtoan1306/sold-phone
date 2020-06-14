@@ -404,6 +404,10 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
         DefaultTableModel model = (DefaultTableModel) tbHSP.getModel();
         String mahsp = txtMaHSP.getText().trim();
         String tenhsp = txtTenHSP.getText().trim();
+        
+        if(mahsp == null & tenhsp == null) {
+         JOptionPane.showMessageDialog(null, "Vui lòng nhập thông tin cần thêm!");
+        }
         /*String gioiTinh = "";
         for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
             AbstractButton button = buttons.nextElement();

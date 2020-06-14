@@ -51,7 +51,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
     public HienThiHoaDon() {
         initComponents();
-        
+
         // khoang ngay        
         DatePickerSettings pickerSettings = new DatePickerSettings();
         pickerSettings.setVisibleDateTextField(false);
@@ -101,20 +101,6 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         addDocumentListener(txKhoangTien2);
     }
 
-    private void btnXemChiTiet() {
-        String mahd = getSelectedRow(1);
-        if (mahd != null) {
-            HienThiChiTietHoaDon htcthd = new HienThiChiTietHoaDon(mahd);
-            htcthd.addWindowListener(new WindowAdapter() {
-                @Override
-                public void windowClosed(WindowEvent e) {
-                    refresh();
-                }
-            });
-        } else {
-            JOptionPane.showMessageDialog(null, "Chưa chọn hóa đơn nào để xem!");
-        }
-    }
 
     public MyTable getTable() {
         return this.mtb;
@@ -249,7 +235,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         txKhoangTien1 = new javax.swing.JTextField();
         txKhoangTien2 = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
+        btnXemChiTiet = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         rSPanelShadow2 = new rojeru_san.RSPanelShadow();
@@ -353,14 +339,14 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         jPanel6.setPreferredSize(new java.awt.Dimension(50, 100));
         jPanel1.add(jPanel6);
 
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_show_property_30px.png"))); // NOI18N
-        jButton1.setText("Xem chi tiết");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnXemChiTiet.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_show_property_30px.png"))); // NOI18N
+        btnXemChiTiet.setText("Xem chi tiết");
+        btnXemChiTiet.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnXemChiTietActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1);
+        jPanel1.add(btnXemChiTiet);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
         jButton2.setText("Làm mới");
@@ -440,9 +426,20 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         refresh();
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        btnXemChiTiet();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btnXemChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemChiTietActionPerformed
+        String mahd = getSelectedRow(1);
+        if (mahd != null) {
+            QuanLyChiTietHoaDon qlcthd = new QuanLyChiTietHoaDon(mahd);
+            qlcthd.addWindowListener(new WindowAdapter() {
+                @Override
+                public void windowClosed(WindowEvent e) {
+                    refresh();
+                }
+            });
+        } else {
+            JOptionPane.showMessageDialog(null, "Chưa chọn hóa đơn nào để xem!");
+        }
+    }//GEN-LAST:event_btnXemChiTietActionPerformed
 
     private void txKhoangNgay1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txKhoangNgay1ActionPerformed
         // TODO add your handling code here:
@@ -450,8 +447,8 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnXemChiTiet;
     private javax.swing.JComboBox<String> cbTypeSearch;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

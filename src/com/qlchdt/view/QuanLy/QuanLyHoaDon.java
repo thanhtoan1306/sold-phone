@@ -28,6 +28,7 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
 
     public QuanLyHoaDon() {
         initComponents();
+        
         if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlHoaDon")) {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
@@ -101,8 +102,6 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        btnPDF = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1200, 600));
@@ -173,40 +172,8 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         });
         jPanel1.add(btnSua);
 
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/excel.png"))); // NOI18N
-        jButton4.setText("Xuất Excel");
-        jButton4.setMaximumSize(new java.awt.Dimension(140, 40));
-        jButton4.setMinimumSize(new java.awt.Dimension(140, 40));
-        jButton4.setPreferredSize(new java.awt.Dimension(140, 40));
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jButton4);
-
-        btnPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/pdf.png"))); // NOI18N
-        btnPDF.setText("In PDF");
-        btnPDF.setMaximumSize(new java.awt.Dimension(140, 40));
-        btnPDF.setMinimumSize(new java.awt.Dimension(140, 40));
-        btnPDF.setPreferredSize(new java.awt.Dimension(140, 40));
-        btnPDF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPDFActionPerformed(evt);
-            }
-        });
-        jPanel1.add(btnPDF);
-
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new XuatExcel().xuatFileExcelHoaDon();
-    }//GEN-LAST:event_jButton4ActionPerformed
-
-    private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
-        printPDF();
-    }//GEN-LAST:event_btnPDFActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         btnThemMouseClicked();
@@ -222,11 +189,9 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnPDF;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

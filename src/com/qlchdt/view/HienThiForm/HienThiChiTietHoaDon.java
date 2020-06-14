@@ -15,6 +15,7 @@ import java.util.ArrayList;
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.event.DocumentEvent;
@@ -24,7 +25,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author User
  */
-public class HienThiChiTietHoaDon extends JFrame {
+public class HienThiChiTietHoaDon extends JPanel {
 
     ChiTietHoaDonService qlcthd = new ChiTietHoaDonService();
     SanPhamService qlspBUS = new SanPhamService();
@@ -52,7 +53,7 @@ public class HienThiChiTietHoaDon extends JFrame {
         addDocumentListener(txKhoangTien2);
         
         
-        this.setVisible(true);
+        
     }
 
     public void refresh() {
@@ -148,8 +149,7 @@ public class HienThiChiTietHoaDon extends JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        rSPanelShadow1 = new rojeru_san.RSPanelShadow();
+        jPanel6 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         cbTypeSearch = new javax.swing.JComboBox<>();
         txTim = new javax.swing.JTextField();
@@ -163,11 +163,13 @@ public class HienThiChiTietHoaDon extends JFrame {
         jPanel3 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1200, 600));
+        setLayout(new java.awt.BorderLayout());
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
-
-        rSPanelShadow1.setMinimumSize(new java.awt.Dimension(10, 100));
-        rSPanelShadow1.setLayout(new java.awt.FlowLayout());
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setMaximumSize(new java.awt.Dimension(1200, 150));
+        jPanel6.setMinimumSize(new java.awt.Dimension(1200, 150));
+        jPanel6.setPreferredSize(new java.awt.Dimension(1200, 150));
+        jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 20));
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
@@ -181,7 +183,7 @@ public class HienThiChiTietHoaDon extends JFrame {
         txTim.setPreferredSize(new java.awt.Dimension(16, 80));
         jPanel2.add(txTim);
 
-        rSPanelShadow1.add(jPanel2);
+        jPanel6.add(jPanel2);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
         jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Số lượng"));
@@ -197,7 +199,7 @@ public class HienThiChiTietHoaDon extends JFrame {
         txKhoangSoLuong2.setPreferredSize(new java.awt.Dimension(16, 80));
         jPanel4.add(txKhoangSoLuong2);
 
-        rSPanelShadow1.add(jPanel4);
+        jPanel6.add(jPanel4);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder("Tổng tiền (/triệu)"));
@@ -213,7 +215,7 @@ public class HienThiChiTietHoaDon extends JFrame {
         txKhoangTien2.setPreferredSize(new java.awt.Dimension(16, 80));
         jPanel5.add(txKhoangTien2);
 
-        rSPanelShadow1.add(jPanel5);
+        jPanel6.add(jPanel5);
 
         jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_refresh_30px.png"))); // NOI18N
         jButton2.setText("Làm mới");
@@ -222,12 +224,12 @@ public class HienThiChiTietHoaDon extends JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
-        rSPanelShadow1.add(jButton2);
+        jPanel6.add(jButton2);
 
-        jPanel1.add(rSPanelShadow1, java.awt.BorderLayout.PAGE_START);
+        add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
         jPanel3.setLayout(new java.awt.BorderLayout());
-        jPanel1.add(jPanel3, java.awt.BorderLayout.CENTER);
+        add(jPanel3, java.awt.BorderLayout.CENTER);
         mtb = new MyTable();
         mtb.setHeaders(new String[]{"STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá", "Thành tiền"});
         mtb.setColumnsWidth(new double[]{.5, 4, 4, 4, 4, 4});
@@ -238,8 +240,6 @@ public class HienThiChiTietHoaDon extends JFrame {
         mtb.setAlignment(5, JLabel.RIGHT);
         mtb.setupSort();
         jPanel3.add(new JScrollPane(mtb));
-
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -250,12 +250,11 @@ public class HienThiChiTietHoaDon extends JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbTypeSearch;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
-    private rojeru_san.RSPanelShadow rSPanelShadow1;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JTextField txKhoangSoLuong1;
     private javax.swing.JTextField txKhoangSoLuong2;
     private javax.swing.JTextField txKhoangTien1;
