@@ -8,6 +8,7 @@ package com.qlchdt.view;
 import com.qlchdt.model.TaiKhoan;
 import com.qlchdt.service.TaiKhoanService;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -33,7 +34,7 @@ public class DoiMatKhauForm extends JFrame {
 
     public DoiMatKhauForm(String matk) {
         setLayout(new BorderLayout());
-        setSize(350, 350);
+        setSize(300,300);
         setTitle("Đổi mật khẩu");
         setLocationRelativeTo(null);
         tk = new TaiKhoanService().getTaiKhoanmk(matk);
@@ -43,7 +44,7 @@ public class DoiMatKhauForm extends JFrame {
         txMatKhauCu.setBorder(BorderFactory.createTitledBorder("Mật khẩu cũ: "));
         txMatKhauMoi.setBorder(BorderFactory.createTitledBorder("Mật khẩu mới: "));
         txXacNhanMatKhau.setBorder(BorderFactory.createTitledBorder("Xác nhận mật khẩu: "));
-
+        plInput.setBackground(Color.white);
         plInput.add(txMatKhauCu);
         plInput.add(txMatKhauMoi);
         plInput.add(txXacNhanMatKhau);
@@ -52,9 +53,11 @@ public class DoiMatKhauForm extends JFrame {
 
         // button
         JPanel plButton = new JPanel();
+        plButton.setBackground(Color.white);
         plButton.add(btnDongY);
         plButton.add(btnHuy);
-
+        btnDongY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
+        btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png"))); // NOI18N
 //        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png")));
 //        btnDongY.setIcon(new ImageIcon(this.getClass().getResource("/giaodienchuan/images/icons8_ok_30px.png")));
 
