@@ -652,9 +652,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         if (input == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
-            GiaoDienChinh t = new GiaoDienChinh();
-            t.setVisible(true);
-            this.dispose();
+            //GiaoDienChinh t = new GiaoDienChinh();
+            //t.setVisible(true);
+            //this.dispose();
         }
     }//GEN-LAST:event_btnThoatActionPerformed
 
@@ -666,9 +666,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             DangNhap dn = new DangNhap();
             dn.setVisible(true);
         } else {
-            this.dispose();
-            GiaoDienChinh t = new GiaoDienChinh();
-            t.setVisible(true);
+          //  this.dispose();
+           // GiaoDienChinh t = new GiaoDienChinh();
+           // t.setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 
