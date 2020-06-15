@@ -240,7 +240,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
-        btnLuu = new javax.swing.JButton();
+        btnHuy = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
@@ -515,17 +515,17 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         });
         ThaoTac.add(btnSua);
 
-        btnLuu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/save.png"))); // NOI18N
-        btnLuu.setText("Lưu");
-        btnLuu.setMaximumSize(new java.awt.Dimension(140, 40));
-        btnLuu.setMinimumSize(new java.awt.Dimension(140, 40));
-        btnLuu.setPreferredSize(new java.awt.Dimension(140, 40));
-        btnLuu.addActionListener(new java.awt.event.ActionListener() {
+        btnHuy.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png"))); // NOI18N
+        btnHuy.setText("Hủy");
+        btnHuy.setMaximumSize(new java.awt.Dimension(140, 40));
+        btnHuy.setMinimumSize(new java.awt.Dimension(140, 40));
+        btnHuy.setPreferredSize(new java.awt.Dimension(140, 40));
+        btnHuy.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLuuActionPerformed(evt);
+                btnHuyActionPerformed(evt);
             }
         });
-        ThaoTac.add(btnLuu);
+        ThaoTac.add(btnHuy);
 
         hienThiTT.add(ThaoTac, java.awt.BorderLayout.PAGE_START);
 
@@ -774,35 +774,24 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private void btnLuuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLuuActionPerformed
+    private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         // TODO add your handling code here:
-        if (NV_them == null) {
-            JOptionPane.showMessageDialog(null, "Chưa có nhân viên nào mới thêm vào bảng. Lưu vào database thất bại.");
-            return;
-        }
-        if (!nhanVienService.saveToDatabase(NV_them)) {
-            JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
-
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(nhanVienImagePath + separate + NV_them.getMaNV() + ".png");
-            File srcPath = new File(System.getProperty("user.dir")
-                    + separate + "src" + separate + "com" + "qlchdt" + separate + "assets" + separate + "employees" + separate + NV_them.getMaNV() + ".png");
-            if (targetPath.delete() && srcPath.delete()) {
-                System.out.println("Hình thêm đã được xóa thành công.");
-            }
-
-            return;
-        }
-        JOptionPane.showMessageDialog(null, "Lưu vào Database thành công!");
-        NV_them = null;
-    }//GEN-LAST:event_btnLuuActionPerformed
+        this.txtMa.setText("");
+        this.txtTen.setText("");
+        this.datePicker.getModel().setValue(null);
+        this.genderGroup.clearSelection();
+        this.txtSDT.setText("");
+        this.txtDiaChi.setText("");
+        ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/employees/empty-user.png"));
+        this.lblImage.setIcon(img);
+    }//GEN-LAST:event_btnHuyActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NhanVienInfo;
     private javax.swing.JPanel ThaoTac;
+    private javax.swing.JButton btnHuy;
     private rojerusan.RSMaterialButtonRectangle btnLamMoi;
-    private javax.swing.JButton btnLuu;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
