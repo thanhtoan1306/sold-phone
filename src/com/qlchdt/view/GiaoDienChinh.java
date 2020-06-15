@@ -648,7 +648,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không ? ", "Thoát", JOptionPane.YES_NO_OPTION);
         if (input == JOptionPane.YES_OPTION) {
             System.exit(0);
         } else {
@@ -660,7 +660,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
         // TODO add your handling code here:
-        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không");
+        int input = JOptionPane.showConfirmDialog(null, "Bạn có chắc không ? ", "Đăng xuất ", JOptionPane.YES_NO_OPTION);
         if (input == JOptionPane.YES_OPTION) {
             this.dispose();
             DangNhap dn = new DangNhap();
