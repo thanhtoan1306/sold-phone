@@ -14,6 +14,7 @@ import com.qlchdt.view.DinhDangCp.SuaButton;
 import com.qlchdt.view.DinhDangCp.ThemButton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -26,6 +27,7 @@ import javax.swing.JTextField;
 public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
     ChiTietHoaDonService qlcthd = new ChiTietHoaDonService();
+    ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
 
     String type, mahd, masp;
     int soLuongMax;
@@ -89,7 +91,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
     private void btnThemChiTietHoaDonMouseClicked() {
         if (checkEmpty()) {
-            String maspThem = txGia.getText();
+            String maspThem = txMaSP.getText();
 
             float dongia = Float.parseFloat(txGia.getText());
             int soluong = Integer.parseInt(txSLuong.getText());
@@ -104,8 +106,14 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
                 txSLuong.setText(String.valueOf(soLuongMax));
                 return;
             }
+            
+            ChiTietHoaDon cthd = new ChiTietHoaDon(mahd, maspThem, soluong, dongia);
 
-            if (qlcthd.add(mahd, maspThem, soluong, dongia)) {
+//            for (ChiTietHoaDon ct : dscthd) {
+//                qlcthd.add(ct);
+//            }
+
+            if (qlcthd.add(cthd) != null) {
                 JOptionPane.showMessageDialog(this, "Thêm chi tiết cho " + mahd + " thành công!");
                 this.dispose();
             }
