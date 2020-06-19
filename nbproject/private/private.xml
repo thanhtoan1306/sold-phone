@@ -3,9 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/dao/NhanVienDao.java</file>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/GiaoDienChinh.java</file>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/model/NhanVien.java</file>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/QuanLy/SanPhamForm.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/HienThiForm/HienThiHoaDon.java</file>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/dao/JDBCConnection.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/ThemSua/ThemSuaHoaDon.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/QuanLy/QuanLyHoaDon.java</file>
+            <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/service/NhanVienService.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/ThemSua/ThemSuaChiTietHoaDon.java</file>
         </group>
     </open-files>
