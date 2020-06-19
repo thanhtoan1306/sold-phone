@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/dao/NhanVienDao.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/GiaoDienChinh.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/model/NhanVien.java</file>
@@ -13,6 +14,11 @@
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/QuanLy/QuanLyHoaDon.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/service/NhanVienService.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/com/qlchdt/view/ThemSua/ThemSuaChiTietHoaDon.java</file>
+=======
+            <file>file:/C:/Users/Bi/Documents/GitHub/sold-phone/src/com/qlchdt/view/QuanLy/QuanLyNhanVien.java</file>
+            <file>file:/C:/Users/Bi/Documents/GitHub/sold-phone/src/com/qlchdt/view/DangNhap.java</file>
+            <file>file:/C:/Users/Bi/Documents/GitHub/sold-phone/src/com/qlchdt/view/DoiMatKhauForm.java</file>
+>>>>>>> 33f0b8c3ff17d973a0a24a7d763c11ddda5c7c6a
         </group>
     </open-files>
 </project-private>

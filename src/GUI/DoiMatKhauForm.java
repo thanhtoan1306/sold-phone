@@ -7,7 +7,10 @@ package GUI;
 
 import BUS.TaiKhoanService;
 import DTO.Model.TaiKhoan;
+import GUI.Custom.ChonButton;
+import GUI.Custom.HuyButton;
 import java.awt.BorderLayout;
+import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -28,12 +31,13 @@ public class DoiMatKhauForm extends JFrame {
     JPasswordField txMatKhauMoi = new JPasswordField(15);
     JPasswordField txXacNhanMatKhau = new JPasswordField(15);
 
-    JButton btnDongY = new JButton("Đồng ý");
-    JButton btnHuy = new JButton("Hủy");
+    ChonButton btnDongY = new ChonButton();
+    HuyButton btnHuy = new HuyButton();
 
     public DoiMatKhauForm(String matk) {
+        
         setLayout(new BorderLayout());
-        setSize(350, 350);
+        setSize(300,300);
         setTitle("Đổi mật khẩu");
         setLocationRelativeTo(null);
         tk = new TaiKhoanService().getTaiKhoanmk(matk);
@@ -43,7 +47,7 @@ public class DoiMatKhauForm extends JFrame {
         txMatKhauCu.setBorder(BorderFactory.createTitledBorder("Mật khẩu cũ: "));
         txMatKhauMoi.setBorder(BorderFactory.createTitledBorder("Mật khẩu mới: "));
         txXacNhanMatKhau.setBorder(BorderFactory.createTitledBorder("Xác nhận mật khẩu: "));
-
+        plInput.setBackground(Color.white);
         plInput.add(txMatKhauCu);
         plInput.add(txMatKhauMoi);
         plInput.add(txXacNhanMatKhau);
@@ -52,6 +56,7 @@ public class DoiMatKhauForm extends JFrame {
 
         // button
         JPanel plButton = new JPanel();
+        plButton.setBackground(Color.white);
         plButton.add(btnDongY);
         plButton.add(btnHuy);
 
