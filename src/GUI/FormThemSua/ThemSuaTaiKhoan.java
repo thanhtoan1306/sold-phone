@@ -38,7 +38,7 @@ public class ThemSuaTaiKhoan extends javax.swing.JFrame {
         if (this.type.equals("Thêm")) {
             this.setTitle("Thêm tài khoản");
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+          //  btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
             plButton.add(btnThem);
 
         } else {
@@ -60,11 +60,11 @@ public class ThemSuaTaiKhoan extends javax.swing.JFrame {
 
             txTentk.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+          //  btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+      //  btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
         plButton.add(btnHuy);
 
         btnThem.addActionListener((ae) -> {
