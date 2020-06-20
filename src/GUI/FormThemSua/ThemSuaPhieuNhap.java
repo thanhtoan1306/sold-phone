@@ -12,11 +12,14 @@ import DTO.Model.PhieuNhap;
 import GUI.Custom.HuyButton;
 import GUI.Custom.SuaButton;
 import GUI.Custom.ThemButton;
+import GUI.FormChon.ChonNhanVien;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeParseException;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -83,10 +86,10 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
         // mouse listener
         btnThem.addActionListener((ae) -> {
-            // btnThemMouseClicked();
+            btnThemMouseClicked();
         });
         btnSua.addActionListener((ae) -> {
-            //  btnSuaMouseClicked();
+            btnSuaMouseClicked();
         });
         btnHuy.addActionListener((ae) -> {
             this.dispose();
@@ -96,6 +99,92 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
     }
 
+    private void btnThemMouseClicked() {
+        if (checkEmpty()) {
+            String mapn = txMaPN.getText();
+            String manv = txMaNV.getText();
+            String ncc = txNhaCungCap.getText();
+            //String  = txNgayNhap.getText();
+            LocalDate ngaynhap = LocalDate.now();
+            LocalTime gionhap= LocalTime.now();
+            float tongTien = 0;
+
+            this.txNgayNhap.setText(String.valueOf(ngaynhap));
+            this.txGioNhap.setText(String.valueOf(gionhap));
+            this.txTongTien.setText(String.valueOf(tongTien));
+            PhieuNhap pn = new PhieuNhap(mapn, ncc, manv, ngaynhap, gionhap, tongTien);
+
+            if (qlpn.add(pn)) {
+                JOptionPane.showMessageDialog(this, "Thêm phiếu nhập " + pn.getMaPN() + " thành công!");
+                this.dispose();
+            }
+        }
+    }
+    
+    private Boolean checkEmpty() {
+        String mapn = txMaPN.getText();
+        String manv = txMaNV.getText();
+        String ncc = txNhaCungCap.getText();
+        String ngaynhap = txNgayNhap.getText();
+        String gionhap = txGioNhap.getText();
+
+        if (mapn.trim().equals("")) {
+            return showErrorTx(txMaPN, "Mã phiếu nhập không được để trống");
+
+        } else if (manv.trim().equals("")) {
+            return showErrorTx(txMaNV, "Mã nhân viên không được để trống");
+
+        } else if (ncc.trim().equals("")) {
+            return showErrorTx(txNhaCungCap, "Mã nhà cung cấp không được để trống");
+
+        } else if (ngaynhap.trim().equals("")) {
+            return showErrorTx(txNgayNhap, "Ngày lập không được để trống");
+
+        } else if (gionhap.trim().equals("")) {
+            return showErrorTx(txGioNhap, "Giờ lập không được để trống");
+
+        } else {
+            try {
+                LocalDate ngay = java.time.LocalDate.parse(ngaynhap);
+            } catch (DateTimeParseException e) {
+                return showErrorTx(txNgayNhap, "Ngày lập không hợp lệ yyyy-mm-dd ( ví dụ: 2018-12-31)");
+            }
+
+            try {
+                LocalTime gio = java.time.LocalTime.parse(gionhap);
+            } catch (DateTimeParseException e) {
+                return showErrorTx(txGioNhap, "Giờ lập không hợp lệ hh:mm (ví dụ: 18:25)");
+            }
+        }
+        return true;
+    }
+    
+    private void btnSuaMouseClicked() {
+        if (checkEmpty()) {
+           String mapn = txMaPN.getText();
+           String manv = txMaNV.getText();
+           String ncc = txNhaCungCap.getText();
+            
+            LocalDate ngaynhap = java.time.LocalDate.parse(txNgayNhap.getText());
+            LocalTime gionhap = java.time.LocalTime.parse(txGioNhap.getText());            
+           
+            float tongTien = 0;
+                 
+            
+            
+            if (qlpn.update(mapn, ncc, manv, ngaynhap, gionhap, tongTien)) {
+                JOptionPane.showMessageDialog(this, "Sửa " + mapn + " thành công!");
+                this.dispose();
+            }
+        }
+    }
+
+    private Boolean showErrorTx(JTextField tx, String errorInfo) {
+        JOptionPane.showMessageDialog(tx, errorInfo);
+        tx.requestFocus();
+        return false;
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -111,7 +200,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         txNhaCungCap = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
         txMaNV = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        btnChonNV = new javax.swing.JButton();
         txNgayNhap = new javax.swing.JTextField();
         txGioNhap = new javax.swing.JTextField();
         txTongTien = new javax.swing.JTextField();
@@ -140,9 +229,17 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         txMaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel1.add(txMaNV);
 
-        jButton1.setText("jButton1");
-        jButton1.setPreferredSize(new java.awt.Dimension(30, 30));
-        jPanel1.add(jButton1);
+        btnChonNV.setBackground(new java.awt.Color(3, 81, 145));
+        btnChonNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/employee_icon.png"))); // NOI18N
+        btnChonNV.setMaximumSize(new java.awt.Dimension(45, 45));
+        btnChonNV.setMinimumSize(new java.awt.Dimension(45, 45));
+        btnChonNV.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnChonNV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonNVActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnChonNV);
 
         jPanel2.add(jPanel1);
 
@@ -162,6 +259,10 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnChonNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonNVActionPerformed
+        ChonNhanVien cnv = new ChonNhanVien(txMaNV);
+    }//GEN-LAST:event_btnChonNVActionPerformed
 
     /**
      * @param args the command line arguments
@@ -200,7 +301,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnChonNV;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel plButton;
