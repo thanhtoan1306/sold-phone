@@ -102,6 +102,8 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
         btnSua = new javax.swing.JButton();
+        btnXuatExcel = new javax.swing.JButton();
+        btnInPDF = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1200, 600));
@@ -181,6 +183,36 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         });
         jPanel1.add(btnSua);
 
+        btnXuatExcel.setBackground(new java.awt.Color(3, 81, 145));
+        btnXuatExcel.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXuatExcel.setForeground(new java.awt.Color(255, 255, 255));
+        btnXuatExcel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/excel_icon.png"))); // NOI18N
+        btnXuatExcel.setText("Xuất Excel");
+        btnXuatExcel.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnXuatExcel.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnXuatExcel.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnXuatExcel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnXuatExcelActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnXuatExcel);
+
+        btnInPDF.setBackground(new java.awt.Color(3, 81, 145));
+        btnInPDF.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnInPDF.setForeground(new java.awt.Color(255, 255, 255));
+        btnInPDF.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/pdf_icon.png"))); // NOI18N
+        btnInPDF.setText("In PDF");
+        btnInPDF.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnInPDF.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnInPDF.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnInPDF.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnInPDFActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnInPDF);
+
         add(jPanel1, java.awt.BorderLayout.PAGE_END);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -196,11 +228,21 @@ public class QuanLyHoaDon extends javax.swing.JPanel {
         btnSuaMouseClicked();
     }//GEN-LAST:event_btnSuaActionPerformed
 
+    private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed
+         new XuatExcel().xuatFileExcelHoaDon(); 
+    }//GEN-LAST:event_btnXuatExcelActionPerformed
+
+    private void btnInPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnInPDFActionPerformed
+        printPDF();
+    }//GEN-LAST:event_btnInPDFActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnInPDF;
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
+    private javax.swing.JButton btnXuatExcel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

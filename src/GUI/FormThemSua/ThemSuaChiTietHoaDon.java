@@ -102,8 +102,9 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             String masp = txMaSP.getText();
             //String dongia = txGia.getText();
             //String sluong = txSLuong.getText();
+             float tongTien = 0;
             
-            float tongTien = Float.parseFloat(txGia.getText());
+     tongTien = Float.parseFloat(txGia.getText());
             int sL = Integer.parseInt(txSLuong.getText());
 
             if (qlcthd.add(mahd, masp, sL, tongTien)) {
@@ -181,7 +182,8 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             try {
                 float dg = Float.parseFloat(dongia);
             } catch (NumberFormatException e) {
-                return showErrorTx(txGia, "Đơn giá không hợp lệ (phải là số thực)");
+                  
+                return showErrorTx(txGia, "Đơn giá không hợp lệ (phải là số thực), Nhập theo định dạng ví dụ 7.000.000 đ -> 7.0");
             }
 
             try {
