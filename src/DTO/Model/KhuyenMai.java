@@ -18,6 +18,7 @@ public class KhuyenMai {
     float DieuKienKM, PhanTramKM;
     LocalDate NgayBD, NgayKT;
 
+    public KhuyenMai () {}
     public KhuyenMai(String MaKM, String TenKM, float DieuKienKM, float PhanTramKM, LocalDate NgayBD, LocalDate NgayKT) {
         this.MaKM = MaKM;
         this.TenKM = TenKM;

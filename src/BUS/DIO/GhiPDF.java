@@ -31,6 +31,7 @@ import BUS.SanPhamService;
 import DTO.Model.ChiTietHoaDon;
 import DTO.Model.ChiTietPhieuNhap;
 import DTO.Model.HoaDon;
+import DTO.Model.KhuyenMai;
 import DTO.Model.PhieuNhap;
 import java.awt.FileDialog;
 import java.io.FileNotFoundException;
@@ -41,9 +42,6 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
-
-
-
 
 public class GhiPDF {
 
@@ -121,8 +119,9 @@ public class GhiPDF {
         }
     }
 
+
     private String getFile() {
-        fd.setFile("untitled.pdf");
+        fd.setFile("hoadon.pdf");
         fd.setVisible(true);
         String url = fd.getDirectory() + fd.getFile();
         if (url.equals("nullnull")) {
@@ -133,6 +132,7 @@ public class GhiPDF {
 
     public void writeHoaDon(String mahd) {
         String url = "";
+        KhuyenMai khuyenMai = new KhuyenMai();
         try {
             fd.setTitle("In hóa đơn");
             url = getFile();
@@ -144,7 +144,6 @@ public class GhiPDF {
             PdfWriter writer = PdfWriter.getInstance(document, file);
             document.open();
 
-            
             setTitle("Thông tin hóa đơn");
             //Hien thong tin cua hoa don hien tai
             HoaDonService qlhd = new HoaDonService();
@@ -167,7 +166,7 @@ public class GhiPDF {
             Paragraph para2 = new Paragraph();
             para2.setPaddingTop(30);
             para2.setFont(fontData);
-            para2.add("Nhân viên: ");
+            para2.add(String.valueOf("Nhân viên: " + qlnv.getNhanVien(hd.getMaNhanVien()).getTenNV() + "  -  " + hd.getMaNhanVien()));
             para2.add(glue);
             para2.add("Giờ lập: " + String.valueOf(hd.getGioLap()));
 
@@ -186,6 +185,7 @@ public class GhiPDF {
             PdfPTable pdfTable = new PdfPTable(5);
             float tongKhuyenMai = 0;
             float tongThanhTien = 0;
+            float tongTienSauKhuyenMai = 0;
 
             //Set headers cho table chi tiet
             pdfTable.addCell(new PdfPCell(new Phrase("Mã sản phẩm", fontHeader)));
@@ -218,16 +218,24 @@ public class GhiPDF {
 
             document.add(pdfTable);
             document.add(Chunk.NEWLINE);
-
-            tongKhuyenMai = tongThanhTien - hd.getTongTien()  ;
+            khuyenMai = qlkm.getKhuyenMai(hd.getMaKhuyenMai());
             
+            if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongThanhTien) {
+                tongKhuyenMai = tongThanhTien * khuyenMai.getPhanTramKM() / 100;
+                tongTienSauKhuyenMai = tongThanhTien - tongKhuyenMai;
+               
+              
+            } 
+
+            //tongKhuyenMai = tongThanhTien - hd.getTongTien();
+
             Paragraph paraTongThanhTien = new Paragraph(new Phrase("Tổng thành tiền: " + PriceFormatter.format(tongThanhTien), fontData));
             paraTongThanhTien.setIndentationLeft(300);
             document.add(paraTongThanhTien);
             Paragraph paraTongKhuyenMai = new Paragraph(new Phrase("Tổng khuyến mãi: " + PriceFormatter.format(tongKhuyenMai), fontData));
             paraTongKhuyenMai.setIndentationLeft(300);
             document.add(paraTongKhuyenMai);
-            Paragraph paraTongThanhToan = new Paragraph(new Phrase("Tổng thanh toán: " + PriceFormatter.format(hd.getTongTien()), fontData));
+            Paragraph paraTongThanhToan = new Paragraph(new Phrase("Tổng thanh toán: " + PriceFormatter.format(tongTienSauKhuyenMai), fontData));
             paraTongThanhToan.setIndentationLeft(300);
             document.add(paraTongThanhToan);
             document.close();
@@ -239,8 +247,7 @@ public class GhiPDF {
         }
 
     }
-    
-    
+
     public void writePhieuNhap(String mapn) {
         String url = "";
         try {
@@ -253,7 +260,7 @@ public class GhiPDF {
             document = new Document();
             PdfWriter writer = PdfWriter.getInstance(document, file);
             document.open();
-            
+
             setTitle("Thông tin phiếu nhập");
 
             PhieuNhapService qlpnBUS = new PhieuNhapService();
@@ -276,7 +283,7 @@ public class GhiPDF {
             para2.setPaddingTop(30);
             para2.setFont(fontData);
             //para2.add(String.valueOf("Nhân viên: " + qlnvBUS.getNhanVien(pn.getMaNV()).getTenNV() + "  -  " + pn.getMaNV()));
-             para2.add("Nhân viên: ");
+            para2.add("Nhân viên: ");
             para2.add(glue);
             para2.add("Giờ lập: " + String.valueOf(pn.getGioNhap()));
 
@@ -317,7 +324,7 @@ public class GhiPDF {
             paraTongThanhToan.setIndentationLeft(300);
             document.add(paraTongThanhToan);
             document.close();
-            
+
             JOptionPane.showMessageDialog(null, "Ghi file thành công: " + url);
 
         } catch (DocumentException | FileNotFoundException ex) {
