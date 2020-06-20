@@ -240,7 +240,7 @@ public class GhiPDF {
             document.add(paraTongThanhToan);
             document.close();
 
-            JOptionPane.showMessageDialog(null, "Ghi file thành công: " + url);
+            JOptionPane.showMessageDialog(null, "Ghi file pdf thành công: " + url);
 
         } catch (DocumentException | FileNotFoundException ex) {
             JOptionPane.showMessageDialog(null, "Lỗi khi ghi file " + url);
