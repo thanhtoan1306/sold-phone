@@ -3,11 +3,17 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/User/Documents/sold-phone/src/BUS/DIO/GhiPDF.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/GUI/FormQuanLy/QLPhieuNhap.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/GUI/FormQuanLy/HoaDonBanHangForm.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/GUI/FormQuanLy/QuanLyHoaDon.java</file>
             <file>file:/C:/Users/User/Documents/sold-phone/src/DTO/Model/KhuyenMai.java</file>
+=======
+            <file>file:/C:/Users/HOME/Desktop/Jisoo_java/src/GUI/FormThemSua/ThemSuaHoaDon.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Jisoo_java/src/GUI/FormQuanLy/QLPhieuNhap.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Jisoo_java/src/GUI/FormThemSua/ThemSuaPhieuNhap.java</file>
+>>>>>>> cd4cfd0504fe4c062212ecc3cd8fe8797a8e4d9e
         </group>
     </open-files>
 </project-private>
