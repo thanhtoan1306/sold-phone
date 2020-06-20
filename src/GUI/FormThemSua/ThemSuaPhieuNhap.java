@@ -9,6 +9,9 @@ package GUI.FormThemSua;
 import BUS.HoaDonService;
 import BUS.PhieuNhapService;
 import DTO.Model.PhieuNhap;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import javax.swing.ImageIcon;
@@ -25,9 +28,9 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
     PhieuNhapService qlpn = new PhieuNhapService();
     PhieuNhap pnSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
 
     public ThemSuaPhieuNhap(String _type, String _mapn) {
         initComponents();
@@ -44,7 +47,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
             this.txNgayNhap.setText(String.valueOf(ngayNhap));
             this.txGioNhap.setText(String.valueOf(gioNhap));
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+            
             plButton.add(btnThem);
 
         } else {
@@ -70,12 +73,12 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
             txMaPN.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+            
             plButton.add(btnSua);
 
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+        
         plButton.add(btnHuy);
 
         // mouse listener
