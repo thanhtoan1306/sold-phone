@@ -23,7 +23,7 @@ import javax.swing.event.DocumentListener;
  *
  * @author User
  */
-public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
+public class HienThiChiTietPhieuNhap extends javax.swing.JPanel {
 
     ChiTietPhieuNhapService qlctpn = new ChiTietPhieuNhapService();
     SanPhamService qlspBUS = new SanPhamService();
@@ -34,7 +34,7 @@ public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
     public HienThiChiTietPhieuNhap(String _mapn) {
         initComponents();
         this.mapn = _mapn;
-        this.setTitle("Mã phiếu nhập " + _mapn);
+
         setDataToTable(qlctpn.search("Mã phiếu nhập", this.mapn), mtb);
         
          txTim.getDocument().addDocumentListener(new DocumentListener() {
@@ -53,7 +53,7 @@ public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
                 txSearchOnChange();
             }
         });
-         this.setVisible(true);
+         
     }
 
     public void refresh() {
@@ -61,6 +61,15 @@ public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
 
         setDataToTable(qlctpn.search("Mã phiếu nhập", this.mapn), mtb);
 
+    }
+    
+       public String getSelectedRow(int col) {
+        int i = mtb.getTable().getSelectedRow();
+        if (i >= 0) {
+            int realI = mtb.getTable().convertRowIndexToModel(i);
+            return mtb.getModel().getValueAt(realI, col).toString();
+        }
+        return null;
     }
 
     private void txSearchOnChange() {
@@ -96,9 +105,9 @@ public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
         setMinimumSize(new java.awt.Dimension(1200, 600));
+        setLayout(new java.awt.BorderLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -152,9 +161,7 @@ public class HienThiChiTietPhieuNhap extends javax.swing.JFrame {
         mtb.setupSort();
         jPanel3.add(new JScrollPane(mtb));
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
-
-        pack();
+        add(jPanel1, java.awt.BorderLayout.CENTER);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

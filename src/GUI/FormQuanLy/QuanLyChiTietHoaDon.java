@@ -7,6 +7,7 @@ package GUI.FormQuanLy;
 
 import BUS.ChiTietHoaDonService;
 import GUI.FormHienThi.HienThiChiTietHoaDon;
+import GUI.FormHienThi.HienThiChiTietPhieuNhap;
 import GUI.FormThemSua.ThemSuaChiTietHoaDon;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,7 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
         initComponents();
         
         this.mahd = _mahd;
-        this.setTitle("Chi tiết hóa đơn " + this.mahd);
+        this.setTitle("Chi tiết phiếu nhập " + this.mahd);
         this.setLocationRelativeTo(null);
 
         formHienThi = new HienThiChiTietHoaDon(this.mahd);

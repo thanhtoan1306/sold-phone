@@ -12,9 +12,6 @@ import BUS.PhieuNhapService;
 import BUS.DIO.GhiPDF;
 import BUS.DIO.XuatExcel;
 import GUI.Custom.MyTable;
-/*import com.qlchdt.service.format.MyTable;
-import com.qlchdt.service.format.GhiPDF;
-import com.qlchdt.service.format.XuatExcel;*/
 import GUI.FormHienThi.HienThiHoaDon;
 import GUI.FormHienThi.HienThiPhieuNhap;
 import GUI.FormThemSua.ThemSuaHoaDon;
@@ -86,7 +83,7 @@ public class QLPhieuNhap extends javax.swing.JPanel {
 
         if (formHienThi.getSelectedRow(0) != null) {
             MyTable mtb = formHienThi.getTable();
-            new GhiPDF().writeHoaDon(String.valueOf(mtb.getTable().getValueAt(mtb.getTable().getSelectedRow(), 1)));
+            new GhiPDF().writePhieuNhap(String.valueOf(mtb.getTable().getValueAt(mtb.getTable().getSelectedRow(), 1)));
         } else {
             JOptionPane.showMessageDialog(null, "Chưa chọn phiếu nhập nào để in");
         }
@@ -110,16 +107,18 @@ public class QLPhieuNhap extends javax.swing.JPanel {
         setMinimumSize(new java.awt.Dimension(1200, 600));
         setLayout(new java.awt.BorderLayout());
 
-        jPanel2.setBackground(new java.awt.Color(176, 196, 229));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(176, 196, 229)));
         jPanel2.setMaximumSize(new java.awt.Dimension(1200, 50));
         jPanel2.setMinimumSize(new java.awt.Dimension(1200, 50));
         jPanel2.setPreferredSize(new java.awt.Dimension(1200, 50));
         jPanel2.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, -2));
 
+        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Phiếu Nhập");
+        jLabel1.setText("PHIẾU NHẬP");
         jLabel1.setMaximumSize(new java.awt.Dimension(300, 58));
         jLabel1.setMinimumSize(new java.awt.Dimension(300, 58));
         jLabel1.setPreferredSize(new java.awt.Dimension(300, 58));

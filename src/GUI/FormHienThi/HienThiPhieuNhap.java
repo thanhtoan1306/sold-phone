@@ -203,7 +203,7 @@ public class HienThiPhieuNhap extends javax.swing.JPanel {
     private void btnDetailsMouseClicked() {
         int i = mtb.getTable().getSelectedRow();
         if (i >= 0) {
-            HienThiChiTietPhieuNhap qlctpn = new HienThiChiTietPhieuNhap(mtb.getModel().getValueAt(i, 1).toString()); //truyen tham so cho qlctpn
+            QuanLyChiTietPhieuNhap qlctpn = new QuanLyChiTietPhieuNhap(mtb.getModel().getValueAt(i, 1).toString()); //truyen tham so cho qlctpn
             qlctpn.addWindowListener(new WindowAdapter() {
                 @Override
                 public void windowClosed(WindowEvent e) {
@@ -383,7 +383,7 @@ public class HienThiPhieuNhap extends javax.swing.JPanel {
 
         add(rSPanelShadow1, java.awt.BorderLayout.PAGE_START);
 
-        jPanel5.setBackground(new java.awt.Color(204, 204, 204));
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         rSPanelShadow2.setPreferredSize(new java.awt.Dimension(100, 150));

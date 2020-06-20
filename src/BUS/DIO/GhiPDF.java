@@ -121,7 +121,7 @@ public class GhiPDF {
 
 
     private String getFile() {
-        fd.setFile("hoadon.pdf");
+        fd.setFile("united.pdf");
         fd.setVisible(true);
         String url = fd.getDirectory() + fd.getFile();
         if (url.equals("nullnull")) {

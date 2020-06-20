@@ -12,6 +12,7 @@ import DTO.Model.PhieuNhap;
 import GUI.Custom.HuyButton;
 import GUI.Custom.SuaButton;
 import GUI.Custom.ThemButton;
+import GUI.FormChon.ChonNhaCungCap;
 import GUI.FormChon.ChonNhanVien;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -38,6 +39,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
     public ThemSuaPhieuNhap(String _type, String _mapn) {
         initComponents();
         this.type = _type;
+        this.setLocationRelativeTo(null);
 
         // 2 case Thêm - Sửa
         if (this.type.equals("Thêm")) {
@@ -49,6 +51,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
             this.txNgayNhap.setText(String.valueOf(ngayNhap));
             this.txGioNhap.setText(String.valueOf(gioNhap));
+            txTongTien.setVisible(false);
 
             
             plButton.add(btnThem);
@@ -69,7 +72,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
             txMaNV.setText(this.pnSua.getMaNV());
             //txMaKH.setText(this.hdSua.getMaKhachHang());
             //txMaKM.setText(this.hdSua.getMaKhuyenMai());
-            txNhaCungCap.setText(this.pnSua.getMaNCC());
+            txMaNCC.setText(this.pnSua.getMaNCC());
             txNgayNhap.setText(String.valueOf(this.pnSua.getNgayNhap()));
             txGioNhap.setText(String.valueOf(this.pnSua.getGioNhap()));
             txTongTien.setText(String.valueOf(this.pnSua.getTongTien()));
@@ -103,7 +106,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         if (checkEmpty()) {
             String mapn = txMaPN.getText();
             String manv = txMaNV.getText();
-            String ncc = txNhaCungCap.getText();
+            String ncc = txMaNCC.getText();
             //String  = txNgayNhap.getText();
             LocalDate ngaynhap = LocalDate.now();
             LocalTime gionhap= LocalTime.now();
@@ -124,7 +127,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
     private Boolean checkEmpty() {
         String mapn = txMaPN.getText();
         String manv = txMaNV.getText();
-        String ncc = txNhaCungCap.getText();
+        String ncc = txMaNCC.getText();
         String ngaynhap = txNgayNhap.getText();
         String gionhap = txGioNhap.getText();
 
@@ -135,7 +138,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
             return showErrorTx(txMaNV, "Mã nhân viên không được để trống");
 
         } else if (ncc.trim().equals("")) {
-            return showErrorTx(txNhaCungCap, "Mã nhà cung cấp không được để trống");
+            return showErrorTx(txMaNCC, "Mã nhà cung cấp không được để trống");
 
         } else if (ngaynhap.trim().equals("")) {
             return showErrorTx(txNgayNhap, "Ngày lập không được để trống");
@@ -163,7 +166,7 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         if (checkEmpty()) {
            String mapn = txMaPN.getText();
            String manv = txMaNV.getText();
-           String ncc = txNhaCungCap.getText();
+           String ncc = txMaNCC.getText();
             
             LocalDate ngaynhap = java.time.LocalDate.parse(txNgayNhap.getText());
             LocalTime gionhap = java.time.LocalTime.parse(txGioNhap.getText());            
@@ -197,7 +200,9 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         plButton = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         txMaPN = new javax.swing.JTextField();
-        txNhaCungCap = new javax.swing.JTextField();
+        jPanel3 = new javax.swing.JPanel();
+        txMaNCC = new javax.swing.JTextField();
+        btnChonNV1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         txMaNV = new javax.swing.JTextField();
         btnChonNV = new javax.swing.JButton();
@@ -205,7 +210,10 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         txGioNhap = new javax.swing.JTextField();
         txTongTien = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(568, 503));
+        setMinimumSize(new java.awt.Dimension(568, 503));
+        setPreferredSize(new java.awt.Dimension(568, 503));
 
         plButton.setBackground(new java.awt.Color(255, 255, 255));
         plButton.setPreferredSize(new java.awt.Dimension(935, 80));
@@ -218,14 +226,39 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
         txMaPN.setPreferredSize(new java.awt.Dimension(200, 60));
         jPanel2.add(txMaPN);
 
-        txNhaCungCap.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
-        txNhaCungCap.setPreferredSize(new java.awt.Dimension(200, 60));
-        jPanel2.add(txNhaCungCap);
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhà cung cấp", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        jPanel3.setPreferredSize(new java.awt.Dimension(300, 90));
+        jPanel3.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
+
+        txMaNCC.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txMaNCC.setMaximumSize(new java.awt.Dimension(200, 50));
+        txMaNCC.setMinimumSize(new java.awt.Dimension(200, 50));
+        txMaNCC.setPreferredSize(new java.awt.Dimension(200, 50));
+        jPanel3.add(txMaNCC);
+
+        btnChonNV1.setBackground(new java.awt.Color(3, 81, 145));
+        btnChonNV1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/supplier_icon.png"))); // NOI18N
+        btnChonNV1.setMaximumSize(new java.awt.Dimension(45, 45));
+        btnChonNV1.setMinimumSize(new java.awt.Dimension(45, 45));
+        btnChonNV1.setPreferredSize(new java.awt.Dimension(45, 45));
+        btnChonNV1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChonNV1ActionPerformed(evt);
+            }
+        });
+        jPanel3.add(btnChonNV1);
+
+        jPanel2.add(jPanel3);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Nhân viên", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         jPanel1.setPreferredSize(new java.awt.Dimension(300, 90));
+        jPanel1.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 0));
 
+        txMaNV.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txMaNV.setMaximumSize(new java.awt.Dimension(200, 50));
+        txMaNV.setMinimumSize(new java.awt.Dimension(200, 50));
         txMaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel1.add(txMaNV);
 
@@ -263,6 +296,10 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
     private void btnChonNVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonNVActionPerformed
         ChonNhanVien cnv = new ChonNhanVien(txMaNV);
     }//GEN-LAST:event_btnChonNVActionPerformed
+
+    private void btnChonNV1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChonNV1ActionPerformed
+        ChonNhaCungCap cncc = new ChonNhaCungCap(txMaNCC);
+    }//GEN-LAST:event_btnChonNV1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -302,14 +339,16 @@ public class ThemSuaPhieuNhap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonNV;
+    private javax.swing.JButton btnChonNV1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel plButton;
     private javax.swing.JTextField txGioNhap;
+    private javax.swing.JTextField txMaNCC;
     private javax.swing.JTextField txMaNV;
     private javax.swing.JTextField txMaPN;
     private javax.swing.JTextField txNgayNhap;
-    private javax.swing.JTextField txNhaCungCap;
     private javax.swing.JTextField txTongTien;
     // End of variables declaration//GEN-END:variables
 }
