@@ -208,7 +208,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel1.add(txMaNV);
 
-        btnChonNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/employee.png"))); // NOI18N
+        btnChonNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/employee_icon.png"))); // NOI18N
         btnChonNV.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonNV.setMinimumSize(new java.awt.Dimension(45, 45));
         btnChonNV.setPreferredSize(new java.awt.Dimension(45, 45));
@@ -229,7 +229,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaKH.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel3.add(txMaKH);
 
-        btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/customer.png"))); // NOI18N
+        btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/customer_icon.png"))); // NOI18N
         btnChonKH.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonKH.setMinimumSize(new java.awt.Dimension(45, 45));
         btnChonKH.setPreferredSize(new java.awt.Dimension(45, 45));
@@ -250,7 +250,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaKM.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel4.add(txMaKM);
 
-        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/gift.png"))); // NOI18N
+        btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/gift_icon.png"))); // NOI18N
         btnChonKM.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonKM.setMinimumSize(new java.awt.Dimension(45, 45));
         btnChonKM.setPreferredSize(new java.awt.Dimension(45, 45));

@@ -103,7 +103,7 @@
             <Component class="javax.swing.JButton" name="btnChonNV">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/qlchdt/assets/employee.png"/>
+                  <Image iconType="3" name="/DTO/Assets/Icons/employee_icon.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[45, 45]"/>
@@ -153,7 +153,7 @@
             <Component class="javax.swing.JButton" name="btnChonKH">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/qlchdt/assets/customer.png"/>
+                  <Image iconType="3" name="/DTO/Assets/Icons/customer_icon.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[45, 45]"/>
@@ -203,7 +203,7 @@
             <Component class="javax.swing.JButton" name="btnChonKM">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                  <Image iconType="3" name="/com/qlchdt/assets/gift.png"/>
+                  <Image iconType="3" name="/DTO/Assets/Icons/gift_icon.png"/>
                 </Property>
                 <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[45, 45]"/>
