@@ -9,6 +9,9 @@ package GUI.FormThemSua;
 import BUS.KhachHangService;
 import BUS.TaiKhoanService;
 import DTO.Model.TaiKhoan;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -26,9 +29,9 @@ public class ThemSuaTaiKhoan extends javax.swing.JFrame {
     TaiKhoanService qltk = new TaiKhoanService();
     TaiKhoan tkSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
 
     public ThemSuaTaiKhoan(String _type, String _manv) {
         this.type = _type;

@@ -7,8 +7,11 @@ package GUI.FormThemSua;
 
 import BUS.SanPhamService;
 import DTO.Model.SanPham;
+import GUI.Custom.HuyButton;
 import GUI.Custom.MyTable;
 import GUI.Custom.PriceFormatter;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
@@ -39,16 +42,16 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
     SanPhamService sps = new SanPhamService();
     SanPham spSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
 
     public ThemSuaSanPham(String _type, String _masp) {
         this.type = _type;
         initComponents();
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE); // nice, ko tắt hết toàn bộ chương trình
         
-        URL url = this.getClass().getResource("/com/qlchdt/assets/phones");
+        URL url = this.getClass().getResource("/DTO/Assets/Products");
         
         try {
             sanphamImagePath = Paths.get(url.toURI()).toFile().toPath();
@@ -61,7 +64,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         if (this.type.equals("Thêm")) {
             this.setTitle("Thêm sản phẩm");
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+          
             plButton.add(btnThem);
 
         } else {
@@ -85,7 +88,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             int w = lblHinhAnh1.getWidth();
                     int h = lblHinhAnh1.getHeight();
                     // nhớ sửa đường dẫn employees thành phones
-                    ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/"+spSua.getFileNameHinhAnh()));
+                    ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Products/"+spSua.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblHinhAnh1.setIcon(img);
                     lblHinhAnh1.setIcon(new ImageIcon(imgScaled));
@@ -93,11 +96,11 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
 
             //txTentk.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+            
             plButton.add(btnSua);
         }
         
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+      
         plButton.add(btnHuy);
 
         btnThem.addActionListener((ae) -> {
@@ -152,7 +155,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-                File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
+                File srcPath = new File(System.getProperty("user.dir")+"/DTO/Assets/Products/"+hinhanh);
 
                 Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
                 Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -192,7 +195,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-            File srcPath = new File(System.getProperty("user.dir")+"/src/com/qlchdt/assets/phones/"+hinhanh);
+            File srcPath = new File(System.getProperty("user.dir")+"/DTO/Assets/Products/"+hinhanh);
             
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -427,47 +430,6 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_lblHinhAnh1MouseClicked
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ThemSuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ThemSuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ThemSuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ThemSuaSanPham.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new ThemSuaSanPham("Thêm", "").setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel11;

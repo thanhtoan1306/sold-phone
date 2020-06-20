@@ -7,6 +7,9 @@ package GUI.FormThemSua;
 
 import BUS.KhachHangService;
 import DTO.Model.KhachHang;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.awt.BorderLayout;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -24,9 +27,10 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
     KhachHangService qlkh = new KhachHangService();
     KhachHang khSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
+    
 
     public ThemSuaKhachHang(String _type, String _makh) {
         this.type = _type;
@@ -37,7 +41,7 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
             this.setTitle("Thêm khách hàng");
             txMaKH.setText(qlkh.getNextID());
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+           
             plButton.add(btnThem);
 
         } else {
@@ -59,11 +63,11 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
 
             txMaKH.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+           
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+       
         plButton.add(btnHuy);
 
         btnThem.addActionListener((ae) -> {

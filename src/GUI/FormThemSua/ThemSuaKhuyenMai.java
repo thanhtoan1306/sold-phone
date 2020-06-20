@@ -10,6 +10,9 @@ import com.github.lgooddatepicker.components.DatePickerSettings;
 import BUS.KhuyenMaiService;
 import DTO.Model.KhuyenMai;
 import GUI.Custom.DateButton;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.time.LocalDate;
@@ -30,9 +33,9 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
     KhuyenMaiService qlkm = new KhuyenMaiService();
     KhuyenMai kmSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
 
     
     DatePicker dPickerNgayBD;
@@ -66,7 +69,7 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
         if (this.type.equals("Thêm")) {
             this.setTitle("Thêm khuyến mãi");
             txMaKM.setText(qlkm.getNextID());
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+        
             plButton.add(btnThem);
 
         } else {
@@ -92,11 +95,11 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
 
             txMaKM.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+            
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+     
         plButton.add(btnHuy);
         this.setVisible(true);
         
