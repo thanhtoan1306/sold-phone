@@ -107,6 +107,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             int sL = Integer.parseInt(txSLuong.getText());
 
             if (qlcthd.add(mahd, masp, sL, tongTien)) {
+                
                 JOptionPane.showMessageDialog(this, "Sửa chi tiết hóa đơn" + mahd + " thành công!");
                 this.dispose();
             }
@@ -255,7 +256,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3);
 
-        txGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giá", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giá ( đơn vị triệu. Vd: 7.0)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txGia.setPreferredSize(new java.awt.Dimension(200, 60));
         jPanel2.add(txGia);
 

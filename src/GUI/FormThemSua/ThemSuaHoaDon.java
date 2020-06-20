@@ -54,6 +54,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
 
             this.txNgayLap.setText(String.valueOf(ngayLap));
             this.txGioLap.setText(String.valueOf(gioLap));
+            txTongTien.setVisible(false);
 
             plButton.add(btnThem);
 
@@ -110,12 +111,12 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
             String makm = txMaKM.getText();
             LocalDate ngayLap = LocalDate.now();
             LocalTime gioLap = LocalTime.now();
-            float tongTien = 0;
+           
 
             this.txNgayLap.setText(String.valueOf(ngayLap));
             this.txGioLap.setText(String.valueOf(gioLap));
-            this.txTongTien.setText(String.valueOf(tongTien));
-            HoaDon hd = new HoaDon(mahd, manv, makh, makm, ngayLap, gioLap, tongTien);
+            
+            HoaDon hd = new HoaDon(mahd, manv, makh, makm, ngayLap, gioLap, 0);
 
             if (qlhd.add(hd)) {
                 JOptionPane.showMessageDialog(this, "Thêm hóa đơn " + hd.getMaHoaDon() + " thành công!");
@@ -174,9 +175,9 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
             String makm = txMaKM.getText();
             
             LocalDate ngayLap = java.time.LocalDate.parse(txNgayLap.getText());
-            LocalTime gioLap = java.time.LocalTime.parse(txGioLap.getText());
-            float tongTien = Float.parseFloat(txTongTien.getText());
+            LocalTime gioLap = java.time.LocalTime.parse(txGioLap.getText());            
             float tongTienSauKhuyenMai = 0;
+            float tongTien = 0;
             
              khuyenMai = qlkm.getKhuyenMai(makm);
 

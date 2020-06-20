@@ -183,12 +183,12 @@ public class HienThiHoaDon extends javax.swing.JPanel {
             for (HoaDon hd : qlhd.getDshd()) {
                 if (hd.getMaHoaDon().equals(mahd)) {
                     // show info
-                    // String tennhanvien = qlnv.getNhanVien(hd.getMaNhanVien()).getTenNV();
+                     String tennhanvien = qlnv.getNhanVien(hd.getMaNhanVien()).getTenNV();
                     String tenkhach = qlkh.getKhachHang(hd.getMaKhachHang()).getTenKH();
                     String tenkhuyenmai = qlkm.getKhuyenMai(hd.getMaKhuyenMai()).getTenKM();
 
                     txMaHoaDon.setText(hd.getMaHoaDon());
-                    txMaNhanVien.setText("Tester" + " - " + "E03");
+                    txMaNhanVien.setText(tennhanvien + " - " + hd.getMaNhanVien());
                     txMaKhachHang.setText(tenkhach + " - " + hd.getMaKhachHang());
                     txMaKhuyenMai.setText(tenkhuyenmai + " - " + hd.getMaKhuyenMai());
                     txNgayLap.setText(hd.getNgayLap().toString());
