@@ -42,7 +42,7 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
     }
 
     private void btnSuaMouseClicked() {
-        String masp = formHienThi.getSelectedRow(2);
+        String masp = formHienThi.getSelectedRow(1);
         ThemSuaChiTietHoaDon themcthd = new ThemSuaChiTietHoaDon("Sửa", this.mahd, masp);
         themcthd.addWindowListener(new WindowAdapter() {
             @Override
@@ -95,7 +95,10 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
 
         plButton.setBackground(new java.awt.Color(255, 255, 255));
 
-        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png"))); // NOI18N
+        btnThem.setBackground(new java.awt.Color(3, 81, 145));
+        btnThem.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnThem.setForeground(new java.awt.Color(255, 255, 255));
+        btnThem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/add_icon.png"))); // NOI18N
         btnThem.setText("Thêm");
         btnThem.setMaximumSize(new java.awt.Dimension(140, 40));
         btnThem.setMinimumSize(new java.awt.Dimension(140, 40));
@@ -107,7 +110,10 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
         });
         plButton.add(btnThem);
 
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_delete_forever_30px_1.png"))); // NOI18N
+        btnXoa.setBackground(new java.awt.Color(3, 81, 145));
+        btnXoa.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnXoa.setForeground(new java.awt.Color(255, 255, 255));
+        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/delete_icon.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setMaximumSize(new java.awt.Dimension(140, 40));
         btnXoa.setMinimumSize(new java.awt.Dimension(140, 40));
@@ -119,7 +125,10 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
         });
         plButton.add(btnXoa);
 
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png"))); // NOI18N
+        btnSua.setBackground(new java.awt.Color(3, 81, 145));
+        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnSua.setForeground(new java.awt.Color(255, 255, 255));
+        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/pencil_icon.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.setMaximumSize(new java.awt.Dimension(140, 40));
         btnSua.setMinimumSize(new java.awt.Dimension(140, 40));

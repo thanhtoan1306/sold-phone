@@ -93,7 +93,7 @@ public class HienThiSanPham extends javax.swing.JPanel {
                 if (sp.getMaSP().equals(masp)) {
                     int w = lblImage.getWidth();
                     int h = lblImage.getHeight();
-                    ImageIcon img = new ImageIcon(getClass().getResource("/com/qlchdt/assets/phones/" + sp.getFileNameHinhAnh()));
+                    ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Products/" + sp.getFileNameHinhAnh()));
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblImage.setIcon(img);
                     lblImage.setIcon(new ImageIcon(imgScaled));

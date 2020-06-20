@@ -5,13 +5,15 @@
  */
 package GUI.FormThemSua;
 
-
 import BUS.HoaDonService;
+import BUS.KhuyenMaiService;
 import DTO.Model.HoaDon;
+import DTO.Model.KhuyenMai;
 import GUI.FormChon.ChonKhachHang;
 import GUI.FormChon.ChonKhuyenMai;
 import GUI.FormChon.ChonNhanVien;
 import GUI.Custom.HuyButton;
+import GUI.Custom.PriceFormatter;
 import GUI.Custom.SuaButton;
 import GUI.Custom.ThemButton;
 import java.time.LocalDate;
@@ -30,8 +32,9 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
 
     String type;
     HoaDonService qlhd = new HoaDonService();
+    KhuyenMaiService qlkm = new KhuyenMaiService();
     HoaDon hdSua;
-
+    KhuyenMai khuyenMai;
     ThemButton btnThem = new ThemButton();
     SuaButton btnSua = new SuaButton();
     HuyButton btnHuy = new HuyButton();
@@ -56,11 +59,13 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
 
         } else {
             this.setTitle("Sửa hóa đơn");
+
             for (HoaDon hd : qlhd.getDshd()) {
                 if (hd.getMaHoaDon().equals(_mahd)) {
                     this.hdSua = hd;
                 }
             }
+
             if (this.hdSua == null) {
                 JOptionPane.showMessageDialog(null, "Lỗi, không tìm thấy hóa đơn");
                 this.dispose();
@@ -87,7 +92,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
             btnThemMouseClicked();
         });
         btnSua.addActionListener((ae) -> {
-            //  btnSuaMouseClicked();
+            btnSuaMouseClicked();
         });
         btnHuy.addActionListener((ae) -> {
             this.dispose();
@@ -161,6 +166,36 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         return true;
     }
 
+    private void btnSuaMouseClicked() {
+        if (checkEmpty()) {
+            String mahd = txMaHD.getText();
+            String manv = txMaNV.getText();
+            String makh = txMaKH.getText();
+            String makm = txMaKM.getText();
+            
+            LocalDate ngayLap = java.time.LocalDate.parse(txNgayLap.getText());
+            LocalTime gioLap = java.time.LocalTime.parse(txGioLap.getText());
+            float tongTien = Float.parseFloat(txTongTien.getText());
+            float tongTienSauKhuyenMai = 0;
+            
+             khuyenMai = qlkm.getKhuyenMai(makm);
+
+            if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongTien) {
+                float giaTriKhuyenMai = tongTien * khuyenMai.getPhanTramKM() / 100;
+                 tongTienSauKhuyenMai = tongTien - giaTriKhuyenMai;               
+                txTongTien.setText(String.valueOf(tongTienSauKhuyenMai));
+            } else {
+                txTongTien.setText(String.valueOf(tongTien));
+            }               
+            
+            
+            if (qlhd.update(mahd, manv, makh, makm, ngayLap, gioLap, tongTienSauKhuyenMai)) {
+                JOptionPane.showMessageDialog(this, "Sửa " + mahd + " thành công!");
+                this.dispose();
+            }
+        }
+    }
+
     private Boolean showErrorTx(JTextField tx, String errorInfo) {
         JOptionPane.showMessageDialog(tx, errorInfo);
         tx.requestFocus();
@@ -187,7 +222,10 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txGioLap = new javax.swing.JTextField();
         txTongTien = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(568, 503));
+        setMinimumSize(new java.awt.Dimension(568, 503));
+        setPreferredSize(new java.awt.Dimension(568, 503));
 
         plButton.setBackground(new java.awt.Color(255, 255, 255));
         plButton.setPreferredSize(new java.awt.Dimension(935, 80));
@@ -208,6 +246,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaNV.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel1.add(txMaNV);
 
+        btnChonNV.setBackground(new java.awt.Color(3, 81, 145));
         btnChonNV.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/employee_icon.png"))); // NOI18N
         btnChonNV.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonNV.setMinimumSize(new java.awt.Dimension(45, 45));
@@ -229,6 +268,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaKH.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel3.add(txMaKH);
 
+        btnChonKH.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/customer_icon.png"))); // NOI18N
         btnChonKH.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonKH.setMinimumSize(new java.awt.Dimension(45, 45));
@@ -250,6 +290,7 @@ public class ThemSuaHoaDon extends javax.swing.JFrame {
         txMaKM.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel4.add(txMaKM);
 
+        btnChonKM.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/gift_icon.png"))); // NOI18N
         btnChonKM.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonKM.setMinimumSize(new java.awt.Dimension(45, 45));

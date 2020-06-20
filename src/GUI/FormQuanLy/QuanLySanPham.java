@@ -468,6 +468,7 @@ public class QuanLySanPham extends javax.swing.JPanel {
         jPanel11.setLayout(new java.awt.GridLayout(1, 0, 20, 0));
 
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
         lblHinhAnh.setPreferredSize(new java.awt.Dimension(200, 240));
         jPanel10.add(lblHinhAnh);
@@ -535,7 +536,7 @@ public class QuanLySanPham extends javax.swing.JPanel {
         );
         jPanel9Layout.setVerticalGroup(
             jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 250, Short.MAX_VALUE)
+            .addGap(0, 255, Short.MAX_VALUE)
             .addGroup(jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel9Layout.createSequentialGroup()
                     .addGap(0, 0, Short.MAX_VALUE)

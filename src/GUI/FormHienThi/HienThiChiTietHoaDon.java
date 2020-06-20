@@ -160,7 +160,7 @@ public class HienThiChiTietHoaDon extends JPanel {
         jPanel5 = new javax.swing.JPanel();
         txKhoangTien1 = new javax.swing.JTextField();
         txKhoangTien2 = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
+        btnLamMoi = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
 
         setMinimumSize(new java.awt.Dimension(1200, 600));
@@ -218,20 +218,20 @@ public class HienThiChiTietHoaDon extends JPanel {
 
         jPanel6.add(jPanel5);
 
-        jButton2.setBackground(new java.awt.Color(3, 81, 145));
-        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/refresh_refresh.png"))); // NOI18N
-        jButton2.setText("Làm mới");
-        jButton2.setMaximumSize(new java.awt.Dimension(150, 50));
-        jButton2.setMinimumSize(new java.awt.Dimension(150, 50));
-        jButton2.setPreferredSize(new java.awt.Dimension(150, 50));
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLamMoi.setBackground(new java.awt.Color(3, 81, 145));
+        btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/refresh_refresh.png"))); // NOI18N
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.setMaximumSize(new java.awt.Dimension(150, 50));
+        btnLamMoi.setMinimumSize(new java.awt.Dimension(150, 50));
+        btnLamMoi.setPreferredSize(new java.awt.Dimension(150, 50));
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLamMoiActionPerformed(evt);
             }
         });
-        jPanel6.add(jButton2);
+        jPanel6.add(btnLamMoi);
 
         add(jPanel6, java.awt.BorderLayout.PAGE_START);
 
@@ -249,14 +249,14 @@ public class HienThiChiTietHoaDon extends JPanel {
         jPanel3.add(new JScrollPane(mtb));
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         refresh();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JComboBox<String> cbTypeSearch;
-    private javax.swing.JButton jButton2;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;

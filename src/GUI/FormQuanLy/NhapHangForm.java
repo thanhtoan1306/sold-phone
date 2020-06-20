@@ -354,7 +354,7 @@ public class NhapHangForm extends FormHang {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        btnXoa.setBackground(new java.awt.Color(255, 102, 102));
+        btnXoa.setBackground(new java.awt.Color(3, 81, 145));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/delete_icon.png"))); // NOI18N
@@ -368,7 +368,7 @@ public class NhapHangForm extends FormHang {
         });
         jPanel6.add(btnXoa);
 
-        btnSua.setBackground(new java.awt.Color(153, 153, 153));
+        btnSua.setBackground(new java.awt.Color(3, 81, 145));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
         btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/pencil_icon.png"))); // NOI18N
@@ -381,7 +381,7 @@ public class NhapHangForm extends FormHang {
         });
         jPanel6.add(btnSua);
 
-        btnLamMoi.setBackground(new java.awt.Color(0, 204, 255));
+        btnLamMoi.setBackground(new java.awt.Color(3, 81, 145));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
         btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/refresh_refresh.png"))); // NOI18N

@@ -7,6 +7,7 @@ package GUI.FormThemSua;
 
 import BUS.ChiTietHoaDonService;
 import DTO.Model.ChiTietHoaDon;
+import DTO.Model.HoaDon;
 import GUI.FormChon.ChonNhanVien;
 import GUI.FormChon.ChonSanPham;
 import GUI.Custom.HuyButton;
@@ -14,6 +15,8 @@ import GUI.Custom.SuaButton;
 import GUI.Custom.ThemButton;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -31,7 +34,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
     String type, mahd, masp;
     int soLuongMax;
-    ChiTietHoaDon cthdSua;
+    ChiTietHoaDon cthdSua = new ChiTietHoaDon();
 
     ThemButton btnThem = new ThemButton();
     SuaButton btnSua = new SuaButton();
@@ -50,28 +53,32 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             this.setTitle("Thêm chi tiết hóa đơn " + this.mahd);
             txMaHD.setText(this.mahd);
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
             plButton.add(btnThem);
 
         } else {
-            this.setTitle("Sửa chi tiết " + this.masp + " hóa đơn " + this.mahd);
+            this.setTitle("Sửa chi tiết " + this.masp + " trên hóa đơn" + this.mahd);
 
-            this.cthdSua = qlcthd.getChiTiet(this.mahd, this.masp);
+            for (ChiTietHoaDon cthd : dscthd) {
+                if (cthd.getMaHoaDon().equals(this.mahd) && cthd.getMaSanPham().equals(this.masp)) {
+                    this.cthdSua = cthd;
+                }
+            }
 
-            if (this.cthdSua == null) {
-                JOptionPane.showMessageDialog(null, "Lỗi, không tìm thấy chi tiết hóa đơn");
+            
+            if (cthdSua == null) {
+                JOptionPane.showMessageDialog(null, "Lỗi, không tìm thấy sản phẩm phù hợp");
                 this.dispose();
             }
-            txMaHD.setText(this.cthdSua.getMaHoaDon());
+            txMaHD.setText(this.mahd);
             txMaHD.setEditable(false);
-            txSLuong.setText(String.valueOf(this.cthdSua.getSoLuong()));
+            
+            txSLuong.setText(String.valueOf(cthdSua.getSoLuong()));
             txMaSP.setText(this.masp);
+            btnChonSP.setVisible(true);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
         plButton.add(btnHuy);
 
         // mouse listener
@@ -81,17 +88,34 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
         btnHuy.addActionListener((ae) -> {
             this.dispose();
         });
-        btnThem.addActionListener((ae) -> {
-            btnChonSanPhamMouseClicked();
+        btnSua.addActionListener((ae) -> {
+            btnSuaChiTietHoaDonMouseClicked();
         });
 
         this.setVisible(true);
 
     }
 
+       private void btnSuaChiTietHoaDonMouseClicked() {
+        if (checkEmpty()) {
+            String mahd = txMaHD.getText();
+            String masp = txMaSP.getText();
+            //String dongia = txGia.getText();
+            //String sluong = txSLuong.getText();
+            
+            float tongTien = Float.parseFloat(txGia.getText());
+            int sL = Integer.parseInt(txSLuong.getText());
+
+            if (qlcthd.add(mahd, masp, sL, tongTien)) {
+                JOptionPane.showMessageDialog(this, "Sửa chi tiết hóa đơn" + mahd + " thành công!");
+                this.dispose();
+            }
+        }
+    }
     private void btnThemChiTietHoaDonMouseClicked() {
         if (checkEmpty()) {
             String maspThem = txMaSP.getText();
+            //String gia = txGia.getText().replace('.000.000 đ', '.0');
 
             float dongia = Float.parseFloat(txGia.getText());
             int soluong = Integer.parseInt(txSLuong.getText());
@@ -106,13 +130,12 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
                 txSLuong.setText(String.valueOf(soLuongMax));
                 return;
             }
-            
+
             ChiTietHoaDon cthd = new ChiTietHoaDon(mahd, maspThem, soluong, dongia);
 
 //            for (ChiTietHoaDon ct : dscthd) {
 //                qlcthd.add(ct);
 //            }
-
             if (qlcthd.add(cthd) != null) {
                 JOptionPane.showMessageDialog(this, "Thêm chi tiết cho " + mahd + " thành công!");
                 this.dispose();
@@ -191,7 +214,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
         txGia = new javax.swing.JTextField();
         txSLuong = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         plButton.setBackground(new java.awt.Color(255, 255, 255));
         plButton.setMaximumSize(new java.awt.Dimension(600, 100));
@@ -218,7 +241,8 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
         txMaSP.setPreferredSize(new java.awt.Dimension(200, 50));
         jPanel3.add(txMaSP);
 
-        btnChonSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/qlchdt/assets/smartphone.png"))); // NOI18N
+        btnChonSP.setBackground(new java.awt.Color(3, 81, 145));
+        btnChonSP.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/smartphone_icon.png"))); // NOI18N
         btnChonSP.setMaximumSize(new java.awt.Dimension(45, 45));
         btnChonSP.setMinimumSize(new java.awt.Dimension(45, 45));
         btnChonSP.setPreferredSize(new java.awt.Dimension(45, 45));

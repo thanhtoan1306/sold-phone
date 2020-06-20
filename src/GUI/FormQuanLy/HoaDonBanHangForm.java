@@ -284,7 +284,7 @@ public class HoaDonBanHangForm extends FormHang {
         jButton1 = new javax.swing.JButton();
         btnThanhToan = new javax.swing.JButton();
 
-        setBackground(new java.awt.Color(3, 81, 145));
+        setBackground(new java.awt.Color(255, 255, 255));
         setMaximumSize(new java.awt.Dimension(652, 777));
         setPreferredSize(new java.awt.Dimension(652, 800));
         setLayout(new javax.swing.BoxLayout(this, javax.swing.BoxLayout.PAGE_AXIS));
@@ -408,7 +408,7 @@ public class HoaDonBanHangForm extends FormHang {
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 10, 10));
 
-        btnXoa.setBackground(new java.awt.Color(255, 102, 102));
+        btnXoa.setBackground(new java.awt.Color(3, 81, 145));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
         btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/delete_icon.png"))); // NOI18N

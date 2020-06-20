@@ -17,6 +17,9 @@ public class ChiTietHoaDon {
     private int soLuong;
     private float donGia;
 
+    public ChiTietHoaDon() {
+    
+    }
     public ChiTietHoaDon(String mahd, String masp, int soluong, float dongia) {
         this.maHoaDon = mahd;
         this.maSanPham = masp;
