@@ -64,14 +64,13 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
                 }
             }
 
-            
             if (cthdSua == null) {
                 JOptionPane.showMessageDialog(null, "Lỗi, không tìm thấy sản phẩm phù hợp");
                 this.dispose();
             }
             txMaHD.setText(this.mahd);
             txMaHD.setEditable(false);
-            
+
             txSLuong.setText(String.valueOf(cthdSua.getSoLuong()));
             txMaSP.setText(this.masp);
             btnChonSP.setVisible(true);
@@ -96,30 +95,31 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
     }
 
-       private void btnSuaChiTietHoaDonMouseClicked() {
+    private void btnSuaChiTietHoaDonMouseClicked() {
         if (checkEmpty()) {
             String mahd = txMaHD.getText();
             String masp = txMaSP.getText();
             //String dongia = txGia.getText();
             //String sluong = txSLuong.getText();
-             float tongTien = 0;
-            
-     tongTien = Float.parseFloat(txGia.getText());
+     
+
+           float dongia = Float.parseFloat(txGia.getText())/1000000;
             int sL = Integer.parseInt(txSLuong.getText());
 
-            if (qlcthd.add(mahd, masp, sL, tongTien)) {
-                
+            if (qlcthd.update(mahd, masp, sL, dongia)) {
+
                 JOptionPane.showMessageDialog(this, "Sửa chi tiết hóa đơn" + mahd + " thành công!");
                 this.dispose();
             }
         }
     }
+
     private void btnThemChiTietHoaDonMouseClicked() {
         if (checkEmpty()) {
             String maspThem = txMaSP.getText();
             //String gia = txGia.getText().replace('.000.000 đ', '.0');
 
-            double dongia = Double.parseDouble(txGia.getText())/1000000;
+            double dongia = Double.parseDouble(txGia.getText()) / 1000000;
             int soluong = Integer.parseInt(txSLuong.getText());
 
             if (soluong > soLuongMax) {
@@ -182,7 +182,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             try {
                 double dg = Double.parseDouble(dongia);
             } catch (NumberFormatException e) {
-                  
+
                 return showErrorTx(txGia, "Đơn giá không hợp lệ (phải là số thực), Nhập theo định dạng ví dụ 7.000.000 đ -> 7.0");
             }
 

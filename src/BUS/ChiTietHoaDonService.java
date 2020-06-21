@@ -54,17 +54,18 @@ public class ChiTietHoaDonService {
         int soLuongChiTietMoi = ct.getSoLuong();
 
         // tìm các chi tiết cùng mã, và tính tổng số lượng
-        ArrayList<ChiTietHoaDon> toRemove = new ArrayList<>();
+        ArrayList<ChiTietHoaDon> CurArr = new ArrayList<>();
+
         int tongSoLuong = ct.getSoLuong();
 
         for (ChiTietHoaDon cthd : dscthd) {
             if (cthd.getMaHoaDon().equals(ct.getMaHoaDon()) && cthd.getMaSanPham().equals(ct.getMaSanPham())) {
                 tongSoLuong += cthd.getSoLuong();
-                toRemove.add(cthd);
+                CurArr.add(cthd);
             }
         }
         // xóa chi tiết cũ cùng mã
-        dscthd.removeAll(toRemove);
+        dscthd.removeAll(CurArr);
         chiTietHoaDonDao.delete(ct.getMaHoaDon(), ct.getMaSanPham());
 
         // thêm chi tiết mới có số lượng = tổng số lượng tìm ở trên
@@ -91,20 +92,46 @@ public class ChiTietHoaDonService {
         return update(hd);
     }
 
-    public Boolean update(ChiTietHoaDon hd) {
-        Boolean success = chiTietHoaDonDao.update(hd);
+//    public Boolean update(ChiTietHoaDon chitiet) {
+//        
+//        Boolean success = chiTietHoaDonDao.update(chitiet);
+//        
+//        if (success) {
+//            for (ChiTietHoaDon cthd : dscthd) {
+//                if (cthd.getMaHoaDon().equals(chitiet.getMaHoaDon())) {
+//                    cthd = chitiet;
+//                }
+//            }
+//            updateSoLuongSanPham(cthd.getMaSanPham(), chitiet.getSoLuong());
+//            updateTongTien(chitiet.getMaHoaDon()); // mới sửa
+//        }
+//
+//        return success;
+//    }
+    public Boolean update(ChiTietHoaDon chitiet) {
+        Boolean success = chiTietHoaDonDao.update(chitiet);
         if (success) {
             for (ChiTietHoaDon cthd : dscthd) {
-                if (cthd.getMaHoaDon().equals(hd.getMaHoaDon())) {
-                    cthd = hd;
+                if (cthd.getMaHoaDon().equals(chitiet.getMaHoaDon()) && cthd.getMaSanPham().equals(chitiet.getMaSanPham())) {
+                    ChiTietHoaDon pn = new ChiTietHoaDon(chitiet.getMaHoaDon(),chitiet.getMaSanPham(),chitiet.getSoLuong(),chitiet.getDonGia());
+                    updateTongTienSua(pn.getMaHoaDon(),pn.getSoLuong());
                 }
             }
-            updateSoLuongSanPham(hd.getMaSanPham(), hd.getSoLuong());
-            updateTongTien(hd.getMaHoaDon());
         }
-
         return success;
     }
+    
+        private Boolean updateTongTienSua(String _mahd,int _sL) {
+        float tong = 0;
+        for (ChiTietHoaDon ct : dscthd) {
+            if (ct.getMaHoaDon().equals(_mahd)) {
+                tong += _sL * ct.getDonGia(); // đang fix
+            }
+        }
+        Boolean success = hoaDonService.updateTongTien(_mahd, tong);
+        return success;
+    }
+    
 
     private Boolean updateTongTien(String _mahd) {
         float tong = 0;
@@ -149,7 +176,7 @@ public class ChiTietHoaDonService {
                     dscthd.remove(cthd);
                 }
             }
-            updateTongTien(_maHoaDon);
+            // updateTongTien(_maHoaDon,cthd.getSoLuong());
             return true;
         }
         return false;
