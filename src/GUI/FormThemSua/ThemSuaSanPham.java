@@ -153,6 +153,13 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             int soluong = Integer.parseInt(sluong);
             String dgia = txtDonGia1.getText();
             float dongia = Float.parseFloat(dgia);
+            if (imageLocation==null) {
+                try {
+                    imageLocation = Paths.get(this.getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png").toURI()).toFile().toPath();
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(ThemSuaSanPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
             String hinhanh = imageLocation.getFileName().toString();
             try {
                 // copy anh vao assets/employees sau khi chon anh
@@ -441,7 +448,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
                 //        chooser.getSelectedFile().getName());
 
             imageLocation = chooser.getSelectedFile().toPath(); 
-
+            
             int w = lblHinhAnh1.getWidth();
             int h = lblHinhAnh1.getHeight();
             ImageIcon img = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());
