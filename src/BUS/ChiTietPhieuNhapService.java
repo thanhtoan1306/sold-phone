@@ -30,7 +30,7 @@ public class ChiTietPhieuNhapService {
         dsctpn = qlctpnDAO.readDB();
     }
 
-    public ArrayList<ChiTietPhieuNhap> search(String type, String value) {
+    public ArrayList<ChiTietPhieuNhap> search(String type, String value, int soLuong1, int soLuong2, float thanhTien1, float thanhTien2) {
 
         ArrayList<ChiTietPhieuNhap> result = new ArrayList<>();
         dsctpn.forEach((ctpn) -> {
@@ -65,8 +65,20 @@ public class ChiTietPhieuNhapService {
                         break;
                 }
             }
-
         });
+        
+        for (int i = result.size() - 1; i >= 0; i--) {
+            ChiTietPhieuNhap ct = result.get(i);
+            int sl = ct.getsLuong();
+            float tt = ct.getDonGia() * sl;
+
+            Boolean soLuongKhongThoa = (soLuong1 != -1 && sl < soLuong1) || (soLuong2 != -1 && sl > soLuong2);
+            Boolean donGiaKhongThoa = (thanhTien1 != -1 && tt < thanhTien1) || (thanhTien2 != -1 && tt > thanhTien2);
+
+            if (soLuongKhongThoa || donGiaKhongThoa) {
+                result.remove(ct);
+            }
+        }
 
         return result;
     }
