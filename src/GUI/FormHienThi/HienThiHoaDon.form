@@ -97,15 +97,13 @@
                 <Component class="javax.swing.JComboBox" name="cbTypeSearch">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="8">
+                      <StringArray count="6">
                         <StringItem index="0" value="T&#x1ea5;t c&#x1ea3;"/>
                         <StringItem index="1" value="M&#xe3; h&#xf3;a &#x111;&#x1a1;n"/>
                         <StringItem index="2" value="M&#xe3; nh&#xe2;n vi&#xea;n"/>
                         <StringItem index="3" value="M&#xe3; khuy&#x1ebf;n m&#xe3;i"/>
                         <StringItem index="4" value="M&#xe3; kh&#xe1;ch h&#xe0;ng"/>
-                        <StringItem index="5" value="Ng&#xe0;y l&#x1ead;p"/>
-                        <StringItem index="6" value="Gi&#x1edd; l&#x1ead;p"/>
-                        <StringItem index="7" value="T&#x1ed5;ng ti&#x1ec1;n"/>
+                        <StringItem index="5" value=" "/>
                       </StringArray>
                     </Property>
                   </Properties>
@@ -166,6 +164,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txKhoangNgay1">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                             <TitledBorder title="T&#x1eeb;"/>
@@ -202,6 +201,7 @@
                   <SubComponents>
                     <Component class="javax.swing.JTextField" name="txKhoangNgay2">
                       <Properties>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                           <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                             <TitledBorder title="&#x110;&#x1ebf;n"/>
@@ -232,7 +232,7 @@
                 </Property>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder title="T&#x1ed5;ng ti&#x1ec1;n (tri&#x1ec7;u vn&#x111;)"/>
+                    <TitledBorder title="Kho&#x1ea3;ng gi&#xe1;"/>
                   </Border>
                 </Property>
                 <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">

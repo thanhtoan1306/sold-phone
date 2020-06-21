@@ -34,7 +34,7 @@ public class ChiTietHoaDonDao {
                     ChiTietHoaDon hd = new ChiTietHoaDon(rs.getString("MaHD"),
                             rs.getString("MaSP"), 
                             rs.getInt("SoLuong"),
-                            rs.getFloat("DonGia"));
+                            rs.getDouble("DonGia"));
                     dshd.add(hd);
                 }
             }

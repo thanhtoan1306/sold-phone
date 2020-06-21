@@ -37,7 +37,7 @@ public class SanPhamDao {
                     String masp = r.getString("MaSP");
                     String loaisp = r.getString("MaHSP");
                     String tensp = r.getString("TenSP");
-                    float dongia = r.getFloat("DonGia");
+                    double dongia = r.getDouble("DonGia");
                     int soluong = r.getInt("SL");
                     String url = r.getString("HinhAnh");
                     

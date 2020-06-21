@@ -9,13 +9,13 @@ public class ChiTietPhieuNhap {
     String maPN;
     String maSP;
     int sLuong;
-    float donGia;
+    double donGia;
 
     
     public ChiTietPhieuNhap() {
     
     }
-    public ChiTietPhieuNhap(String maPN, String maSP, int sLuong, float donGia) {
+    public ChiTietPhieuNhap(String maPN, String maSP, int sLuong, double donGia) {
         this.maPN = maPN;
         this.maSP = maSP;
         this.sLuong = sLuong;
@@ -48,11 +48,11 @@ public class ChiTietPhieuNhap {
         this.sLuong = sLuong;
     }
 
-    public float getDonGia() {
+    public double getDonGia() {
         return donGia;
     }
 
-    public void setDonGia(float donGia) {
+    public void setDonGia(double donGia) {
         this.donGia = donGia;
     }
     

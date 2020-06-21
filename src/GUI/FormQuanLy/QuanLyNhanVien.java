@@ -157,10 +157,9 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                     int h = lblImage.getHeight();
                     ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Employees/" + nv.getHinhAnh()));
                     if (img==null) {
-                        img = new ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty-user.png"));
+                        img = new ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty_user_icon.png"));
                     }
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                    lblImage.setIcon(img);
                     lblImage.setIcon(new ImageIcon(imgScaled));
                     imageLocation = new File(nhanVienImagePath + System.getProperty("file.separator") + maNV + ".png").toPath();
                     return;
@@ -617,7 +616,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             //        chooser.getSelectedFile().getName());
 
             imageLocation = chooser.getSelectedFile().toPath();
-
+            imageLocation.getFileName().toString().substring(imageLocation.getFileName().toString().length()-4, imageLocation.getFileName().toString().length());
             int w = lblImage.getWidth();
             int h = lblImage.getHeight();
             ImageIcon img = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());
@@ -668,7 +667,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
-            File srcPath = new File(System.getProperty("user.dir") + "/DTO/Assets/Employees/" + hinh);
+            File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
 
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -724,7 +723,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
                 String separate = System.getProperty("file.separator");
                 File targetPath = new File(nhanVienImagePath + separate + tenHinhNVCanXoa); // xóa dc
                 File srcPath = new File(System.getProperty("user.dir")
-                        + separate + "src" + separate + "com" + separate + "qlchdt" + separate + "assets" + separate + "employees" + separate + tenHinhNVCanXoa); // xóa ko dc
+                        + separate + "src" + separate + "DTO" + separate + "Assets" + separate + "Employees" + separate + tenHinhNVCanXoa); // xóa ko dc
                 try {
                     Files.deleteIfExists(targetPath.toPath());
                     Files.deleteIfExists(srcPath.toPath());
@@ -756,12 +755,12 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
         String soDienThoai = txtSDT.getText().trim();
         String diaChi = txtDiaChi.getText().trim();
-        String hinh = this.imageLocation.getFileName().toString();
+        String hinh = maNV + ".png";
 
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
-            File srcPath = new File(System.getProperty("user.dir") + "/DTO/Assets/Employees/" + hinh);
+            File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
 
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path

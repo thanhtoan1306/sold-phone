@@ -17,8 +17,10 @@ import java.awt.Image;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.File;
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -147,6 +149,9 @@ public class QuanLySanPham extends javax.swing.JPanel {
                     int h = lblHinhAnh.getHeight();
                     // nhớ sửa đường dẫn employees thành phones
                     ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Products/" + sp.getFileNameHinhAnh()));
+                    if (img==null) {
+                        img = new ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png"));
+                    }
                     Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
                     lblHinhAnh.setIcon(img);
                     lblHinhAnh.setIcon(new ImageIcon(imgScaled));
@@ -209,7 +214,7 @@ public class QuanLySanPham extends javax.swing.JPanel {
             masp = tbSanPham.getTable().getValueAt(row, 0).toString();  // lấy mã sp từ hàng dg chọn trong bảng
         }
         if (masp != null) {
-            //QuanLySanPham qlsp = new QuanLySanPham();
+            
             ThemSuaSanPham suasp = new ThemSuaSanPham("Sửa", masp);
 
             // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event
@@ -228,23 +233,23 @@ public class QuanLySanPham extends javax.swing.JPanel {
         row = tbSanPham.getTable().getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn sản phẩm!");
-        } else {  // lũ chó Telex     
+        } else { 
             int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm này?");
             if (confirmDelete == JOptionPane.YES_OPTION) {
                 // ok ok không xóa hình, oops, chắc xóa dc
-                /*
-                String tenHinhSPCanXoa = tbSanPham.getTable().getValueAt(row, 6).toString().trim();
+                
+                String tenHinhSPCanXoa = this.sanphamService.getDssp().get(row).getFileNameHinhAnh();
                 String separate = System.getProperty("file.separator");
                 File targetPath = new File(sanphamImagePath + separate + tenHinhSPCanXoa); // xóa dc
                 File srcPath = new File(System.getProperty("user.dir")
-                        + separate + "src" + separate + "com" + separate + "qlchdt" + separate + "assets" + separate + "phones" + separate + tenHinhSPCanXoa); // xóa ko dc
+                        + separate + "src" + separate + "DTO" + separate + "Assets" + separate + "Products" + separate + tenHinhSPCanXoa);
                 try {
                     Files.deleteIfExists(targetPath.toPath());
                     Files.deleteIfExists(srcPath.toPath());
                 } catch (IOException ex) {
                     Logger.getLogger(QuanLySanPham.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                 */
+         
                 sanphamService.delete(tbSanPham.getTable().getValueAt(row, 0).toString());
                 tbSanPham.getModel().removeRow(row);
                 JOptionPane.showMessageDialog(null, "Xoá sản phẩm thành công!");
@@ -470,6 +475,8 @@ public class QuanLySanPham extends javax.swing.JPanel {
         jPanel10.setBackground(new java.awt.Color(255, 255, 255));
         jPanel10.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        lblHinhAnh.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblHinhAnh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png"))); // NOI18N
         lblHinhAnh.setPreferredSize(new java.awt.Dimension(200, 240));
         jPanel10.add(lblHinhAnh);
 
@@ -570,6 +577,8 @@ public class QuanLySanPham extends javax.swing.JPanel {
         this.txtTenSP.setText("");
         this.txtSoLuong.setText("");
         this.txtDonGia.setText("");
+        ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png"));
+        this.lblHinhAnh.setIcon(img);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void txtTimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTimKiemActionPerformed

@@ -114,7 +114,6 @@ public class HienThiKhuyenMai extends JPanel {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        plTim = new javax.swing.JPanel();
         cbSearch = new javax.swing.JComboBox<>();
         txTimKM = new javax.swing.JTextField();
         btnRefresh = new javax.swing.JButton();
@@ -128,34 +127,20 @@ public class HienThiKhuyenMai extends JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        plTim.setBackground(new java.awt.Color(255, 255, 255));
-        plTim.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tìm kiếm", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
-
+        cbSearch.setBackground(new java.awt.Color(153, 153, 153));
+        cbSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        cbSearch.setForeground(new java.awt.Color(255, 255, 255));
         cbSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã khuyến mãi", "Tên khuyến mãi", "Điều kiện khuyến mãi", "Phần trăm khuyến mãi", "Ngày bắt đầu", "Ngày kết thúc" }));
+        cbSearch.setMaximumSize(new java.awt.Dimension(150, 60));
+        cbSearch.setMinimumSize(new java.awt.Dimension(150, 60));
+        cbSearch.setPreferredSize(new java.awt.Dimension(150, 60));
+        jPanel1.add(cbSearch);
 
         txTimKM.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Tất cả", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13))); // NOI18N
-
-        javax.swing.GroupLayout plTimLayout = new javax.swing.GroupLayout(plTim);
-        plTim.setLayout(plTimLayout);
-        plTimLayout.setHorizontalGroup(
-            plTimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(plTimLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(txTimKM, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        plTimLayout.setVerticalGroup(
-            plTimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(plTimLayout.createSequentialGroup()
-                .addGroup(plTimLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txTimKM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cbSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 5, Short.MAX_VALUE))
-        );
-
-        jPanel1.add(plTim);
+        txTimKM.setMaximumSize(new java.awt.Dimension(300, 60));
+        txTimKM.setMinimumSize(new java.awt.Dimension(300, 60));
+        txTimKM.setPreferredSize(new java.awt.Dimension(300, 60));
+        jPanel1.add(txTimKM);
 
         btnRefresh.setBackground(new java.awt.Color(3, 81, 145));
         btnRefresh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -199,7 +184,6 @@ public class HienThiKhuyenMai extends JPanel {
     private javax.swing.JComboBox<String> cbSearch;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel plKhuyenMai;
-    private javax.swing.JPanel plTim;
     private javax.swing.JTextField txTimKM;
     // End of variables declaration//GEN-END:variables
 }
