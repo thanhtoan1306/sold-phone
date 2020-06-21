@@ -5,18 +5,39 @@
  */
 package GUI.FormThemSua;
 
+import BUS.ChiTietPhieuNhapService;
+import DTO.Model.ChiTietPhieuNhap;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
+import java.util.ArrayList;
+
 /**
  *
  * @author User
  */
 public class ThemSuaChiTietPhieuNhap extends javax.swing.JFrame {
 
+   
+     ChiTietPhieuNhapService qlctpn = new ChiTietPhieuNhapService();
+    ArrayList<ChiTietPhieuNhap> dscthd = new ArrayList<>();
+
+    String type, mapn, masp;
+    int soLuongMax;
+    ChiTietPhieuNhap ctpnSua = new ChiTietPhieuNhap();
+
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
   
-     String type, mahd, masp;
      
-    public ThemSuaChiTietPhieuNhap(String _type, String _mahd, String _masp) {
+    public ThemSuaChiTietPhieuNhap(String _type, String _mapn, String _masp) {
         initComponents();
         this.setLocationRelativeTo(null);
+         this.type = _type;
+        this.mapn = _mapn;
+        this.masp = _masp;
+        //txMaP.setEditable(false);
     }
 
     /**

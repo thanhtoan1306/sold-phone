@@ -9,6 +9,7 @@ import BUS.ChiTietPhieuNhapService;
 import GUI.FormHienThi.HienThiChiTietHoaDon;
 import GUI.FormHienThi.HienThiChiTietPhieuNhap;
 import GUI.FormThemSua.ThemSuaChiTietPhieuNhap;
+import GUI.FormThemSua.ThemSuaChiTietPhieuNhapNew;
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
@@ -52,10 +53,10 @@ public class QuanLyChiTietPhieuNhap extends javax.swing.JFrame {
     }
 
     private void btnSuaMouseClicked() {
-        String masp = formHienThi.getSelectedRow(1);
+        String masp = formHienThi.getSelectedRow(2);
         System.out.println("masp:" + masp);
 
-        ThemSuaChiTietPhieuNhap themctpn = new ThemSuaChiTietPhieuNhap("Sửa", this.mapn, masp);
+        ThemSuaChiTietPhieuNhapNew themctpn = new ThemSuaChiTietPhieuNhapNew("Sửa", this.mapn, masp);
         themctpn.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {
@@ -65,7 +66,7 @@ public class QuanLyChiTietPhieuNhap extends javax.swing.JFrame {
     }
 
     private void btnThemMouseClicked() {
-        ThemSuaChiTietPhieuNhap themcthd = new ThemSuaChiTietPhieuNhap("Thêm", this.mapn, "");
+        ThemSuaChiTietPhieuNhapNew themcthd = new ThemSuaChiTietPhieuNhapNew("Thêm", this.mapn, "");
         themcthd.addWindowListener(new WindowAdapter() {
             @Override
             public void windowClosed(WindowEvent e) {

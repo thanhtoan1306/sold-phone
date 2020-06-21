@@ -156,6 +156,9 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
+
+                //File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
+                
                 File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
 
                 Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
@@ -194,9 +197,12 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         float dongia = Float.parseFloat(dgia);
         String hinhanh = masp+".png";
         try {
-            // copy anh vao assets/employees sau khi chon anh
+            // copy anh vao assets/products sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
+
+           // File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
             File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
+
             
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
