@@ -119,7 +119,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
             String maspThem = txMaSP.getText();
             //String gia = txGia.getText().replace('.000.000 đ', '.0');
 
-            float dongia = Float.parseFloat(txGia.getText());
+            double dongia = Double.parseDouble(txGia.getText())/1000000;
             int soluong = Integer.parseInt(txSLuong.getText());
 
             if (soluong > soLuongMax) {
@@ -180,7 +180,7 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
 
         } else {
             try {
-                float dg = Float.parseFloat(dongia);
+                double dg = Double.parseDouble(dongia);
             } catch (NumberFormatException e) {
                   
                 return showErrorTx(txGia, "Đơn giá không hợp lệ (phải là số thực), Nhập theo định dạng ví dụ 7.000.000 đ -> 7.0");

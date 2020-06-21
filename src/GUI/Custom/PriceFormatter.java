@@ -15,7 +15,7 @@ import java.util.Locale;
  */
 public class PriceFormatter {
 
-    public static String format(float num) {
+    public static String format(double num) {
         BigDecimal trieu = new BigDecimal(num * 1000000);
         Locale vietnam = new Locale("vi", "VN");
         NumberFormat fmoney = NumberFormat.getCurrencyInstance(vietnam);

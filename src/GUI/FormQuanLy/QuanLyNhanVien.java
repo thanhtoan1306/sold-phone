@@ -668,7 +668,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
-            File srcPath = new File(System.getProperty("user.dir") + "/DTO/Assets/Employees/" + hinh);
+            File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
 
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path

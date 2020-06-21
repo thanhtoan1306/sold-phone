@@ -165,7 +165,6 @@ public class SanPhamForm extends javax.swing.JPanel {
         jPanel9 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         txTimKiem = new javax.swing.JTextField();
-        btnRefresh = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jPanel11 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
@@ -207,21 +206,6 @@ public class SanPhamForm extends javax.swing.JPanel {
             }
         });
         jPanel3.add(txTimKiem);
-
-        btnRefresh.setBackground(new java.awt.Color(3, 81, 145));
-        btnRefresh.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnRefresh.setForeground(new java.awt.Color(255, 255, 255));
-        btnRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/refresh_refresh.png"))); // NOI18N
-        btnRefresh.setText("Làm mới");
-        btnRefresh.setMaximumSize(new java.awt.Dimension(150, 50));
-        btnRefresh.setMinimumSize(new java.awt.Dimension(150, 50));
-        btnRefresh.setPreferredSize(new java.awt.Dimension(150, 50));
-        btnRefresh.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRefreshActionPerformed(evt);
-            }
-        });
-        jPanel3.add(btnRefresh);
 
         jPanel9.add(jPanel3);
 
@@ -335,6 +319,8 @@ public class SanPhamForm extends javax.swing.JPanel {
         btnChon.setForeground(new java.awt.Color(255, 255, 255));
         btnChon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/basket_icon.png"))); // NOI18N
         btnChon.setText("CHỌN SẢN PHẨM");
+        btnChon.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        btnChon.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
         btnChon.setMaximumSize(new java.awt.Dimension(191, 57));
         btnChon.setMinimumSize(new java.awt.Dimension(191, 57));
         btnChon.setPreferredSize(new java.awt.Dimension(191, 57));
@@ -374,14 +360,9 @@ public class SanPhamForm extends javax.swing.JPanel {
             }
     }//GEN-LAST:event_btnChonActionPerformed
 
-    private void btnRefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRefreshActionPerformed
-    refreshTable();
-    }//GEN-LAST:event_btnRefreshActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChon;
-    private javax.swing.JButton btnRefresh;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
