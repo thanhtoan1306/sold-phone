@@ -125,12 +125,12 @@ public class ThemSuaChiTietPhieuNhapNew extends javax.swing.JFrame {
             double dongia = Double.parseDouble(txGia.getText()) / 1000000;
             int soluong = Integer.parseInt(txSLuong.getText());
 
-            if (soluong > soLuongMax) {
+            /*if (soluong > soLuongMax) {
                 JOptionPane.showMessageDialog(this, "Số lượng sản phẩm trong kho không đủ (" + soLuongMax + ")");
                 txSLuong.setText(String.valueOf(soLuongMax));
                 return;
 
-            } else if (soluong <= 0) {
+            } else*/ if (soluong <= 0) {
                 JOptionPane.showMessageDialog(this, "Số lượng sản phẩm không hợp lệ");
                 txSLuong.setText(String.valueOf(soLuongMax));
                 return;
