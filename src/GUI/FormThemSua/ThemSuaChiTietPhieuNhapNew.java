@@ -106,10 +106,11 @@ public class ThemSuaChiTietPhieuNhapNew extends javax.swing.JFrame {
             //String sluong = txSLuong.getText();
              float tongTien = 0;
             
-     tongTien = Float.parseFloat(txGia.getText());
+            
             int sL = Integer.parseInt(txSLuong.getText());
+            float dongia = Float.parseFloat(txGia.getText())/1000000;
 
-            if (qlctpn.update(mapn, masp, sL, tongTien)) {
+            if (qlctpn.update(mapn, masp, sL, dongia)) {
                 
                 JOptionPane.showMessageDialog(this, "Sửa chi tiết phiếu nhập" + mapn + " thành công!");
                 this.dispose();
@@ -121,7 +122,7 @@ public class ThemSuaChiTietPhieuNhapNew extends javax.swing.JFrame {
             String maspThem = txMaSP.getText();
             //String gia = txGia.getText().replace('.000.000 đ', '.0');
 
-            float dongia = Float.parseFloat(txGia.getText());
+            double dongia = Double.parseDouble(txGia.getText()) / 1000000;
             int soluong = Integer.parseInt(txSLuong.getText());
 
             if (soluong > soLuongMax) {
@@ -260,7 +261,7 @@ public class ThemSuaChiTietPhieuNhapNew extends javax.swing.JFrame {
 
         jPanel2.add(jPanel3);
 
-        txGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Giá ( đơn vị triệu. Vd: 7.0)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
+        txGia.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Đơn giá triệu (vd:7000000)", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         txGia.setPreferredSize(new java.awt.Dimension(200, 60));
         jPanel2.add(txGia);
 
