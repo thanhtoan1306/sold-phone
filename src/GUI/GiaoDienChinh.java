@@ -6,7 +6,7 @@
 package GUI;
 
 import BUS.ChuyenPanel;
-import GUI.FormQuanLy.QLPhieuNhap;
+import GUI.FormQuanLy.QuanLyPhieuNhap;
 import GUI.FormQuanLy.QuanLyBanHang;
 import GUI.FormQuanLy.QuanLyHoaDon;
 import GUI.FormQuanLy.QuanLyKhachHang;
@@ -19,6 +19,7 @@ import GUI.FormQuanLy.QuanLyTaiKhoan;
 import GUI.FormQuanLy.QuanLyHangSanPham;
 import GUI.FormQuanLy.QuanLySanPham;
 import javax.swing.JOptionPane;
+import rojerusan.RSPanelImage;
 
 /**
  *
@@ -27,77 +28,85 @@ import javax.swing.JOptionPane;
 public class GiaoDienChinh extends javax.swing.JFrame {
 
     QuanLyBanHang fbh = new QuanLyBanHang();
+     RSPanelImage rSPanelImage2  = new rojerusan.RSPanelImage();
 
     public GiaoDienChinh() {
         initComponents();
-        this.lblUserName.setText("Họ Tên: "+DangNhap.getNhanVienLogin().getTenNV());
-        this.lblUserAccountName.setText("Tên tài khoản: "+DangNhap.getTaiKhoanLogin().getTentk());
+        this.lblUserName.setText("Họ Tên: " + DangNhap.getNhanVienLogin().getTenNV());
+        this.lblUserAccountName.setText("Tên tài khoản: " + DangNhap.getTaiKhoanLogin().getTentk());
         this.setLocationRelativeTo(null);
 
         String chitietquyen = DangNhap.quyenLogin.getChiTietQuyen();
-        
+
+        rSPanelImage2.setImagen(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/initPanel.jpg"))); // NOI18N
+        rSPanelImage2.setMaximumSize(new java.awt.Dimension(770, 400));
+        rSPanelImage2.setMinimumSize(new java.awt.Dimension(770, 400));
+        rSPanelImage2.setPreferredSize(new java.awt.Dimension(770, 400));
+        rSPanelImage2.setLayout(new java.awt.BorderLayout());
+        plHienthi.add(rSPanelImage2);
+
         btnBanHang.setVisible(false);
         if (chitietquyen.contains("BanHang")) {
             btnBanHang.setVisible(true);
         }
-        
+
         btnNhapHang.setVisible(false);
         if (chitietquyen.contains("NhapHang")) {
             btnNhapHang.setVisible(true);
         }
-        
+
         btnSanPham.setVisible(false);
         if (chitietquyen.contains("SanPham")) {
             btnSanPham.setVisible(true);
         }
-        
+
         btnHSP.setVisible(false);
         if (chitietquyen.contains("HangSanPham")) {
             btnHSP.setVisible(true);
         }
-        
+
         btnHoaDon.setVisible(false);
         if (chitietquyen.contains("HoaDon")) {
             btnHoaDon.setVisible(true);
         }
-        
+
         btnPhieuNhap.setVisible(false);
         if (chitietquyen.contains("PhieuNhap")) {
             btnPhieuNhap.setVisible(true);
         }
-        
+
         btnKhuyenMai.setVisible(false);
         if (chitietquyen.contains("KhuyenMai")) {
             btnKhuyenMai.setVisible(true);
         }
-        
+
         btnNhanVien.setVisible(false);
         if (chitietquyen.contains("NhanVien")) {
             btnNhanVien.setVisible(true);
         }
-        
+
         btnKhachHang.setVisible(false);
         if (chitietquyen.contains("KhachHang")) {
             btnKhachHang.setVisible(true);
         }
-        
+
         btnNhaCungCap.setVisible(false);
         if (chitietquyen.contains("NCC")) {
             btnNhaCungCap.setVisible(true);
         }
-        
+
         btnTaiKhoan.setVisible(false);
         if (chitietquyen.contains("TaiKhoan")) {
             btnTaiKhoan.setVisible(true);
         }
-        
+
         btnQuyen.setVisible(false);
         if (chitietquyen.contains("Quyen")) {
             btnQuyen.setVisible(true);
         }
-        
+
         btnThongKe.setVisible(true);    // 
-        
+
         /*
         if (chitietquyen.contains("qlBanHang xemSanPham xemLoaiSanPham xemHoaDon xemKhuyenMai xemKhachHang xemNCC")) { // Nhân viên bán hàng
             btnNhapHang.setVisible(false);
@@ -136,7 +145,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             btnQuyen.setVisible(true);
             btnThongKe.setVisible(true);
         }
-        */
+         */
     }
 
     @SuppressWarnings("unchecked")
@@ -629,7 +638,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapActionPerformed
-         new ChuyenPanel(plHienthi, new QLPhieuNhap());// TODO add your handling code here:
+        new ChuyenPanel(plHienthi, new QuanLyPhieuNhap());// TODO add your handling code here:
     }//GEN-LAST:event_btnPhieuNhapActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed
@@ -649,7 +658,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnNhaCungCapActionPerformed
 
     private void btnTaiKhoanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaiKhoanActionPerformed
-      //  new ChuyenPanel(plHienthi, new QuanLyTaiKhoan()); // code cũ
+        //  new ChuyenPanel(plHienthi, new QuanLyTaiKhoan()); // code cũ
         new ChuyenPanel(plHienthi, new QuanLyTaiKhoan());// TODO add your handling code here:
     }//GEN-LAST:event_btnTaiKhoanActionPerformed
 
@@ -686,9 +695,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
             DangNhap dn = new DangNhap();
             dn.setVisible(true);
         } else {
-          //  this.dispose();
-           // GiaoDienChinh t = new GiaoDienChinh();
-           // t.setVisible(true);
+            //  this.dispose();
+            // GiaoDienChinh t = new GiaoDienChinh();
+            // t.setVisible(true);
         }
     }//GEN-LAST:event_btnDangXuatActionPerformed
 

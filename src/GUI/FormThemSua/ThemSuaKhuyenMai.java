@@ -44,7 +44,7 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
     public ThemSuaKhuyenMai(String _type, String _makm) {
         initComponents();
         this.type = _type;
-        
+        this.setLocationRelativeTo(null);
         
         // date picker
         DatePickerSettings pickerSettings = new DatePickerSettings();
@@ -234,7 +234,10 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
         txNgayKT = new javax.swing.JTextField();
         plButton = new javax.swing.JPanel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(920, 500));
+        setMinimumSize(new java.awt.Dimension(920, 500));
+        setPreferredSize(new java.awt.Dimension(920, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setLayout(new java.awt.BorderLayout());
@@ -262,6 +265,8 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
         jPanel5.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setMinimumSize(new java.awt.Dimension(456, 120));
+        jPanel6.setPreferredSize(new java.awt.Dimension(640, 120));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 10));
 
         txPhanTramKhuyenMai.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Phần trăm khuyến mãi", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
@@ -271,10 +276,15 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
         plNgayBD.setBackground(new java.awt.Color(255, 255, 255));
         plNgayBD.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày bắt đầu", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
         plNgayBD.setForeground(new java.awt.Color(255, 102, 0));
-        plNgayBD.setPreferredSize(new java.awt.Dimension(350, 80));
-        plNgayBD.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
+        plNgayBD.setMaximumSize(new java.awt.Dimension(250, 100));
+        plNgayBD.setMinimumSize(new java.awt.Dimension(250, 100));
+        plNgayBD.setPreferredSize(new java.awt.Dimension(250, 100));
+        plNgayBD.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        txNgayBD.setPreferredSize(new java.awt.Dimension(250, 50));
+        txNgayBD.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txNgayBD.setMaximumSize(new java.awt.Dimension(250, 40));
+        txNgayBD.setMinimumSize(new java.awt.Dimension(250, 40));
+        txNgayBD.setPreferredSize(new java.awt.Dimension(250, 40));
         plNgayBD.add(txNgayBD);
 
         jPanel6.add(plNgayBD);
@@ -285,26 +295,33 @@ public class ThemSuaKhuyenMai extends javax.swing.JFrame {
         jPanel7.setLayout(new java.awt.BorderLayout());
 
         jPanel8.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel8.setMinimumSize(new java.awt.Dimension(360, 120));
+        jPanel8.setPreferredSize(new java.awt.Dimension(360, 120));
         jPanel8.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 5, 10));
 
         plNgayKT.setBackground(new java.awt.Color(255, 255, 255));
         plNgayKT.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Ngày kết thúc", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 13), new java.awt.Color(255, 102, 0))); // NOI18N
-        plNgayKT.setPreferredSize(new java.awt.Dimension(350, 80));
-        plNgayKT.setLayout(new java.awt.GridLayout(1, 0));
+        plNgayKT.setMaximumSize(new java.awt.Dimension(250, 100));
+        plNgayKT.setMinimumSize(new java.awt.Dimension(250, 100));
+        plNgayKT.setPreferredSize(new java.awt.Dimension(250, 100));
+        plNgayKT.setLayout(new java.awt.GridLayout(1, 0, 5, 0));
 
-        txNgayKT.setPreferredSize(new java.awt.Dimension(250, 50));
+        txNgayKT.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        txNgayKT.setMaximumSize(new java.awt.Dimension(250, 40));
+        txNgayKT.setMinimumSize(new java.awt.Dimension(250, 40));
+        txNgayKT.setPreferredSize(new java.awt.Dimension(250, 40));
         plNgayKT.add(txNgayKT);
 
         jPanel8.add(plNgayKT);
 
         jPanel7.add(jPanel8, java.awt.BorderLayout.PAGE_START);
 
+        jPanel5.add(jPanel7, java.awt.BorderLayout.CENTER);
+
         plButton.setBackground(new java.awt.Color(255, 255, 255));
         plButton.setPreferredSize(new java.awt.Dimension(903, 80));
         plButton.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 30, 5));
-        jPanel7.add(plButton, java.awt.BorderLayout.PAGE_END);
-
-        jPanel5.add(jPanel7, java.awt.BorderLayout.CENTER);
+        jPanel5.add(plButton, java.awt.BorderLayout.PAGE_END);
 
         getContentPane().add(jPanel5, java.awt.BorderLayout.CENTER);
 

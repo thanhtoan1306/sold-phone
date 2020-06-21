@@ -6,6 +6,7 @@
 package GUI.FormQuanLy;
 
 import BUS.ChiTietHoaDonService;
+import GUI.DangNhap;
 import GUI.FormHienThi.HienThiChiTietHoaDon;
 import GUI.FormHienThi.HienThiChiTietPhieuNhap;
 import GUI.FormThemSua.ThemSuaChiTietHoaDon;
@@ -28,19 +29,26 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
 
     public QuanLyChiTietHoaDon(String _mahd) {
         initComponents();
-        
+
         this.mahd = _mahd;
         this.setTitle("Chi tiết phiếu nhập " + this.mahd);
         this.setLocationRelativeTo(null);
 
-        formHienThi = new HienThiChiTietHoaDon(this.mahd);
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlHoaDon")) {
+            btnThem.setEnabled(false);
+            btnXoa.setEnabled(false);
+            btnSua.setEnabled(false);
+        }
 
-        plHienThi.add(formHienThi, BorderLayout.CENTER);
+            formHienThi = new HienThiChiTietHoaDon(this.mahd);
 
-     
-        this.setVisible(true);
+            plHienThi.add(formHienThi, BorderLayout.CENTER);
 
-    }
+            this.setVisible(true);
+
+        }
+
+    
 
     private void btnSuaMouseClicked() {
         String masp = formHienThi.getSelectedRow(1);

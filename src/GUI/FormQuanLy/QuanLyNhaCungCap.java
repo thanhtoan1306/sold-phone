@@ -24,7 +24,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
 
     public QuanLyNhaCungCap() {
         initComponents();
-        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNhaCungCap")) {
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNCC")) {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnSua.setEnabled(false);
