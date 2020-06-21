@@ -156,11 +156,10 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-<<<<<<< HEAD
-                File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
-=======
+
+                //File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
+                
                 File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
->>>>>>> 1bffdb76b782cd02010cb17ebdd67b58a3f20e3f
 
                 Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
                 Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -200,11 +199,10 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         try {
             // copy anh vao assets/products sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-<<<<<<< HEAD
-            File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
-=======
+
+           // File srcPath = new File(System.getProperty("sp.dir")+"/DTO/Assets/Products/"+hinhanh);
             File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
->>>>>>> 1bffdb76b782cd02010cb17ebdd67b58a3f20e3f
+
             
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
