@@ -156,7 +156,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-                File srcPath = new File(System.getProperty("user.dir")+"/DTO/Assets/Products/"+hinhanh);
+                File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
 
                 Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
                 Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
@@ -192,11 +192,11 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         int soluong = Integer.parseInt(sluong);
         String dgia = txtDonGia1.getText();
         float dongia = Float.parseFloat(dgia);
-        String hinhanh = this.imageLocation.getFileName().toString();
+        String hinhanh = masp+".png";
         try {
             // copy anh vao assets/employees sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
-            File srcPath = new File(System.getProperty("user.dir")+"/DTO/Assets/Products/"+hinhanh);
+            File srcPath = new File(System.getProperty("user.dir")+"/src/DTO/Assets/Products/"+hinhanh);
             
             Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
             Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
