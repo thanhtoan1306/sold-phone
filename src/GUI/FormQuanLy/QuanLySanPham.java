@@ -214,17 +214,19 @@ public class QuanLySanPham extends javax.swing.JPanel {
             masp = tbSanPham.getTable().getValueAt(row, 0).toString();  // lấy mã sp từ hàng dg chọn trong bảng
         }
         if (masp != null) {
-            
-            ThemSuaSanPham suasp = new ThemSuaSanPham("Sửa", masp);
+            int confirmChange = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa sản phẩm này?", "Sửa sản phẩm",JOptionPane.YES_NO_OPTION);
+            if (confirmChange == JOptionPane.YES_OPTION) {
+                ThemSuaSanPham suasp = new ThemSuaSanPham("Sửa", masp);
 
-            // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event
-            suasp.addWindowListener(new java.awt.event.WindowAdapter() {
-                @Override
-                public void windowClosed(java.awt.event.WindowEvent windowEvent) {
-                    refreshAll();
-                    refreshTable();
-                }
-            });
+                // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event
+                suasp.addWindowListener(new java.awt.event.WindowAdapter() {
+                    @Override
+                    public void windowClosed(java.awt.event.WindowEvent windowEvent) {
+                        refreshAll();
+                        refreshTable();
+                    }
+                });
+            }
         }
     }
 
@@ -234,7 +236,7 @@ public class QuanLySanPham extends javax.swing.JPanel {
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn sản phẩm!");
         } else { 
-            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm này?");
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm này?", "Xóa sản phẩm",JOptionPane.YES_NO_OPTION);
             if (confirmDelete == JOptionPane.YES_OPTION) {
                 // ok ok không xóa hình, oops, chắc xóa dc
                 

@@ -715,10 +715,10 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         int row = -1;
         row = tbNhanVien.getTable().getSelectedRow();
         if (row == -1) {
-            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn hàng!");
+            JOptionPane.showMessageDialog(null, "Không thể xoá vì bạn chưa chọn nhân viên!");
         } else {
             String tenHinhNVCanXoa = tbNhanVien.getTable().getValueAt(row, 6).toString().trim();
-            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa nhân viên này?");
+            int confirmDelete = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa nhân viên này?","Xóa nhân viên",JOptionPane.YES_NO_OPTION);
             if (confirmDelete == JOptionPane.YES_OPTION) {
                 String separate = System.getProperty("file.separator");
                 File targetPath = new File(nhanVienImagePath + separate + tenHinhNVCanXoa); // xóa dc
@@ -742,46 +742,60 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         //DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
-        String maNV = txtMa.getText().trim();
-        String name = txtTen.getText().trim();
-        String gioiTinh = "";
-        for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                gioiTinh = button.getText();
-                break;
-            }
+        int row = -1;
+        row = tbNhanVien.getTable().getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "Không thể sửa vì bạn chưa chọn nhân viên!");
         }
-        LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
-        String soDienThoai = txtSDT.getText().trim();
-        String diaChi = txtDiaChi.getText().trim();
-        String hinh = maNV + ".png";
-
-        try {
-            // copy anh vao assets/employees sau khi chon anh
-            String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
-            File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
-
-            Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-            Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-            /*
-            InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-            OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-            byte[] buffer = new byte[1024];
-            int length;
-            // copy the file content in bytes
-            while ((length = is.read(buffer)) > 0) {
-                outStream.write(buffer, 0, length);
+        else {
+            String maNV = txtMa.getText().trim();
+            if (!this.nhanVienService.getDsnv().get(row).getMaNV().equals(maNV)) {
+                JOptionPane.showMessageDialog(null, "Không thể sửa vì không tồn tại mã nhân viên bạn nhập!");
+                return;
             }
-             */
-        } catch (IOException ex) {
-            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
+            String name = txtTen.getText().trim();
+            String gioiTinh = "";
+            for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    gioiTinh = button.getText();
+                    break;
+                }
+            }
+            LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
+            String soDienThoai = txtSDT.getText().trim();
+            String diaChi = txtDiaChi.getText().trim();
+            String hinh = maNV + ".png";
 
-        Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
-        if (nhanVienService.update(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh)) {
-            JOptionPane.showMessageDialog(null, "Sửa thành công !");
-            refreshTable();
+            int confirmChange = JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn sửa nhân viên này?","Sửa nhân viên",JOptionPane.YES_NO_OPTION);
+            if (confirmChange==JOptionPane.YES_OPTION) {
+                try {
+                    // copy anh vao assets/employees sau khi chon anh
+                    String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
+                    File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
+
+                    Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
+                    Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
+                    /*
+                    InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
+                    OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
+                    byte[] buffer = new byte[1024];
+                    int length;
+                    // copy the file content in bytes
+                    while ((length = is.read(buffer)) > 0) {
+                        outStream.write(buffer, 0, length);
+                    }
+                     */
+                } catch (IOException ex) {
+                    Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+                Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
+                if (nhanVienService.update(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh)) {
+                    JOptionPane.showMessageDialog(null, "Sửa thành công !");
+                    refreshTable();
+                }
+            }
         }
     }//GEN-LAST:event_btnSuaActionPerformed
 
