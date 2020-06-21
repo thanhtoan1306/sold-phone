@@ -188,7 +188,7 @@ public class ChiTietPhieuNhapService {
         return ok;
     }
 
-    public Boolean update(String mapn, String masp, int soluong, float dongia) {
+   /* public Boolean update(String mapn, String masp, int soluong, float dongia) {
         Boolean ok = qlctpnDAO.update(mapn, masp, soluong, dongia);
 
         if (ok) {
@@ -201,6 +201,35 @@ public class ChiTietPhieuNhapService {
         }
 
         return ok;
+    }*/
+    
+    public Boolean update(String maPhieuNhap, String maSanPham, int soLuong, float donGia) {
+        ChiTietPhieuNhap hd = new ChiTietPhieuNhap(maPhieuNhap, maSanPham, soLuong, donGia);
+        return update(hd);
+    }
+    
+    public Boolean update(ChiTietPhieuNhap chitiet) {
+        Boolean success = qlctpnDAO.update(chitiet);
+        if (success) {
+            for (ChiTietPhieuNhap cthd : dsctpn) {
+                if (cthd.getMaPN().equals(chitiet.getMaPN()) && cthd.getMaSP().equals(chitiet.getMaSP())) {
+                    ChiTietPhieuNhap pn = new ChiTietPhieuNhap(chitiet.getMaPN(),chitiet.getMaSP(),chitiet.getsLuong(),chitiet.getDonGia());
+                    updateTongTienSua(pn.getMaPN(),pn.getsLuong());
+                }
+            }
+        }
+        return success;
+    }
+    
+    private Boolean updateTongTienSua(String _mahd,int _sL) {
+        float tong = 0;
+        for (ChiTietPhieuNhap ct : dsctpn) {
+            if (ct.getMaPN().equals(_mahd)) {
+                tong += _sL * ct.getDonGia(); // đang fix
+            }
+        }
+        Boolean success = qlpnBUS.updateTongTien(_mahd, tong);
+        return success;
     }
 
     private Boolean updateTongTien(String _mapn) {

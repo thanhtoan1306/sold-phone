@@ -99,13 +99,17 @@ public class ChiTietPhieuNhapDao {
         return success;
     }
 
-    public boolean update(String mapn, String masp, int soluong, float dongia) {
+    public boolean update(ChiTietPhieuNhap ct) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("UPDATE `CTPN` SET "
-                + "SoLuong='" + soluong
-                + "',DonGia='" + dongia
-                + "' WHERE MaPN='" + mapn + "' AND MaSP='" + masp + "';");
+                + "SoLuong='" + ct.getsLuong()
+                + "',DonGia='" + ct.getDonGia()
+                + "' WHERE MaPN='" + ct.getMaPN() + "' AND MaSP='" + ct.getMaSP() + "';");
         connection.closeConnect();
         return ok;
+    }
+     public Boolean update(String maPhieuNhap, String maSanPham, int soLuong, float donGia) {
+        ChiTietPhieuNhap pn = new ChiTietPhieuNhap(maPhieuNhap, maSanPham, soLuong, donGia);
+        return update(pn);
     }
 }

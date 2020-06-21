@@ -43,7 +43,7 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
         if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlHangSanPham")) {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
-            btnSua.setEnabled(false);
+//            btnSua.setEnabled(false);
 
         }
         hangSanPhamService = new HangSanPhamService();
@@ -218,7 +218,6 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
         ThaoTac = new javax.swing.JPanel();
         btnThem = new javax.swing.JButton();
         btnXoa = new javax.swing.JButton();
-        btnSua = new javax.swing.JButton();
         btnHuy = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
@@ -357,21 +356,6 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
         });
         ThaoTac.add(btnXoa);
 
-        btnSua.setBackground(new java.awt.Color(3, 81, 145));
-        btnSua.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/pencil_icon.png"))); // NOI18N
-        btnSua.setText("Sửa");
-        btnSua.setMaximumSize(new java.awt.Dimension(140, 40));
-        btnSua.setMinimumSize(new java.awt.Dimension(140, 40));
-        btnSua.setPreferredSize(new java.awt.Dimension(140, 40));
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-        ThaoTac.add(btnSua);
-
         btnHuy.setBackground(new java.awt.Color(3, 81, 145));
         btnHuy.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnHuy.setForeground(new java.awt.Color(255, 255, 255));
@@ -472,10 +456,6 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnXoaActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-
-    }//GEN-LAST:event_btnSuaActionPerformed
-
     private void btnHuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHuyActionPerformed
         this.txtMaHSP.setText("");
         this.txtTenHSP.setText("");
@@ -498,7 +478,6 @@ public class QuanLyHangSanPham extends javax.swing.JPanel {
     private javax.swing.JPanel NhanVienInfo;
     private javax.swing.JPanel ThaoTac;
     private javax.swing.JButton btnHuy;
-    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btnXoa;
     private javax.swing.JPanel hienThiTT;
