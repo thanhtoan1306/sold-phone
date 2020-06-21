@@ -13,14 +13,14 @@ package DTO.Model;
  */
 public class SanPham {
     String MaSP, MaHSP, TenSP;
-    float DonGia;
+    double DonGia;
     int SoLuong;
     String  fileNameHinhAnh;
 
     public SanPham() {
     }
 
-    public SanPham(String MaSP, String MaHSP, String TenSP, float DonGia, int SoLuong, String fileNameHinhAnh) {
+    public SanPham(String MaSP, String MaHSP, String TenSP, double DonGia, int SoLuong, String fileNameHinhAnh) {
         this.MaSP = MaSP;
         this.MaHSP = MaHSP;
         this.TenSP = TenSP;
@@ -62,11 +62,11 @@ public class SanPham {
         this.fileNameHinhAnh = fileNameHinhAnh;
     }
 
-    public float getDonGia() {
+    public double getDonGia() {
         return DonGia;
     }
 
-    public void setDonGia(float DonGia) {
+    public void setDonGia(double DonGia) {
         this.DonGia = DonGia;
     }
 

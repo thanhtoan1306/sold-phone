@@ -34,6 +34,7 @@ public class MyTable extends JPanel {
         pane.getVerticalScrollBar().setUnitIncrement(8);
 
         tb.setFillsViewportHeight(true);
+        tb.setShowGrid(true);
         tb.setFont(new Font("Segoe UI", 0, 16));
         tb.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 16));
         tb.setRowHeight(40);
@@ -46,6 +47,7 @@ public class MyTable extends JPanel {
         tb.getTableHeader().setForeground(new Color(color, color, color));
         tb.setBackground(new Color(bgColor, bgColor, bgColor));
         tb.setForeground(new Color(color, color, color));
+        tb.setSelectionBackground(new Color(93,94,94));
 
         tb.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 

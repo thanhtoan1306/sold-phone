@@ -204,8 +204,8 @@ public class NhapHangForm extends FormHang {
             SanPham sp = qlsp.getSanPham(masp);
             String tensp = sp.getTenSP();
             int soluong = ctpn.getsLuong();
-            float dongia = ctpn.getDonGia();
-            float thanhtien = soluong * dongia;
+            double dongia = ctpn.getDonGia();
+            double thanhtien = soluong * dongia;
 
             t.addRow(new String[]{
                 String.valueOf(stt),
@@ -300,7 +300,6 @@ public class NhapHangForm extends FormHang {
         btnChonKH.setBackground(new java.awt.Color(3, 81, 145));
         btnChonKH.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnChonKH.setForeground(new java.awt.Color(255, 255, 255));
-        btnChonKH.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/supplier_icon.png"))); // NOI18N
         btnChonKH.setText("Tìm nhà cung cấp");
         btnChonKH.setToolTipText("");
         btnChonKH.addActionListener(new java.awt.event.ActionListener() {
@@ -357,7 +356,6 @@ public class NhapHangForm extends FormHang {
         btnXoa.setBackground(new java.awt.Color(3, 81, 145));
         btnXoa.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnXoa.setForeground(new java.awt.Color(255, 255, 255));
-        btnXoa.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/delete_icon.png"))); // NOI18N
         btnXoa.setText("Xóa");
         btnXoa.setBorder(null);
         btnXoa.setPreferredSize(new java.awt.Dimension(120, 40));
@@ -371,7 +369,6 @@ public class NhapHangForm extends FormHang {
         btnSua.setBackground(new java.awt.Color(3, 81, 145));
         btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/pencil_icon.png"))); // NOI18N
         btnSua.setText("Sửa");
         btnSua.setPreferredSize(new java.awt.Dimension(120, 40));
         btnSua.addActionListener(new java.awt.event.ActionListener() {
@@ -384,7 +381,6 @@ public class NhapHangForm extends FormHang {
         btnLamMoi.setBackground(new java.awt.Color(3, 81, 145));
         btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/refresh_refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.setPreferredSize(new java.awt.Dimension(150, 40));
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {

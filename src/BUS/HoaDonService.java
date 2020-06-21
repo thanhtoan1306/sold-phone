@@ -108,7 +108,7 @@ public class HoaDonService {
         return false;
     }
 
-    public ArrayList<HoaDon> search(String type, String keyword, LocalDate _ngay1, LocalDate _ngay2, int _tong1, int _tong2) {
+    public ArrayList<HoaDon> search(String type, String keyword, LocalDate _ngay1, LocalDate _ngay2, double _tong1, double _tong2) {
         ArrayList<HoaDon> result = new ArrayList<>();
 
         dshd.forEach((hd) -> {
@@ -168,6 +168,7 @@ public class HoaDonService {
             float tongtien = hd.getTongTien();
 
             Boolean ngayKhongThoa = (_ngay1 != null && ngaylap.isBefore(_ngay1)) || (_ngay2 != null && ngaylap.isAfter(_ngay2));
+            
             Boolean tienKhongThoa = (_tong1 != -1 && tongtien < _tong1) || (_tong2 != -1 && tongtien > _tong2);
 
             if (ngayKhongThoa || tienKhongThoa) {

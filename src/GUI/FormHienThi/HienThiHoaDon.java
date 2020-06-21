@@ -149,27 +149,32 @@ public class HienThiHoaDon extends javax.swing.JPanel {
 
     private void txSearchOnChange() {
         LocalDate ngay1 = null, ngay2 = null;
-        int tong1 = -1, tong2 = -1;
+        double tong1 = -1, tong2 = -1;
+        
         try {
             ngay1 = java.time.LocalDate.parse(txKhoangNgay1.getText());
             txKhoangNgay1.setForeground(Color.black);
         } catch (DateTimeParseException e) {
             txKhoangNgay1.setForeground(Color.red);
         }
+        
         try {
             ngay2 = java.time.LocalDate.parse(txKhoangNgay2.getText());
             txKhoangNgay2.setForeground(Color.black);
         } catch (DateTimeParseException e) {
             txKhoangNgay2.setForeground(Color.red);
         }
+        
+        
         try {
-            tong1 = Integer.parseInt(txKhoangTien1.getText());
+            tong1 = Double.parseDouble(txKhoangTien1.getText())/1000000;
             txKhoangTien1.setForeground(Color.black);
         } catch (NumberFormatException e) {
             txKhoangTien1.setForeground(Color.red);
         }
+        
         try {
-            tong2 = Integer.parseInt(txKhoangTien2.getText());
+           tong2 = Double.parseDouble(txKhoangTien2.getText())/1000000;
             txKhoangTien2.setForeground(Color.black);
         } catch (NumberFormatException e) {
             txKhoangTien2.setForeground(Color.red);
@@ -266,7 +271,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         jPanel2.setPreferredSize(new java.awt.Dimension(260, 100));
         jPanel2.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
 
-        cbTypeSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Mã nhân viên", "Mã khuyến mãi", "Mã khách hàng", "Ngày lập", "Giờ lập", "Tổng tiền" }));
+        cbTypeSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã hóa đơn", "Mã nhân viên", "Mã khuyến mãi", "Mã khách hàng", " " }));
         jPanel2.add(cbTypeSearch);
 
         txTim.setBorder(javax.swing.BorderFactory.createTitledBorder("Tất cả"));
@@ -285,6 +290,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         plNgayBD.setBackground(new java.awt.Color(255, 255, 255));
         plNgayBD.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 5, 1));
 
+        txKhoangNgay1.setEditable(false);
         txKhoangNgay1.setBorder(javax.swing.BorderFactory.createTitledBorder("Từ"));
         txKhoangNgay1.setMaximumSize(new java.awt.Dimension(140, 80));
         txKhoangNgay1.setMinimumSize(new java.awt.Dimension(140, 80));
@@ -302,6 +308,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         plNgayKT.setBackground(new java.awt.Color(255, 255, 255));
         plNgayKT.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEFT, 5, 1));
 
+        txKhoangNgay2.setEditable(false);
         txKhoangNgay2.setBorder(javax.swing.BorderFactory.createTitledBorder("Đến"));
         txKhoangNgay2.setMaximumSize(new java.awt.Dimension(140, 80));
         txKhoangNgay2.setMinimumSize(new java.awt.Dimension(140, 80));
@@ -318,7 +325,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         jPanel1.add(jPanel3);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Tổng tiền (triệu vnđ)"));
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder("Khoảng giá"));
         jPanel4.setMinimumSize(new java.awt.Dimension(200, 80));
         jPanel4.setPreferredSize(new java.awt.Dimension(260, 100));
         jPanel4.setLayout(new java.awt.GridLayout(1, 0, 10, 0));
@@ -332,6 +339,7 @@ public class HienThiHoaDon extends javax.swing.JPanel {
         jPanel4.add(txKhoangTien2);
 
         jPanel1.add(jPanel4);
+        jPanel4.getAccessibleContext().setAccessibleName("Khoảng giá");
 
         jPanel6.setBackground(new java.awt.Color(255, 255, 255));
         jPanel6.setMaximumSize(new java.awt.Dimension(50, 100));

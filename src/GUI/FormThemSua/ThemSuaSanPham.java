@@ -82,7 +82,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
 
             txtMaSP1.setText(this.spSua.getMaSP());
             txtMaHSP1.setText(this.spSua.getMaHSP());
-            txtDonGia1.setText(Float.toString(spSua.getDonGia()));  // cho dễ sửa
+            txtDonGia1.setText(Double.toString(spSua.getDonGia()));  // cho dễ sửa
             txtTenSP1.setText(this.spSua.getTenSP());
             txtSoLuong1.setText(Integer.toString(spSua.getSoLuong()));
             

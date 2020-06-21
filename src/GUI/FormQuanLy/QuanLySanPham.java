@@ -214,7 +214,7 @@ public class QuanLySanPham extends javax.swing.JPanel {
             masp = tbSanPham.getTable().getValueAt(row, 0).toString();  // lấy mã sp từ hàng dg chọn trong bảng
         }
         if (masp != null) {
-            //QuanLySanPham qlsp = new QuanLySanPham();
+            
             ThemSuaSanPham suasp = new ThemSuaSanPham("Sửa", masp);
 
             // https://stackoverflow.com/questions/4154780/jframe-catch-dispose-event

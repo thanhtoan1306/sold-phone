@@ -15,12 +15,12 @@ public class ChiTietHoaDon {
    private String maHoaDon;
     private String maSanPham;
     private int soLuong;
-    private float donGia;
+    private double donGia;
 
     public ChiTietHoaDon() {
     
     }
-    public ChiTietHoaDon(String mahd, String masp, int soluong, float dongia) {
+    public ChiTietHoaDon(String mahd, String masp, int soluong, double dongia) {
         this.maHoaDon = mahd;
         this.maSanPham = masp;
         this.soLuong = soluong;
@@ -51,7 +51,7 @@ public class ChiTietHoaDon {
         this.soLuong = soLuong;
     }
 
-    public float getDonGia() {
+    public double getDonGia() {
         return donGia;
     }
 

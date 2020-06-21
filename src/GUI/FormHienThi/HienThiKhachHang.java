@@ -193,12 +193,12 @@ public class HienThiKhachHang extends javax.swing.JPanel {
         jPanel7.setBackground(new java.awt.Color(255, 255, 255));
         jPanel7.setLayout(new java.awt.BorderLayout());
 
-        cbTypeSearch.setBackground(new java.awt.Color(3, 81, 145));
+        cbTypeSearch.setBackground(new java.awt.Color(153, 153, 153));
         cbTypeSearch.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         cbTypeSearch.setForeground(new java.awt.Color(255, 255, 255));
         cbTypeSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tất cả", "Mã KH", "Tên KH", "Địa chỉ", "Số điện thoại" }));
-        cbTypeSearch.setMaximumSize(new java.awt.Dimension(150, 50));
-        cbTypeSearch.setMinimumSize(new java.awt.Dimension(150, 50));
+        cbTypeSearch.setMaximumSize(new java.awt.Dimension(150, 40));
+        cbTypeSearch.setMinimumSize(new java.awt.Dimension(150, 40));
         cbTypeSearch.setPreferredSize(new java.awt.Dimension(150, 50));
         jPanel7.add(cbTypeSearch, java.awt.BorderLayout.LINE_START);
 
