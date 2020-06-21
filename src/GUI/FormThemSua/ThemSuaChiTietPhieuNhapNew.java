@@ -109,7 +109,7 @@ public class ThemSuaChiTietPhieuNhapNew extends javax.swing.JFrame {
      tongTien = Float.parseFloat(txGia.getText());
             int sL = Integer.parseInt(txSLuong.getText());
 
-            if (qlctpn.add(mapn, masp, sL, tongTien)) {
+            if (qlctpn.update(mapn, masp, sL, tongTien)) {
                 
                 JOptionPane.showMessageDialog(this, "Sửa chi tiết phiếu nhập" + mapn + " thành công!");
                 this.dispose();

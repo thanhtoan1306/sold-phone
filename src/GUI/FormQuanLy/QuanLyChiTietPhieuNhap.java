@@ -40,7 +40,7 @@ public class QuanLyChiTietPhieuNhap extends javax.swing.JFrame {
     }
 
     private void btnXoaMouseClicked() {
-        String masp = formHienThi.getSelectedRow(1);
+        String masp = formHienThi.getSelectedRow(2);
         if (masp != null) {
             if (JOptionPane.showConfirmDialog(null, "Bạn có chắc muốn xóa sản phẩm " + masp + " của phiếu nhập " + this.mapn + "?", "Chú ý", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
                 new ChiTietPhieuNhapService().delete(this.mapn, masp);
