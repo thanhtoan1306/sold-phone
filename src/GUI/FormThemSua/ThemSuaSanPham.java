@@ -144,15 +144,39 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
     private void btnThemMouseClicked() {
 
         if(validateForm()){
-            // table đéo cần cờ hó
-
             String masp = txtMaSP1.getText();
             String mahsp = txtMaHSP1.getText();
+            if (!masp.substring(0,2).equals(mahsp)) {
+                JOptionPane.showMessageDialog(null, "Mã sản phẩm và Hãng sản phẩm phải trùng 2 kí tự đầu! Mời nhập lại!");
+                return;
+            }
             String tensp = txtTenSP1.getText();
             String sluong= txtSoLuong1.getText();
-            int soluong = Integer.parseInt(sluong);
-            String dgia = txtDonGia1.getText();
-            float dongia = Float.parseFloat(dgia);
+            
+            // Check isNumber
+            int soluong=-1;
+            try {
+                soluong = Integer.parseInt(sluong);
+            }
+            catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Số lượng phải nhập số nguyên! Mời bạn nhập lại!");
+                return; // stop right here, you 
+            }
+            float dongia=-1;
+            try {
+                String dgia = txtDonGia1.getText();
+                dongia = Float.parseFloat(dgia);
+            }
+            catch (NumberFormatException ex) {
+                JOptionPane.showMessageDialog(null, "Đơn giá phải nhập số! Mời bạn nhập lại!");
+                return; // stop right here, you you 
+            }
+            // check negative
+            if (soluong<1 || dongia<=0) {
+                JOptionPane.showMessageDialog(null, "Số lượng và đơn giá phải đều là số dương! Mời nhập lại!");
+                return; // stop right here, you you you
+            }
+            
             if (imageLocation==null) {
                 try {
                     imageLocation = Paths.get(this.getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png").toURI()).toFile().toPath();
@@ -192,19 +216,46 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         }
         else{
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
+            return;
         }
         this.dispose();
     }
 
     private void btnSuaMouseClicked() {
 
-        String masp = txtMaSP1.getText().trim();
-        String mahsp = txtMaHSP1.getText().trim();
+        String masp = txtMaSP1.getText().trim().toUpperCase();
+        String mahsp = txtMaHSP1.getText().trim().toUpperCase();
+        if (!masp.substring(0,2).equals(mahsp)) {
+            JOptionPane.showMessageDialog(null, "Mã sản phẩm và Hãng sản phẩm phải trùng 2 kí tự đầu! Mời nhập lại!");
+            return;
+        }
         String tensp = txtTenSP1.getText().trim();
         String sluong= txtSoLuong1.getText();
-        int soluong = Integer.parseInt(sluong);
-        String dgia = txtDonGia1.getText();
-        float dongia = Float.parseFloat(dgia);
+        
+        // Check isNumber
+        int soluong=-1;
+        try {
+            soluong = Integer.parseInt(sluong);
+        }
+        catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Số lượng phải nhập số nguyên! Mời bạn nhập lại!");
+            return; // stop right here, you 
+        }
+        float dongia=-1;
+        try {
+            String dgia = txtDonGia1.getText();
+            dongia = Float.parseFloat(dgia);
+        }
+        catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null, "Đơn giá phải nhập số! Mời bạn nhập lại!");
+            return; // stop right here, you you 
+        }
+        // check negative
+        if (soluong<1 || dongia<=0) {
+            JOptionPane.showMessageDialog(null, "Số lượng và đơn giá phải đều là số dương! Mời nhập lại!");
+            return; // stop right here, you you you
+        }
+
         String hinhanh = imageLocation.getFileName().toString();
         try {
             // copy anh vao assets/products sau khi chon anh

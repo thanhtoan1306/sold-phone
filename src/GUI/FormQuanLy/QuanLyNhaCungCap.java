@@ -24,7 +24,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
 
     public QuanLyNhaCungCap() {
         initComponents();
-             if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNhaCungCap")) {
+        if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNhaCungCap")) {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
             btnSua.setEnabled(false);
@@ -204,7 +204,7 @@ public class QuanLyNhaCungCap extends javax.swing.JPanel {
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         btnSuaMouseClicked();
-         formHienThi.refresh();
+        formHienThi.refresh();
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXuatExcelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatExcelActionPerformed

@@ -36,6 +36,7 @@ import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
+import javax.swing.ButtonModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
@@ -67,7 +68,8 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
     public QuanLyNhanVien() {
         //super("Quản Lí Nhân Viên");
         initComponents();
-
+        imageLocation=null;
+        
         if (!DangNhap.quyenLogin.getChiTietQuyen().contains("qlNhanVien")) {
             btnThem.setEnabled(false);
             btnXoa.setEnabled(false);
@@ -635,78 +637,88 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
-        DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
-        String maNV = txtMa.getText().trim();
-        if (maNV.trim().equals("")) {
-            JOptionPane.showMessageDialog(null, "Không thể thêm vào bảng, Mã Nhân viên chưa nhập!");
-            return;
-        }
-        for (int i = 0; i < model.getRowCount(); i++) {
-            if (model.getValueAt(i, 0).equals(maNV)) {
-                JOptionPane.showMessageDialog(null, "Không thể thêm vào bảng, trùng Mã Nhân viên đã có sẵn!");
+        if (checkEmpty()) {
+            DefaultTableModel model = (DefaultTableModel) tbNhanVien.getModel();
+            String maNV = txtMa.getText().trim();
+            for (int i = 0; i < model.getRowCount(); i++) {
+                if (model.getValueAt(i, 0).equals(maNV)) {
+                    JOptionPane.showMessageDialog(null, "Không thể thêm vào bảng, trùng Mã Nhân viên đã có sẵn!");
+                    return;
+                }
+            }
+
+            String name = txtTen.getText().trim();
+            String gioiTinh = "";
+            for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
+                AbstractButton button = buttons.nextElement();
+                if (button.isSelected()) {
+                    gioiTinh = button.getText();
+                    break;
+                }
+            }
+            //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
+            String soDienThoai = txtSDT.getText().trim();
+            String regexSDT = "^[0-9]{10}$";
+            if (!soDienThoai.matches(regexSDT)) {
+                JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
                 return;
             }
-        }
+            String diaChi = txtDiaChi.getText().trim();
 
-        String name = txtTen.getText().trim();
-        String gioiTinh = "";
-        for (Enumeration<AbstractButton> buttons = genderGroup.getElements(); buttons.hasMoreElements();) {
-            AbstractButton button = buttons.nextElement();
-            if (button.isSelected()) {
-                gioiTinh = button.getText();
-                break;
+            if (imageLocation==null) {  
+                try {
+                    imageLocation = Paths.get(this.getClass().getResource("/DTO/Assets/Icons/empty_user_icon.png").toURI()).toFile().toPath();
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-        }
-        //DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
-        String soDienThoai = txtSDT.getText().trim();
-        String diaChi = txtDiaChi.getText().trim();
-        String hinh = maNV + ".png";
+            String hinh = maNV + ".png";
+            try {
+                // copy anh vao assets/employees sau khi chon anh
+                String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
+                File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
 
-        try {
-            // copy anh vao assets/employees sau khi chon anh
-            String targetPath = nhanVienImagePath + System.getProperty("file.separator") + hinh;
-            File srcPath = new File(System.getProperty("user.dir") + "/src/DTO/Assets/Employees/" + hinh);
-
-            Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
-            Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
-            /*
-            InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
-            OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
-            byte[] buffer = new byte[1024];
-            int length;
-            // copy the file content in bytes
-            while ((length = is.read(buffer)) > 0) {
-                outStream.write(buffer, 0, length);
-            }
-             */
-        } catch (IOException ex) {
-            Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-        Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
-        model.addRow(os);
-        NV_them = new NhanVien(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
-        
-        // Lưu vào database
-        if (!nhanVienService.saveToDatabase(NV_them)) {
-            JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
-
-            String separate = System.getProperty("file.separator");
-            File targetPath = new File(nhanVienImagePath + separate + NV_them.getMaNV() + ".png");
-            File srcPath = new File(System.getProperty("user.dir")
-                    + separate + "src" + separate + "com" + "qlchdt" + separate + "assets" + separate + "employees" + separate + NV_them.getMaNV() + ".png");
-            if (targetPath.delete() && srcPath.delete()) {
-                System.out.println("Hình thêm đã được xóa.");
+                Files.copy(imageLocation, Paths.get(targetPath), REPLACE_EXISTING);     // build path
+                Files.copy(imageLocation, Paths.get(srcPath.toString()), REPLACE_EXISTING);     // src path
+                /*
+                InputStream is = this.getClass().getResourceAsStream("/com/qlchdt/assets/employees/"+hinh);
+                OutputStream outStream = new FileOutputStream(new File("D:\\haha.png"));
+                byte[] buffer = new byte[1024];
+                int length;
+                // copy the file content in bytes
+                while ((length = is.read(buffer)) > 0) {
+                    outStream.write(buffer, 0, length);
+                }
+                 */
+            } catch (IOException ex) {
+                Logger.getLogger(QuanLyNhanVien.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            return;
+            Object os[] = {maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh};
+            model.addRow(os);
+            NV_them = new NhanVien(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
+            
+            // Lưu vào database
+            if (!nhanVienService.saveToDatabase(NV_them)) {
+                JOptionPane.showMessageDialog(null, "Lưu vào Database thất bại!");
+
+                String separate = System.getProperty("file.separator");
+                File targetPath = new File(nhanVienImagePath + separate + NV_them.getMaNV() + ".png");
+                File srcPath = new File(System.getProperty("user.dir")
+                        + separate + "src" + separate + "com" + "qlchdt" + separate + "assets" + separate + "employees" + separate + NV_them.getMaNV() + ".png");
+                if (targetPath.delete() && srcPath.delete()) {
+                    System.out.println("Hình thêm đã được xóa.");
+                }
+
+                return;
+            }
+            else {
+                nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
+                JOptionPane.showMessageDialog(null, "Thêm nhân viên thành công!");
+            }
+            NV_them = null;
         }
-        else {
-            nhanVienService.add(maNV, name, date, gioiTinh, soDienThoai, diaChi, hinh);
-            JOptionPane.showMessageDialog(null, "Lưu vào Database thành công!");
-        }
-        NV_them = null;
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
@@ -732,7 +744,7 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
 
                 nhanVienService.delete(tbNhanVien.getTable().getValueAt(row, 0).toString());
                 tbNhanVien.getModel().removeRow(row);
-                JOptionPane.showMessageDialog(null, "Xoá hàng thành công!");
+                JOptionPane.showMessageDialog(null, "Xoá nhân viên thành công!");
             }
 
         }
@@ -763,6 +775,11 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             }
             LocalDate date = LocalDate.of(this.datePicker.getModel().getYear(), this.datePicker.getModel().getMonth() + 1, this.datePicker.getModel().getDay());
             String soDienThoai = txtSDT.getText().trim();
+            String regexSDT = "^[0-9]{10}$";
+            if (!soDienThoai.matches(regexSDT)) {
+                JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
+                return;
+            }
             String diaChi = txtDiaChi.getText().trim();
             String hinh = maNV + ".png";
 
@@ -807,14 +824,48 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
         this.txtSDT.setText("");
         this.txtDiaChi.setText("");
         ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Icons/empty_user_icon.png"));
+        imageLocation = null;
         this.lblImage.setIcon(img);
     }//GEN-LAST:event_btnHuyActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         refreshTable();
     }//GEN-LAST:event_jButton1ActionPerformed
+    
+    private Boolean checkEmpty() {
+        String maNV = txtMa.getText().trim();
+        String tenNV = txtTen.getText().trim();
+        ButtonModel gioiTinh = genderGroup.getSelection();
+        String soDienThoai = txtSDT.getText().trim();
+        String diaChi = txtDiaChi.getText().trim();
+        Object ngaySinh = this.datePicker.getModel().getValue();
+        
+        if (maNV.equals("")) {
+            return showErrorTx(txtMa, "Mã Nhân Viên không được để trống");
+        } else if (tenNV.equals("")) {
+            return showErrorTx(txtTen, "Tên Nhân Viên không được để trống");
+        } else if (soDienThoai.equals("")) {
+            return showErrorTx(txtSDT, "Số Điện Thoại không được để trống");
+        } else if (diaChi.equals("")) {
+            return showErrorTx(txtDiaChi, "Địa chỉ không được để trống");
+        } else if (ngaySinh==null) {
+            return showErrorTx(null, "Ngày sinh không được để trống");
+        } else if (gioiTinh==null) {
+            return showErrorTx(null, "Giới tính không được để trống");
+        } else {
+            
+        }
 
-
+        return true;
+    }
+    
+    private Boolean showErrorTx(JTextField tx, String errorInfo) {
+        JOptionPane.showMessageDialog(tx, errorInfo);
+        if(tx!=null) {
+            tx.requestFocus();
+        }
+        return false;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel NhanVienInfo;
     private javax.swing.JPanel ThaoTac;

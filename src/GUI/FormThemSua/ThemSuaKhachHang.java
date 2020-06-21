@@ -90,7 +90,12 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
             String tenkh = txTenKH.getText();
             String diachi = txDiaChi.getText();
             String sdt = txSDT.getText();
-
+            String regexSDT = "^[0-9]{10}$";
+            if (!sdt.matches(regexSDT)) {
+                JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
+                return;
+            }
+            
             if (qlkh.add(makh, tenkh, diachi, sdt)) {
                 JOptionPane.showMessageDialog(this, "Thêm " + tenkh + " thành công!");
                 this.dispose();
@@ -105,7 +110,12 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
             String tenkh = txTenKH.getText();
             String diachi = txDiaChi.getText();
             String sdt = txSDT.getText();
-
+            String regexSDT = "^[0-9]{10}$";
+            if (!sdt.matches(regexSDT)) {
+                JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
+                return;
+            }
+            
             if (qlkh.update(makh, tenkh, diachi, sdt)) {
                 JOptionPane.showMessageDialog(this, "Sửa " + makh + " thành công!");
                 this.dispose();

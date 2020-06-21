@@ -7,7 +7,6 @@ package GUI;
 
 import BUS.ChuyenPanel;
 import GUI.FormQuanLy.QLPhieuNhap;
-import GUI.FormQuanLy.QuanLyTaiKhoan;
 import GUI.FormQuanLy.QuanLyBanHang;
 import GUI.FormQuanLy.QuanLyHoaDon;
 import GUI.FormQuanLy.QuanLyKhachHang;
@@ -19,7 +18,6 @@ import GUI.FormQuanLy.QuanLyQuyen;
 import GUI.FormQuanLy.QuanLyTaiKhoan;
 import GUI.FormQuanLy.QuanLyHangSanPham;
 import GUI.FormQuanLy.QuanLySanPham;
-import java.awt.BorderLayout;
 import javax.swing.JOptionPane;
 
 /**
@@ -32,6 +30,8 @@ public class GiaoDienChinh extends javax.swing.JFrame {
 
     public GiaoDienChinh() {
         initComponents();
+        this.lblUserName.setText("Họ Tên: "+DangNhap.getNhanVienLogin().getTenNV());
+        this.lblUserAccountName.setText("Tên tài khoản: "+DangNhap.getTaiKhoanLogin().getTentk());
         this.setLocationRelativeTo(null);
 
         String chitietquyen = DangNhap.quyenLogin.getChiTietQuyen();
@@ -157,6 +157,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         jPanel7 = new javax.swing.JPanel();
         btnThoat = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
+        panelUserInfo = new javax.swing.JPanel();
+        lblUserName = new javax.swing.JLabel();
+        lblUserAccountName = new javax.swing.JLabel();
         plMenu = new javax.swing.JPanel();
         jPanel10 = new javax.swing.JPanel();
         btnBanHang = new javax.swing.JButton();
@@ -187,6 +190,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         plTitle.setLayout(new java.awt.BorderLayout());
 
         jPanel6.setBackground(new java.awt.Color(2, 155, 212));
+        jPanel6.setPreferredSize(new java.awt.Dimension(250, 124));
         jPanel6.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.CENTER, 60, 2));
 
         rSPanelImage1.setImagen(new javax.swing.ImageIcon(getClass().getResource("/DTO/Assets/Icons/app_logo.png"))); // NOI18N
@@ -290,6 +294,22 @@ public class GiaoDienChinh extends javax.swing.JFrame {
         plButton.add(jPanel3);
 
         plTitle.add(plButton, java.awt.BorderLayout.LINE_END);
+
+        panelUserInfo.setBackground(new java.awt.Color(2, 155, 212));
+        panelUserInfo.setMaximumSize(new java.awt.Dimension(2000, 2000));
+        panelUserInfo.setLayout(new java.awt.GridLayout());
+
+        lblUserName.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblUserName.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelUserInfo.add(lblUserName);
+
+        lblUserAccountName.setFont(new java.awt.Font("Times New Roman", 3, 24)); // NOI18N
+        lblUserAccountName.setForeground(new java.awt.Color(255, 255, 255));
+        lblUserAccountName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        panelUserInfo.add(lblUserAccountName);
+
+        plTitle.add(panelUserInfo, java.awt.BorderLayout.CENTER);
 
         getContentPane().add(plTitle, java.awt.BorderLayout.PAGE_START);
 
@@ -699,6 +719,9 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lblUserAccountName;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JPanel panelUserInfo;
     private javax.swing.JPanel plButton;
     private javax.swing.JPanel plHienthi;
     private javax.swing.JPanel plMain;

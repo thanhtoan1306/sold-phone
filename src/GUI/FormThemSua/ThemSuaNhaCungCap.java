@@ -81,7 +81,12 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
             String tenNCC = txTenNCC.getText();
             String diaChi = txDiaChi.getText();
             String SDT = txSDT.getText();
-
+            String regexSDT = "^[0-9]{10}$";
+            if (!SDT.matches(regexSDT)) {
+                JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
+                return;
+            }
+            
             if (qlncc.update(maNCC, tenNCC, diaChi, SDT)) {
                 JOptionPane.showMessageDialog(this, "Sửa " + maNCC + " thành công!");
                 this.dispose();
@@ -104,6 +109,8 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
         String ten = txTenNCC.getText();
         String diachi = txDiaChi.getText();
         String sdt = txSDT.getText();
+        String regexSDT = "^[0-9]{10}$";
+        
         if (ma.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Mã nhà cung cấp không được để trống");
             txMaNCC.requestFocus();
@@ -119,6 +126,9 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
         } else if (sdt.trim().equals("")) {
             JOptionPane.showMessageDialog(null, "Số điện thoại nhà cung cấp không được để trống");
             txSDT.requestFocus();
+            return false;
+        } else if (!sdt.matches(regexSDT)) {  
+            JOptionPane.showMessageDialog(null, "Số điện thoại phải đúng định dạng 10 số! Mời nhập lại!");
             return false;
         }
         return true;

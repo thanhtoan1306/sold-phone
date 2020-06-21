@@ -12,13 +12,7 @@ import BUS.TaiKhoanService;
 import DTO.Model.NhanVien;
 import DTO.Model.Quyen;
 import DTO.Model.TaiKhoan;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
 
 /**
  *
@@ -50,6 +44,14 @@ public class DangNhap extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Lỗi Giữ đăng nhập");
             }
         }
+    }
+
+    public static TaiKhoan getTaiKhoanLogin() {
+        return taiKhoanLogin;
+    }
+
+    public static NhanVien getNhanVienLogin() {
+        return nhanVienLogin;
     }
 
     @SuppressWarnings("unchecked")
