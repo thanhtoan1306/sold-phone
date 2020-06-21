@@ -34,13 +34,12 @@ public class DoiMatKhauForm extends JFrame {
     ChonButton btnDongY = new ChonButton();
     HuyButton btnHuy = new HuyButton();
 
-    public DoiMatKhauForm(String matk) {
-        
+    public DoiMatKhauForm(String tentk) {
         setLayout(new BorderLayout());
         setSize(300,300);
         setTitle("Đổi mật khẩu");
         setLocationRelativeTo(null);
-        tk = new TaiKhoanService().getTaiKhoanmk(matk);
+        tk = new TaiKhoanService().getTaiKhoan(tentk);
 
         // input
         JPanel plInput = new JPanel();
@@ -60,8 +59,6 @@ public class DoiMatKhauForm extends JFrame {
         plButton.add(btnDongY);
         plButton.add(btnHuy);
 
-//        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/giaodienchuan/images/icons8_cancel_30px_1.png")));
-//        btnDongY.setIcon(new ImageIcon(this.getClass().getResource("/giaodienchuan/images/icons8_ok_30px.png")));
 
         btnHuy.addActionListener((ae) -> {
             this.dispose();
@@ -69,7 +66,7 @@ public class DoiMatKhauForm extends JFrame {
         btnDongY.addActionListener((ae) -> {
             if(checkPass()) {
                 
-                if(new TaiKhoanService().updatemk(tk.getTentk(), txMatKhauMoi.getText())) {
+                if(new TaiKhoanService().update(tk.getTentk(), txMatKhauMoi.getText(),tk.getManv(),tk.getMaquyen())) {
                     JOptionPane.showMessageDialog(this, "Đổi mật khẩu thành công!");
                     this.dispose();
                 }

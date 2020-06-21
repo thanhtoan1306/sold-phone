@@ -19,7 +19,7 @@ public class HuyButton extends JButton{
 
         this.setText("Hủy");
         this.setBackground(new Color(3, 81, 145));
-       this.setIcon(new ImageIcon(getClass().getResource("/DTO/Assets/Icons/cancel_icon.png")));
+        this.setIcon(new ImageIcon(getClass().getResource("/DTO/Assets/Icons/cancel_icon.png")));
         this.setForeground(Color.white);
 
     }

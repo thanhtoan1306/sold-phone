@@ -616,7 +616,6 @@ public class QuanLyNhanVien extends javax.swing.JPanel {
             //        chooser.getSelectedFile().getName());
 
             imageLocation = chooser.getSelectedFile().toPath();
-            imageLocation.getFileName().toString().substring(imageLocation.getFileName().toString().length()-4, imageLocation.getFileName().toString().length());
             int w = lblImage.getWidth();
             int h = lblImage.getHeight();
             ImageIcon img = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());

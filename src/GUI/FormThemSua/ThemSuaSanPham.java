@@ -87,13 +87,14 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             txtSoLuong1.setText(Integer.toString(spSua.getSoLuong()));
             
             int w = lblHinhAnh1.getWidth();
-                    int h = lblHinhAnh1.getHeight();
-                    // nhớ sửa đường dẫn employees thành phones
-                    ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Products/"+spSua.getFileNameHinhAnh()));
-                    Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
-                    lblHinhAnh1.setIcon(img);
-                    lblHinhAnh1.setIcon(new ImageIcon(imgScaled));
-                    imageLocation = new File(sanphamImagePath + System.getProperty("file.separator") + _masp +".png").toPath();
+            int h = lblHinhAnh1.getHeight();
+            // nhớ sửa đường dẫn employees thành phones
+            ImageIcon img = new ImageIcon(getClass().getResource("/DTO/Assets/Products/"+spSua.getFileNameHinhAnh()));
+            Image imgScaled = img.getImage().getScaledInstance(w, h, Image.SCALE_SMOOTH);
+            lblHinhAnh1.setIcon(img);
+            lblHinhAnh1.setIcon(new ImageIcon(imgScaled));
+            String hinhAnhGoc = spSua.getFileNameHinhAnh().toString();
+            imageLocation = new File(sanphamImagePath + System.getProperty("file.separator") + hinhAnhGoc).toPath();
 
             //txTentk.setEditable(false);
 
@@ -152,7 +153,14 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             int soluong = Integer.parseInt(sluong);
             String dgia = txtDonGia1.getText();
             float dongia = Float.parseFloat(dgia);
-            String hinhanh = masp+".png";
+            if (imageLocation==null) {
+                try {
+                    imageLocation = Paths.get(this.getClass().getResource("/DTO/Assets/Icons/empty_product_icon.png").toURI()).toFile().toPath();
+                } catch (URISyntaxException ex) {
+                    Logger.getLogger(ThemSuaSanPham.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            String hinhanh = imageLocation.getFileName().toString();
             try {
                 // copy anh vao assets/employees sau khi chon anh
                 String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
@@ -177,13 +185,15 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
                 Logger.getLogger(ThemSuaSanPham.class.getName()).log(Level.SEVERE, null, ex);
             }
 
-            sps.add(masp, mahsp, tensp, dongia, soluong, hinhanh);  // ok thêm và lưu ok
-            JOptionPane.showMessageDialog(this, "Thêm thành công ");
+            if (sps.add(masp, mahsp, tensp, dongia, soluong, hinhanh)) {  // ok thêm và lưu ok
+                JOptionPane.showMessageDialog(this, "Thêm thành công ");
+                this.dispose();
+            }
         }
         else{
             JOptionPane.showMessageDialog(this, "Vui lòng nhập đầy đủ thông tin");
         }
-
+        this.dispose();
     }
 
     private void btnSuaMouseClicked() {
@@ -195,7 +205,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
         int soluong = Integer.parseInt(sluong);
         String dgia = txtDonGia1.getText();
         float dongia = Float.parseFloat(dgia);
-        String hinhanh = masp+".png";
+        String hinhanh = imageLocation.getFileName().toString();
         try {
             // copy anh vao assets/products sau khi chon anh
             String targetPath = sanphamImagePath + System.getProperty("file.separator") + hinhanh;
@@ -219,6 +229,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
             spSua = new SanPham(masp, mahsp, tensp, dongia, soluong, hinhanh);  // cái sua đễ chỗ thêm haizzz
             if (sps.update(masp, mahsp, tensp, dongia, soluong, hinhanh)) {
                 JOptionPane.showMessageDialog(null, "Sửa thành công !");
+                this.dispose();
             }
         } catch (IOException ex) {
             Logger.getLogger(ThemSuaSanPham.class.getName()).log(Level.SEVERE, null, ex);
@@ -437,7 +448,7 @@ public class ThemSuaSanPham extends javax.swing.JFrame {
                 //        chooser.getSelectedFile().getName());
 
             imageLocation = chooser.getSelectedFile().toPath(); 
-
+            
             int w = lblHinhAnh1.getWidth();
             int h = lblHinhAnh1.getHeight();
             ImageIcon img = new ImageIcon(chooser.getSelectedFile().getAbsolutePath());
