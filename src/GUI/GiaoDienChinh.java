@@ -6,7 +6,7 @@
 package GUI;
 
 import BUS.ChuyenPanel;
-import GUI.FormQuanLy.QLPhieuNhap;
+import GUI.FormQuanLy.QuanLyPhieuNhap;
 import GUI.FormQuanLy.QuanLyBanHang;
 import GUI.FormQuanLy.QuanLyHoaDon;
 import GUI.FormQuanLy.QuanLyKhachHang;
@@ -638,7 +638,7 @@ public class GiaoDienChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void btnPhieuNhapActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPhieuNhapActionPerformed
-        new ChuyenPanel(plHienthi, new QLPhieuNhap());// TODO add your handling code here:
+        new ChuyenPanel(plHienthi, new QuanLyPhieuNhap());// TODO add your handling code here:
     }//GEN-LAST:event_btnPhieuNhapActionPerformed
 
     private void btnKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhuyenMaiActionPerformed

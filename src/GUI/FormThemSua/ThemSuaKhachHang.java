@@ -35,6 +35,7 @@ public class ThemSuaKhachHang extends javax.swing.JFrame {
     public ThemSuaKhachHang(String _type, String _makh) {
         this.type = _type;
         initComponents();
+        this.setLocationRelativeTo(null);
 
         // 2 case Thêm - Sửa
         if (this.type.equals("Thêm")) {
