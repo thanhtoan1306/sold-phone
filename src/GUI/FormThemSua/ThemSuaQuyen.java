@@ -8,6 +8,9 @@ package GUI.FormThemSua;
 
 import BUS.QuyenService;
 import DTO.Model.Quyen;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -32,9 +35,10 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
 
     ChiTietQuyenForm chitietForm = new ChiTietQuyenForm();
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+   ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
+    
 
     public ThemSuaQuyen(String _type, String _maq) {
         this.type = _type;
@@ -48,7 +52,7 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
             this.setTitle("Thêm quyền");
             txMaQuyen.setText(qlqBUS.getNextID());
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+
             plButton.add(btnThem);
 
         } else {
@@ -69,11 +73,11 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
 
             txMaQuyen.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+            
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+    
         plButton.add(btnHuy);
         // mouse listener
         btnThem.addActionListener((ae) -> {
