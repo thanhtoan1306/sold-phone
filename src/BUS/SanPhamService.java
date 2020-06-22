@@ -23,19 +23,6 @@ public class SanPhamService {
         dssp = sanPhamDao.readDB();
     }
 
-    public void showConsole() {
-        dssp.forEach((sp) -> {
-            System.out.print(sp.getMaSP() + " ");
-            System.out.print(sp.getMaHSP() + " ");
-            System.out.println(sp.getTenSP() + " ");
-            System.out.println(sp.getDonGia() + " ");
-            System.out.println(sp.getSoLuong() + " ");
-
-        });
-    }
-    public String[] getHeaders() {
-        return new String[]{"Mã sản phẩm", "Mã hãng", "Tên", "Đơn giá", "Số lượng"};
-    }
 
     public void readDB() {
         dssp = sanPhamDao.readDB();

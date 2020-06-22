@@ -8,6 +8,9 @@ package GUI.FormThemSua;
 
 import BUS.NhaCungCapService;
 import DTO.Model.NhaCungCap;
+import GUI.Custom.HuyButton;
+import GUI.Custom.SuaButton;
+import GUI.Custom.ThemButton;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
@@ -23,18 +26,19 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
 
     NhaCungCap nccSua;
 
-    JButton btnThem = new JButton("Thêm");
-    JButton btnSua = new JButton("Sửa");
-    JButton btnHuy = new JButton("Hủy");
+    ThemButton btnThem = new ThemButton();
+    SuaButton btnSua = new SuaButton();
+    HuyButton btnHuy = new HuyButton();
 
     public ThemSuaNhaCungCap(String _type, String _mancc) {
         initComponents();
         this.type = _type;
+        this.setLocationRelativeTo(null);
         if (this.type.equals("Thêm")) {
             this.setTitle("Thêm nhà cung cấp");
             txMaNCC.setText(qlncc.getNextID());
 
-            btnThem.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_add_30px.png")));
+            
             plButton.add(btnThem);
 
         } else {
@@ -56,11 +60,11 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
 
             txMaNCC.setEditable(false);
 
-            btnSua.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_support_30px.png")));
+           
             plButton.add(btnSua);
         }
 
-        btnHuy.setIcon(new ImageIcon(this.getClass().getResource("/com/qlchdt/assets/icons8_cancel_30px_1.png")));
+       
         plButton.add(btnHuy);
 
         btnThem.addActionListener((ae) -> {
@@ -148,7 +152,7 @@ public class ThemSuaNhaCungCap extends javax.swing.JFrame {
         txDiaChi = new javax.swing.JTextField();
         txSDT = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(450, 500));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));

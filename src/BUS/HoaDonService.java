@@ -31,10 +31,6 @@ public class HoaDonService {
     public void readDB() {
         dshd = hoaDonDao.readDB();
     }
-//
-//    public String[] getHeaders() {
-//        return new String[]{"Mã hóa đơn", "Mã nhân viên", "Mã khách hàng", "Ngày lập", "Giờ lập", "Tổng tiền"};
-//    }
 
     public String getNextID() {
         return "HD" + String.valueOf(this.dshd.size() + 1);
