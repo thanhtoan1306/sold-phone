@@ -11,6 +11,7 @@ import DTO.Model.Quyen;
 import GUI.Custom.HuyButton;
 import GUI.Custom.SuaButton;
 import GUI.Custom.ThemButton;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.util.ArrayList;
@@ -150,7 +151,8 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
 
         public ChiTietQuyenForm() {
             setPreferredSize(new Dimension(400, 600));
-            setLayout(new FlowLayout());            
+            setLayout(new FlowLayout());   
+            this.setBackground(Color.white);
             dsPanel.add(new PanelChooseQuyen("Bán Hàng", new String[]{"Bán hàng"}, new String[]{"qlBanHang"}));
             dsPanel.add(new PanelChooseQuyen("Nhập Hàng", new String[]{"Nhập hàng"}, new String[]{"qlNhapHang"}));
             dsPanel.add(new PanelChooseQuyen("Sản Phẩm", type, new String[]{"xemSanPham", "qlSanPham"}));
@@ -196,6 +198,7 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
         public PanelChooseQuyen(String name, String[] type, String[] value) {
             this.setPreferredSize(new Dimension(250, 50));
             this.setLayout(new FlowLayout(FlowLayout.LEFT));
+            this.setBackground(Color.white);
 
             this.name = name;
             this.type = type;
@@ -260,7 +263,7 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        plButton.setBackground(new java.awt.Color(0, 51, 51));
+        plButton.setBackground(new java.awt.Color(255, 255, 255));
         plButton.setMaximumSize(new java.awt.Dimension(400, 80));
         plButton.setMinimumSize(new java.awt.Dimension(400, 80));
         plButton.setPreferredSize(new java.awt.Dimension(400, 80));
@@ -287,6 +290,7 @@ public class ThemSuaQuyen extends javax.swing.JFrame {
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.PAGE_START);
 
+        plHienThiCTQ.setBackground(new java.awt.Color(255, 255, 255));
         plHienThiCTQ.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Chi tiết quyền", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 14), new java.awt.Color(255, 102, 0))); // NOI18N
         plHienThiCTQ.setLayout(new java.awt.BorderLayout());
         jPanel1.add(plHienThiCTQ, java.awt.BorderLayout.CENTER);

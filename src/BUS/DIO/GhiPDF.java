@@ -222,10 +222,10 @@ public class GhiPDF {
             
             if (khuyenMai != null && khuyenMai.getPhanTramKM() > 0 && khuyenMai.getDieuKienKM() <= tongThanhTien) {
                 tongKhuyenMai = tongThanhTien * khuyenMai.getPhanTramKM() / 100;
-                tongTienSauKhuyenMai = tongThanhTien - tongKhuyenMai;
-               
-              
-            } 
+                tongTienSauKhuyenMai = tongThanhTien - tongKhuyenMai;                             
+            } else {
+                tongTienSauKhuyenMai = tongThanhTien;
+            }
 
             //tongKhuyenMai = tongThanhTien - hd.getTongTien();
 
