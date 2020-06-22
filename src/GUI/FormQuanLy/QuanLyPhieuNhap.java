@@ -216,7 +216,7 @@ public class QuanLyPhieuNhap extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        new XuatExcel().xuatFileExcelHoaDon();
+        new XuatExcel().xuatFileExcelPhieuNhap();
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void btnPDFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPDFActionPerformed
