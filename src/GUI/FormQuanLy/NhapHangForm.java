@@ -245,8 +245,6 @@ public class NhapHangForm extends FormHang {
         jPanel1 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
         btnXoa = new javax.swing.JButton();
-        btnSua = new javax.swing.JButton();
-        btnLamMoi = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
         btnNhapHang = new javax.swing.JButton();
@@ -366,30 +364,6 @@ public class NhapHangForm extends FormHang {
         });
         jPanel6.add(btnXoa);
 
-        btnSua.setBackground(new java.awt.Color(3, 81, 145));
-        btnSua.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnSua.setForeground(new java.awt.Color(255, 255, 255));
-        btnSua.setText("Sửa");
-        btnSua.setPreferredSize(new java.awt.Dimension(120, 40));
-        btnSua.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSuaActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnSua);
-
-        btnLamMoi.setBackground(new java.awt.Color(3, 81, 145));
-        btnLamMoi.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        btnLamMoi.setForeground(new java.awt.Color(255, 255, 255));
-        btnLamMoi.setText("Làm mới");
-        btnLamMoi.setPreferredSize(new java.awt.Dimension(150, 40));
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
-            }
-        });
-        jPanel6.add(btnLamMoi);
-
         add(jPanel6);
 
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
@@ -425,14 +399,6 @@ public class NhapHangForm extends FormHang {
         btnNhapHangOnClick();
     }//GEN-LAST:event_btnNhapHangActionPerformed
 
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        setDataToTable(dsctpn, tbChiTietPhieuNhap);
-    }//GEN-LAST:event_btnLamMoiActionPerformed
-
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        btnSuaOnClick();
-    }//GEN-LAST:event_btnSuaActionPerformed
-
     private void btnXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXoaActionPerformed
         btnXoaOnClick();
     }//GEN-LAST:event_btnXoaActionPerformed
@@ -459,9 +425,7 @@ public class NhapHangForm extends FormHang {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnChonKH;
-    private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btnNhapHang;
-    private javax.swing.JButton btnSua;
     private javax.swing.JButton btnXoa;
     private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
