@@ -89,8 +89,13 @@ public class ThongKeKho extends javax.swing.JPanel {
                 soLuongBan += cthd.getSoLuong();
             }
             
-            for (SanPham sp : danhSachSP) {
-                soLuong += sp.getSoLuong();
+            try {
+                for (SanPham sp : danhSachSP) {
+                    soLuong += sp.getSoLuong();
+                }
+            }
+            catch (NullPointerException e) {
+                System.err.println("Ko có hang sp trong db.");
             }
             
             this.soLuongSanPham += soLuong;
