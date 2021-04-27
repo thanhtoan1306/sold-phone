@@ -89,7 +89,7 @@ public class HangSanPhamDao {
 
     public Boolean update(String MaHSP, String TenHSP) {
         connection = new JDBCConnection();
-        Boolean ok = connection.sqlUpdate("Update HANGSANPHAM Set TenLSP='" + TenHSP + "' where MASHP='" + MaHSP + "'");
+        Boolean ok = connection.sqlUpdate("Update HANGSANPHAM Set TenHSP='" + TenHSP + "' where MAHSP='" + MaHSP + "'");
         connection.closeConnect();
         return ok;
     }

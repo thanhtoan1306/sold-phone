@@ -174,6 +174,7 @@ public class ChiTietHoaDonService {
             for (ChiTietHoaDon cthd : dscthd) {
                 if (cthd.getMaHoaDon().equals(_maHoaDon)) {
                     dscthd.remove(cthd);
+                    break;
                 }
             }
             // updateTongTien(_maHoaDon,cthd.getSoLuong());

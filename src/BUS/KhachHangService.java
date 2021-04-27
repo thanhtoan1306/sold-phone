@@ -26,7 +26,7 @@ public class KhachHangService {
         return dskh;
     }
 
-        public void showConsole() {
+    public void showConsole() {
         dskh.forEach((kh) -> {
             System.out.print(kh.getMaKH() + " ");
             System.out.println(kh.getTenKH() + " ");
@@ -39,7 +39,8 @@ public class KhachHangService {
     public void readDB() {
         dskh = khachHangDao.readDB();
     }
-       public KhachHang getKhachHang(String makh) {
+    
+    public KhachHang getKhachHang(String makh) {
         for (KhachHang kh : dskh) {
             if (kh.getMaKH().equals(makh)) {
                 return kh;
