@@ -81,21 +81,21 @@ public class HoaDonServiceTest {
 //        fail("The test case is a prototype.");
     }
 
-//    @Test
-//    public void testAdd_HoaDon() {
-//        System.out.println("add");
-//        HoaDon hd = new HoaDon("HD5", "E03", "KH3", "KM1", LocalDate.now(), LocalTime.now(), 0);
-//        HoaDonService instance = new HoaDonService();
-//        Boolean expResult = true;
-//        Boolean result = instance.add(hd);
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testAdd_HoaDon() {
+        System.out.println("add");
+        HoaDon hd = new HoaDon("HD8", "E03", "KH3", "KM3", LocalDate.now(), LocalTime.now(), 0);
+        HoaDonService instance = new HoaDonService();
+        Boolean expResult = true;
+        Boolean result = instance.add(hd);
+        assertEquals(expResult, result);
+        //fail("The test case is a prototype.");
+ }
 
     @Test
     public void testAdd_7args() {
         System.out.println("add");
-        String maHoaDon = "HD5";
+        String maHoaDon = "HD7";
         String maNhanVien = "E04";
         String maKhachHang = "KH4";
         String maKhuyenMai = "KM1";
@@ -112,10 +112,10 @@ public class HoaDonServiceTest {
     @Test
     public void testUpdate_7args() {
         System.out.println("update");
-        String maHoaDon = "HD5";
+        String maHoaDon = "HD2";
         String maNhanVien = "E02";
         String maKhachHang = "KH2";
-        String maKhuyenMai = "KM1";
+        String maKhuyenMai = "KM2";
         LocalDate ngayNhap = LocalDate.now();
         LocalTime gioNhap = LocalTime.now();
         float tongTien = 0.0F;
@@ -140,8 +140,8 @@ public class HoaDonServiceTest {
     @Test
     public void testUpdateTongTien() {
         System.out.println("updateTongTien");
-        String _mahd = "HD5";
-        float _tongTien = 10.0F;
+        String _mahd = "HD2";
+        float _tongTien = 30.0F;
         HoaDonService instance = new HoaDonService();
         Boolean expResult = true;
         Boolean result = instance.updateTongTien(_mahd, _tongTien);
@@ -152,7 +152,7 @@ public class HoaDonServiceTest {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        String maHoaDon = "HD5";
+        String maHoaDon = "HD8";
         HoaDonService instance = new HoaDonService();
         instance.readDB();
         Boolean expResult = true;
@@ -165,7 +165,7 @@ public class HoaDonServiceTest {
     public void testSearch() {
         System.out.println("search");
         String type = "Tất cả";
-        String keyword = "HD1";
+        String keyword = "E01";
         LocalDate _ngay1 = LocalDate.of(2019, 1, 1);
         LocalDate _ngay2 = LocalDate.of(2022, 1, 1);
         double _tong1 = 0.0F;
@@ -174,7 +174,7 @@ public class HoaDonServiceTest {
         instance.readDB();
         ArrayList<HoaDon> expResult = null;
         ArrayList<HoaDon> result = instance.search(type, keyword, _ngay1, _ngay2, _tong1, _tong2);
-        assertEquals(1, result.size());
+        assertEquals(4, result.size());
 //        fail("The test case is a prototype.");
     }
     

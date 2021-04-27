@@ -175,7 +175,7 @@ public class ChiTietPhieuNhapService {
         return add(ctpn);
     }
 
-    public boolean delete(String ma) {
+    /*public boolean delete(String ma) {
         Boolean ok = qlctpnDAO.deleteAll(ma);
         if (ok) {
             for (int i = (dsctpn.size() - 1); i >= 0; i--) {
@@ -186,7 +186,7 @@ public class ChiTietPhieuNhapService {
 
         }
         return ok;
-    }
+    }*/
 
    /* public Boolean update(String mapn, String masp, int soluong, float dongia) {
         Boolean ok = qlctpnDAO.update(mapn, masp, soluong, dongia);

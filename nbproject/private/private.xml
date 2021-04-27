@@ -3,7 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/HOME/Desktop/Testing/src/BUS/ChiTietHoaDonService.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/NhaCungCapServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/PhieuNhapServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/TaiKhoanServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/ChiTietPhieuNhapServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/KhuyenMaiServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/BUS/SanPhamService.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/HoaDonServiceTest.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/ChiTietHoaDonServiceTest.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/DAO/PhieuNhapDao.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/HangSanPhamServiceTest.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/SanPhamServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/DTO/Model/PhieuNhap.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/BUS/TaiKhoanService.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/DAO/TaiKhoanDao.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/test/BUS/QuyenServiceIT.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/BUS/PhieuNhapService.java</file>
+            <file>file:/C:/Users/HOME/Desktop/Testing/src/BUS/QuyenService.java</file>
         </group>
     </open-files>
 </project-private>
