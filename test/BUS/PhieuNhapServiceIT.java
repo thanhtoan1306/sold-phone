@@ -54,7 +54,7 @@ public class PhieuNhapServiceIT {
     public void testGetNextID() {
         System.out.println("getNextID");
         PhieuNhapService instance = new PhieuNhapService();
-        String expResult = "PN4";
+        String expResult = "PN5";
         String result = instance.getNextID();
         assertEquals(expResult, result);
         //fail("The test case is a prototype.");
@@ -85,22 +85,22 @@ public class PhieuNhapServiceIT {
     public void testSearch() {
         System.out.println("search");
         String type = "Tất cả";
-        String value = "2021";
+        String value = "2020";
         LocalDate _ngay1 = null;
         LocalDate _ngay2 = null;
         int _tong1 = 1;
-        int _tong2 = 170;
+        int _tong2 = 300;
         PhieuNhapService instance = new PhieuNhapService();
         ArrayList<PhieuNhap> expResult = null;
         ArrayList<PhieuNhap> result = instance.search(type, value, _ngay1, _ngay2, _tong1, _tong2);
-        assertEquals(1, result.size());
+        assertEquals(2, result.size());
         //fail("The test case is a prototype.");
     }
 
     @Test
     public void testAdd_PhieuNhap() {
         System.out.println("add");
-        PhieuNhap pn = new PhieuNhap("PN8", "NCC4", "E01", LocalDate.of(2021, 05, 10), LocalTime.of(8, 0, 0), 58.0F);
+        PhieuNhap pn = new PhieuNhap("PN5", "NCC4", "E01", LocalDate.of(2021, 05, 10), LocalTime.of(8, 0, 0), 58.0F);
         PhieuNhapService instance = new PhieuNhapService();
         boolean expResult = true;
         boolean result = instance.add(pn);
@@ -138,7 +138,7 @@ public class PhieuNhapServiceIT {
     @Test
     public void testUpdateTongTien() {
         System.out.println("updateTongTien");
-        String _mapn = "PN06";
+        String _mapn = "PN3";
         float _tongTien = 90.0F;
         PhieuNhapService instance = new PhieuNhapService();
         Boolean expResult = true;
@@ -150,7 +150,7 @@ public class PhieuNhapServiceIT {
     @Test
     public void testAdd_6args() {
         System.out.println("add");
-        String maPN = "PN7";
+        String maPN = "PN6";
         String maNCC = "NCC3";
         String maNV = "E02";
         LocalDate ngayNhap = LocalDate.of(2020, 06, 30);
@@ -166,7 +166,7 @@ public class PhieuNhapServiceIT {
     @Test
     public void testDelete() {
         System.out.println("delete");
-        String ma = "PN7";
+        String ma = "PN5";
         PhieuNhapService instance = new PhieuNhapService();
         boolean expResult = true;
         boolean result = instance.delete(ma);

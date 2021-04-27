@@ -63,9 +63,9 @@ public class ChiTietHoaDonServiceTest {
     public void testGetChiTiet() {
         System.out.println("getChiTiet");
         String mahd = "HD1";
-        String masp = "SS65F";
+        String masp = "IP09K";
         ChiTietHoaDonService instance = new ChiTietHoaDonService();
-        ChiTietHoaDon expResult = new ChiTietHoaDon("HD1", "SS65F", 1, 23);
+        ChiTietHoaDon expResult = new ChiTietHoaDon("HD1", "IP09K", 3, 21.9);
         ChiTietHoaDon result = instance.getChiTiet(mahd, masp);
         
         assertTrue(expResult.getMaHoaDon().equals(result.getMaHoaDon()));
@@ -189,7 +189,7 @@ public class ChiTietHoaDonServiceTest {
         float thanhTien1 = 0.0F;
         float thanhTien2 = 100.0F;
         ChiTietHoaDonService instance = new ChiTietHoaDonService();
-        int expResult = 1;
+        int expResult = 0;
         ArrayList<ChiTietHoaDon> result = instance.search(type, keyword, soLuong1, soLuong2, thanhTien1, thanhTien2);
         assertEquals(expResult, result.size());
 //        fail("The test case is a prototype.");

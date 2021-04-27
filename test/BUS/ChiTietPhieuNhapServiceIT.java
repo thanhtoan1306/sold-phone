@@ -52,7 +52,7 @@ public class ChiTietPhieuNhapServiceIT {
     public void testSearch() {
         System.out.println("search");
         String type = "Tất cả";
-        String value = "PN01";
+        String value = "PN2";
         int soLuong1 = 1;
         int soLuong2 = 60;
         float thanhTien1 = 1.0F;
@@ -60,11 +60,11 @@ public class ChiTietPhieuNhapServiceIT {
         ChiTietPhieuNhapService instance = new ChiTietPhieuNhapService();
         ArrayList<ChiTietPhieuNhap> expResult = null;
         ArrayList<ChiTietPhieuNhap> result = instance.search(type, value, soLuong1, soLuong2, thanhTien1, thanhTien2);
-        assertEquals(2, result.size());
+        assertEquals(1, result.size());
         //fail("The test case is a prototype.");
     }
 
-    @Test
+   /* @Test
     public void testDeleteAll() {
         System.out.println("deleteAll");
         String _maPhieuNhap = "PN6";
@@ -75,11 +75,11 @@ public class ChiTietPhieuNhapServiceIT {
         //fail("The test case is a prototype.");
     }
 
-    @Test
+    @Test*/
     public void testGetChiTiet() {
         System.out.println("getChiTiet");
-        String mapn = "PN01";
-        String masp = "IPJC7";
+        String mapn = "PN2";
+        String masp = "IP134";
         ChiTietPhieuNhapService instance = new ChiTietPhieuNhapService();
         ChiTietPhieuNhap expResult = null;
         ChiTietPhieuNhap result = instance.getChiTiet(mapn, masp);
@@ -90,11 +90,11 @@ public class ChiTietPhieuNhapServiceIT {
     @Test
     public void testGetAllChiTiet() {
         System.out.println("getAllChiTiet");
-        String mapn = "PN01";
+        String mapn = "PN2";
         ChiTietPhieuNhapService instance = new ChiTietPhieuNhapService();
         ArrayList<ChiTietPhieuNhap> expResult = null;
         ArrayList<ChiTietPhieuNhap> result = instance.getAllChiTiet(mapn);
-        assertEquals(3, result.size());
+        assertEquals(1, result.size());
         //fail("The test case is a prototype.");
     }
 
@@ -149,7 +149,7 @@ public class ChiTietPhieuNhapServiceIT {
     @Test
     public void testUpdate_4args() {
         System.out.println("update");
-        String maPhieuNhap = "PN7";
+        String maPhieuNhap = "PN4";
         String maSanPham = "IPFAK";
         int soLuong = 15;
         float donGia = 15.0F;
@@ -163,7 +163,7 @@ public class ChiTietPhieuNhapServiceIT {
     @Test
     public void testUpdate_ChiTietPhieuNhap() {
         System.out.println("update");
-        ChiTietPhieuNhap chitiet = new ChiTietPhieuNhap("PN7", "IPFAK", 20, 15.0f);
+        ChiTietPhieuNhap chitiet = new ChiTietPhieuNhap("PN2", "IPFAK", 20, 15.0f);
         ChiTietPhieuNhapService instance = new ChiTietPhieuNhapService();
         Boolean expResult = true;
         Boolean result = instance.update(chitiet);

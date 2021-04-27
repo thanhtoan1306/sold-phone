@@ -126,16 +126,16 @@ public class HoaDonServiceTest {
 //        fail("The test case is a prototype.");
     }
 
-//    @Test
-//    public void testUpdate_HoaDon() {
-//        System.out.println("update");
-//        HoaDon hd = null;
-//        HoaDonService instance = new HoaDonService();
-//        Boolean expResult = null;
-//        Boolean result = instance.update(hd);
-//        assertEquals(expResult, result);
-//        fail("The test case is a prototype.");
-//    }
+    @Test
+    public void testUpdate_HoaDon() {
+        System.out.println("update");
+        HoaDon hd = new HoaDon("HD5", "E02", "KH2", "KM1", LocalDate.now(), LocalTime.now(), 0.0F);
+        HoaDonService instance = new HoaDonService();
+        Boolean expResult = true;
+        Boolean result = instance.update(hd);
+        assertEquals(expResult, result);
+        //fail("The test case is a prototype.");
+    }
 
     @Test
     public void testUpdateTongTien() {
@@ -174,7 +174,7 @@ public class HoaDonServiceTest {
         instance.readDB();
         ArrayList<HoaDon> expResult = null;
         ArrayList<HoaDon> result = instance.search(type, keyword, _ngay1, _ngay2, _tong1, _tong2);
-        assertEquals(4, result.size());
+        assertEquals(3, result.size());
 //        fail("The test case is a prototype.");
     }
     
