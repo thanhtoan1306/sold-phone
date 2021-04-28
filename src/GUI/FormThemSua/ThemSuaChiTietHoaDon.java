@@ -117,9 +117,11 @@ public class ThemSuaChiTietHoaDon extends javax.swing.JFrame {
     private void btnThemChiTietHoaDonMouseClicked() {
         if (checkEmpty()) {
             String maspThem = txMaSP.getText();
-            //String gia = txGia.getText().replace('.000.000 đ', '.0');
+//            String gia = txGia.getText().replace(".000.000 đ", ".0");
 
+//            double donGiaNewFormat = Double.parseDouble(gia);
             double dongia = Double.parseDouble(txGia.getText()) / 1000000;
+            
             int soluong = Integer.parseInt(txSLuong.getText());
 
             if (soluong > soLuongMax) {

@@ -5,7 +5,9 @@
  */
 package BUS;
 
+import DAO.ChiTietPhieuNhapDao;
 import DAO.PhieuNhapDao;
+import DTO.Model.ChiTietPhieuNhap;
 import DTO.Model.PhieuNhap;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -18,9 +20,24 @@ import java.util.ArrayList;
 public class PhieuNhapService {
    PhieuNhapDao phieuNhapDao = new PhieuNhapDao();
     ArrayList<PhieuNhap> dspn = new ArrayList<>();
+    private ChiTietPhieuNhapDao chiTietPhieuNhapDao = new ChiTietPhieuNhapDao();
 
+    
     public PhieuNhapService() {
         dspn = phieuNhapDao.readDB();
+        ArrayList<ChiTietPhieuNhap> dsctpn = new ArrayList<>();
+        dsctpn = chiTietPhieuNhapDao.readDB();
+        
+        float tongTien ;
+        for (PhieuNhap pn : dspn) {
+            tongTien = 0;
+            for (ChiTietPhieuNhap ct : dsctpn) {
+                if (ct.getMaPN().equals(pn.getMaPN()))
+                    tongTien += ct.getsLuong()*ct.getDonGia();
+            }
+            pn.setTongTien(tongTien);
+            phieuNhapDao.update(pn);
+        }
     }
 
     public void readDB() {

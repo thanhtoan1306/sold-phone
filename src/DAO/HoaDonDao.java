@@ -102,7 +102,7 @@ public class HoaDonDao {
         hd.setMaHoaDon(maHoaDon);
         hd.setMaNhanVien(maNhanVien);
         hd.setMaKhachHang(maKhachHang);        
-        hd.setMaKhachHang(maKhuyenMai);
+        hd.setMaKhuyenMai(maKhuyenMai);
         hd.setNgayLap(ngayLap);
         hd.setGioLap(gioLap);
         hd.setTongTien(tongTien);

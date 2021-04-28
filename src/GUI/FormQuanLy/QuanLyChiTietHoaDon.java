@@ -46,7 +46,7 @@ public class QuanLyChiTietHoaDon extends javax.swing.JFrame {
 
             this.setVisible(true);
 
-        }
+    }
 
     
 

@@ -16,11 +16,11 @@ import javax.swing.JOptionPane;
  *
  * @author User
  */
-public class KhanhHangDao {
+public class KhachHangDao {
 
     JDBCConnection connection;
 
-    public KhanhHangDao() {
+    public KhachHangDao() {
     }
 
     public ArrayList<KhachHang> readDB() {

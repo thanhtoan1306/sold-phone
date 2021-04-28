@@ -121,7 +121,7 @@ public class ChiTietHoaDonService {
         return success;
     }
     
-        private Boolean updateTongTienSua(String _mahd,int _sL) {
+    private Boolean updateTongTienSua(String _mahd,int _sL) {
         float tong = 0;
         for (ChiTietHoaDon ct : dscthd) {
             if (ct.getMaHoaDon().equals(_mahd)) {

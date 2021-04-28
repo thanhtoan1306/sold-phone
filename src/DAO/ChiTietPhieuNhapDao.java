@@ -53,7 +53,7 @@ public class ChiTietPhieuNhapDao {
         connection = new JDBCConnection();
         try {
 
-            String query = "SELECT * FROM CTPN WHERE" + columName + "LIKE '%" + value + "%'";
+            String query = "SELECT * FROM CTPN WHERE " + columName + " LIKE '%" + value + "%'";
             ResultSet r = connection.sqlQuery(query);
             if (r != null) {
                 while (r.next()) {

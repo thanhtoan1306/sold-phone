@@ -5,7 +5,7 @@
  */
 package BUS;
 
-import DAO.KhanhHangDao;
+import DAO.KhachHangDao;
 import DTO.Model.KhachHang;
 import java.util.ArrayList;
 
@@ -16,7 +16,7 @@ import java.util.ArrayList;
 public class KhachHangService {
 
     private ArrayList<KhachHang> dskh = new ArrayList<>();
-    private KhanhHangDao khachHangDao = new KhanhHangDao();
+    private KhachHangDao khachHangDao = new KhachHangDao();
 
     public KhachHangService() {
          dskh = khachHangDao.readDB();

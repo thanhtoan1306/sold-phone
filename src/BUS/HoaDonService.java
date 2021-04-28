@@ -5,11 +5,14 @@
  */
 package BUS;
 
+import DAO.ChiTietHoaDonDao;
 import DAO.HoaDonDao;
+import DTO.Model.ChiTietHoaDon;
 import DTO.Model.HoaDon;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  *
@@ -19,9 +22,23 @@ public class HoaDonService {
 
     ArrayList<HoaDon> dshd = new ArrayList<>();
     private HoaDonDao hoaDonDao = new HoaDonDao();
+    private ChiTietHoaDonDao chiTietHoaDonDao = new ChiTietHoaDonDao();
 
     public HoaDonService() {
         dshd = hoaDonDao.readDB();
+        ArrayList<ChiTietHoaDon> dscthd = new ArrayList<>();
+        dscthd = chiTietHoaDonDao.readDB();
+        
+        float tongTien ;
+        for (HoaDon hd : dshd) {
+            tongTien = 0;
+            for (ChiTietHoaDon ct : dscthd) {
+                if (ct.getMaHoaDon().equals(hd.getMaHoaDon()))
+                    tongTien += ct.getSoLuong()*ct.getDonGia();
+            }
+            hd.setTongTien(tongTien);
+            hoaDonDao.update(hd);
+        }
     }
 
     public ArrayList<HoaDon> getDshd() {

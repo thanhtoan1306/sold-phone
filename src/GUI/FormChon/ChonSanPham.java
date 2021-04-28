@@ -74,7 +74,10 @@ public class ChonSanPham extends javax.swing.JFrame {
                 this.txTensp.setText(formHienThiSanPham.getSelectedSanPham(2));
             }
             if (this.txDonGia != null) {
-                this.txDonGia.setText(formHienThiSanPham.getSelectedSanPham(3));
+                String textGia = formHienThiSanPham.getSelectedSanPham(3);
+                String gia = textGia.replaceAll("\\D", "");
+
+                this.txDonGia.setText(gia);
             }
             if (this.txSoluong != null) {
                 this.txSoluong.setText(formHienThiSanPham.getSelectedSanPham(4));

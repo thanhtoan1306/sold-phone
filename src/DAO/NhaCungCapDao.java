@@ -82,7 +82,7 @@ public class NhaCungCapDao {
         ArrayList<NhaCungCap> dsncc = new ArrayList<>();
 
         try {
-            String qry = "SELECT * FROM sanpham WHERE " + columnName + " LIKE '%" + value + "%'";
+            String qry = "SELECT * FROM nhacungcap WHERE " + columnName + " LIKE '%" + value + "%'";
             ResultSet r = connection.sqlQuery(qry);
             if (r != null) {
                 while (r.next()) {
