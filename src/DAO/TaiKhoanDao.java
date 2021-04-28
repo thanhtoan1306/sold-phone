@@ -96,10 +96,10 @@ public class TaiKhoanDao {
     public Boolean update(String tentk, String matkhau, String manv, String maquyen) {
         connection = new JDBCConnection();
         Boolean ok = connection.sqlUpdate("Update TAIKHOAN Set "
-                + "TenTK='" + tentk
+                + "MaNV='" + manv
                 + "',MK='" + matkhau
                 + "',MaQuyen='" + maquyen
-                + "' where MaNV='" + manv + "'");
+                + "' where TenTK='" + tentk + "'");
         connection.closeConnect();
         return ok;
     }
